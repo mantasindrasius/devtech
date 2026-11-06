@@ -36,4 +36,4 @@ Text and typing effects respect reduced-motion preferences. Transition code live
 
 Slide two now includes an architecture beat before its context-menu demo. It shows the HTTP controller, domain use case, `OrderStore` interface, SQL adapter, test adapter, and database. Use **Mermaid source** to inspect the diagram definition in the slide; edit it in `src/architecture.js`.
 
-Mermaid is installed through the host’s private npm registry and bundled locally by Vite. It loads lazily when the diagram is shown, without a CDN request. A local HTML diagram remains available if rendering fails. The project’s `.npmrc` keeps package installs on `https://registry.npmjs.org/`.
+Mermaid is bundled locally by Vite. It loads lazily when the diagram is shown, without a CDN request. A local HTML diagram remains available if rendering fails. Package installs inherit your user-level npm registry configuration. Keep machine-specific registry settings out of the repository.
