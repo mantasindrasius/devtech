@@ -1,0 +1,126 @@
+.code-panel {
+  min-width: 0;
+  border: 1px solid var(--border, #303740);
+  background: var(--surface, #15191f);
+  border-radius: 9px;
+  overflow: hidden;
+  box-shadow: 0 24px 65px var(--shadow, #0003);
+}
+
+.code-toolbar {
+  height: 47px;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border, #2a3038);
+  color: var(--muted, #a0aab7);
+  font: 10px monospace;
+}
+
+.code-toolbar > span,
+.code-toolbar > div {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.code-toolbar button {
+  font: 10px monospace;
+  color: var(--muted, #8995a4);
+  padding: 5px;
+}
+
+.code-toolbar button:hover {
+  color: var(--accent, #b4ef94);
+}
+
+.live-label {
+  font-size: 9px;
+  margin-left: 6px;
+  color: var(--accent-text, #8ca081);
+}
+
+#editor {
+  height: 440px;
+}
+
+.code-footer {
+  border-top: 1px solid var(--border, #272e36);
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 17px;
+  color: var(--subtle, #657181);
+  font: 9px monospace;
+}
+
+.footer-separator {
+  margin: 0 9px;
+  color: var(--subtle, #39414c);
+}
+
+#output {
+  padding: 12px 18px;
+  font: 11px/1.5 monospace;
+  border-top: 1px solid var(--border, #303740);
+  overflow-wrap: anywhere;
+}
+
+.success {
+  color: var(--accent, #b4ef94);
+}
+
+.failure {
+  color: var(--error, #ffa0a0);
+}
+
+.code-panel {
+  transform-origin: top left;
+}
+
+.architecture-panel {
+  min-width: 0;
+  border: 1px solid var(--strong-border, #3c4d3c);
+  border-radius: 9px;
+  background: var(--surface, #15191f);
+  overflow: hidden;
+  animation: diagram-enter 450ms ease both;
+}
+
+.architecture-render {
+  padding: 22px 14px 8px;
+  min-height: 400px;
+  display: grid;
+  place-items: center;
+}
+
+.architecture-render svg {
+  width: 100%;
+  max-height: 440px;
+  height: auto;
+}
+
+.architecture-caption {
+  margin: 10px 20px 20px;
+  color: var(--accent-text, #a7b9a0);
+  font-size: 12px;
+  line-height: 1.7;
+  text-align: center;
+}
+
+.architecture-source {
+  margin: 0;
+  padding: 24px;
+  min-height: 400px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  color: var(--accent-text, #b5d6a1);
+  font: 12px/1.8 monospace;
+}
+
+#description,
+.architecture-caption {
+  white-space: pre-line;
+}

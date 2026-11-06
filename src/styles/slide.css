@@ -1,0 +1,130 @@
+#slide {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  grid-template-rows: 1fr auto;
+  column-gap: 42px;
+  align-items: center;
+  padding: 34px 46px 28px;
+  min-height: 540px;
+}
+
+.slide-copy {
+  padding-bottom: 18px;
+}
+
+#eyebrow {
+  font: 9px monospace;
+  letter-spacing: 1.8px;
+  color: var(--accent-text, #b3d89e);
+  margin-bottom: 29px;
+}
+
+h1 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(32px, 3.45vw, 60px);
+  font-weight: 500;
+  letter-spacing: -2.1px;
+  line-height: 1.13;
+  margin: 0 0 27px;
+}
+
+em {
+  font-style: normal;
+  color: var(--accent, #b4ef94);
+}
+
+#description {
+  font-size: clamp(12px, 1.08vw, 18px);
+  line-height: 1.85;
+  color: var(--muted, #919caa);
+  margin: 0;
+}
+
+#author {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  margin-top: 40px;
+}
+
+.avatar {
+  border: 1px solid var(--strong-border, #4c5945);
+  background: var(--selected, #263020);
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  color: var(--accent-text, #c9e4b9);
+  font: 500 16px 'Space Grotesk';
+}
+
+#author strong {
+  display: block;
+  font-weight: 500;
+  font-size: 13px;
+}
+
+#author div > span {
+  display: block;
+  color: var(--muted, #7e8997);
+  font-size: 11px;
+  margin-top: 5px;
+}
+
+#author b {
+  font-weight: 500;
+  color: var(--text, #b6bfc9);
+}
+
+.principles {
+  display: flex;
+  gap: 24px;
+  margin-top: 45px;
+  font: 9px monospace;
+  color: var(--subtle, #758069);
+}
+
+.principles b {
+  font-weight: 400;
+  color: var(--muted, #939eaa);
+  margin-left: 5px;
+}
+
+.takeaway {
+  grid-column: 1/-1;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-top: 34px;
+  font-size: 12px;
+  color: var(--muted, #929eac);
+}
+
+.takeaway > span:first-child {
+  color: var(--accent, #b4ef94);
+  font-size: 19px;
+}
+
+/* Keep both slide columns within the available viewport. */
+#slide {
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+}
+
+.slide-copy {
+  min-width: 0;
+  overflow-wrap: break-word;
+}
+
+/* The slide is the camera viewport; navigation stays outside the close-up. */
+#slide {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+#slide .slide-copy,
+#slide .takeaway {
+  transition: opacity 600ms ease;
+}

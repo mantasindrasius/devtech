@@ -1,0 +1,8 @@
+flowchart TB
+  api["HTTP API / controller"] -->|calls| usecase["placeOrder · business rules"]
+  subgraph domain["Domain · local reasoning boundary"]
+    usecase -->|depends on| port["OrderStore · interface"]
+  end
+  adapter["SQL order adapter"] -.->|implements| port
+  adapter -->|writes| database[("Orders database")]
+  tests["In-memory test adapter"] -.->|implements| port

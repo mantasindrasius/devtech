@@ -1,0 +1,85 @@
+:root[data-theme='light'] {
+  color-scheme: light;
+  --canvas: #f8faf6;
+  --surface: #ffffff;
+  --sidebar: #eff3ec;
+  --text: #24312d;
+  --muted: #56645e;
+  --subtle: #66736b;
+  --accent: #397627;
+  --accent-text: #466c37;
+  --border: #d1dacd;
+  --strong-border: #9aaa90;
+  --hover: #e6ecdf;
+  --selected: #e0ecd6;
+  --status-surface: #e4eddd;
+  --notes-surface: #eff5e9;
+  --error: #a92c35;
+  --error-surface: #fff0f0;
+  --blue: #27658c;
+  --shadow: #25351b14;
+  --glow: #39762733;
+  --suggestion-line: #3976270b;
+  --removed-bg: #d8444420;
+  --removed-text: #a32732;
+  --inserted-bg: #75ba4c33;
+  --ghost-text: #527a42;
+  --ghost-bg: #3976270a;
+}
+
+.theme-control {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+  margin-right: 18px;
+  font-size: 12px;
+  color: var(--muted, #aeb5c0);
+}
+
+.theme-control button {
+  font: inherit;
+  color: var(--text, #e8ecf0);
+  background: var(--surface, #15191f);
+  border: 1px solid var(--border, #373e47);
+  border-radius: 6px;
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+}
+
+.theme-control button:focus-visible {
+  outline: 2px solid var(--accent, #b4ef94);
+  outline-offset: 3px;
+}
+
+.topbar .project-name {
+  margin-left: auto;
+  margin-right: 24px;
+}
+
+:root.presenting .theme-control,
+:root:fullscreen .theme-control {
+  display: none;
+}
+
+.theme-control button[aria-pressed='true'] {
+  color: var(--accent, #b4ef94);
+  background: var(--selected, #242c27);
+  border-color: var(--accent, #b4ef94);
+}
+
+.theme-control button:hover {
+  background: var(--hover, #20252b);
+}
+
+.theme-control svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}

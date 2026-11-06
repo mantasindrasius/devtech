@@ -1,0 +1,1 @@
+bun scripts/check-private-registry.mjs --pre-push "$1"

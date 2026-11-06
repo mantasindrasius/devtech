@@ -1,0 +1,84 @@
+.reveal {
+  opacity: 0;
+  transform: translateY(12px);
+  transition:
+    opacity 450ms ease,
+    transform 450ms ease;
+  pointer-events: none;
+}
+
+.reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.transition-status {
+  font: 10px/1.4 monospace;
+  color: var(--accent-text, #a6bc9c);
+  max-width: 210px;
+}
+
+.typing-demo {
+  border-color: var(--accent, #b4ef94);
+  box-shadow: 0 0 0 1px var(--glow, #b4ef9433);
+}
+
+.typing-demo .live-label {
+  font-size: 0;
+}
+
+.typing-demo .live-label::after {
+  content: 'typing demo';
+  font-size: 9px;
+}
+
+/* Monaco suggestion decorations follow the expression throughout the edit. */
+.monaco-editor .suggestion-line {
+  background: var(--suggestion-line, #b4ef940b);
+}
+
+.monaco-editor .suggestion-gutter {
+  border-left: 3px solid var(--accent, #b4ef94);
+  margin-left: 4px;
+}
+
+.monaco-editor .suggestion-removed {
+  background: var(--removed-bg, #ff818233);
+  color: var(--error, #ffb0b0) !important;
+  text-decoration: line-through;
+  text-decoration-color: var(--removed-text, #ff9292);
+}
+
+.monaco-editor .suggestion-inserted {
+  background: var(--inserted-bg, #8fdf6840);
+  border-bottom: 1px solid var(--accent, #b4ef94);
+}
+
+.monaco-editor .suggestion-ghost {
+  color: var(--ghost-text, #91b87a88) !important;
+  background: var(--ghost-bg, #b4ef9410);
+  font-style: italic;
+}
+
+#slide.code-closeup .slide-copy,
+#slide.code-closeup .takeaway {
+  opacity: 0.08;
+  pointer-events: none;
+}
+
+#slide.code-closeup .code-panel {
+  position: relative;
+  z-index: 2;
+}
+
+@keyframes diagram-enter {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -1,0 +1,140 @@
+version: 1
+id: architecture-for-ai
+title: Designing Architectures that AI can work with
+presenter:
+  name: Mantas Indrašius
+  role: Dev Lead
+  company: Wix.com
+  initials: mi
+resources:
+  introduction:
+    type: code
+    file: snippets/01-introduction.ts
+    language: typescript
+  boundaries:
+    type: code
+    file: snippets/02-boundaries.ts
+    language: typescript
+  feedback:
+    type: code
+    file: snippets/03-feedback.ts
+    language: typescript
+  order-architecture:
+    type: mermaid
+    file: diagrams/order-service.mmd
+    title: Order service architecture
+    description:
+      The HTTP API calls placeOrder, which depends on OrderStore. SQL and in-memory adapters
+      implement the interface. The SQL adapter writes to the orders database.
+    caption: |
+      Dependencies point toward the contract.
+      Swap the adapter; keep the business rules.
+slides:
+  - id: introduction
+    name: The architecture is the context
+    label: A TALK ABOUT CODE, CONTEXT & COLLABORATION
+    title:
+      - text: Designing Architectures
+      - text: that
+        accent: AI can work with
+    description: |
+      Make the right change easy to discover,
+      easy to describe, and easy to verify.
+    author: true
+    principles:
+      - Boundaries
+      - Context
+      - Feedback
+    code: introduction
+    takeaway: Better context starts with better boundaries.
+    steps:
+      - id: premise
+        label: The premise
+      - id: idea
+        label: Reveal the idea
+        reveal:
+          - description
+      - id: speaker
+        label: Meet the speaker
+        reveal:
+          - author
+          - principles
+      - id: conclusion
+        label: The takeaway
+        reveal:
+          - takeaway
+    notes: 'Open with a   familiar problem: a small feature that requires understanding half the
+      repository. AI makes the cost of implicit architecture visible. This talk explores three
+      properties: explicit boundaries, local context, and executable feedback.'
+  - id: boundaries
+    name: Make the contract explicit
+    label: 01 / EXPLICIT BOUNDARIES
+    title:
+      - text: A small contract.
+      - accent: A clear place to work.
+    description: |
+      Give each change a home. Keep business rules
+      separate from storage and delivery.
+    code: boundaries
+    takeaway: Let the agent reason about one module at a time.
+    steps:
+      - id: boundary
+        label: The boundary
+      - id: explanation
+        label: Explain the contract
+        reveal:
+          - description
+      - id: diagram
+        label: Show the architecture
+        panel: order-architecture
+      - id: context-menu
+        label: Open editor context menu
+        actions:
+          - type: context-menu
+            target: OrderStore
+      - id: conclusion
+        label: The takeaway
+        reveal:
+          - takeaway
+    notes: 'The use case depends on a small interface, not a database client. Ask the agent to add a
+      business rule here: the input, dependency, and failure behavior are all visible. A database
+      adapter can evolve independently. Small boundaries still need integration tests.'
+  - id: feedback
+    name: Turn intent into feedback
+    label: 02 / EXECUTABLE FEEDBACK
+    title:
+      - text: Describe the rule.
+      - accent: Prove the behavior.
+    description: |
+      Tests turn architectural intent into a feedback
+      loop an agent can use to correct its work.
+    code: feedback
+    runnable: true
+    takeaway: A useful feedback loop ends in evidence.
+    steps:
+      - id: loop
+        label: The feedback loop
+      - id: explanation
+        label: Explain the rule
+        reveal:
+          - description
+      - id: edit
+        label: Simulate a code edit
+        actions:
+          - type: type-edit
+            find: total > 0
+            replacement: total >= 0
+            typingDelayMs: 100
+            holdMs: 700
+            zoom: true
+      - id: check
+        label: Run the changed example
+        actions:
+          - type: run-checks
+      - id: conclusion
+        label: The takeaway
+        reveal:
+          - takeaway
+    notes: Run the example, then change > 0 to >= 0 and run again. The zero case fails, making the
+      regression concrete. These examples are a starting point, not complete coverage. Pair fast
+      local checks with type checking, integration tests, and human review.

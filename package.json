@@ -1,1 +1,29 @@
-{"name":"monaco-slides","version":"1.0.0","private":true,"type":"module","scripts":{"dev":"vite --host 127.0.0.1","build":"vite build","preview":"vite preview --host 127.0.0.1"},"dependencies":{"mermaid":"^11.17.2","monaco-editor":"^0.52.2","vite":"^6.3.5"}}
+{
+  "name": "monaco-slides",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "bun --bun vite --host 127.0.0.1",
+    "build": "bun run content:check && bun --bun vite build",
+    "preview": "bun --bun vite preview --host 127.0.0.1",
+    "prepare": "bun node_modules/husky/bin.js",
+    "registry:check": "bun scripts/check-private-registry.mjs",
+    "registry:sanitize": "bun scripts/sanitize-registry.mjs",
+    "test:registry": "bun test scripts/registry.test.mjs",
+    "test": "bun test tests scripts",
+    "content:check": "bun scripts/validate-content.mjs",
+    "format": "prettier --write src content tests"
+  },
+  "dependencies": {
+    "mermaid": "^11.17.2",
+    "monaco-editor": "^0.52.2",
+    "vite": "^6.3.5",
+    "yaml": "^2.9.1"
+  },
+  "devDependencies": {
+    "husky": "^9.1.7",
+    "prettier": "^3.9.10"
+  },
+  "packageManager": "bun@1.4.4"
+}
