@@ -1,0 +1,6 @@
+flowchart TD
+  R["Reject invalid orders"] --> H["HTTP handler"]
+  H --> B["Business rules"]
+  H --> D["Database details"]
+  H --> N["Notifications"]
+  H --> C["Hidden configuration"]

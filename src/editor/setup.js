@@ -10,6 +10,16 @@ export function setupEditor(element) {
       ['typescript', 'javascript'].includes(label) ? new tsWorker() : new editorWorker(),
   };
   defineEditorThemes(monaco);
+  for (const defaults of [
+    monaco.languages.typescript.typescriptDefaults,
+    monaco.languages.typescript.javascriptDefaults,
+  ]) {
+    defaults.setDiagnosticsOptions({
+      noSemanticValidation: true,
+      noSyntaxValidation: true,
+      noSuggestionDiagnostics: true,
+    });
+  }
   monaco.languages.typescript.typescriptDefaults.setCompilerOptions({
     target: monaco.languages.typescript.ScriptTarget.ESNext,
     module: monaco.languages.typescript.ModuleKind.ESNext,
@@ -26,6 +36,7 @@ export function setupEditor(element) {
     scrollBeyondLastLine: false,
     automaticLayout: true,
     renderLineHighlight: 'none',
+    renderValidationDecorations: 'off',
     lineNumbersMinChars: 3,
     folding: false,
     overviewRulerLanes: 0,

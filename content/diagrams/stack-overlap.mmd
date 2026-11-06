@@ -1,0 +1,8 @@
+flowchart TD
+  A["PR A: contract"] --> AC["A: CI and review"]
+  A --> B["PR B: adapter"]
+  B --> BC["B: CI and review"]
+  B --> C["PR C: integration"]
+  AC --> M["Merge in dependency order"]
+  BC --> M
+  C --> M

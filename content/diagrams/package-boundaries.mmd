@@ -1,0 +1,5 @@
+flowchart TD
+  API["HTTP adapter"] --> APP["Orders application"]
+  APP --> DOMAIN["Order rules and contracts"]
+  SQL["SQL adapter"] --> DOMAIN
+  EMAIL["Email adapter"] --> DOMAIN

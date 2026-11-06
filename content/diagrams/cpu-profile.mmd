@@ -1,0 +1,6 @@
+flowchart TD
+  R["Request processing"] --> V["Validate order"]
+  R --> S["Serialize response"]
+  R --> L["Repeated catalog lookup"]
+  L --> SCAN["Scan entire collection"]
+  SCAN --> H["Hypothesis: index by ID"]

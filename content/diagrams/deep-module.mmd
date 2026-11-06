@@ -1,0 +1,8 @@
+flowchart TD
+  CALLER["Caller or behavioral test"] --> QUOTE["quotes.quote(request)"]
+  subgraph PACKAGE["order-quotes package"]
+    QUOTE --> RULES["Validation and pricing policy"]
+    RULES --> ORDER["Discount before shipping"]
+    ORDER --> RESULT["Quote or defined error"]
+  end
+  RULES --> CATALOG["Catalog adapter"]

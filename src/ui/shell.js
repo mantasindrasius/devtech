@@ -28,6 +28,7 @@ export function mountShell(root) {
           </div>
           <div class="code-panel">
             <div class="code-toolbar"><span><span class="ts">TS</span><span id="code-file"></span></span><div><button id="reset">Reset</button><button id="run" hidden>▷ Run checks</button><span class="live-label"><span class="green-dot"></span>editable</span></div></div>
+            <div class="example-banner" hidden><strong></strong><span></span></div>
             <div id="editor"></div><div id="output" role="status" hidden></div>
             <div class="code-footer"><span id="code-language"></span><span>UTF-8 / Monaco Editor</span></div>
           </div>

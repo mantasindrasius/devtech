@@ -321,3 +321,23 @@ main {
   white-space: normal;
   line-height: 1.6;
 }
+
+/* Long decks keep navigation scrollable rather than stretching the slide. */
+.workspace > aside {
+  position: sticky;
+  top: 0;
+  align-self: flex-start;
+  height: calc(100svh - 65px);
+  overflow-y: auto;
+}
+
+.sidebar-bottom {
+  position: static;
+  margin: 30px 24px;
+}
+
+#notes {
+  white-space: pre-line;
+  max-height: 40svh;
+  overflow-y: auto;
+}

@@ -1,0 +1,62 @@
+.code-panel[data-example='bad'] {
+  --example-ink: #ffb3b9;
+  --example-background: #3b2028;
+  --example-border: #c35b69;
+}
+
+.code-panel[data-example='better'] {
+  --example-ink: #f7d78c;
+  --example-background: #352d1c;
+  --example-border: #a98b43;
+}
+
+.code-panel[data-example='good'] {
+  --example-ink: #b4ef94;
+  --example-background: #203320;
+  --example-border: #6e9d55;
+}
+
+:root[data-theme='light'] .code-panel[data-example='bad'] {
+  --example-ink: #922936;
+  --example-background: #fff0f1;
+  --example-border: #c35b69;
+}
+
+:root[data-theme='light'] .code-panel[data-example='better'] {
+  --example-ink: #795209;
+  --example-background: #fff7df;
+  --example-border: #a98b43;
+}
+
+:root[data-theme='light'] .code-panel[data-example='good'] {
+  --example-ink: #2b641d;
+  --example-background: #eef8e7;
+  --example-border: #6e9d55;
+}
+
+.code-panel[data-example] {
+  border-color: var(--example-border);
+}
+
+.example-banner {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  padding: 14px 18px;
+  color: var(--example-ink);
+  background: var(--example-background);
+  border-bottom: 1px solid var(--example-border);
+}
+
+.example-banner strong {
+  font:
+    700 clamp(18px, 1.3vw, 30px) 'Space Grotesk',
+    sans-serif;
+  letter-spacing: 0.06em;
+}
+
+.example-banner span {
+  font-size: clamp(14px, 1vw, 24px);
+  line-height: 1.35;
+}

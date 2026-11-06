@@ -94,10 +94,12 @@ function populateNavigation(root, deck) {
     button.dataset.slide = index;
     button.textContent = `${String(index + 1).padStart(2, '0')} ${slide.name}`;
     root.querySelector('nav').append(button);
-    const item = document.createElement('li');
-    item.textContent = slide.name;
-    root.querySelector('.outline').append(item);
   });
+  for (const section of new Set(deck.slides.map((slide) => slide.label))) {
+    const item = document.createElement('li');
+    item.textContent = section;
+    root.querySelector('.outline').append(item);
+  }
 }
 
 function updateNavigation(root, index) {

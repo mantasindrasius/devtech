@@ -9,117 +9,1007 @@ presenter:
 resources:
   introduction:
     type: code
-    file: snippets/01-introduction.ts
+    file: snippets/introduction.ts
     language: typescript
-  boundaries:
-    type: code
-    file: snippets/02-boundaries.ts
-    language: typescript
-  feedback:
-    type: code
-    file: snippets/03-feedback.ts
-    language: typescript
-  order-architecture:
+  context-burden:
     type: mermaid
-    file: diagrams/order-service.mmd
-    title: Order service architecture
-    description:
-      The HTTP API calls placeOrder, which depends on OrderStore. SQL and in-memory adapters
-      implement the interface. The SQL adapter writes to the orders database.
-    caption: |
-      Dependencies point toward the contract.
-      Swap the adapter; keep the business rules.
+    file: diagrams/context-burden.mmd
+    title: The cost of a small change
+    description: A small requirement can still require a large mental model.
+    caption: A small requirement can still require a large mental model.
+  reasoning-budget:
+    type: mermaid
+    file: diagrams/reasoning-budget.mmd
+    title: Spend reasoning on the problem
+    description: A hypothesis to measure with real tasks, not a guarantee about every model.
+    caption: A hypothesis to measure with real tasks, not a guarantee about every model.
+  accepted-changes:
+    type: code
+    file: snippets/accepted-changes.ts
+    language: typescript
+  package-boundaries:
+    type: mermaid
+    file: diagrams/package-boundaries.mmd
+    title: Cohesive packages
+    description: Dependencies point toward stable rules; adapters handle external details.
+    caption: Dependencies point toward stable rules; adapters handle external details.
+  place-order:
+    type: code
+    file: snippets/place-order.ts
+    language: typescript
+  order-store-contract:
+    type: code
+    file: snippets/order-store-contract.ts
+    language: typescript
+  notification-strategy:
+    type: code
+    file: snippets/notification-strategy.ts
+    language: typescript
+  change-risk:
+    type: code
+    file: snippets/change-risk.ts
+    language: typescript
+  review-and-cleanup:
+    type: code
+    file: snippets/review-and-cleanup.ts
+    language: typescript
+  order-system:
+    type: mermaid
+    file: diagrams/order-system.mmd
+    title: Order system boundaries
+    description: Persist order and outbox atomically; asynchronous delivery needs retry and
+      deduplication policies.
+    caption: Persist order and outbox atomically; asynchronous delivery needs retry and
+      deduplication policies.
+  delivery-contract:
+    type: code
+    file: snippets/delivery-contract.ts
+    language: typescript
+  architecture-checks:
+    type: code
+    file: snippets/architecture-checks.ts
+    language: typescript
+  package-context:
+    type: code
+    file: snippets/package-context.ts
+    language: typescript
+  context-locality:
+    type: mermaid
+    file: diagrams/context-locality.mmd
+    title: A bounded context for a change
+    description: Retrieve what the decision needs, then expand when dependencies demand it.
+    caption: Retrieve what the decision needs, then expand when dependencies demand it.
+  fluent-order-test:
+    type: code
+    file: snippets/fluent-order-test.ts
+    language: typescript
+  boundary-test:
+    type: code
+    file: snippets/boundary-test.ts
+    language: typescript
+  feedback-loop:
+    type: mermaid
+    file: diagrams/feedback-loop.mmd
+    title: A trustworthy correction loop
+    description: Flaky tests and unreadable failures consume both time and reasoning.
+    caption: Flaky tests and unreadable failures consume both time and reasoning.
+  reproducible-builds:
+    type: code
+    file: snippets/reproducible-builds.ts
+    language: typescript
+  verification-ladder:
+    type: mermaid
+    file: diagrams/verification-ladder.mmd
+    title: Progressive verification
+    description: Partial evidence permits experiments. Required gates still control acceptance.
+    caption: Partial evidence permits experiments. Required gates still control acceptance.
+  stack-overlap:
+    type: mermaid
+    file: diagrams/stack-overlap.mmd
+    title: Develop while verification runs
+    description: Keep moving on credible foundations; parent changes can invalidate descendant evidence.
+    caption: Keep moving on credible foundations; parent changes can invalidate descendant evidence.
+  remote-verification:
+    type: code
+    file: snippets/remote-verification.ts
+    language: typescript
+  review-budget:
+    type: mermaid
+    file: diagrams/review-budget.mmd
+    title: Review context needs headroom
+    description: The model context limit is a ceiling, not a target for PR size.
+    caption: The model context limit is a ceiling, not a target for PR size.
+  pr-stack:
+    type: mermaid
+    file: diagrams/pr-stack.mmd
+    title: A stack of reviewable changes
+    description: Review against each immediate parent; verify the final integrated result.
+    caption: Review against each immediate parent; verify the final integrated result.
+  reviewer-contract:
+    type: code
+    file: snippets/reviewer-contract.ts
+    language: typescript
+  progressive-delivery:
+    type: mermaid
+    file: diagrams/progressive-delivery.mmd
+    title: A bounded rollout
+    description: Define the gate and recovery path before the rollout.
+    caption: Define the gate and recovery path before the rollout.
+  release-evidence:
+    type: code
+    file: snippets/release-evidence.ts
+    language: typescript
+  cpu-profile:
+    type: mermaid
+    file: diagrams/cpu-profile.mmd
+    title: Illustrative CPU call tree
+    description: Illustrative call tree, not a captured profile. Measure before and after under the
+      same workload.
+    caption: Illustrative call tree, not a captured profile. Measure before and after under the same
+      workload.
+  performance-evidence:
+    type: code
+    file: snippets/performance-evidence.ts
+    language: typescript
+  production-learning:
+    type: mermaid
+    file: diagrams/production-learning.mmd
+    title: Close the learning loop
+    description: Turn incidents and performance findings into durable feedback.
+    caption: Turn incidents and performance findings into durable feedback.
+  closing-checklist:
+    type: code
+    file: snippets/closing-checklist.ts
+    language: typescript
+  shallow-quote:
+    type: code
+    file: snippets/shallow-quote.ts
+    language: typescript
+    example:
+      kind: bad
+      summary: The caller owns the pricing workflow
+  deep-quote:
+    type: code
+    file: snippets/deep-quote.ts
+    language: typescript
+    example:
+      kind: good
+      summary: One capability hides the workflow
+  quote-package:
+    type: code
+    file: snippets/quote-package.ts
+    language: typescript
+    example:
+      kind: good
+      summary: Small public surface; cohesive internals
+  shipping-nested:
+    type: code
+    file: snippets/shipping-nested.ts
+    language: typescript
+    example:
+      kind: bad
+      summary: Nested policy; coverage assumed absent
+  shipping-clear:
+    type: code
+    file: snippets/shipping-clear.ts
+    language: typescript
+    example:
+      kind: better
+      summary: Clear priorities; same branch count
+  shipping-spec:
+    type: code
+    file: snippets/shipping-spec.ts
+    language: typescript
+    example:
+      kind: good
+      summary: Behavioral tests protect the policy
+  crap-worked-example:
+    type: code
+    file: snippets/crap-worked-example.ts
+    language: typescript
+  deep-module:
+    type: mermaid
+    file: diagrams/deep-module.mmd
+    title: A deep quote module
+    description: Callers and tests use one quote operation. Validation, pricing, and policy ordering
+      stay inside the package; a catalog adapter supplies prices.
+    caption: Small public surface. Cohesive implementation. Explicit contract.
 slides:
-  - id: introduction
-    name: The architecture is the context
-    label: A TALK ABOUT CODE, CONTEXT & COLLABORATION
+  - id: opening
+    name: Designing Architectures that AI can work with
+    label: THE THESIS
     title:
       - text: Designing Architectures
-      - text: that
-        accent: AI can work with
-    description: |
-      Make the right change easy to discover,
-      easy to describe, and easy to verify.
-    author: true
-    principles:
-      - Boundaries
-      - Context
-      - Feedback
+      - accent: that AI can work with
+    description: From a local change to production evidence.
     code: introduction
-    takeaway: Better context starts with better boundaries.
+    takeaway: Make correct changes ordinary.
+    notes: >-
+      [0:00–0:40 · 40 seconds]
+
+
+      Introduce yourself. This talk is about the environment around AI coding, not a prompt
+      recipe. We will follow an order-processing change from code to production.
     steps:
-      - id: premise
-        label: The premise
-      - id: idea
-        label: Reveal the idea
+      - id: message
+        label: The idea
         reveal:
           - description
-      - id: speaker
-        label: Meet the speaker
-        reveal:
           - author
           - principles
-      - id: conclusion
-        label: The takeaway
-        reveal:
           - takeaway
-    notes: 'Open with a   familiar problem: a small feature that requires understanding half the
-      repository. AI makes the cost of implicit architecture visible. This talk explores three
-      properties: explicit boundaries, local context, and executable feedback.'
-  - id: boundaries
-    name: Make the contract explicit
-    label: 01 / EXPLICIT BOUNDARIES
+    author: true
+  - id: context-cost
+    name: Five lines of change. Half a repo of context.
+    label: THE PROBLEM
     title:
-      - text: A small contract.
-      - accent: A clear place to work.
-    description: |
-      Give each change a home. Keep business rules
-      separate from storage and delivery.
-    code: boundaries
-    takeaway: Let the agent reason about one module at a time.
+      - text: Five lines of change.
+      - accent: Half a repo of context.
+    description: The hard part is often discovering what must remain true.
+    code: introduction
+    takeaway: Reduce the knowledge required to act safely.
+    notes: >-
+      [0:40–1:30 · 50 seconds]
+
+
+      Ask the audience to recall a tiny change that required opening dozens of files.
+      Distinguish the size of the diff from the amount of context needed to make it safely.
     steps:
-      - id: boundary
-        label: The boundary
-      - id: explanation
-        label: Explain the contract
+      - id: message
+        label: The idea
         reveal:
           - description
-      - id: diagram
-        label: Show the architecture
-        panel: order-architecture
-      - id: context-menu
-        label: Open editor context menu
+          - author
+          - principles
+          - takeaway
+        panel: context-burden
+  - id: reasoning-budget
+    name: Lower the intelligence a correct change requires.
+    label: THE THESIS
+    title:
+      - text: Lower the intelligence
+      - accent: a correct change requires.
+    description: Make routine work accessible to smaller models. Give frontier models less
+      accidental complexity.
+    code: introduction
+    takeaway: Spend reasoning on the problem.
+    notes: >-
+      [1:30–2:35 · 65 seconds]
+
+
+      This is a design goal and an empirical hypothesis. Smaller models still have limits;
+      better structure does not guarantee correctness. Compare representative tasks and retain
+      the same acceptance bar.
+    steps:
+      - id: message
+        label: The idea
+        reveal:
+          - description
+          - author
+          - principles
+          - takeaway
+        panel: reasoning-budget
+  - id: accepted-outcomes
+    name: Optimize for accepted changes.
+    label: MEASUREMENT
+    title:
+      - text: Optimize for
+      - accent: accepted changes.
+    description: Correctness, context, retries, elapsed time, and review effort.
+    code: accepted-changes
+    takeaway: Tokens per attempt are not the outcome.
+    notes: >-
+      [2:35–3:20 · 45 seconds]
+
+
+      Use comparable tasks and record model, toolchain, and context. Include failed attempts and
+      human corrections. No performance or token savings are claimed by this illustrative
+      schema.
+    steps:
+      - id: message
+        label: The idea
+        reveal:
+          - description
+          - author
+          - principles
+          - takeaway
+  - id: cohesive-packages
+    name: Small interface. Deep module.
+    label: CODE DESIGN
+    title:
+      - text: Small interface.
+      - accent: Deep module.
+    description: Hide meaningful complexity. Keep related knowledge together.
+    code: shallow-quote
+    takeaway: Reduce what callers must know, not just file length.
+    notes: |-
+      [3:20–5:05 · 105 seconds]
+
+      Small does not mean a package per function. Avoid forcing one feature across many fragments. A modular monolith can provide these boundaries without distributed-system costs.
+
+      Matt Pocock advocates deep modules, drawing on John Ousterhout. A module may be a function, class, package, or larger slice. Interface includes errors, invariants, configuration, and performance, not merely types. These quote snippets are illustrative excerpts, not a runnable package. Ask the deletion test: would removing the module spread its knowledge across callers, or remove empty indirection? Four beats, about 25 seconds each. Sources: https://github.com/mattpocock/skills/blob/main/skills/engineering/codebase-design/SKILL.md and https://github.com/mattpocock/skills/blob/main/skills/engineering/codebase-design/DEEPENING.md
+    steps:
+      - id: shallow
+        label: 'BAD: the caller coordinates the policy'
+        panel: shallow-quote
+        reveal: &a1
+          - description
+          - takeaway
+      - id: deep
+        label: 'GOOD: one capability hides the workflow'
+        panel: deep-quote
+        reveal: *a1
+      - id: seam
+        label: The same interface serves callers and tests
+        panel: deep-module
+        reveal: *a1
+      - id: package
+        label: Private helpers, explicit public exports
+        panel: quote-package
+        reveal: *a1
+  - id: small-functions
+    name: Make policy visible. Prove it stays correct.
+    label: CODE DESIGN
+    title:
+      - text: Make policy visible.
+      - accent: Prove it stays correct.
+    description: 'BAD → BETTER → VERIFIED: nesting, clear priorities, behavioral examples.'
+    code: shipping-nested
+    takeaway: Fewer lines are not the goal. Less hidden knowledge is.
+    notes: >-
+      [5:05–6:50 · 105 seconds]
+
+
+      Both implementations have cyclomatic complexity C = 6 under a base-one convention counting
+      each if and ternary as one decision. The nested version has five if statements; the guard
+      version has four if statements and one ternary. Guard clauses reduce nesting, not the
+      number of independent paths. Before/after behavior is verified against independent
+      expected fees, including express priority over membership and the 4999/5000 threshold.
+      Inputs here are already validated; monetary values are cents. The displayed zero-coverage
+      CRAP score is a hypothetical baseline, not measured coverage of this repository. This is a
+      focused policy example; an external quote interface would usually use named domain inputs
+      instead of positional booleans.
+    steps:
+      - id: nested
+        label: 'BAD: nested conditions; coverage assumed absent'
+        panel: shipping-nested
+        reveal: *a1
+      - id: guards
+        label: 'BETTER: visible policy priority; same branch count'
+        panel: shipping-clear
+        reveal: *a1
+      - id: tests
+        label: 'GOOD: tests protect the priority and threshold'
+        panel: shipping-spec
+        reveal: *a1
+  - id: solid
+    name: SOLID makes change more predictable.
+    label: CODE DESIGN
+    title:
+      - text: SOLID makes change
+      - accent: more predictable.
+    description: Separate responsibilities. Depend on small contracts. Preserve their behavior.
+    code: order-store-contract
+    takeaway: An interface is a behavioral promise.
+    notes: >-
+      [6:50–7:50 · 60 seconds]
+
+
+      Connect SRP to the use case, ISP to the narrow store, DIP to dependency injection, and
+      Liskov to equivalent failure and completion behavior. Open/closed leads to the next slide.
+      Do not spend time reciting the acronym.
+    steps:
+      - id: message
+        label: The idea
+        reveal:
+          - description
+          - author
+          - principles
+          - takeaway
+  - id: patterns
+    name: Give extensions a predictable home.
+    label: CODE DESIGN
+    title:
+      - text: Give extensions
+      - accent: a predictable home.
+    description: Add a strategy or adapter when behavior actually varies. Keep implementation seams private.
+    code: notification-strategy
+    takeaway: Use a pattern when it clarifies the next change.
+    notes: |-
+      [7:50–8:50 · 60 seconds]
+
+      The next notification implementation should not require editing a growing branch inside order rules. Pick a pattern for a real variation. Avoid speculative frameworks and inheritance trees. This example is illustrative and has no network implementation.
+
+      Pocock cautions against hypothetical seams: justify real alternatives, often production and test adapters. Patterns should concentrate complexity rather than create pass-through layers. Explore multiple candidate interfaces before choosing one. Source: https://github.com/mattpocock/skills/blob/main/skills/engineering/codebase-design/DESIGN-IT-TWICE.md
+    steps:
+      - id: message
+        label: The idea
+        reveal:
+          - description
+          - author
+          - principles
+          - takeaway
+  - id: risk-signals
+    name: CRAP spots risk. It does not certify design.
+    label: CODE DESIGN
+    title:
+      - text: CRAP spots risk.
+      - accent: It does not certify design.
+    description: The same C = 6 gives 42 at 0% coverage and 6 at 100%. These are worked assumptions.
+    code: crap-worked-example
+    takeaway: Combine coverage with assertion quality, locality, and coupling.
+    notes: >-
+      [8:50–10:15 · 85 seconds]
+
+
+      Original formula: C² × (1 − cov/100)³ + C, with cov expressed as a percentage; the slide
+      uses a 0–1 fraction instead. At C=6: cov=0 gives 42; cov=0.5 gives 10.5; cov=1 gives 6.
+      The original proposed flag was >30. Its coverage definition is basis-path coverage; tool
+      implementations can use different inputs, so record your analyzer and definition. These
+      numbers are illustrative, not a repository analyzer report and not an assertion of
+      measured 100% basis-path coverage. The new tests protect examples, but a coverage score
+      cannot establish their strength. Splitting a method only to lower its score can spread
+      complexity. Use cognitive complexity, change hotspots, coupling, dependency checks, and
+      selective mutation testing alongside it. Source:
+      https://testing.googleblog.com/2011/02/this-code-is-crap.html
+    steps:
+      - id: formula
+        label: Worked CRAP calculation
+        reveal: *a1
+  - id: housekeeping
+    name: Leave the next change easier.
+    label: CODE DESIGN
+    title:
+      - text: Leave the next
+      - accent: change easier.
+    description: Every PR gets a review and a cleanup pass.
+    code: review-and-cleanup
+    takeaway: Apply the Boy Scout rule within the change boundary.
+    notes: >-
+      [10:15–11:05 · 50 seconds]
+
+
+      Housekeeping is delivery work, not an occasional cleanup sprint. Fix nearby issues that
+      help this change. Put broader refactors in a separate stack layer so behavior changes
+      remain easy to review.
+    steps:
+      - id: message
+        label: The idea
+        reveal:
+          - description
+          - author
+          - principles
+          - takeaway
+  - id: system-map
+    name: Architecture is a map of consequences.
+    label: SYSTEM ARCHITECTURE
+    title:
+      - text: Architecture is a map
+      - accent: of consequences.
+    description: Show ownership, data, dependencies, and failure paths.
+    code: introduction
+    takeaway: Make the impact of a change visible.
+    notes: >-
+      [11:05–12:05 · 60 seconds]
+
+
+      Explain the outbox as an example of an explicit reliability boundary. The order and event
+      must be persisted in the same transaction. This diagram is conceptual, not a complete
+      implementation. The agent needs the invariants as well as the arrows.
+    steps:
+      - id: message
+        label: The idea
+        reveal:
+          - description
+          - author
+          - principles
+          - takeaway
+        panel: order-system
+  - id: failure-contracts
+    name: Describe failure in the contract.
+    label: SYSTEM ARCHITECTURE
+    title:
+      - text: Describe failure
+      - accent: in the contract.
+    description: Retries, idempotency, timeouts, cancellation, and compatibility.
+    code: delivery-contract
+    takeaway: The happy path is only part of the API.
+    notes: >-
+      [12:05–13:05 · 60 seconds]
+
+
+      A retry can create duplicate business effects. An idempotencyKey field alone does not
+      implement idempotency. State where the decision is persisted atomically and how long keys
+      remain valid. Cancellation also does not necessarily undo an external effect.
+    steps:
+      - id: message
+        label: The idea
+        reveal:
+          - description
+          - author
+          - principles
+          - takeaway
+  - id: enforced-boundaries
+    name: Make illegal dependencies fail.
+    label: SYSTEM ARCHITECTURE
+    title:
+      - text: Make illegal
+      - accent: dependencies fail.
+    description: Turn architectural intent into checks the agent can run.
+    code: architecture-checks
+    takeaway: A boundary should be more than a diagram.
+    notes: >-
+      [13:05–13:50 · 45 seconds]
+
+
+      Use package exports, dependency-rule tooling, and adapter contract tests. This is
+      illustrative policy, not configuration for a named tool. The key is that violations fail a
+      repeatable check.
+    steps:
+      - id: message
+        label: The idea
+        reveal:
+          - description
+          - author
+          - principles
+          - takeaway
+  - id: repository-context
+    name: Make the repository explain itself.
+    label: CONTEXT
+    title:
+      - text: Make the repository
+      - accent: explain itself.
+    description: Purpose, invariants, examples, and verification commands live near the code.
+    code: package-context
+    takeaway: Discoverable context beats repeated explanations.
+    notes: >-
+      [13:50–14:50 · 60 seconds]
+
+
+      Explain AGENTS.md as scoped repository instructions, skills as reusable workflows, and
+      ADRs as records of important decisions. Keep instructions short and current. Commands
+      shown here are illustrative for a larger orders repository.
+    steps:
+      - id: message
+        label: The idea
+        reveal:
+          - description
+          - author
+          - principles
+          - takeaway
+  - id: token-efficiency
+    name: Token efficiency starts with locality.
+    label: CONTEXT
+    title:
+      - text: Token efficiency
+      - accent: starts with locality.
+    description: Targeted search. Narrow contracts. Useful failure output.
+    code: introduction
+    takeaway: Optimize tokens per verified outcome.
+    notes: >-
+      [14:50–15:50 · 60 seconds]
+
+
+      Do not hide necessary evidence to save tokens. Track retries and review effort. A short
+      diff can still require extensive caller and contract context. Large prompts are not
+      automatically better, and smaller prompts are not automatically sufficient.
+    steps:
+      - id: message
+        label: The idea
+        reveal:
+          - description
+          - author
+          - principles
+          - takeaway
+        panel: context-locality
+  - id: executable-intent
+    name: A test is executable intent.
+    label: TESTING
+    title:
+      - text: A test is
+      - accent: executable intent.
+    description: Fast, deterministic tests describe the rule in domain language.
+    code: fluent-order-test
+    takeaway: Hide infrastructure details, not the behavior.
+    notes: >-
+      [15:50–16:55 · 65 seconds]
+
+
+      Relate this to the fluent-tests skill in this repo. The driver owns setup and
+      infrastructure, but should not duplicate production logic. This slide is illustrative:
+      test, expect, and the domain driver belong to a test project and are not defined here.
+
+
+      Connect this to Pocock: test observable behavior across the module interface, not
+      helper-call order. When deepening a module, replace redundant internal tests only after
+      preserving meaningful behavior coverage. Adapter guarantees still need relevant tests.
+      Source: https://github.com/mattpocock/skills/blob/main/skills/engineering/tdd/tests.md
+    steps:
+      - id: message
+        label: The idea
+        reveal:
+          - description
+          - author
+          - principles
+          - takeaway
+  - id: test-the-tests
+    name: Would your tests reject the wrong code?
+    label: TESTING
+    title:
+      - text: Would your tests
+      - accent: reject the wrong code?
+    description: Boundary cases and independent acceptance criteria expose plausible mistakes.
+    code: boundary-test
+    takeaway: Coverage is not evidence of strong assertions.
+    notes: >-
+      [16:55–17:55 · 60 seconds]
+
+
+      Point to zero as the boundary. Mutation testing deliberately changes implementations and
+      asks if tests detect it. Apply it selectively where the value justifies the cost. Source:
+      https://stryker-mutator.io/docs/ . We will replay this exact rule in the demo.
+    steps:
+      - id: message
+        label: The idea
+        reveal:
+          - description
+          - author
+          - principles
+          - takeaway
+  - id: fast-tests
+    name: Fast feedback protects velocity.
+    label: TESTING
+    title:
+      - text: Fast feedback
+      - accent: protects velocity.
+    description: Keep local checks deterministic and failures actionable.
+    code: introduction
+    takeaway: A fast, unreliable check is not a feedback loop.
+    notes: >-
+      [17:55–18:40 · 45 seconds]
+
+
+      Use isolated state, deterministic async control, and clear expected/actual output. Keep
+      full integration coverage, but do not require it for every small hypothesis. Diagnose
+      flaky tests instead of teaching agents to rerun until green.
+    steps:
+      - id: message
+        label: The idea
+        reveal:
+          - description
+          - author
+          - principles
+          - takeaway
+        panel: feedback-loop
+  - id: builds
+    name: Fast and reproducible are different promises.
+    label: BUILDS & CI
+    title:
+      - text: Fast and reproducible
+      - accent: are different promises.
+    description: Make builds repeatable. Then remove unnecessary work.
+    code: reproducible-builds
+    takeaway: Optimize the loop without weakening the evidence.
+    notes: >-
+      [18:40–19:40 · 60 seconds]
+
+
+      A cache can make a wrong build fast if its key omits inputs. A reproducible build can
+      still be slow. Pin the toolchain and dependencies, record inputs, and verify clean builds.
+      Avoid claiming every affected-package selector detects every cross-package interaction.
+    steps:
+      - id: message
+        label: The idea
+        reveal:
+          - description
+          - author
+          - principles
+          - takeaway
+  - id: verification-ladder
+    name: Fast feedback is a ladder.
+    label: WHEN FEEDBACK IS SLOW
+    title:
+      - text: Fast feedback
+      - accent: is a ladder.
+    description: Run cheap falsifiers first. Start expensive checks early.
+    code: introduction
+    takeaway: Continuing work is not declaring it verified.
+    notes: >-
+      [19:40–20:45 · 65 seconds]
+
+
+      Long build cycles can be unavoidable. Use progressively stronger checks. Keep passed,
+      running, failed, and not checked distinct. Start remote checks early, avoid redundant
+      runs, and retain the required full checks before acceptance.
+    steps:
+      - id: message
+        label: The idea
+        reveal:
+          - description
+          - author
+          - principles
+          - takeaway
+        panel: verification-ladder
+  - id: overlap-work
+    name: Keep coding while checks run.
+    label: WHEN FEEDBACK IS SLOW
+    title:
+      - text: Keep coding
+      - accent: while checks run.
+    description: A stack separates progress from merge readiness.
+    code: introduction
+    takeaway: Decouple progress from waiting.
+    notes: >-
+      [20:45–21:50 · 65 seconds]
+
+
+      PR A can be under review while B is implemented. This is speculative work until its
+      foundations are accepted. If A fails or changes, reassess B and C. Keep stacks shallow
+      enough to understand and avoid accumulating work on a failing assumption.
+    steps:
+      - id: message
+        label: The idea
+        reveal:
+          - description
+          - author
+          - principles
+          - takeaway
+        panel: stack-overlap
+  - id: remote-checks
+    name: CI belongs in the coding environment.
+    label: WHEN FEEDBACK IS SLOW
+    title:
+      - text: CI belongs in the
+      - accent: coding environment.
+    description: Use local, remote, or CI capacity. Read the feedback and close the loop.
+    code: remote-verification
+    takeaway: A green check belongs to a specific revision.
+    notes: >-
+      [21:50–23:10 · 80 seconds]
+
+
+      When a laptop is congested, agents should have a skill to dispatch approved checks to CI
+      or a remote development machine, track run IDs, and inspect logs and artifacts. Choose
+      based on queue plus setup plus execution plus retrieval time. Remote development supports
+      interactive work and persistent caches; CI provides durable, reproducible evidence. Use
+      scoped credentials and approved workflows.
+    steps:
+      - id: message
+        label: The idea
+        reveal:
+          - description
+          - author
+          - principles
+          - takeaway
+  - id: small-prs
+    name: Keep the change inside the review budget.
+    label: DELIVERY
+    title:
+      - text: Keep the change
+      - accent: inside the review budget.
+    description: One purpose. Bounded dependencies. Explicit acceptance criteria.
+    code: introduction
+    takeaway: Small diffs can still have large consequences.
+    notes: >-
+      [23:10–24:00 · 50 seconds]
+
+
+      Reserve room for related code and reasoning. Separate mechanical refactors from behavior
+      changes. A shared-interface change may require much more context than an isolated large
+      addition. Do not set a universal line-count rule.
+    steps:
+      - id: message
+        label: The idea
+        reveal:
+          - description
+          - author
+          - principles
+          - takeaway
+        panel: review-budget
+  - id: reviewable-stack
+    name: Stack the work. Keep each review small.
+    label: DELIVERY
+    title:
+      - text: Stack the work.
+      - accent: Keep each review small.
+    description: Every layer has a purpose, passing checks, and a valid intermediate state.
+    code: introduction
+    takeaway: Small reviews do not replace integration evidence.
+    notes: >-
+      [24:00–24:55 · 55 seconds]
+
+
+      Unlike the overlap slide, focus here on review units and merge mechanics. Dependencies are
+      explicit; each PR is reviewed against its immediate parent. Rebase or update descendants
+      after parent changes and rerun affected checks.
+    steps:
+      - id: message
+        label: The idea
+        reveal:
+          - description
+          - author
+          - principles
+          - takeaway
+        panel: pr-stack
+  - id: agent-review
+    name: Give another agent the reviewer’s job.
+    label: DELIVERY
+    title:
+      - text: Give another agent
+      - accent: the reviewer’s job.
+    description: Challenge assumptions. Reproduce failures. Keep ownership explicit.
+    code: reviewer-contract
+    takeaway: Review is a reasoning task, not a second thumbs-up.
+    notes: >-
+      [24:55–26:00 · 65 seconds]
+
+
+      A reviewer should receive the requirements and evidence, not just the author narrative.
+      Another model or role can share the same blind spots. Deterministic gates still matter;
+      people remain accountable for consequential decisions. Avoid granting a reviewer
+      deployment authority merely because it can inspect code.
+    steps:
+      - id: message
+        label: The idea
+        reveal:
+          - description
+          - author
+          - principles
+          - takeaway
+  - id: safe-deploy
+    name: Confidence comes from containment.
+    label: PRODUCTION
+    title:
+      - text: Confidence comes
+      - accent: from containment.
+    description: Small releases. Progressive exposure. Clear stop conditions.
+    code: introduction
+    takeaway: Fearless deployment needs evidence and recovery.
+    notes: >-
+      [26:00–26:55 · 55 seconds]
+
+
+      Specify thresholds for the actual service, not invented universal numbers. Limit
+      permissions and blast radius. Expand-migrate-contract preserves compatibility; an
+      application rollback does not necessarily undo a data migration.
+    steps:
+      - id: message
+        label: The idea
+        reveal:
+          - description
+          - author
+          - principles
+          - takeaway
+        panel: progressive-delivery
+  - id: production-outcomes
+    name: A deployed change is not a proven outcome.
+    label: PRODUCTION
+    title:
+      - text: A deployed change
+      - accent: is not a proven outcome.
+    description: Connect release identity, technical health, and business behavior.
+    code: release-evidence
+    takeaway: Observe what users needed to happen.
+    notes: >-
+      [26:55–27:50 · 55 seconds]
+
+
+      Use correlation IDs and release identifiers to join traces and outcomes. Separate success
+      at the transport layer from success of the business operation. These are example signal
+      names, not measured data or real production results.
+    steps:
+      - id: message
+        label: The idea
+        reveal:
+          - description
+          - author
+          - principles
+          - takeaway
+  - id: cpu-profiling
+    name: Give the agent a profile, not a guess.
+    label: PERFORMANCE
+    title:
+      - text: Give the agent a profile,
+      - accent: not a guess.
+    description: Capture a representative workload. Locate CPU work. Test one hypothesis.
+    code: introduction
+    takeaway: Optimization starts with evidence.
+    notes: >-
+      [27:50–28:55 · 65 seconds]
+
+
+      This is an illustrative call tree, not fabricated benchmark evidence or a flame graph. In
+      the live talk replace it with a real captured profile if available. Explain that
+      flame-graph width represents sampled time, not chronological order. Repeat a controlled
+      workload and check correctness and tradeoffs. Source:
+      https://www.brendangregg.com/methodology.html
+    steps:
+      - id: message
+        label: The idea
+        reveal:
+          - description
+          - author
+          - principles
+          - takeaway
+        panel: cpu-profile
+  - id: memory-and-waiting
+    name: Memory and waiting need different evidence.
+    label: PERFORMANCE
+    title:
+      - text: Memory and waiting
+      - accent: need different evidence.
+    description: Allocation is not retention. CPU time is not all elapsed time.
+    code: performance-evidence
+    takeaway: Make profiling a day-to-day capability.
+    notes: >-
+      [28:55–30:05 · 70 seconds]
+
+
+      Compare heap snapshots and retention paths for growth; use allocation profiles for churn.
+      CPU-only analysis misses I/O, locks, queueing, and scheduler delays. Give agents
+      documented capture commands and useful artifacts. Handle sensitive profile data
+      appropriately. Source: https://www.brendangregg.com/usemethod.html
+    steps:
+      - id: message
+        label: The idea
+        reveal:
+          - description
+          - author
+          - principles
+          - takeaway
+  - id: learning-loop
+    name: Production should improve the codebase.
+    label: PRODUCTION
+    title:
+      - text: Production should
+      - accent: improve the codebase.
+    description: Convert observations into reproductions, guards, and measured improvements.
+    code: introduction
+    takeaway: Close the loop after the merge.
+    notes: >-
+      [30:05–30:55 · 50 seconds]
+
+
+      Add a test or benchmark that would catch the issue again. Keep expensive or noisy
+      performance suites out of the fastest local loop. Record limitations and retain evidence
+      from before and after. A dashboard alone is not a learning process.
+    steps:
+      - id: message
+        label: The idea
+        reveal:
+          - description
+          - author
+          - principles
+          - takeaway
+        panel: production-learning
+  - id: live-demo
+    name: One small change. A visible regression.
+    label: DEMO
+    title:
+      - text: One small change.
+      - accent: A visible regression.
+    description: 'The requirement: only finite, strictly positive totals may create an order.'
+    code: boundary-test
+    takeaway: Make wrong changes cheap to discover.
+    notes: >-
+      [30:55–32:55 · 120 seconds]
+
+
+      Run checks on the initial code. Advance to simulate > becoming >= with highlighting and
+      zoom. The next beat runs the changed example and fails for zero. Explain why an apparently
+      reasonable edit violated the contract. Replay restores the saved model; Reset restores the
+      source snippet. Fallback: explain the zero case directly if the live environment is
+      unavailable.
+    steps:
+      - id: baseline
+        label: Run the original rule
+        reveal:
+          - description
+          - takeaway
         actions:
-          - type: context-menu
-            target: OrderStore
-      - id: conclusion
-        label: The takeaway
-        reveal:
-          - takeaway
-    notes: 'The use case depends on a small interface, not a database client. Ask the agent to add a
-      business rule here: the input, dependency, and failure behavior are all visible. A database
-      adapter can evolve independently. Small boundaries still need integration tests.'
-  - id: feedback
-    name: Turn intent into feedback
-    label: 02 / EXECUTABLE FEEDBACK
-    title:
-      - text: Describe the rule.
-      - accent: Prove the behavior.
-    description: |
-      Tests turn architectural intent into a feedback
-      loop an agent can use to correct its work.
-    code: feedback
-    runnable: true
-    takeaway: A useful feedback loop ends in evidence.
-    steps:
-      - id: loop
-        label: The feedback loop
-      - id: explanation
-        label: Explain the rule
-        reveal:
-          - description
+          - type: run-checks
       - id: edit
-        label: Simulate a code edit
+        label: A plausible incorrect edit
         actions:
           - type: type-edit
             find: total > 0
@@ -128,13 +1018,55 @@ slides:
             holdMs: 700
             zoom: true
       - id: check
-        label: Run the changed example
+        label: The zero case rejects the change
         actions:
           - type: run-checks
-      - id: conclusion
-        label: The takeaway
+    runnable: true
+  - id: measure-improvement
+    name: Make improvement measurable.
+    label: EVIDENCE
+    title:
+      - text: Make improvement
+      - accent: measurable.
+    description: Compare the same task, acceptance bar, and environment.
+    code: accepted-changes
+    takeaway: Measure cost per accepted change.
+    notes: >-
+      [32:55–33:35 · 40 seconds]
+
+
+      Do not invent before/after results. This is the experiment to run: same bounded tasks
+      across the old and new structure, recording correctness, retries, tokens, elapsed time,
+      and review effort. Distinguish model changes from codebase changes.
+    steps:
+      - id: message
+        label: The idea
         reveal:
+          - description
+          - author
+          - principles
           - takeaway
-    notes: Run the example, then change > 0 to >= 0 and run again. The zero case fails, making the
-      regression concrete. These examples are a starting point, not complete coverage. Pair fast
-      local checks with type checking, integration tests, and human review.
+  - id: questions
+    name: Make correct changes ordinary.
+    label: DISCUSSION
+    title:
+      - text: Make correct
+      - accent: changes ordinary.
+    description: Questions? Which part of your change loop costs the most context or waiting?
+    code: closing-checklist
+    takeaway: Mantas Indrašius · Dev Lead at Wix.com
+    notes: >-
+      [33:35–34:15 · 40 seconds]
+
+
+      Deliver the closing line, then reserve four minutes for questions. Return to the five
+      questions when discussing tradeoffs. The goal is trustworthy progress, not maximum
+      automation.
+    steps:
+      - id: message
+        label: The idea
+        reveal:
+          - description
+          - author
+          - principles
+          - takeaway

@@ -99,3 +99,17 @@ Register resource renderers in `src/renderers/register-renderers.js`. Each defin
 - `src/renderers`: resource renderers and panel ownership.
 - `src/ui`: shell, deck view, controls.
 - `src/main.js`: composition root and disposal.
+
+## Example assessment banners
+
+Code resources can include an optional assessment, displayed above the editor:
+
+```yaml
+example:
+  kind: bad # bad, better, or good
+  summary: The caller owns the pricing workflow
+```
+
+Labels use text plus red, amber, or green styling in both themes. Unmarked resources
+have no banner. Monaco diagnostic markers are disabled for illustrative snippets;
+explicit **Run checks** still compiles and executes runnable examples.

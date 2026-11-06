@@ -1,0 +1,7 @@
+flowchart TD
+  A["Production signal"] --> B["Reproduce the workload"]
+  B --> C["Regression test or benchmark"]
+  C --> D["Bounded fix"]
+  D --> E["Controlled rollout"]
+  E --> F["Compare outcomes"]
+  F --> A

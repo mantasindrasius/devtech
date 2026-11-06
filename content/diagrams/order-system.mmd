@@ -1,0 +1,7 @@
+flowchart TD
+  API["Orders API"] --> USE["Place order"]
+  USE --> DB[("Order + outbox")]
+  DB --> WORKER["Outbox worker"]
+  WORKER --> MAIL["Notification provider"]
+  API -.-> OBS["Traces and outcomes"]
+  WORKER -.-> OBS

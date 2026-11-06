@@ -4,6 +4,7 @@ export function createPanelHost({ resources, renderers, context }) {
   return {
     show(id) {
       visible?.hide();
+      context.codePanel.hidden = true;
       if (!instances.has(id)) {
         const resource = resources[id];
         const instance = renderers.get(resource.type).create(resource, context);

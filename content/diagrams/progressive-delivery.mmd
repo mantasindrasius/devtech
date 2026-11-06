@@ -1,0 +1,5 @@
+flowchart LR
+  A["Flag off"] --> B["Canary"]
+  B --> C{"Health and outcomes?"}
+  C -->|Good| D["Expand"]
+  C -->|Bad| E["Stop or rollback"]
