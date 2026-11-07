@@ -1,0 +1,219 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 720" aria-hidden="true">
+  <g class="monolith-position" transform="translate(400 55)">
+  <g class="monolith-motion">
+  <path class="sketch-line" d="M75 532q245 8 494-1" opacity=".5"/>
+
+  <g class="tier-foundation">
+    <path class="block" d="M149 489l340-4 10 42-358 2z"/>
+    <path class="block" d="M176 471l284-3 12 18-306 3z"/>
+    <text class="block-detail runtime-label" x="320" y="516">LANGUAGE RUNTIME</text>
+  </g>
+
+  <g class="tower-tier tier-core">
+    <path class="block shell-body" d="M191 260q116-18 253-3l5 207q-123 13-263 2z"/>
+    <path class="sketch-line" d="M193 261q119 11 249-4M189 465q124-12 259-1" opacity=".65"/>
+    <path class="sketch-line" d="M214 302v144m212-158 2 154" opacity=".36"/>
+    <rect class="internal-module" x="218" y="311" width="93" height="55" rx="5"/>
+    <rect class="internal-module" x="320" y="302" width="103" height="63" rx="5"/>
+    <rect class="internal-module" x="238" y="380" width="156" height="45" rx="5"/>
+    <path class="sketch-line internal-wire" d="M310 339h10m-60 28v13m111-14v14m-71 44v18"/>
+    <text class="module-label" x="264" y="344">Orders</text>
+    <text class="module-label" x="371" y="339">Catalog</text>
+    <text class="module-label" x="316" y="409">Accounts</text>
+    <path class="shell-belt" d="M190 268q125-8 255-2l2 26q-132 4-258-2z"/>
+    <text class="monolith-label" x="318" y="286">MONOLITH</text>
+    <path class="shell-rivet" d="M199 272h8m226-1h8M196 454h9m229-1h9"/>
+  </g>
+
+  <g class="tower-tier tier-features" data-appears-at="1">
+    <path class="shell-ring" d="M169 184q142-17 288-3l7 77q-148 12-302 2z"/>
+    <path class="ring-rib" d="M171 190q139 9 285-3M164 258q149-9 298-1"/>
+    <rect class="internal-module feature-module" x="193" y="201" width="119" height="53" rx="6"/>
+    <rect class="internal-module feature-module" x="321" y="194" width="115" height="60" rx="6"/>
+    <text class="module-label" x="252" y="232">Billing</text>
+    <text class="module-label" x="379" y="229">Search</text>
+    <path class="sketch-line internal-wire" d="M255 255v11m123-12v11"/>
+  </g>
+
+  <g class="tower-tier tier-workarounds">
+    <g class="pipe-run" data-appears-at="2">
+      <path class="pipe-outer" d="M219 333C165 330 145 344 125 316s-26-78 10-94c20-9 32-8 59-6"/>
+      <path class="pipe-inner" d="M219 333C165 330 145 344 125 316s-26-78 10-94c20-9 32-8 59-6"/>
+      <path class="pipe-collar" d="M184 207h13v17h-13z"/>
+      <text class="workaround-label" x="88" y="195">WORKAROUND</text>
+    </g>
+    <g data-appears-at="3">
+      <path class="patched-crack" d="m163 353 14-12-5 13 14-6"/>
+      <g transform="rotate(-15 169 353)">
+        <rect class="bandage" x="141" y="343" width="58" height="22" rx="10"/>
+        <rect class="bandage-pad" x="164" y="345" width="14" height="18" rx="4"/>
+        <circle class="bandage-hole" cx="151" cy="353" r="1.7"/>
+        <circle class="bandage-hole" cx="189" cy="353" r="1.7"/>
+      </g>
+      <rect class="patch-plate" x="172" y="382" width="19" height="46" rx="3" transform="rotate(8 181 405)"/>
+    </g>
+    <g class="pipe-run" data-appears-at="4">
+      <path class="pipe-outer" d="M420 331c44-4 78 4 94-20 24-36-10-78 13-99 11-10 26-13 39-11"/>
+      <path class="pipe-inner" d="M420 331c44-4 78 4 94-20 24-36-10-78 13-99 11-10 26-13 39-11"/>
+      <path class="pipe-collar" d="M511 320h15v16h-15z"/>
+      <text class="workaround-label" x="552" y="451">QUICK FIX</text>
+    </g>
+    <g class="pipe-run" data-appears-at="6">
+      <path class="pipe-outer" d="M239 398c-73 0-115 9-124 44-5 17 5 31 30 45"/>
+      <path class="pipe-inner" d="M239 398c-73 0-115 9-124 44-5 17 5 31 30 45"/>
+      <path class="pipe-collar" d="M103 437h17v12h-17z"/>
+    </g>
+    <g data-appears-at="7">
+      <path class="patched-crack" d="m456 362 11-14-3 14 13-8"/>
+      <g transform="rotate(22 465 356)">
+        <rect class="bandage" x="438" y="345" width="58" height="22" rx="10"/>
+        <rect class="bandage-pad" x="461" y="347" width="14" height="18" rx="4"/>
+        <circle class="bandage-hole" cx="448" cy="356" r="1.7"/>
+        <circle class="bandage-hole" cx="486" cy="356" r="1.7"/>
+      </g>
+      <text class="workaround-label" x="320" y="457">TEMP FIXES</text>
+    </g>
+    <g class="pipe-run" data-appears-at="8">
+      <path class="pipe-outer" d="M399 407c47 4 88-9 112 12 22 18 17 42-16 68"/>
+      <path class="pipe-inner" d="M399 407c47 4 88-9 112 12 22 18 17 42-16 68"/>
+      <path class="pipe-collar" d="M502 415h16v13h-16z"/>
+    </g>
+    <g class="pipe-run pipe-thin" data-appears-at="9">
+      <path class="pipe-outer" d="M294 202c-25-26-19-52 1-70 25-23 88-16 131-38"/>
+      <path class="pipe-inner" d="M294 202c-25-26-19-52 1-70 25-23 88-16 131-38"/>
+      <text class="workaround-label" x="451" y="82">TODO</text>
+    </g>
+    <g class="pipe-run pipe-thin" data-appears-at="10">
+      <path class="pipe-outer" d="M371 381c38-31 77-26 92-54 11-22-1-38-17-46"/>
+      <path class="pipe-inner" d="M371 381c38-31 77-26 92-54 11-22-1-38-17-46"/>
+      <text class="workaround-label" x="567" y="184">FIXME</text>
+    </g>
+  </g>
+
+  <g class="tower-tier tier-dependencies" data-appears-at="5">
+    <path class="shell-ring outer-ring" d="M149 113q164-21 329-5l6 72q-169 14-338 3z"/>
+    <path class="ring-rib" d="M151 118q163 11 326-5M146 180q167-9 336-1"/>
+    <rect class="internal-module feature-module" x="158" y="128" width="129" height="51" rx="5"/>
+    <rect class="internal-module feature-module" x="298" y="119" width="85" height="57" rx="5"/>
+    <rect class="internal-module feature-module" x="392" y="130" width="71" height="45" rx="5"/>
+    <text class="module-label" x="222" y="159">Analytics</text>
+    <text class="module-label" x="340" y="154">Promo</text>
+    <text class="module-label" x="427" y="157">Sync</text>
+    <path class="sketch-line internal-wire" d="M214 180v19m128-22v17m84-18v18"/>
+  </g>
+
+  <g class="tower-tier tier-last" data-appears-at="11">
+    <path class="shell-ring failure-ring" d="M137 47q180-28 357-3l8 65q-186 17-370 4z"/>
+    <rect class="internal-module block-failure" x="246" y="58" width="146" height="48" rx="6"/>
+    <text class="module-label failure-module-label" x="319" y="89">One more…</text>
+    <path class="fracture" d="m488 247-19 18 13 5-21 18 15 7-13 18m-329 77 19 16-8 9 27 13m112 57 18-20-5 22 22-12"/>
+  </g>
+
+  <g class="support-sticks" data-appears-at="12">
+    <path class="support-stick" d="M70 519 189 269M555 516 448 260M92 437 190 397M541 432 444 396"/>
+    <path class="support-grip" d="M62 519h35m441-3h35M177 262l25 14m234-22 26 14M81 428l28 16m419-21 26 17"/>
+    <circle class="support-bolt" cx="187" cy="274" r="6"/>
+    <circle class="support-bolt" cx="446" cy="269" r="6"/>
+    <circle class="support-bolt" cx="191" cy="397" r="6"/>
+    <circle class="support-bolt" cx="443" cy="396" r="6"/>
+    <text class="support-label" x="320" y="549">KEEP IT RUNNING</text>
+  </g>
+  </g>
+  </g>
+
+  <g class="rewrite-heading" data-appears-at="13">
+    <text x="1044" y="91">REWRITE TO MICROSERVICES</text>
+    <path d="M732 107h624"/>
+  </g>
+
+  <g class="service-island service-auth" data-appears-at="13">
+    <path class="island-ground" d="M733 612q83-14 175 0l-8 24H743z"/>
+    <path class="service-shell" d="M765 430q54-12 108 0l5 177q-58 11-116 0z"/>
+    <path class="service-ring" d="M756 393q62-13 125 0l4 38q-65 9-132 0z"/>
+    <rect class="service-module" x="780" y="461" width="78" height="40" rx="5"/>
+    <rect class="service-module" x="783" y="517" width="72" height="42" rx="5"/>
+    <text class="service-module-label" x="819" y="487">Login</text>
+    <text class="service-module-label" x="819" y="544">Tokens</text>
+    <text class="service-name" x="819" y="420">AUTH</text>
+  </g>
+
+  <g class="service-island service-billing" data-appears-at="14">
+    <path class="island-ground" d="M925 618q90-17 177-2l-8 22H935z"/>
+    <path class="service-shell" d="M958 405q57-12 111 2l5 205q-58 13-119 1z"/>
+    <path class="service-ring" d="M948 363q68-15 130-1l4 44q-67 10-137 0z"/>
+    <rect class="service-module" x="975" y="442" width="78" height="40" rx="5"/>
+    <rect class="service-module" x="980" y="499" width="72" height="45" rx="5"/>
+    <text class="service-module-label" x="1014" y="468">Quote</text>
+    <text class="service-module-label" x="1016" y="528">Charge</text>
+    <text class="service-name" x="1014" y="394">BILLING</text>
+  </g>
+
+  <g class="service-island service-search" data-appears-at="14">
+    <path class="island-ground" d="M1115 613q96-17 188 1l-10 24h-169z"/>
+    <path class="service-shell" d="M1152 447q60-10 113 2l6 160q-63 12-120 0z"/>
+    <path class="service-ring" d="M1141 408q68-14 132 1l5 39q-69 10-138 1z"/>
+    <rect class="service-module" x="1170" y="480" width="80" height="42" rx="5"/>
+    <rect class="service-module" x="1175" y="539" width="72" height="39" rx="5"/>
+    <text class="service-module-label" x="1210" y="507">Index</text>
+    <text class="service-module-label" x="1211" y="565">Query</text>
+    <text class="service-name" x="1208" y="438">SEARCH</text>
+  </g>
+
+  <g class="service-growth" data-appears-at="15">
+    <path class="service-ring" d="M761 347q57-12 114-1l5 46q-62 12-124 1z"/>
+    <path class="service-ring" d="M954 313q59-14 118 1l5 47q-64 10-127 0z"/>
+    <path class="service-ring" d="M1147 359q56-13 120 1l6 46q-64 9-132 1z"/>
+    <text class="service-module-label" x="818" y="378">Policy</text>
+    <text class="service-module-label" x="1013" y="344">Coupons</text>
+    <text class="service-module-label" x="1208" y="390">Ranking</text>
+  </g>
+
+  <g class="service-links" data-appears-at="16">
+    <path class="network-pipe-outer" d="M877 474c48-4 43-77 81-80M1071 439c50-2 42 87 85 83"/>
+    <path class="network-pipe-inner" d="M877 474c48-4 43-77 81-80M1071 439c50-2 42 87 85 83"/>
+    <path class="network-pipe-outer" d="M824 347c7-100 153-104 189-34m62 4c45-93 151-95 170 41"/>
+    <path class="network-pipe-inner" d="M824 347c7-100 153-104 189-34m62 4c45-93 151-95 170 41"/>
+  </g>
+
+  <g class="pipe-burst burst-one" data-appears-at="17">
+    <path class="burst-flash" d="m913 416 12-28 7 20 21-18-4 26 29-1-26 15 14 24-26-13-13 24-5-28-27 10z"/>
+    <text class="burst-label" x="911" y="373">BURST!</text>
+  </g>
+  <g class="network-repair repair-one" data-appears-at="18">
+    <path class="repair-clamp" d="M916 396q15-11 27-5l12 34q-14 11-27 5z"/>
+    <path class="repair-band" d="M920 406q15-11 29-5m-25 17q15-10 28-5"/>
+    <text class="repair-label" x="881" y="454">QUICK FIX</text>
+  </g>
+
+  <g class="underwater-network" data-appears-at="19">
+    <path class="waterline" d="M713 645q33-9 66 0t65 0t67 0t66 0t67 0t66 0t67 0t67 0t66 0"/>
+    <path class="network-pipe-outer" d="M793 607c-7 69 70 88 117 63 48-26 76-56 115-57m-3 0c40 55 102 75 151 56 43-17 57-44 47-61"/>
+    <path class="network-pipe-inner" d="M793 607c-7 69 70 88 117 63 48-26 76-56 115-57m-3 0c40 55 102 75 151 56 43-17 57-44 47-61"/>
+    <path class="network-pipe-outer network-pipe-thin" d="M860 611c21 34 69 38 100 24 50-23 88-9 105 0 50 29 114 12 145-26"/>
+    <path class="network-pipe-inner network-pipe-thin" d="M860 611c21 34 69 38 100 24 50-23 88-9 105 0 50 29 114 12 145-26"/>
+    <text class="underwater-label" x="1043" y="703">HIDDEN COUPLING</text>
+  </g>
+
+  <g class="pipe-burst burst-two" data-appears-at="20">
+    <path class="burst-flash" d="m1077 649 9-25 9 18 19-17-2 25 24-4-18 17 10 20-23-10-13 20-4-23-23 6z"/>
+    <text class="burst-label" x="1144" y="687">BURST!</text>
+  </g>
+  <g class="network-repair repair-two" data-appears-at="21">
+    <path class="repair-clamp" d="M1080 636q15-8 27-2l10 30q-14 10-27 3z"/>
+    <path class="repair-band" d="M1084 645q15-8 28-2m-25 15q14-8 27-2"/>
+    <text class="repair-label" x="1191" y="693">WORKAROUND</text>
+  </g>
+
+  <g class="service-sprawl" data-appears-at="22">
+    <path class="service-ring" d="M942 267q68-14 139 1l4 45q-72 12-147 0z"/>
+    <path class="service-ring" d="M1146 310q67-11 128 3l5 47q-66 8-135 0z"/>
+    <path class="network-pipe-outer" d="M749 526c-55-25-49-118-7-147m550 157c73-31 90-112 47-155"/>
+    <path class="network-pipe-inner" d="M749 526c-55-25-49-118-7-147m550 157c73-31 90-112 47-155"/>
+    <path class="patch-sticker" d="m1312 397 40-14 12 29-40 13z"/>
+    <rect class="patch-sticker" x="746" y="524" width="28" height="48" rx="4" transform="rotate(-12 760 548)"/>
+    <rect class="patch-sticker" x="1260" y="495" width="29" height="47" rx="4" transform="rotate(16 1274 518)"/>
+    <text class="sticker-label" x="1337" y="405">TODO</text>
+    <text class="service-module-label" x="1012" y="298">Legacy adapter</text>
+    <text class="service-module-label" x="1211" y="341">Sync jobs</text>
+  </g>
+</svg>

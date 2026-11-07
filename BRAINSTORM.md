@@ -236,6 +236,106 @@ Define a representative workload and baseline, form one hypothesis, make a bound
 
 Keep noisy or expensive performance checks outside the fastest loop. Confirm improvements during rollout. The current CPU call-tree diagram is illustrative, not a measured profile or benchmark.
 
+## Wire feedback into the code
+
+Observability and verification should be designed into the implementation, not added only after an incident. For each important operation, ask: **What evidence will tell a test, an agent, or an operator whether this behaved correctly?**
+
+Use the same domain language across code, tests, logs, metrics, traces, and runbooks. An order being accepted, persisted, queued for notification, and delivered are different facts; instrument the actual milestone rather than calling them all “success.”
+
+| Mechanism | What it contributes | Design discipline |
+| --- | --- | --- |
+| Structured logs | Explain decisions and failures with useful context | Stable event names, outcome/reason fields, correlation and release identifiers; avoid secrets and unnecessary personal data |
+| Metrics | Reveal rates, distributions, resource pressure, and business outcomes | Bounded labels, useful units, explicit denominators; keep request/order IDs out of metric labels |
+| Traces | Connect work and waiting across modules and systems | Propagate context across requests, queues, retries, and background work |
+| Domain-level observation hooks | Let tests and production adapters observe meaningful milestones | Small typed contracts; preserve ordering and define whether events represent attempts or completed effects |
+| Injected clocks, schedulers, IDs, and external adapters | Make scenarios reproducible and faults controllable | Substitute genuine dependencies rather than adding production branches such as `if (isTest)` |
+| Health and diagnostic surfaces | Support rollout verification and troubleshooting | Expose bounded, actionable state without exposing mutable internals or creating unsafe control paths |
+
+### Example: one feedback contract, several consumers
+
+Illustrative contract for an order-intake module:
+
+```ts
+type OrderFeedback =
+  | { kind: 'order.persisted'; operationId: string; durationMs: number }
+  | { kind: 'order.rejected'; operationId: string; reason: 'invalid-total' }
+  | { kind: 'order.failed'; operationId: string; reason: 'storage-unavailable' };
+
+interface OrderObserver {
+  record(event: OrderFeedback): void;
+}
+
+// Production: translate events into structured logs, metrics, and traces.
+// Tests: capture events in memory and await the operation's completion.
+// Keep telemetry adapters out of the domain's business decisions.
+```
+
+This is an example of an observation seam, not a requirement to build a universal event framework. Use existing instrumentation where it already provides the required evidence.
+
+- Emit `order.persisted` only after the relevant persistence guarantee holds. A function being entered or a write being scheduled is not proof of persistence.
+- Define sampling, buffering, overhead, and observer failure behavior. Best-effort diagnostic telemetry should not accidentally fail an order; durable business or audit events need explicit reliability guarantees and a different delivery contract where appropriate.
+- Ordinary behavior tests should still assert public outcomes. Assert feedback events when instrumentation itself is the contract under test; do not replace business assertions with log-message matching.
+- Test representative failure paths: rejected input, unavailable dependencies, retry, timeout, cancellation, and duplicate requests. Use controllable adapters and schedulers instead of arbitrary sleeps.
+- Make metrics and logging adapters respect cardinality, redaction, and runtime cost. Profiling should also check whether instrumentation has become significant work.
+- Record which signals are required before rollout, what failure looks like, and which dashboard or query retrieves the evidence.
+
+The agent workflow becomes: **change → targeted checks → inspect emitted evidence → verify in a controlled environment → compare production outcomes**. Link evidence to the exact revision, workload, and environment. Feed missing or misleading signals back into code and tests as concrete improvements.
+
+Potential punch lines:
+
+- **Design the evidence alongside the behavior.**
+- **A useful module explains its outcomes without exposing its internals.**
+- **Production feedback starts in the code review.**
+
+## Documentation has a lifecycle too — Surmap reference
+
+Reviewed the local Surmap sources on 2026-11-06:
+
+- `~/Code/surmap/.agents/skills/pr-lifecycle/SKILL.md`
+- `~/Code/surmap/.agents/commands/wrap-context-docs.md`
+
+These are reference practices for the talk, not a wholesale adoption of Surmap's commands or rules in Monaco Slides.
+
+### The documented lifecycle
+
+| Stage | Where knowledge lives | What changes at the transition |
+| --- | --- | --- |
+| Discovery and planning | An owning area's `docs/<area>/1-WIP/` holds discovery, a changeset, and a PRD when appropriate | Capture current state, intended state, delta, verification, and workflow obligations |
+| Draft implementation | The changeset's ordered workflow rows and nested TODOs carry progress and evidence | Keep the PR description synchronized; record outcomes rather than relying on conversation memory |
+| Ready for review | Stable feature/package documentation plus a history entry | Execute verification, transfer final-state knowledge, remove this PR's temporary planning documents, push the wrap, then mark ready |
+| Review and follow-up changes | Stable docs, commit history, PR state, checks, and review threads | Reconcile new behavior with docs again; earlier evidence may no longer describe the current revision |
+| Merged | Current documentation and historical records | Readers should not need to reconstruct today's behavior from old plans or a sequence of changelog entries |
+
+Surmap's main principle is **transfer knowledge, not just references**. A history entry alone is not a documentation update. Replace “will add retries” or “changed retry handling” with a current-state description of the retry policy, including limits and failure behavior.
+
+### Details worth borrowing
+
+- **Documentation completion is part of readiness.** Wrap at draft → ready, not while the work is still moving and not as an easily forgotten post-merge chore.
+- **Plan documentation obligations early.** Identify affected package docs, feature docs, examples, operational guidance, and diagrams as part of the change.
+- **One progress record with evidence.** Ordered `[wf]` rows and nested TODOs identify what ran, what remains, and the verification result. The PR carries the same record. A checklist tick is not a substitute for evidence.
+- **Stable docs state current behavior.** Temporary plans describe intent and deltas; permanent docs describe the implemented contract. Avoid making stable documentation depend on transient planning paths or individual historical entries.
+- **History is separate and append-only in meaning.** Surmap writes a separate dated file per change rather than repeatedly modifying one shared changelog, reducing conflicts between parallel branches.
+- **Close or narrow deferred work deliberately.** Resolved records are removed with history retained in Git; partial work leaves an updated record describing only the remaining gap; deferred work retains its blocker and disposition.
+- **Wrap stacks bottom-up.** Each PR owns its documentation update. Do not make a completed predecessor depend on a successor's temporary documents or edit another branch as part of the wrap.
+- **New changes can invalidate old completion.** A follow-up diff may require another documentation pass and renewed verification. Use current code and evidence, not an obsolete completion label.
+- **Check the documentation graph.** Validate links and references after deleting temporary documents. Update affected architecture diagrams to depict the resulting system.
+
+The source describes a CI gate at `.github/workflows/docs-wip-wrap-check.yml` that rejects a ready PR still adding or modifying its own WIP documents. That file, and the referenced `docs/AGENTS.md`, were absent from the inspected checkout. Treat this as a documented enforcement intention; actual CI enforcement was not verified. The wrap procedure also contains conflicting wording about deleting deferred-work records; the explicit outcome table and Rules section distinguish resolved records from still-open ones.
+
+### Connect documentation to the feedback loop
+
+When a change introduces a metric, event, or verification hook, update the stable documentation with:
+
+1. The behavior or invariant the signal represents.
+2. Its units, dimensions, sampling, and known limitations.
+3. A reproducible command, query, or scenario that obtains it.
+4. How to interpret success, failure, and missing evidence.
+5. Operational ownership and the relevant response or recovery procedure.
+
+When production exposes a mistaken assumption, correct the code, regression guard, and current documentation together. Preserve why the decision changed in history or an ADR, while keeping the current behavior easy to find.
+
+Suggested talk framing: **“The PR is ready when the next agent can understand the new reality—not just read the diff.”** This belongs with housekeeping, repository context, and PR review; it need not add a separate long section to the 40-minute slot.
+
 ## Presentation plan and examples
 
 The current draft has **33 slides**, with multi-step comparisons on the design examples. See [speaker rundown](docs/speaker-rundown.md) for the exact sequence and timing, and [deck YAML](content/deck.yaml) for authoritative on-screen content and notes.

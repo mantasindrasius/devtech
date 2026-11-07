@@ -2,6 +2,7 @@ import { showExampleBanner, validateExample } from '../ui/example-banner.js';
 import { Registry } from '../core/registry.js';
 import { requireText } from '../content/validation.js';
 import { createMermaidPanel } from './mermaid.js';
+import { createStackedProjectPanel, validateStackedProjectStep } from './stacked-project.js';
 
 export function registerRenderers() {
   return new Registry('resource renderer')
@@ -34,5 +35,14 @@ export function registerRenderers() {
         if (resource.caption !== undefined) requireText(resource.caption, 'diagram.caption');
       },
       create: (resource, { theme }) => createMermaidPanel(resource, theme),
+    })
+    .register('stacked-project', {
+      validate(resource) {
+        requireText(resource.title, 'stacked-project.title');
+        requireText(resource.description, 'stacked-project.description');
+        if (!resource.file.endsWith('.svg')) throw new Error('Stacked project resource must be SVG');
+      },
+      validateStep: validateStackedProjectStep,
+      create: createStackedProjectPanel,
     });
 }

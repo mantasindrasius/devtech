@@ -1,0 +1,136 @@
+.project-stack-art .rewrite-heading {
+  fill: var(--accent, #b4ef94);
+  font-size: 25px;
+}
+
+.project-stack-art .rewrite-heading path {
+  fill: none;
+  stroke: var(--accent, #b4ef94);
+  stroke-width: 2;
+  opacity: 0.6;
+}
+
+.project-stack-art .island-ground {
+  fill: var(--surface, #15191f);
+  stroke: var(--text, #e8ecf0);
+  stroke-width: 3;
+}
+
+.project-stack-art .service-shell,
+.project-stack-art .service-ring {
+  fill: var(--surface, #15191f);
+  stroke: var(--blue, #7c9aae);
+  stroke-width: 4;
+  stroke-linejoin: round;
+}
+
+.project-stack-art .service-ring {
+  stroke: var(--accent-text, #a6bc9c);
+  stroke-width: 5;
+}
+
+.project-stack-art .service-module {
+  fill: var(--selected, #263020);
+  stroke: var(--text, #e8ecf0);
+  stroke-width: 2;
+}
+
+.project-stack-art .service-module-label {
+  fill: var(--text, #e8ecf0);
+  font: 600 17px 'Space Grotesk', sans-serif;
+  text-anchor: middle;
+}
+
+.project-stack-art .service-name {
+  fill: var(--accent, #b4ef94);
+}
+
+.project-stack-art .network-pipe-outer,
+.project-stack-art .network-pipe-inner {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.project-stack-art .network-pipe-outer {
+  stroke: var(--text, #e8ecf0);
+  stroke-width: 14;
+}
+
+.project-stack-art .network-pipe-inner {
+  stroke: var(--blue, #7c9aae);
+  stroke-width: 9;
+}
+
+.project-stack-art .network-pipe-thin.network-pipe-outer {
+  stroke-width: 9;
+}
+
+.project-stack-art .network-pipe-thin.network-pipe-inner {
+  stroke-width: 5;
+}
+
+.project-stack-art .waterline {
+  fill: none;
+  stroke: var(--blue, #7c9aae);
+  stroke-width: 2;
+  stroke-dasharray: 12 8;
+  opacity: 0.55;
+}
+
+.project-stack-art .underwater-label {
+  fill: var(--muted, #919caa);
+}
+
+.project-stack-art .burst-flash {
+  fill: var(--error, #ffa0a0);
+  stroke: #ffdf8e;
+  stroke-width: 4;
+}
+
+.project-stack-art .burst-label {
+  fill: var(--error, #ffa0a0);
+  font-size: 18px;
+}
+
+.project-stack-panel.is-first-burst .burst-one,
+.project-stack-panel.is-second-burst .burst-two {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: pipe-burst 400ms ease-in-out infinite alternate;
+}
+
+.project-stack-panel.is-first-repaired .burst-one,
+.project-stack-panel.is-second-repaired .burst-two {
+  opacity: 0;
+}
+
+.project-stack-art .repair-clamp,
+.project-stack-art .patch-sticker {
+  fill: #e9bd78;
+  stroke: #94682c;
+  stroke-width: 3;
+}
+
+.project-stack-art .repair-band {
+  fill: none;
+  stroke: #94682c;
+  stroke-width: 3;
+}
+
+@keyframes pipe-burst {
+  from {
+    transform: scale(0.9) rotate(-5deg);
+  }
+
+  to {
+    transform: scale(1.1) rotate(5deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-stack-panel.is-first-burst .burst-one,
+  .project-stack-panel.is-second-burst .burst-two {
+    animation: none;
+  }
+}

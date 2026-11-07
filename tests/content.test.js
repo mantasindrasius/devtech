@@ -59,6 +59,20 @@ test('rejects an unknown diagram reference', () => {
   expect(() => source.load()).toThrow('Unknown panel resource: missing');
 });
 
+test('rejects an unknown scene in a stacked project illustration', () => {
+  const source = aDeck()
+    .withResource('project', {
+      type: 'stacked-project',
+      file: 'illustrations/project.svg',
+      title: 'A project under strain',
+      description: 'A stack of software features',
+    })
+    .withAsset('illustrations/project.svg', '<svg></svg>')
+    .withSteps([{ id: 'collapse', label: 'Collapse', panel: 'project', scene: 'unknown', caption: 'It breaks.' }]);
+
+  expect(() => source.load()).toThrow('Unknown stacked-project scene: unknown');
+});
+
 test('rejects invalid typing timing', () => {
   const source = aDeck().withSteps([
     {

@@ -63,10 +63,18 @@ export function bindControls({ root, timeline, code, checks, editor }) {
   function onKey(event) {
     if (event.defaultPrevented || event.target?.closest?.('.context-view')) return;
     if (editor.hasTextFocus() || event.metaKey || event.ctrlKey || event.altKey) return;
+    if (event.repeat) return;
+    if (presenting && event.key === ' ' && !event.target?.closest?.('button, a, input, textarea')) {
+      event.preventDefault();
+      (event.shiftKey ? timeline.previous() : timeline.next());
+      return;
+    }
     const commands = {
       ArrowRight: () => timeline.next(),
+      ArrowDown: () => timeline.next(),
       PageDown: () => timeline.next(),
       ArrowLeft: () => timeline.previous(),
+      ArrowUp: () => timeline.previous(),
       PageUp: () => timeline.previous(),
       n: () => $('notes-toggle').click(),
       f: togglePresentation,

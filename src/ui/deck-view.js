@@ -13,12 +13,13 @@ export function createDeckView({ deck, root, panels }) {
   return {
     show(state) {
       const { slide, slideIndex, stepIndex, step, first, last } = state;
+      $('slide').dataset.layout = slide.layout ?? 'standard';
       const resource = deck.resources[step.panel ?? slide.code];
       for (const id of ['tab-name', 'crumb', 'code-file'])
         $(id).textContent = resource.file.split('/').at(-1);
       $('eyebrow').textContent = slide.label;
       renderTitle($('title'), slide.title);
-      $('description').textContent = slide.description.trim();
+      $('description').textContent = (step.description ?? slide.description).trim();
       $('takeaway-text').textContent = slide.takeaway;
       $('notes').textContent = slide.notes ?? '';
       $('author').hidden = !slide.author;
@@ -32,7 +33,7 @@ export function createDeckView({ deck, root, panels }) {
       $('code-language').textContent = resource.language ?? '';
       revealContent(slide, stepIndex, root);
       updateNavigation(root, slideIndex);
-      panels.show(resource.id);
+      panels.show(resource.id, step);
       history.replaceState(null, '', `#${slideIndex + 1}`);
     },
     completed() {},
