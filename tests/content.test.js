@@ -1,6 +1,21 @@
 import { expect, test } from 'bun:test';
 import { aDeck } from './support/deck-builder.js';
 
+test('loads a chapter divider without requiring a custom panel resource', () => {
+  const source = aDeck().withLayout('chapter');
+
+  const deck = source.load();
+
+  expect(deck.slides[0].layout).toBe('chapter');
+  expect(deck.slides[0].steps).toHaveLength(1);
+});
+
+test('rejects an unsupported slide layout', () => {
+  const source = aDeck().withLayout('unknown');
+
+  expect(() => source.load()).toThrow('layout must be standard, visual or chapter');
+});
+
 test('loads code from the file referenced by YAML', () => {
   const source = aDeck().withAsset('snippets/example.ts', 'const amount = 7;');
 
@@ -68,9 +83,39 @@ test('rejects an unknown scene in a stacked project illustration', () => {
       description: 'A stack of software features',
     })
     .withAsset('illustrations/project.svg', '<svg></svg>')
-    .withSteps([{ id: 'collapse', label: 'Collapse', panel: 'project', scene: 'unknown', caption: 'It breaks.' }]);
+    .withSteps([
+      {
+        id: 'collapse',
+        label: 'Collapse',
+        panel: 'project',
+        scene: 'unknown',
+        caption: 'It breaks.',
+      },
+    ]);
 
   expect(() => source.load()).toThrow('Unknown stacked-project scene: unknown');
+});
+
+test('rejects an unknown scene in the spaceship illustration', () => {
+  const source = aDeck()
+    .withResource('ship', {
+      type: 'spaceship-project',
+      file: 'illustrations/ship.svg',
+      title: 'Building in AI era',
+      description: 'A spaceship under construction',
+    })
+    .withAsset('illustrations/ship.svg', '<svg></svg>')
+    .withSteps([
+      {
+        id: 'unknown',
+        label: 'Unknown',
+        panel: 'ship',
+        scene: 'unknown',
+        caption: 'Unknown scene.',
+      },
+    ]);
+
+  expect(() => source.load()).toThrow('Unknown spaceship scene: unknown');
 });
 
 test('rejects invalid typing timing', () => {

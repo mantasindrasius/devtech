@@ -1,0 +1,108 @@
+.spaceship-panel .change-chip {
+  fill: var(--surface, #172a36);
+  stroke: var(--blue, #83b7c7);
+  stroke-width: 1;
+}
+.spaceship-panel .change-code {
+  fill: var(--text, #d9edf1);
+  font: 11px monospace;
+  text-anchor: middle;
+}
+.spaceship-panel .change-packet {
+  opacity: 0;
+}
+.spaceship-panel .feature-mount {
+  fill: url(#ship-shell);
+  stroke: #c4d8df;
+  stroke-width: 0.8;
+}
+.spaceship-panel .mount-bolt {
+  fill: #e5edf0;
+  stroke: #2c4657;
+  stroke-width: 0.8;
+}
+.spaceship-panel .mount-bracket {
+  fill: none;
+  stroke: #98aebc;
+  stroke-width: 3;
+}
+.spaceship-panel .feature-code-seed {
+  opacity: 0;
+}
+.spaceship-panel[data-animate='true'] .attached-feature.is-visible .feature-docking {
+  animation: dock-feature 1200ms cubic-bezier(0.2, 0.6, 0.2, 1) both;
+}
+.spaceship-panel[data-animate='true'] .attached-feature.is-visible .feature-code-seed {
+  animation: resolve-feature-code 1200ms ease both;
+}
+.spaceship-panel[data-animate='true'] .attached-feature.is-visible .feature-creature {
+  animation: materialize-feature 1200ms ease both;
+}
+.spaceship-panel .ship-leak-flow {
+  opacity: 0.85;
+}
+.spaceship-panel .ship-hull-leak .pressure-fog-particle {
+  transform: translate(var(--fog-mid), var(--fog-rise)) scale(var(--fog-size));
+  opacity: 0.35;
+}
+.spaceship-panel .ship-hull-leak.is-visible .pressure-fog-particle {
+  animation: pressure-fog-flow var(--fog-time) var(--fog-delay) linear infinite;
+}
+@keyframes install-code-change {
+  0% {
+    transform: translate(var(--change-x), var(--change-y));
+    opacity: 0;
+  }
+  12% {
+    opacity: 0.8;
+  }
+  85% {
+    opacity: 0.65;
+  }
+  100% {
+    transform: translate(0, 0) scale(0.3);
+    opacity: 0;
+  }
+}
+@keyframes dock-feature {
+  0% {
+    transform: translate(var(--dock-x), var(--dock-y)) scale(0.6);
+  }
+  80% {
+    transform: translate(0, 0) scale(1);
+  }
+  89% {
+    transform: translate(-2px, 1px) scale(1);
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+}
+@keyframes resolve-feature-code {
+  0%,
+  35% {
+    opacity: 1;
+  }
+  65%,
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes materialize-feature {
+  0%,
+  25% {
+    opacity: 0;
+  }
+  65%,
+  100% {
+    opacity: 1;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .spaceship-panel[data-animate='true'] .attached-feature.is-visible .feature-docking,
+  .spaceship-panel[data-animate='true'] .attached-feature.is-visible .feature-code-seed,
+  .spaceship-panel[data-animate='true'] .attached-feature.is-visible .feature-creature,
+  .spaceship-panel .ship-hull-leak.is-visible .pressure-fog-particle {
+    animation: none;
+  }
+}

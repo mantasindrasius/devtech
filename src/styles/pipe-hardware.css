@@ -1,0 +1,23 @@
+/* Highlights follow the pipe route; hardware inherits its parent's reveal step. */
+.project-stack-art .pipe-specular,
+.spaceship-panel .pipe-specular {
+  fill: none;
+  stroke: #e0ebef;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transform: translateY(-1.6px);
+  opacity: 0.8;
+}
+.project-stack-art .pipe-welds,
+.spaceship-panel .pipe-welds {
+  fill: none;
+  stroke: #344e5f;
+  stroke-width: 7;
+  stroke-dasharray: 1 42;
+  stroke-linecap: butt;
+  opacity: 0.55;
+}
+.pipe-hardware {
+  filter: drop-shadow(0 1px 1px #06101c99);
+}

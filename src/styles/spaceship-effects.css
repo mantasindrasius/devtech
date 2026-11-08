@@ -1,0 +1,116 @@
+.spaceship-panel [data-appears-at] {
+  opacity: 0;
+  translate: 0 12px;
+}
+.spaceship-panel .is-visible {
+  opacity: 1;
+  translate: 0 0;
+}
+.spaceship-panel[data-animate='true'] [data-appears-at] {
+  transition:
+    opacity 600ms ease,
+    translate 900ms cubic-bezier(0.22, 0.7, 0.2, 1);
+}
+.spaceship-panel .feature-cameo {
+  filter: drop-shadow(0 0 8px #659daf18);
+}
+.spaceship-panel .engine-flame {
+  fill: url(#ship-fire);
+}
+.spaceship-panel .flame-core {
+  fill: #fff0b0;
+  opacity: 0.85;
+}
+.spaceship-panel .foam-hose {
+  stroke: #a9c9d5;
+  stroke-width: 7;
+  stroke-dasharray: 2 7;
+}
+.spaceship-panel .foam {
+  fill: #d5e4e8;
+  fill-opacity: 0.7;
+}
+.spaceship-panel .gas-left {
+  fill: url(#ship-gas);
+}
+.spaceship-panel .gas-right {
+  fill: #b8e7ee;
+  fill-opacity: 0.3;
+}
+.spaceship-panel .gas-core {
+  stroke: #d0f5fa;
+  stroke-width: 2;
+}
+.spaceship-panel[data-scene='fire'] .engine-fire {
+  transform-box: fill-box;
+  transform-origin: top;
+  animation: engine-burn 260ms ease-in-out infinite alternate;
+}
+.spaceship-panel[data-scene='extinguish'] .foam {
+  animation: foam-drift 1.8s ease-out both;
+}
+.spaceship-panel[data-scene='cold-gas'] .gas-left,
+.spaceship-panel[data-scene='unstable'] .gas-left {
+  animation: attitude-pulse 1.8s ease-in-out infinite;
+}
+.spaceship-panel[data-scene='cold-gas'] .gas-right,
+.spaceship-panel[data-scene='unstable'] .gas-right {
+  animation: attitude-pulse 2.3s 700ms ease-in-out infinite;
+}
+.spaceship-panel[data-scene='unstable'] .spacecraft-motion {
+  transform-origin: 720px 560px;
+  animation: attitude-correction 4s ease-in-out infinite;
+}
+@keyframes engine-burn {
+  from {
+    transform: scaleX(0.97) scaleY(0.96);
+  }
+  to {
+    transform: scaleX(1.02) scaleY(1.04);
+  }
+}
+@keyframes foam-drift {
+  from {
+    opacity: 0;
+    translate: 28px -12px;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+@keyframes attitude-pulse {
+  0%,
+  45%,
+  100% {
+    opacity: 0.08;
+  }
+  12%,
+  26% {
+    opacity: 0.9;
+  }
+}
+@keyframes attitude-correction {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-0.8deg) translateX(-3px);
+  }
+  65% {
+    transform: rotate(0.6deg) translateX(2px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .spaceship-panel[data-animate='true'] [data-appears-at] {
+    transition: none;
+  }
+  .spaceship-panel[data-scene] .engine-fire,
+  .spaceship-panel[data-scene] .foam,
+  .spaceship-panel[data-scene] .gas-left,
+  .spaceship-panel[data-scene] .gas-right,
+  .spaceship-panel[data-scene] .spacecraft-motion {
+    animation: none;
+  }
+}

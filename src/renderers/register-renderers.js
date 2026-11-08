@@ -3,6 +3,7 @@ import { Registry } from '../core/registry.js';
 import { requireText } from '../content/validation.js';
 import { createMermaidPanel } from './mermaid.js';
 import { createStackedProjectPanel, validateStackedProjectStep } from './stacked-project.js';
+import { createSpaceshipPanel, validateSpaceshipStep } from './spaceship-project.js';
 
 export function registerRenderers() {
   return new Registry('resource renderer')
@@ -44,5 +45,14 @@ export function registerRenderers() {
       },
       validateStep: validateStackedProjectStep,
       create: createStackedProjectPanel,
+    })
+    .register('spaceship-project', {
+      validate(resource) {
+        requireText(resource.title, 'spaceship-project.title');
+        requireText(resource.description, 'spaceship-project.description');
+        if (!resource.file.endsWith('.svg')) throw new Error('Spaceship resource must be SVG');
+      },
+      validateStep: validateSpaceshipStep,
+      create: createSpaceshipPanel,
     });
 }

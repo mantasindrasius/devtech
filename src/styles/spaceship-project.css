@@ -1,0 +1,193 @@
+.spaceship-panel .visual-art {
+  display: grid;
+  place-items: center;
+}
+
+.spaceship-panel .background-build-near {
+  opacity: 0.42;
+}
+
+.spaceship-panel .background-build-far {
+  opacity: 0.3;
+}
+
+.spaceship-panel svg {
+  fill: none;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.spaceship-panel .draft-grid {
+  fill: url(#ship-grid);
+}
+.spaceship-panel .eyebrow {
+  fill: var(--blue, #8caec1);
+  font: 500 14px monospace;
+  letter-spacing: 3px;
+}
+.spaceship-panel .scene-heading {
+  fill: var(--text, #e8ecf0);
+  font-size: 30px;
+  font-weight: 500;
+  letter-spacing: -0.8px;
+}
+.spaceship-panel .drawing-index,
+.spaceship-panel .drawing-note {
+  fill: var(--muted, #8c9ba9);
+  font: 12px monospace;
+  letter-spacing: 1.5px;
+}
+.spaceship-panel .drawing-index {
+  text-anchor: end;
+}
+.spaceship-panel .ground-line {
+  stroke: var(--border, #34424e);
+}
+.spaceship-panel .metal,
+.spaceship-panel .tower-metal,
+.spaceship-panel .engine,
+.spaceship-panel .fin {
+  fill: url(#ship-metal);
+  stroke: #8cabbc;
+  stroke-width: 1.3;
+}
+.spaceship-panel .hull {
+  fill: url(#ship-shell);
+  stroke: #b0c9d3;
+  stroke-width: 1.5;
+}
+.spaceship-panel .hull-seam {
+  stroke: #304b5b;
+  stroke-width: 1.4;
+}
+.spaceship-panel .cockpit {
+  fill: url(#ship-glass);
+  stroke: #243f51;
+  stroke-width: 4;
+}
+.spaceship-panel .glass-glint {
+  stroke: #c8f4f4;
+  stroke-width: 2;
+  opacity: 0.65;
+}
+.spaceship-panel .access-panel {
+  fill: #203d4d;
+  stroke: #d0dde2;
+  stroke-width: 1;
+}
+.spaceship-panel .core-label {
+  fill: #bde1e5;
+  font: 15px monospace;
+  text-anchor: middle;
+  letter-spacing: 5px;
+}
+.spaceship-panel .hull-number {
+  fill: #223e4b;
+  font: 13px monospace;
+  text-anchor: middle;
+  letter-spacing: 3px;
+}
+.spaceship-panel .circuit {
+  stroke: #80acb7;
+  stroke-width: 2;
+}
+.spaceship-panel .rivet {
+  fill: #d6e5e9;
+}
+.spaceship-panel .tower-brace {
+  stroke: #91a7b4;
+  stroke-width: 2;
+  opacity: 0.6;
+}
+.spaceship-panel .tower-floor {
+  stroke: #203744;
+  stroke-width: 5;
+}
+.spaceship-panel .tower-label {
+  fill: var(--muted, #9fb1bf);
+  font: 12px monospace;
+  letter-spacing: 2px;
+  text-anchor: middle;
+}
+.spaceship-panel .conduit-shadow {
+  stroke: #0b1622;
+  stroke-width: 12;
+}
+.spaceship-panel .conduit {
+  stroke: #829da9;
+  stroke-width: 8;
+}
+.spaceship-panel .conduit-highlight {
+  stroke: #c9dce0;
+  stroke-width: 2;
+  opacity: 0.65;
+}
+.spaceship-panel .conduit,
+.spaceship-panel .conduit-shadow,
+.spaceship-panel .conduit-highlight {
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+.spaceship-panel .pipe-fitting {
+  stroke: #c8a56d;
+  stroke-width: 7;
+}
+.spaceship-panel .engine-ring {
+  stroke: #a4b8be;
+  stroke-width: 3;
+}
+.spaceship-panel .nozzle {
+  fill: #263d4a;
+  stroke: #8eacb9;
+  stroke-width: 1.5;
+}
+.spaceship-panel .hologram-card {
+  fill: var(--surface, #15222d);
+  fill-opacity: 0.75;
+  stroke: var(--blue, #7398af);
+  stroke-opacity: 0.45;
+}
+.spaceship-panel .holo-corner {
+  stroke: var(--blue, #98c2d6);
+  stroke-width: 1.5;
+}
+.spaceship-panel .holo-figure {
+  stroke: var(--blue, #a7ccd9);
+  stroke-width: 1.8;
+  stroke-linejoin: round;
+}
+.spaceship-panel .holo-link {
+  stroke: var(--blue, #7398af);
+  stroke-width: 1;
+  stroke-dasharray: 3 6;
+  opacity: 0.45;
+}
+.spaceship-panel .feature-title {
+  fill: var(--text, #cee1e8);
+  font: 12px monospace;
+  text-anchor: middle;
+  letter-spacing: 1px;
+}
+.spaceship-panel .feature-detail {
+  fill: var(--muted, #96a9b7);
+  font: 9px monospace;
+  text-anchor: middle;
+  letter-spacing: 1px;
+}
+.spaceship-panel .incident-status {
+  fill: var(--error, #f1a07e);
+  font: 13px monospace;
+  text-anchor: middle;
+  letter-spacing: 2px;
+}
+.spaceship-panel .contained-status {
+  fill: var(--accent-text, #a6c9bd);
+  font: 13px monospace;
+  text-anchor: middle;
+  letter-spacing: 2px;
+}
+.spaceship-panel .closing-label {
+  fill: var(--text, #d2e2e8);
+  font: 14px monospace;
+  text-anchor: end;
+  letter-spacing: 1px;
+}

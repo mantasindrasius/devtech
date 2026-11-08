@@ -1,0 +1,109 @@
+/* A hidden ship does not run its timeline; revealing it starts its own clock. */
+.spaceship-panel .spacecraft-build {
+  display: none;
+}
+.spaceship-panel .spacecraft-build.is-visible {
+  display: inline;
+}
+.spaceship-panel .background-build-near.is-visible {
+  opacity: 0.42;
+}
+.spaceship-panel .background-build-far.is-visible {
+  opacity: 0.3;
+}
+.spaceship-panel .spacecraft-build .build-layer {
+  animation: reveal-build-layer 600ms var(--layer-start) ease both;
+}
+.spaceship-panel .spacecraft-build .build-layer-temporary {
+  animation:
+    reveal-build-layer 600ms var(--layer-start) ease both,
+    hide-build-layer 1ms var(--layer-end) step-end forwards;
+}
+.spaceship-panel .spacecraft-build .feature-docking,
+.spaceship-panel .spacecraft-build .feature-code-seed,
+.spaceship-panel .spacecraft-build .feature-creature,
+.spaceship-panel .spacecraft-build .auto-mount {
+  animation-delay: var(--layer-start) !important;
+}
+.spaceship-panel .spacecraft-build .auto-bolt {
+  animation-delay: calc(var(--layer-start) + var(--bolt-delay)) !important;
+}
+.spaceship-panel .spacecraft-build .auto-driver {
+  animation-delay: calc(var(--layer-start) + 900ms) !important;
+}
+.spaceship-panel .spacecraft-build .ship-leak-flow {
+  animation: fight-ship-leak 12s var(--layer-start) linear infinite;
+}
+.spaceship-panel .ship-leak-repair {
+  animation: repair-ship-leak 12s var(--layer-start) ease infinite;
+  opacity: 0;
+}
+.spaceship-panel .spacecraft-build .engine-fire {
+  transform-origin: center top;
+}
+.spaceship-panel .spacecraft-build .engine-flame {
+  animation: engine-burn 260ms infinite alternate;
+}
+.spaceship-panel .spacecraft-build .gas-left {
+  animation: attitude-pulse 1.8s infinite;
+}
+.spaceship-panel .spacecraft-build .gas-right {
+  animation: attitude-pulse 2.3s 700ms infinite;
+}
+@keyframes reveal-build-layer {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes hide-build-layer {
+  to {
+    opacity: 0;
+  }
+}
+@keyframes fight-ship-leak {
+  0%,
+  35%,
+  100% {
+    opacity: 0.85;
+  }
+  43%,
+  85% {
+    opacity: 0;
+  }
+}
+@keyframes repair-ship-leak {
+  0%,
+  30%,
+  100% {
+    opacity: 0;
+    transform: translateX(-15px);
+  }
+  42%,
+  85% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  94% {
+    opacity: 0;
+    transform: translateX(12px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .spaceship-panel .spacecraft-build .build-layer,
+  .spaceship-panel .spacecraft-build .ship-leak-flow,
+  .spaceship-panel .ship-leak-repair,
+  .spaceship-panel .spacecraft-build .engine-flame,
+  .spaceship-panel .spacecraft-build .gas-left,
+  .spaceship-panel .spacecraft-build .gas-right {
+    animation: none;
+  }
+  .spaceship-panel .spacecraft-build .build-layer-temporary {
+    opacity: 0;
+  }
+  .spaceship-panel .ship-leak-repair {
+    opacity: 1;
+  }
+}

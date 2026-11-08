@@ -27,19 +27,18 @@ const scenes = [
 ];
 
 export function validateStackedProjectStep(step) {
-  if (!scenes.includes(step.scene))
-    throw new Error(`Unknown stacked-project scene: ${step.scene}`);
+  if (!scenes.includes(step.scene)) throw new Error(`Unknown stacked-project scene: ${step.scene}`);
   requireText(step.caption, `stacked-project ${step.scene}.caption`);
 }
 
 export function createStackedProjectPanel(resource) {
   const panel = document.createElement('section');
-  panel.className = 'project-stack-panel';
+  panel.className = 'visual-panel project-stack-panel';
   panel.setAttribute('aria-label', resource.title);
   panel.innerHTML = `
     <div class="code-toolbar"><span class="project-stack-file"></span><span class="project-stack-mode">architecture / live</span></div>
-    <div class="project-stack-art" role="img"></div>
-    <div class="project-stack-caption" role="status"></div>
+    <div class="visual-art project-stack-art" role="img"></div>
+    <div class="visual-caption project-stack-caption" role="status"></div>
     <div class="code-footer"><span>SOFTWARE PROJECT</span><span>click to grow ↗</span></div>`;
   panel.querySelector('.project-stack-file').textContent = resource.file.split('/').at(-1);
   const art = panel.querySelector('.project-stack-art');
@@ -53,11 +52,15 @@ export function createStackedProjectPanel(resource) {
       panel.dataset.animate = String(Boolean(continuing));
       const scene = scenes.indexOf(step.scene);
       for (const layer of art.querySelectorAll('[data-appears-at]')) {
-        const visible = Number(layer.dataset.appearsAt) <= scene;
+        const visible =
+          Number(layer.dataset.appearsAt) <= scene &&
+          scene < Number(layer.dataset.disappearsAt ?? Infinity);
         layer.classList.toggle('is-visible', visible);
         layer.setAttribute('aria-hidden', String(!visible));
       }
-      panel.classList.toggle('is-broken', step.scene === 'failure');
+      panel.classList.toggle('is-exploding', step.scene === 'failure');
+      panel.style.setProperty('--pressure-scale', String(0.7 + Math.min(scene, 10) * 0.055));
+      panel.style.setProperty('--pressure-opacity', String(0.35 + Math.min(scene, 10) * 0.06));
       panel.classList.toggle('is-supported', scene >= scenes.indexOf('supported'));
       panel.classList.toggle('is-first-burst', step.scene === 'first-burst');
       panel.classList.toggle('is-second-burst', step.scene === 'second-burst');

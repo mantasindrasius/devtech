@@ -1,0 +1,8 @@
+flowchart LR
+ Tests[Behavior tests] --> Core{{Domain capability}}
+ UI[HTTP / UI adapter] --> Core
+ Core --> Port[Storage port]
+ Port --> Memory[In-memory adapter]
+ Port --> DB[Database adapter]
+ Contract[Shared contract tests] -.-> Memory
+ Contract -.-> DB

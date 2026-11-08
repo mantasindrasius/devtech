@@ -41,6 +41,10 @@ export function aDeck() {
       document.slides[0].steps = steps;
       return this;
     },
+    withLayout(layout) {
+      document.slides[0].layout = layout;
+      return this;
+    },
     withDuplicateSlide() {
       document.slides.push(structuredClone(document.slides[0]));
       return this;

@@ -1,0 +1,164 @@
+.project-stack-art .pressure-plume {
+  fill: url(#pressure-vapor);
+}
+.project-stack-art .pressure-jet {
+  transform: scale(var(--pressure-scale, 1));
+  opacity: var(--pressure-opacity, 0.8);
+}
+.project-stack-art .pressure-plume {
+  opacity: 0.3;
+}
+.project-stack-art .pressure-nozzle-core {
+  fill: #eafaff;
+  opacity: 0.75;
+}
+.project-stack-art .pressure-fog-particle {
+  opacity: 0.35;
+  transform: translate(var(--fog-mid), var(--fog-rise)) scale(var(--fog-size));
+}
+.project-stack-panel .pressure-leak.is-visible .pressure-fog-particle {
+  animation: pressure-fog-flow var(--fog-time) var(--fog-delay) linear infinite;
+}
+@keyframes pressure-fog-flow {
+  0% {
+    transform: translate(2px, 0) scale(0.16, 0.12);
+    opacity: 0.2;
+  }
+  12% {
+    opacity: 0.85;
+  }
+  45% {
+    transform: translate(var(--fog-mid), var(--fog-rise)) scale(0.85, 0.65);
+    opacity: 0.55;
+  }
+  100% {
+    transform: translate(var(--fog-end), var(--fog-drift))
+      scale(calc(var(--fog-size) * 1.8), var(--fog-size));
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .project-stack-panel .pressure-leak.is-visible .pressure-fog-particle {
+    animation: none;
+  }
+}
+
+/* Repairs travel to the same coordinates as the vent they suppress. */
+.project-stack-art .leak-patch:not(.is-visible) {
+  transform: none;
+}
+.project-stack-art .patch-fastening {
+  fill: none;
+  stroke: #e3d5b1;
+  stroke-width: 1.4;
+  opacity: 0;
+}
+.project-stack-panel[data-animate='true'] .leak-patch.is-visible .patch-arrival {
+  animation: attach-pressure-patch 650ms cubic-bezier(0.2, 0.7, 0.25, 1) both;
+}
+.project-stack-panel[data-animate='true'] .leak-patch.is-visible .patch-fastening {
+  animation: fasten-pressure-patch 450ms 450ms ease-out both;
+}
+.project-stack-panel[data-animate='true'] .pressure-leak:not(.is-visible) {
+  transform: none;
+  transition: opacity 450ms 400ms ease;
+}
+@keyframes attach-pressure-patch {
+  0% {
+    transform: translate(var(--patch-x), var(--patch-y)) scale(1.08);
+    opacity: 0;
+  }
+  65% {
+    opacity: 1;
+  }
+  82% {
+    transform: translate(0, 0) scale(1);
+  }
+  90% {
+    transform: translate(1px, -1px) scale(1);
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+}
+@keyframes fasten-pressure-patch {
+  0% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 0.85;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .project-stack-panel[data-animate='true'] .leak-patch.is-visible .patch-arrival,
+  .project-stack-panel[data-animate='true'] .leak-patch.is-visible .patch-fastening {
+    animation: none;
+  }
+  .project-stack-panel[data-animate='true'] .pressure-leak:not(.is-visible) {
+    transition: none;
+  }
+}
+
+/* Repairs overlap: another vent opens before the current one is sealed. */
+.project-stack-art .chase-vent {
+  opacity: 0.7;
+}
+.project-stack-art .chase-patch {
+  opacity: 0;
+}
+.project-stack-panel .repair-chase.is-visible .chase-vent {
+  animation: chase-vent 8.8s var(--chase-delay) linear infinite;
+}
+.project-stack-panel .repair-chase.is-visible .chase-patch {
+  animation: chase-patch 8.8s var(--chase-delay) linear infinite;
+}
+.project-stack-panel .repair-chase.is-visible .pressure-fog-particle {
+  animation: pressure-fog-flow var(--fog-time) var(--fog-delay) linear infinite;
+}
+@keyframes chase-vent {
+  0% {
+    opacity: 0;
+  }
+  7%,
+  34% {
+    opacity: 0.9;
+  }
+  44%,
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes chase-patch {
+  0%,
+  28% {
+    opacity: 0;
+    transform: translate(var(--patch-x), var(--patch-y));
+  }
+  37% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+  39% {
+    transform: translate(1px, -1px);
+  }
+  42%,
+  93% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(0, 0);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .project-stack-panel .repair-chase.is-visible .chase-vent,
+  .project-stack-panel .repair-chase.is-visible .chase-patch,
+  .project-stack-panel .repair-chase.is-visible .pressure-fog-particle {
+    animation: none;
+  }
+}

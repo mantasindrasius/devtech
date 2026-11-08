@@ -1,0 +1,206 @@
+.spaceship-panel .feature-removal,
+.spaceship-panel .maintenance-ladder,
+.spaceship-panel .maintenance-engineer,
+.spaceship-panel .removed-feature-hole,
+.spaceship-panel .engineer-installed-patch,
+.spaceship-panel .unbolted-leak {
+  animation-duration: var(--maintenance-cycle);
+  animation-delay: var(--layer-start);
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
+}
+.spaceship-panel .feature-removal {
+  animation-name: remove-unwanted-feature;
+  animation-timing-function: linear;
+}
+.spaceship-panel .spacecraft-build .attached-feature.build-layer {
+  animation-duration: 1ms;
+}
+/* The physical feature is the projectile; do not crossfade it from a code chip. */
+.spaceship-panel .spacecraft-build .attached-feature .feature-docking,
+.spaceship-panel .spacecraft-build .attached-feature .feature-creature,
+.spaceship-panel .spacecraft-build .attached-feature .feature-code-seed {
+  animation: none !important;
+}
+.spaceship-panel .spacecraft-build .attached-feature .feature-creature {
+  opacity: 1;
+}
+.spaceship-panel .spacecraft-build .attached-feature .feature-code-seed {
+  opacity: 0;
+}
+.spaceship-panel .impact-clamp {
+  animation: impact-fastening var(--maintenance-cycle) var(--layer-start) linear infinite both;
+}
+.spaceship-panel .spacecraft-build .attached-feature .auto-bolt {
+  animation-duration: 120ms;
+  animation-delay: calc(var(--layer-start) + 240ms) !important;
+}
+.spaceship-panel .spacecraft-build .attached-feature .auto-mount {
+  animation-duration: 80ms;
+  animation-delay: calc(var(--layer-start) + 200ms) !important;
+}
+.spaceship-panel .spacecraft-build .attached-feature .auto-driver {
+  display: none;
+}
+.spaceship-panel .maintenance-ladder {
+  animation-name: raise-maintenance-ladder;
+}
+.spaceship-panel .maintenance-engineer {
+  animation-name: climb-and-repair;
+}
+.spaceship-panel .removed-feature-hole {
+  animation-name: expose-feature-hole;
+}
+.spaceship-panel .engineer-installed-patch {
+  animation-name: seal-feature-hole;
+}
+.spaceship-panel .unbolted-leak {
+  animation-name: expose-feature-hole;
+}
+.spaceship-panel .engineer-wrench {
+  transform-origin: 12px -13px;
+  animation: turn-maintenance-wrench 550ms ease-in-out infinite alternate;
+}
+@keyframes remove-unwanted-feature {
+  0% {
+    opacity: 0;
+    transform: translate(var(--shot-x), var(--shot-y));
+  }
+  .15% {
+    opacity: 1;
+  }
+  .8% {
+    opacity: 1;
+    transform: translate(0, 0);
+    filter: brightness(2);
+  }
+  1% {
+    transform: translate(3px, 0);
+    filter: brightness(1.3);
+  }
+  1.3%,
+  47% {
+    opacity: 1;
+    transform: translate(0, 0);
+    filter: brightness(1);
+  }
+  52% {
+    opacity: 1;
+    transform: translate(-24px, 12px) rotate(-8deg);
+  }
+  65% {
+    opacity: 0;
+    transform: translate(-45px, var(--carry-distance)) scale(0.75);
+  }
+  66%,
+  100% {
+    opacity: 0;
+    transform: translate(-45px, var(--carry-distance)) scale(0.75);
+  }
+}
+@keyframes impact-fastening {
+  0%,
+  .7% {
+    opacity: 0;
+    transform: translateY(-9px);
+  }
+  1.1%,
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes raise-maintenance-ladder {
+  0%,
+  20% {
+    opacity: 0;
+    transform: rotate(-75deg);
+  }
+  29%,
+  79% {
+    opacity: 1;
+    transform: rotate(0);
+  }
+  90%,
+  100% {
+    opacity: 0;
+    transform: rotate(-75deg);
+  }
+}
+@keyframes climb-and-repair {
+  0%,
+  20% {
+    opacity: 0;
+    transform: translate(-55px, 0);
+  }
+  29% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+  43%,
+  67% {
+    opacity: 1;
+    transform: translate(var(--climb-x), var(--climb-y));
+  }
+  79% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+  90%,
+  100% {
+    opacity: 0;
+    transform: translate(-55px, 0);
+  }
+}
+@keyframes expose-feature-hole {
+  0%,
+  48% {
+    opacity: 0;
+  }
+  51%,
+  60% {
+    opacity: 1;
+  }
+  65%,
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes seal-feature-hole {
+  0%,
+  59% {
+    opacity: 0;
+  }
+  65%,
+  94% {
+    opacity: 1;
+  }
+  99%,
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes turn-maintenance-wrench {
+  from {
+    transform: rotate(-12deg);
+  }
+  to {
+    transform: rotate(12deg);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .spaceship-panel .feature-removal,
+  .spaceship-panel .impact-clamp,
+  .spaceship-panel .maintenance-ladder,
+  .spaceship-panel .maintenance-engineer,
+  .spaceship-panel .removed-feature-hole,
+  .spaceship-panel .engineer-installed-patch,
+  .spaceship-panel .unbolted-leak,
+  .spaceship-panel .engineer-wrench {
+    animation: none;
+  }
+  .spaceship-panel .removed-feature-hole,
+  .spaceship-panel .unbolted-leak {
+    opacity: 0;
+  }
+}

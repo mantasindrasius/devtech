@@ -31,8 +31,8 @@ function loadResources(definitions, assets, renderers) {
 }
 
 function validateSlide(slide, resources, actions, renderers) {
-  if (slide.layout !== undefined && !['standard', 'visual'].includes(slide.layout))
-    throw new Error(`${slide.id}.layout must be standard or visual`);
+  if (slide.layout !== undefined && !['standard', 'visual', 'chapter'].includes(slide.layout))
+    throw new Error(`${slide.id}.layout must be standard, visual or chapter`);
   for (const field of ['name', 'label', 'description', 'takeaway'])
     requireText(slide[field], `${slide.id}.${field}`);
   if (!Array.isArray(slide.title) || !slide.title.length)
@@ -62,11 +62,11 @@ function validateSlide(slide, resources, actions, renderers) {
 
 function validateStep(step, slide, resources, actions, renderers) {
   requireText(step.label, `${slide.id}.${step.id}.label`);
-  if (step.description !== undefined) requireText(step.description, `${slide.id}.${step.id}.description`);
+  if (step.description !== undefined)
+    requireText(step.description, `${slide.id}.${step.id}.description`);
   if (step.panel !== undefined && !resources[step.panel])
     throw new Error(`Unknown panel resource: ${step.panel}`);
-  if (step.panel !== undefined)
-    renderers.get(resources[step.panel].type).validateStep?.(step);
+  if (step.panel !== undefined) renderers.get(resources[step.panel].type).validateStep?.(step);
   if (
     step.reveal !== undefined &&
     (!Array.isArray(step.reveal) ||

@@ -1,0 +1,9 @@
+flowchart LR
+ Change[Change / deployment ID] --> Trace[Trace across capabilities]
+ Trace --> Latency[Latency and error budget]
+ Trace --> Profile[CPU / memory profiles]
+ Trace --> Outcome[Product success metric]
+ Latency --> Decision[Fix the evidenced bottleneck]
+ Profile --> Decision
+ Outcome --> Decision
+ Decision --> Proof[Regression test and comparison]

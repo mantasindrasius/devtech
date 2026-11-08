@@ -1,0 +1,68 @@
+/* Keep the vessel intact while pressure ejects its cap and temporary repairs. */
+.project-stack-panel.is-exploding .tier-last {
+  opacity: 0;
+  transform: translate(100px, -420px) rotate(24deg);
+  transform-origin: 320px 110px;
+}
+.project-stack-panel.is-exploding .patch-arrival,
+.project-stack-panel.is-exploding .chase-patch {
+  opacity: 0;
+  transform: translate(var(--eject-x), var(--eject-y)) rotate(var(--eject-spin));
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.project-stack-panel.is-exploding .repair-chase.is-visible .chase-patch {
+  animation: none;
+}
+.project-stack-panel.is-exploding .chase-vent,
+.project-stack-panel.is-exploding .patch-fastening {
+  display: none;
+}
+.project-stack-panel.is-exploding[data-animate='true'] .tier-last {
+  animation: eject-pressure-lid 1300ms cubic-bezier(0.2, 0.6, 0.4, 1) both;
+}
+.project-stack-panel.is-exploding[data-animate='true'] .leak-patch.is-visible .patch-arrival,
+.project-stack-panel.is-exploding[data-animate='true'] .repair-chase.is-visible .chase-patch {
+  animation: eject-pressure-repair 1050ms 80ms ease-out both;
+}
+.project-stack-panel.is-exploding .lid-steam .pressure-fog-particle {
+  animation: pressure-fog-flow var(--fog-time) var(--fog-delay) linear infinite;
+}
+@keyframes eject-pressure-lid {
+  0% {
+    transform: translate(0, 0) rotate(0);
+    opacity: 1;
+  }
+  12% {
+    transform: translate(0, -10px) rotate(-2deg);
+    opacity: 1;
+  }
+  60% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(100px, -420px) rotate(24deg);
+    opacity: 0;
+  }
+}
+@keyframes eject-pressure-repair {
+  0% {
+    transform: translate(0, 0) rotate(0);
+    opacity: 1;
+  }
+  65% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--eject-x), var(--eject-y)) rotate(var(--eject-spin));
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .project-stack-panel.is-exploding[data-animate='true'] .tier-last,
+  .project-stack-panel.is-exploding[data-animate='true'] .leak-patch.is-visible .patch-arrival,
+  .project-stack-panel.is-exploding[data-animate='true'] .repair-chase.is-visible .chase-patch,
+  .project-stack-panel.is-exploding .lid-steam .pressure-fog-particle {
+    animation: none;
+  }
+}

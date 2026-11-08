@@ -1,0 +1,206 @@
+/* Scoped material palette keeps the technical illustration legible in both themes. */
+.project-stack-art {
+  color: #9eb8c7;
+}
+.project-stack-art .block,
+.project-stack-art .shell-ring,
+.project-stack-art .service-shell,
+.project-stack-art .service-ring {
+  fill: url(#project-metal);
+  stroke: #95afbd;
+  stroke-width: 1.8;
+}
+.project-stack-art .shell-belt,
+.project-stack-art .island-ground {
+  fill: url(#project-rim);
+  stroke: #9bb2be;
+  stroke-width: 1.5;
+}
+.project-stack-art .internal-module,
+.project-stack-art .service-module {
+  fill: #1d3442;
+  stroke: #7594a5;
+  stroke-width: 1;
+}
+.project-stack-art .module-label,
+.project-stack-art .service-module-label {
+  fill: #d8e6eb;
+  font-size: 16px;
+  font-weight: 400;
+}
+.project-stack-art .monolith-label {
+  fill: #132c3b;
+  font: 600 15px monospace;
+  letter-spacing: 3px;
+}
+.project-stack-art .block-detail {
+  fill: #d2e0e7;
+  font-size: 12px;
+}
+.project-stack-art .ring-rib,
+.project-stack-art .shell-rivet,
+.project-stack-art .sketch-line {
+  stroke: #8fa9b9;
+  stroke-width: 1;
+}
+.project-stack-art .pipe-outer,
+.project-stack-art .network-pipe-outer {
+  stroke: #111f2b;
+  stroke-width: 12;
+}
+.project-stack-art .pipe-inner,
+.project-stack-art .network-pipe-inner {
+  stroke: #9eb4be;
+  stroke-width: 7;
+  filter: drop-shadow(0 1px 1px #0008);
+}
+.project-stack-art .bandage,
+.project-stack-art .bandage-pad,
+.project-stack-art .patch-plate,
+.project-stack-art .repair-clamp,
+.project-stack-art .patch-sticker {
+  fill: url(#project-patch);
+  stroke: #c1ad8e;
+  stroke-width: 1;
+  rx: 2;
+}
+.project-stack-art .pipe-collar {
+  fill: #9b896f;
+  stroke: #c1ad8e;
+  stroke-width: 1;
+}
+.project-stack-art .bandage-hole {
+  fill: #273b46;
+}
+.project-stack-art .repair-band {
+  stroke: #d1bea1;
+  stroke-width: 2;
+}
+.project-stack-art .workaround-label,
+.project-stack-art .support-label,
+.project-stack-art .repair-label,
+.project-stack-art .sticker-label {
+  fill: var(--muted, #b4bec6);
+  font-size: 11px;
+  letter-spacing: 1px;
+}
+.project-stack-art .service-name {
+  fill: var(--text, #d0e0e8);
+  font-size: 14px;
+  font-weight: 500;
+}
+.project-stack-art .rewrite-heading {
+  fill: var(--text, #d0e0e8);
+  font:
+    500 22px 'Space Grotesk',
+    sans-serif;
+  letter-spacing: -0.4px;
+}
+.project-stack-art .rewrite-heading path {
+  stroke: var(--blue, #7398af);
+}
+.project-stack-art .support-stick {
+  stroke: #718a99;
+  stroke-width: 9;
+}
+.project-stack-art .support-grip {
+  stroke: #a0b4be;
+  stroke-width: 13;
+}
+.project-stack-art .support-bolt {
+  fill: #d2dde2;
+  stroke: #3c5667;
+}
+.project-stack-art .fracture,
+.project-stack-art .patched-crack {
+  stroke: #ec9b7b;
+  stroke-width: 2.5;
+}
+.project-stack-art .failure-ring {
+  stroke: #d68d72;
+  stroke-width: 2.5;
+}
+.project-stack-art .burst-flash {
+  fill: #e6af83;
+  fill-opacity: 0.65;
+  stroke: #ffe3bd;
+  stroke-width: 1;
+}
+.project-stack-art .burst-label {
+  fill: var(--error, #dfaa91);
+  font-size: 14px;
+}
+.project-stack-art .underwater-label {
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+.project-stack-panel.is-supported .failure-ring {
+  stroke: #8fa9b9;
+}
+.project-stack-panel.is-supported .internal-module.block-failure {
+  fill: #1d3442;
+  stroke: #7594a5;
+}
+.project-stack-panel.is-supported .failure-module-label {
+  fill: #d8e6eb;
+}
+.project-stack-panel[data-animate='true'] .project-stack-art [data-appears-at] {
+  transition:
+    opacity 600ms ease,
+    transform 1000ms cubic-bezier(0.22, 0.7, 0.2, 1);
+}
+.project-stack-art [data-appears-at]:not(.is-visible) {
+  transform: translateY(-14px);
+}
+.project-stack-panel.is-first-burst .burst-one,
+.project-stack-panel.is-second-burst .burst-two {
+  animation: technical-pressure-release 1.2s ease-out infinite;
+}
+@keyframes technical-pressure-release {
+  from {
+    opacity: 0.9;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 0.3;
+    transform: scale(1.04);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .project-stack-panel[data-animate='true'] .project-stack-art [data-appears-at] {
+    transition: none;
+  }
+  .project-stack-panel.is-first-burst .burst-one,
+  .project-stack-panel.is-second-burst .burst-two {
+    animation: none;
+  }
+}
+
+.project-stack-art .repair-plate {
+  fill: url(#project-patch);
+  stroke: #c2d0d7;
+  stroke-width: 1;
+}
+.project-stack-art .repair-weld {
+  fill: none;
+  stroke: #3c5362;
+  stroke-width: 1.5;
+  stroke-dasharray: 2 1;
+}
+.project-stack-art .repair-rivet {
+  fill: #e0e8ec;
+  stroke: #304856;
+  stroke-width: 0.8;
+}
+.project-stack-art .rivet-slot {
+  fill: none;
+  stroke: #405763;
+  stroke-width: 0.7;
+}
+.project-stack-art .repair-clamp,
+.project-stack-art .patch-sticker {
+  stroke: #bdcdd5;
+}
+.project-stack-art .repair-band {
+  stroke: #d4e0e6;
+}

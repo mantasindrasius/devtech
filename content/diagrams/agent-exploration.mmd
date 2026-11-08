@@ -1,0 +1,7 @@
+flowchart TD
+  Task[Task and acceptance criteria] --> Map[Repository map and local instructions]
+  Map --> Entry[Public interface]
+  Entry --> Slice[Implementation and dependencies]
+  Slice --> Tests[Tests and runnable examples]
+  Tests --> Change[Small change and verification]
+  Tests -. missing knowledge .-> Map

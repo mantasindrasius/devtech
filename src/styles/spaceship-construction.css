@@ -1,0 +1,62 @@
+.spaceship-panel .installed-part {
+  fill: url(#ship-metal);
+  stroke: #bdd0da;
+  stroke-width: 1.4;
+  stroke-linejoin: round;
+}
+.spaceship-panel .hardware-impact-bolts {
+  fill: #e8f2f6;
+  stroke: #435c6b;
+  stroke-width: 0.8;
+}
+.spaceship-panel[data-animate='true'] .ship-construction.is-visible .hardware-impact-bolts {
+  animation: snap-hardware-bolts 80ms ease-out both;
+  animation-delay: calc(var(--arrival-delay) + var(--build-offset, 0s) + 240ms);
+}
+@keyframes snap-hardware-bolts {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.spaceship-panel[data-animate='true'] .ship-construction.is-visible .change-packet {
+  animation: install-code-change 240ms ease-in both;
+  animation-delay: calc(var(--arrival-delay) + var(--build-offset, 0s));
+}
+.spaceship-panel[data-animate='true'] .ship-construction.is-visible .installed-part {
+  animation: install-hardware 300ms cubic-bezier(0.65, 0, 0.9, 0.5) both;
+  animation-delay: calc(var(--arrival-delay) + var(--build-offset, 0s));
+}
+@keyframes install-hardware {
+  from {
+    opacity: 0;
+    transform: translate(var(--change-x), var(--change-y));
+  }
+  10% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+    transform: translate(0, 0);
+    filter: brightness(2.2);
+  }
+  88% {
+    transform: translate(2px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate(0, 0);
+    filter: brightness(1);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .spaceship-panel[data-animate='true'] .ship-construction.is-visible .change-packet,
+  .spaceship-panel[data-animate='true'] .ship-construction.is-visible .hardware-impact-bolts,
+  .spaceship-panel[data-animate='true'] .ship-construction.is-visible .installed-part {
+    animation: none;
+  }
+}

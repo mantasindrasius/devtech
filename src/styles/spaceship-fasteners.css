@@ -1,0 +1,101 @@
+.spaceship-panel .mount-gusset {
+  fill: url(#ship-metal);
+  stroke: #a5bdc9;
+  stroke-width: 1;
+}
+.spaceship-panel .hull-anchor-plate {
+  fill: url(#ship-shell);
+  stroke: #d6e5eb;
+  stroke-width: 1;
+}
+.spaceship-panel .bolt-washer {
+  fill: #435f70;
+  stroke: #acbfca;
+  stroke-width: 0.8;
+}
+.spaceship-panel .bolt-head {
+  fill: #ecf2f5;
+  stroke: #3b5363;
+  stroke-width: 0.8;
+}
+.spaceship-panel .bolt-drive {
+  fill: none;
+  stroke: #4d6475;
+  stroke-width: 0.9;
+}
+.spaceship-panel .driver-body {
+  fill: #203d50;
+  stroke: #b4c9d3;
+  stroke-width: 1;
+}
+.spaceship-panel .driver-stripe {
+  stroke: #e2bd6f;
+  stroke-width: 3;
+}
+.spaceship-panel .auto-driver {
+  opacity: 0;
+}
+.spaceship-panel[data-animate='true'] .attached-feature.is-visible .auto-mount {
+  animation: prepare-mount 600ms ease-out both;
+}
+.spaceship-panel[data-animate='true'] .attached-feature.is-visible .auto-bolt {
+  animation: tighten-feature-bolt 650ms var(--bolt-delay) ease-out both;
+}
+.spaceship-panel[data-animate='true'] .attached-feature.is-visible .auto-driver {
+  animation: automatic-fastening 1400ms 900ms ease-in-out both;
+}
+@keyframes prepare-mount {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes tighten-feature-bolt {
+  0% {
+    transform: translateY(-12px) rotate(-270deg) scale(1.25);
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  75% {
+    transform: translateY(0) rotate(-35deg) scale(1);
+  }
+  100% {
+    transform: translateY(0) rotate(0) scale(1);
+    opacity: 1;
+  }
+}
+@keyframes automatic-fastening {
+  0% {
+    transform: translateX(var(--driver-offset));
+    opacity: 0;
+  }
+  20% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  30%,
+  65% {
+    transform: translateX(0) rotate(-3deg);
+    opacity: 1;
+  }
+  45%,
+  75% {
+    transform: translateX(0) rotate(3deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(var(--driver-offset));
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .spaceship-panel[data-animate='true'] .attached-feature.is-visible .auto-mount,
+  .spaceship-panel[data-animate='true'] .attached-feature.is-visible .auto-bolt,
+  .spaceship-panel[data-animate='true'] .attached-feature.is-visible .auto-driver {
+    animation: none;
+  }
+}

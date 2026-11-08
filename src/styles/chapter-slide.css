@@ -1,0 +1,46 @@
+#slide[data-layout='chapter'] {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: 1fr;
+  align-items: center;
+  min-height: calc(100svh - 190px);
+  padding: clamp(40px, 7vw, 130px);
+  background: radial-gradient(ellipse at 85% 20%, var(--selected, #263020), transparent 65%);
+}
+
+#slide[data-layout='chapter'] > :not(.slide-copy) {
+  display: none !important;
+}
+
+#slide[data-layout='chapter'] .slide-copy {
+  padding: 0;
+  max-width: 1200px;
+}
+
+#slide[data-layout='chapter'] #eyebrow {
+  font-size: clamp(16px, 1.3vw, 26px);
+  letter-spacing: 0.18em;
+  margin-bottom: 40px;
+}
+
+#slide[data-layout='chapter'] #title {
+  font-size: clamp(60px, 8vw, 160px);
+  line-height: 1.03;
+  letter-spacing: -0.045em;
+  margin-bottom: 36px;
+}
+
+#slide[data-layout='chapter'] #description {
+  max-width: 38ch;
+  font-size: clamp(24px, 2.2vw, 42px);
+  line-height: 1.4;
+}
+
+#slide[data-layout='chapter'] #author,
+#slide[data-layout='chapter'] .principles {
+  display: none;
+}
+
+:root.presenting #slide[data-layout='chapter'] {
+  min-height: 100svh;
+}

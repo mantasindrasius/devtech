@@ -12,5 +12,20 @@
 @import './styles/stage-type.css';
 
 @import './styles/example-banner.css';
+@import './styles/visual-slide.css';
 @import './styles/project-stack.css';
 @import './styles/project-network.css';
+@import './styles/technical-illustration.css';
+@import './styles/spaceship-project.css';
+@import './styles/spaceship-effects.css';
+
+@import './styles/pipe-hardware.css';
+@import './styles/project-pressure.css';
+@import './styles/project-blowout.css';
+@import './styles/service-ocean.css';
+@import './styles/spaceship-changes.css';
+@import './styles/spaceship-fasteners.css';
+@import './styles/spaceship-construction.css';
+@import './styles/spacecraft-build.css';
+@import './styles/spacecraft-maintenance.css';
+@import './styles/chapter-slide.css';
