@@ -51,7 +51,7 @@ function validateSlide(slide, resources, actions, renderers) {
     if (!Array.isArray(slide.principles)) throw new Error(`${slide.id}.principles must be a list`);
     slide.principles.forEach((value) => requireText(value, 'principle'));
   }
-  for (const field of ['author', 'runnable']) {
+  for (const field of ['author', 'runnable', 'hidden']) {
     if (slide[field] !== undefined && typeof slide[field] !== 'boolean')
       throw new Error(`${slide.id}.${field} must be boolean`);
   }

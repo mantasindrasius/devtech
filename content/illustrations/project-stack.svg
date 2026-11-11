@@ -1100,34 +1100,32 @@
     </g>
   </g>
   <g data-appears-at="16" class="service-links">
-    <path d="M833 463C911 470 930 345 1017 345" class="network-pipe-outer" />
-    <path d="M833 463C911 470 930 345 1017 345" class="network-pipe-inner" />
-    <path d="M833 463C911 470 930 345 1017 345" class="pipe-specular" />
-    <path d="M833 463C911 470 930 345 1017 345" class="pipe-welds" />
-    <path d="M1103 346C1160 337 1110 534 1160 534" class="network-pipe-outer" />
-    <path d="M1103 346C1160 337 1110 534 1160 534" class="network-pipe-inner" />
-    <path d="M1103 346C1160 337 1110 534 1160 534" class="pipe-specular" />
-    <path d="M1103 346C1160 337 1110 534 1160 534" class="pipe-welds" />
-    <path d="M785 345C807 225 1000 215 1060 250" class="network-pipe-outer" />
-    <path d="M785 345C807 225 1000 215 1060 250" class="network-pipe-inner" />
-    <path d="M785 345C807 225 1000 215 1060 250" class="pipe-specular" />
-    <path d="M785 345C807 225 1000 215 1060 250" class="pipe-welds" />
-    <path d="M1102 252C1202 203 1298 270 1245 388" class="network-pipe-outer" />
-    <path d="M1102 252C1202 203 1298 270 1245 388" class="network-pipe-inner" />
-    <path d="M1102 252C1202 203 1298 270 1245 388" class="pipe-specular" />
-    <path d="M1102 252C1202 203 1298 270 1245 388" class="pipe-welds" />
-    <use href="#hardware-project-stack-flange" transform="translate(879.00 450.01) rotate(-34.87)" />
-    <use href="#hardware-project-stack-flange" transform="translate(929.29 397.52) rotate(-49.56)" />
-    <use href="#hardware-project-stack-flange" transform="translate(971.94 357.94) rotate(-31.48)" />
-    <use href="#hardware-project-stack-flange" transform="translate(1127.87 367.58) rotate(73.79)" />
-    <use href="#hardware-project-stack-flange" transform="translate(1134.39 451.05) rotate(88.85)" />
-    <use href="#hardware-project-stack-flange" transform="translate(1140.34 513.58) rotate(73.74)" />
-    <use href="#hardware-project-stack-flange" transform="translate(823.62 278.87) rotate(-40.73)" />
-    <use href="#hardware-project-stack-flange" transform="translate(925.90 236.01) rotate(-8.98)" />
-    <use href="#hardware-project-stack-flange" transform="translate(1010.47 234.92) rotate(8.11)" />
-    <use href="#hardware-project-stack-flange" transform="translate(1168.60 235.81) rotate(0.58)" />
-    <use href="#hardware-project-stack-flange" transform="translate(1239.25 265.61) rotate(48.72)" />
-    <use href="#hardware-project-stack-flange" transform="translate(1260.08 323.84) rotate(89.52)" />
+    <path d="M833 463L915 463L915 345L1017 345" class="network-pipe-outer" />
+    <path d="M833 463L915 463L915 345L1017 345" class="network-pipe-inner" />
+    <path d="M833 463L915 463L915 345L1017 345" class="pipe-specular" />
+    <path d="M833 463L915 463L915 345L1017 345" class="pipe-welds" />
+    <use href="#hardware-project-stack-flange" transform="translate(874 463) rotate(0)" />
+    <use href="#hardware-project-stack-flange" transform="translate(915 404) rotate(90)" />
+    <use href="#hardware-project-stack-flange" transform="translate(966 345) rotate(0)" />
+    <path d="M1103 346L1134 346L1134 534L1160 534" class="network-pipe-outer" />
+    <path d="M1103 346L1134 346L1134 534L1160 534" class="network-pipe-inner" />
+    <path d="M1103 346L1134 346L1134 534L1160 534" class="pipe-specular" />
+    <path d="M1103 346L1134 346L1134 534L1160 534" class="pipe-welds" />
+    <use href="#hardware-project-stack-flange" transform="translate(1134 440) rotate(90)" />
+    <path d="M785 345L785 225L1060 225L1060 250" class="network-pipe-outer" />
+    <path d="M785 345L785 225L1060 225L1060 250" class="network-pipe-inner" />
+    <path d="M785 345L785 225L1060 225L1060 250" class="pipe-specular" />
+    <path d="M785 345L785 225L1060 225L1060 250" class="pipe-welds" />
+    <use href="#hardware-project-stack-flange" transform="translate(785 285) rotate(90)" />
+    <use href="#hardware-project-stack-flange" transform="translate(922.5 225) rotate(0)" />
+    <path d="M1102 252L1102 205L1280 205L1280 388L1245 388" class="network-pipe-outer" />
+    <path d="M1102 252L1102 205L1280 205L1280 388L1245 388" class="network-pipe-inner" />
+    <path d="M1102 252L1102 205L1280 205L1280 388L1245 388" class="pipe-specular" />
+    <path d="M1102 252L1102 205L1280 205L1280 388L1245 388" class="pipe-welds" />
+    <use href="#hardware-project-stack-flange" transform="translate(1102 228.5) rotate(90)" />
+    <use href="#hardware-project-stack-flange" transform="translate(1191 205) rotate(0)" />
+    <use href="#hardware-project-stack-flange" transform="translate(1280 296.5) rotate(90)" />
+    <use href="#hardware-project-stack-flange" transform="translate(1262.5 388) rotate(0)" />
   </g>
   <g class="service-ocean" data-appears-at="14">
     <path d="M615 578C708 552 796 554 879 513S1020 425 1080 446S1165 580 1240 612S1385 626 1420 650C1370 698 1220 714 1100 697S881 674 775 648S630 624 615 578Z" class="ocean-surface" mask="url(#water-below-components)" />
@@ -1298,45 +1296,40 @@
     </g>
   </g>
   <g data-appears-at="19" class="underwater-network">
-    <path d="M756 574C714 634 829 677 913 619S1031 534 1045 480" class="network-pipe-outer" />
-    <path d="M756 574C714 634 829 677 913 619S1031 534 1045 480" class="network-pipe-inner" />
-    <path d="M756 574C714 634 829 677 913 619S1031 534 1045 480" class="pipe-specular" />
-    <path d="M756 574C714 634 829 677 913 619S1031 534 1045 480" class="pipe-welds" />
-    <path d="M1080 482C1125 548 1052 635 1149 675S1265 682 1235 645" class="network-pipe-outer" />
-    <path d="M1080 482C1125 548 1052 635 1149 675S1265 682 1235 645" class="network-pipe-inner" />
-    <path d="M1080 482C1125 548 1052 635 1149 675S1265 682 1235 645" class="pipe-specular" />
-    <path d="M1080 482C1125 548 1052 635 1149 675S1265 682 1235 645" class="pipe-welds" />
-    <path d="M817 588C891 696 1068 571 1181 648" class="network-pipe-outer" />
-    <path d="M817 588C891 696 1068 571 1181 648" class="network-pipe-inner" />
-    <path d="M817 588C891 696 1068 571 1181 648" class="pipe-specular" />
-    <path d="M817 588C891 696 1068 571 1181 648" class="pipe-welds" />
+    <path d="M756 574L756 620L1045 620L1045 480" class="network-pipe-outer" />
+    <path d="M756 574L756 620L1045 620L1045 480" class="network-pipe-inner" />
+    <path d="M756 574L756 620L1045 620L1045 480" class="pipe-specular" />
+    <path d="M756 574L756 620L1045 620L1045 480" class="pipe-welds" />
+    <use href="#hardware-project-stack-flange" transform="translate(756 597) rotate(90)" />
+    <use href="#hardware-project-stack-flange" transform="translate(900.5 620) rotate(0)" />
+    <use href="#hardware-project-stack-flange" transform="translate(1045 550) rotate(90)" />
+    <path d="M1080 482L1115 482L1115 675L1235 675L1235 645" class="network-pipe-outer" />
+    <path d="M1080 482L1115 482L1115 675L1235 675L1235 645" class="network-pipe-inner" />
+    <path d="M1080 482L1115 482L1115 675L1235 675L1235 645" class="pipe-specular" />
+    <path d="M1080 482L1115 482L1115 675L1235 675L1235 645" class="pipe-welds" />
+    <use href="#hardware-project-stack-flange" transform="translate(1097.5 482) rotate(0)" />
+    <use href="#hardware-project-stack-flange" transform="translate(1115 578.5) rotate(90)" />
+    <use href="#hardware-project-stack-flange" transform="translate(1175 675) rotate(0)" />
+    <path d="M817 588L817 650L1181 650L1181 648" class="network-pipe-outer" />
+    <path d="M817 588L817 650L1181 650L1181 648" class="network-pipe-inner" />
+    <path d="M817 588L817 650L1181 650L1181 648" class="pipe-specular" />
+    <path d="M817 588L817 650L1181 650L1181 648" class="pipe-welds" />
+    <use href="#hardware-project-stack-flange" transform="translate(817 619) rotate(90)" />
+    <use href="#hardware-project-stack-flange" transform="translate(999 650) rotate(0)" />
     <text x="1090" y="704" class="underwater-label">HIDDEN COUPLING</text>
-    <use href="#hardware-project-stack-flange" transform="translate(779.40 637.83) rotate(22.99)" />
-    <use href="#hardware-project-stack-flange" transform="translate(934.49 604.05) rotate(-35.10)" />
-    <use href="#hardware-project-stack-flange" transform="translate(1015.63 536.80) rotate(-49.58)" />
-    <use href="#hardware-project-stack-flange" transform="translate(1095.23 579.79) rotate(92.11)" />
-    <use href="#hardware-project-stack-flange" transform="translate(1173.32 684.08) rotate(18.24)" />
-    <use href="#hardware-project-stack-flange" transform="translate(1245.19 683.74) rotate(-55.76)" />
-    <use href="#hardware-project-stack-flange" transform="translate(882.37 630.84) rotate(11.96)" />
-    <use href="#hardware-project-stack-flange" transform="translate(1004.79 627.13) rotate(-6.97)" />
-    <use href="#hardware-project-stack-flange" transform="translate(1106.86 622.56) rotate(5.89)" />
   </g>
-  <g transform="translate(40 -61)">
+  <g transform="translate(40 -70)">
     <g class="pipe-burst burst-one" data-appears-at="17">
       <path class="burst-flash" d="m913 416 12-28 7 20 21-18-4 26 29-1-26 15 14 24-26-13-13 24-5-28-27 10z" />
       <text class="burst-label" x="911" y="373">BURST!</text>
     </g>
   </g>
-  <g transform="translate(40 -61)">
-    <g class="network-repair repair-one" data-appears-at="18">
-      <path class="repair-clamp" d="M916 396q15-11 27-5l12 34q-14 11-27 5z" data-riveted="true" />
-      <path class="repair-band" d="M920 406q15-11 29-5m-25 17q15-10 28-5" />
-      <text class="repair-label" x="881" y="454">QUICK FIX</text>
-      <circle cx="922" cy="399" r="2" class="repair-rivet" />
-      <circle cx="938" cy="396" r="2" class="repair-rivet" />
-      <circle cx="933" cy="425" r="2" class="repair-rivet" />
-      <circle cx="948" cy="421" r="2" class="repair-rivet" />
-    </g>
+  <g class="network-repair repair-one" data-appears-at="18">
+    <rect x="961" y="337" width="28" height="16" rx="4" class="repair-clamp"/>
+    <path d="M967 337v16m16-16v16" class="repair-band"/>
+    <circle cx="967" cy="341" r="2" class="repair-rivet"/>
+    <circle cx="983" cy="349" r="2" class="repair-rivet"/>
+    <text x="941" y="383" class="repair-label">QUICK FIX</text>
   </g>
   <g transform="translate(20 -25)">
     <g class="underwater-gas" data-appears-at="20" data-disappears-at="21">
@@ -1417,31 +1410,27 @@
       </g>
     </g>
   </g>
-  <g transform="translate(20 -25)">
-    <g class="network-repair repair-two" data-appears-at="21">
-      <path class="repair-clamp" d="M1080 636q15-8 27-2l10 30q-14 10-27 3z" data-riveted="true" />
-      <path class="repair-band" d="M1084 645q15-8 28-2m-25 15q14-8 27-2" />
-      <text class="repair-label" x="1191" y="693">WORKAROUND</text>
-      <circle cx="1086" cy="640" r="2" class="repair-rivet" />
-      <circle cx="1103" cy="638" r="2" class="repair-rivet" />
-      <circle cx="1094" cy="662" r="2" class="repair-rivet" />
-      <circle cx="1111" cy="658" r="2" class="repair-rivet" />
-    </g>
+  <g class="network-repair repair-two" data-appears-at="21">
+    <rect x="1107" y="611" width="16" height="28" rx="4" class="repair-clamp"/>
+    <path d="M1107 617h16m-16 16h16" class="repair-band"/>
+    <circle cx="1111" cy="617" r="2" class="repair-rivet"/>
+    <circle cx="1119" cy="633" r="2" class="repair-rivet"/>
+    <text x="1170" y="701" class="repair-label">WORKAROUND</text>
   </g>
   <g data-appears-at="22" class="service-sprawl">
-    <path d="M730 518C660 535 665 403 722 392" class="network-pipe-outer" />
-    <path d="M730 518C660 535 665 403 722 392" class="network-pipe-inner" />
-    <path d="M730 518C660 535 665 403 722 392" class="pipe-specular" />
-    <path d="M730 518C660 535 665 403 722 392" class="pipe-welds" />
-    <path d="M1300 552C1400 549 1370 431 1324 430" class="network-pipe-outer" />
-    <path d="M1300 552C1400 549 1370 431 1324 430" class="network-pipe-inner" />
-    <path d="M1300 552C1400 549 1370 431 1324 430" class="pipe-specular" />
-    <path d="M1300 552C1400 549 1370 431 1324 430" class="pipe-welds" />
-    <use href="#hardware-project-stack-flange" transform="translate(693.32 509.37) rotate(-134.58)" />
-    <use href="#hardware-project-stack-flange" transform="translate(678.74 455.75) rotate(-85.14)" />
-    <use href="#hardware-project-stack-flange" transform="translate(694.22 410.96) rotate(-54.02)" />
-    <use href="#hardware-project-stack-flange" transform="translate(1349.76 534.50) rotate(-43.34)" />
-    <use href="#hardware-project-stack-flange" transform="translate(1365.99 481.29) rotate(-98.17)" />
-    <use href="#hardware-project-stack-flange" transform="translate(1348.77 442.78) rotate(-132.29)" />
+    <path d="M730 518L685 518L685 392L722 392" class="network-pipe-outer" />
+    <path d="M730 518L685 518L685 392L722 392" class="network-pipe-inner" />
+    <path d="M730 518L685 518L685 392L722 392" class="pipe-specular" />
+    <path d="M730 518L685 518L685 392L722 392" class="pipe-welds" />
+    <use href="#hardware-project-stack-flange" transform="translate(707.5 518) rotate(0)" />
+    <use href="#hardware-project-stack-flange" transform="translate(685 455) rotate(90)" />
+    <use href="#hardware-project-stack-flange" transform="translate(703.5 392) rotate(0)" />
+    <path d="M1300 552L1360 552L1360 430L1324 430" class="network-pipe-outer" />
+    <path d="M1300 552L1360 552L1360 430L1324 430" class="network-pipe-inner" />
+    <path d="M1300 552L1360 552L1360 430L1324 430" class="pipe-specular" />
+    <path d="M1300 552L1360 552L1360 430L1324 430" class="pipe-welds" />
+    <use href="#hardware-project-stack-flange" transform="translate(1330 552) rotate(0)" />
+    <use href="#hardware-project-stack-flange" transform="translate(1360 491) rotate(90)" />
+    <use href="#hardware-project-stack-flange" transform="translate(1342 430) rotate(0)" />
   </g>
 </svg>

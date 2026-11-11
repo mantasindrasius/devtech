@@ -1,0 +1,134 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
+  <title>Same change. Different context.</title>
+  <desc>Illustrative agent attention: three subagents search scattered domain fragments in a tightly coupled monolith; a focused agent works inside the Billing module of a modular design. Orange heat indicates attention, not measured cost.</desc>
+  <text x="80" y="75" class="chart-accent" font-size="18" letter-spacing="4">AGENTS / THE COST OF FINDING CONTEXT</text>
+  <text x="80" y="150" class="chart-heading">Same change. Different context.</text>
+  <text x="80" y="203" class="chart-muted" font-size="26">Task: change the billing discount policy.</text>
+  <rect x="80" y="239" width="16" height="16" rx="3" fill="#8ebde8"/>
+  <text x="106" y="254" font-size="20" class="chart-muted">Billing</text>
+  <rect x="270" y="239" width="16" height="16" rx="3" fill="#c69aeb"/>
+  <text x="296" y="254" font-size="20" class="chart-muted">Identity</text>
+  <rect x="460" y="239" width="16" height="16" rx="3" fill="#83c6a0"/>
+  <text x="486" y="254" font-size="20" class="chart-muted">Orders</text>
+  <rect x="650" y="239" width="16" height="16" rx="3" fill="#e3bb78"/>
+  <text x="676" y="254" font-size="20" class="chart-muted">Catalog</text>
+  <g data-appears-at="1">
+    <text x="80" y="310" font-size="31" font-weight="600">Tightly coupled monolith</text>
+    <rect x="80" y="338" width="650" height="320" rx="16" class="context-shell"/>
+    <rect x="103" y="355" width="114" height="40" rx="4" fill="#8ebde8" fill-opacity=".19" stroke="#8ebde8" stroke-opacity=".65"/>
+    <path d="M113 367h66 M113 378h94" stroke="#8ebde8" stroke-width="2" opacity=".6"/>
+    <rect x="103" y="355" width="114" height="40" rx="4" class="context-heat" style="--delay: -0.0s"/>
+    <rect x="104" y="406" width="67" height="83" rx="4" fill="#e3bb78" fill-opacity=".19" stroke="#e3bb78" stroke-opacity=".65"/>
+    <path d="M114 418h47 M114 429h23 M114 440h39 M114 451h33 M114 462h47 M114 473h23" stroke="#e3bb78" stroke-width="2" opacity=".6"/>
+    <rect x="99" y="502" width="111" height="46" rx="4" fill="#83c6a0" fill-opacity=".19" stroke="#83c6a0" stroke-opacity=".65"/>
+    <path d="M109 514h44 M109 525h76" stroke="#83c6a0" stroke-width="2" opacity=".6"/>
+    <rect x="99" y="502" width="111" height="46" rx="4" class="context-heat" style="--delay: -1.4s"/>
+    <rect x="107" y="562" width="78" height="72" rx="4" fill="#c69aeb" fill-opacity=".19" stroke="#c69aeb" stroke-opacity=".65"/>
+    <path d="M117 574h48 M117 585h41 M117 596h58 M117 607h28 M117 618h48" stroke="#c69aeb" stroke-width="2" opacity=".6"/>
+    <rect x="107" y="562" width="78" height="72" rx="4" class="context-heat" style="--delay: -2.1s"/>
+    <rect x="228" y="358" width="60" height="77" rx="4" fill="#8ebde8" fill-opacity=".19" stroke="#8ebde8" stroke-opacity=".65"/>
+    <path d="M238 370h28 M238 381h40 M238 392h19 M238 403h33 M238 414h28" stroke="#8ebde8" stroke-width="2" opacity=".6"/>
+    <rect x="183" y="447" width="108" height="43" rx="4" fill="#8ebde8" fill-opacity=".19" stroke="#8ebde8" stroke-opacity=".65"/>
+    <path d="M193 459h88 M193 470h42" stroke="#8ebde8" stroke-width="2" opacity=".6"/>
+    <rect x="183" y="447" width="108" height="43" rx="4" class="context-heat" style="--delay: -3.5s"/>
+    <rect x="223" y="506" width="65" height="118" rx="4" fill="#e3bb78" fill-opacity=".19" stroke="#e3bb78" stroke-opacity=".65"/>
+    <path d="M233 518h22 M233 529h37 M233 540h31 M233 551h45 M233 562h22 M233 573h37 M233 584h31 M233 595h45 M233 606h22" stroke="#e3bb78" stroke-width="2" opacity=".6"/>
+    <rect x="223" y="506" width="65" height="118" rx="4" class="context-heat" style="--delay: -4.2s"/>
+    <rect x="301" y="352" width="145" height="54" rx="4" fill="#83c6a0" fill-opacity=".19" stroke="#83c6a0" stroke-opacity=".65"/>
+    <path d="M311 364h104 M311 375h88 M311 386h125" stroke="#83c6a0" stroke-width="2" opacity=".6"/>
+    <rect x="304" y="419" width="85" height="37" rx="4" fill="#c69aeb" fill-opacity=".19" stroke="#c69aeb" stroke-opacity=".65"/>
+    <path d="M314 431h46" stroke="#c69aeb" stroke-width="2" opacity=".6"/>
+    <rect x="304" y="419" width="85" height="37" rx="4" class="context-heat" style="--delay: -5.6s"/>
+    <rect x="300" y="469" width="132" height="66" rx="4" fill="#8ebde8" fill-opacity=".19" stroke="#8ebde8" stroke-opacity=".65"/>
+    <path d="M310 481h112 M310 492h54 M310 503h93 M310 514h78" stroke="#8ebde8" stroke-width="2" opacity=".6"/>
+    <rect x="300" y="469" width="132" height="66" rx="4" class="context-heat" style="--delay: -6.3s"/>
+    <rect x="301" y="549" width="58" height="86" rx="4" fill="#8ebde8" fill-opacity=".19" stroke="#8ebde8" stroke-opacity=".65"/>
+    <path d="M311 561h18 M311 572h32 M311 583h27 M311 594h38 M311 605h18 M311 616h32" stroke="#8ebde8" stroke-width="2" opacity=".6"/>
+    <rect x="371" y="552" width="74" height="43" rx="4" fill="#e3bb78" fill-opacity=".19" stroke="#e3bb78" stroke-opacity=".65"/>
+    <path d="M381 564h45 M381 575h38" stroke="#e3bb78" stroke-width="2" opacity=".6"/>
+    <rect x="371" y="552" width="74" height="43" rx="4" class="context-heat" style="--delay: -7.7s"/>
+    <rect x="371" y="607" width="120" height="30" rx="4" fill="#83c6a0" fill-opacity=".19" stroke="#83c6a0" stroke-opacity=".65"/>
+    <path d="M381 619h70" stroke="#83c6a0" stroke-width="2" opacity=".6"/>
+    <rect x="371" y="607" width="120" height="30" rx="4" class="context-heat" style="--delay: -0.4s"/>
+    <rect x="459" y="356" width="59" height="96" rx="4" fill="#c69aeb" fill-opacity=".19" stroke="#c69aeb" stroke-opacity=".65"/>
+    <path d="M469 368h39 M469 379h19 M469 390h32 M469 401h27 M469 412h39 M469 423h19 M469 434h32" stroke="#c69aeb" stroke-width="2" opacity=".6"/>
+    <rect x="402" y="419" width="43" height="37" rx="4" fill="#8ebde8" fill-opacity=".19" stroke="#8ebde8" stroke-opacity=".65"/>
+    <path d="M412 431h11" stroke="#8ebde8" stroke-width="2" opacity=".6"/>
+    <rect x="402" y="419" width="43" height="37" rx="4" class="context-heat" style="--delay: -1.8s"/>
+    <rect x="445" y="466" width="75" height="77" rx="4" fill="#8ebde8" fill-opacity=".19" stroke="#8ebde8" stroke-opacity=".65"/>
+    <path d="M455 478h46 M455 489h38 M455 500h55 M455 511h26 M455 522h46" stroke="#8ebde8" stroke-width="2" opacity=".6"/>
+    <rect x="445" y="466" width="75" height="77" rx="4" class="context-heat" style="--delay: -2.5s"/>
+    <rect x="459" y="557" width="57" height="39" rx="4" fill="#e3bb78" fill-opacity=".19" stroke="#e3bb78" stroke-opacity=".65"/>
+    <path d="M469 569h26 M469 580h37" stroke="#e3bb78" stroke-width="2" opacity=".6"/>
+    <rect x="531" y="354" width="172" height="42" rx="4" fill="#83c6a0" fill-opacity=".19" stroke="#83c6a0" stroke-opacity=".65"/>
+    <path d="M541 366h152 M541 377h73" stroke="#83c6a0" stroke-width="2" opacity=".6"/>
+    <rect x="531" y="354" width="172" height="42" rx="4" class="context-heat" style="--delay: -3.9s"/>
+    <rect x="532" y="410" width="83" height="61" rx="4" fill="#c69aeb" fill-opacity=".19" stroke="#c69aeb" stroke-opacity=".65"/>
+    <path d="M542 422h30 M542 433h52 M542 444h44 M542 455h63" stroke="#c69aeb" stroke-width="2" opacity=".6"/>
+    <rect x="532" y="410" width="83" height="61" rx="4" class="context-heat" style="--delay: -4.6s"/>
+    <rect x="629" y="408" width="76" height="109" rx="4" fill="#8ebde8" fill-opacity=".19" stroke="#8ebde8" stroke-opacity=".65"/>
+    <path d="M639 420h46 M639 431h39 M639 442h56 M639 453h27 M639 464h46 M639 475h39 M639 486h56 M639 497h27" stroke="#8ebde8" stroke-width="2" opacity=".6"/>
+    <rect x="534" y="484" width="80" height="40" rx="4" fill="#8ebde8" fill-opacity=".19" stroke="#8ebde8" stroke-opacity=".65"/>
+    <path d="M544 496h42 M544 507h60" stroke="#8ebde8" stroke-width="2" opacity=".6"/>
+    <rect x="534" y="484" width="80" height="40" rx="4" class="context-heat" style="--delay: -6.0s"/>
+    <rect x="532" y="539" width="114" height="43" rx="4" fill="#e3bb78" fill-opacity=".19" stroke="#e3bb78" stroke-opacity=".65"/>
+    <path d="M542 551h94 M542 562h45" stroke="#e3bb78" stroke-width="2" opacity=".6"/>
+    <rect x="532" y="539" width="114" height="43" rx="4" class="context-heat" style="--delay: -6.7s"/>
+    <rect x="658" y="531" width="47" height="105" rx="4" fill="#83c6a0" fill-opacity=".19" stroke="#83c6a0" stroke-opacity=".65"/>
+    <path d="M668 543h13 M668 554h22 M668 565h19 M668 576h27 M668 587h13 M668 598h22 M668 609h19 M668 620h27" stroke="#83c6a0" stroke-width="2" opacity=".6"/>
+    <rect x="529" y="596" width="115" height="38" rx="4" fill="#c69aeb" fill-opacity=".19" stroke="#c69aeb" stroke-opacity=".65"/>
+    <path d="M539 608h79 M539 619h66" stroke="#c69aeb" stroke-width="2" opacity=".6"/>
+    <rect x="529" y="596" width="115" height="38" rx="4" class="context-heat" style="--delay: -0.1s"/>
+    <path d="M135 370L645 480L305 590L135 370M560 590L220 425L475 370M390 535L645 370L135 590" class="context-route"/>
+    <g class="context-agent agent-a"><circle r="19"/><text text-anchor="middle" y="5">A</text></g>
+    <g class="context-agent agent-b"><circle r="19"/><text text-anchor="middle" y="5">B</text></g>
+    <g class="context-agent agent-c"><circle r="19"/><text text-anchor="middle" y="5">C</text></g>
+    <text x="80" y="704" font-size="25">Three subagents chase scattered logic.</text>
+    <text x="80" y="742" class="chart-muted" font-size="22">Overlapping reads · cross-file dependencies</text>
+  </g>
+  <g data-appears-at="2">
+    <text x="870" y="310" font-size="31" font-weight="600">Modular design</text>
+    <rect x="870" y="338" width="650" height="320" rx="16" class="context-shell"/>
+    <rect x="895" y="355" width="290" height="128" rx="8" fill="#8ebde8" fill-opacity=".12" stroke="#8ebde8" stroke-opacity=".6"/>
+    <text x="911" y="383" font-size="22">Billing</text>
+    <rect x="911" y="404" width="74" height="57" rx="4" fill="#8ebde8" fill-opacity=".22"/>
+    <path d="M921 420h40m-40 10h52m-52 10h25" stroke="#8ebde8" stroke-width="2"/>
+    <rect x="911" y="404" width="74" height="57" rx="4" class="context-heat" style="--delay: -0s"/>
+    <rect x="997" y="404" width="74" height="57" rx="4" fill="#8ebde8" fill-opacity=".22"/>
+    <path d="M1007 420h40m-40 10h52m-52 10h25" stroke="#8ebde8" stroke-width="2"/>
+    <rect x="997" y="404" width="74" height="57" rx="4" class="context-heat" style="--delay: -2s"/>
+    <rect x="1083" y="404" width="74" height="57" rx="4" fill="#8ebde8" fill-opacity=".22"/>
+    <path d="M1093 420h40m-40 10h52m-52 10h25" stroke="#8ebde8" stroke-width="2"/>
+    <rect x="1083" y="404" width="74" height="57" rx="4" class="context-heat" style="--delay: -4s"/>
+    <rect x="1205" y="355" width="290" height="128" rx="8" fill="#c69aeb" fill-opacity=".12" stroke="#c69aeb" stroke-opacity=".6"/>
+    <text x="1221" y="383" font-size="22">Identity</text>
+    <rect x="1221" y="404" width="74" height="57" rx="4" fill="#c69aeb" fill-opacity=".22"/>
+    <path d="M1231 420h40m-40 10h52m-52 10h25" stroke="#c69aeb" stroke-width="2"/>
+    <rect x="1307" y="404" width="74" height="57" rx="4" fill="#c69aeb" fill-opacity=".22"/>
+    <path d="M1317 420h40m-40 10h52m-52 10h25" stroke="#c69aeb" stroke-width="2"/>
+    <rect x="1393" y="404" width="74" height="57" rx="4" fill="#c69aeb" fill-opacity=".22"/>
+    <path d="M1403 420h40m-40 10h52m-52 10h25" stroke="#c69aeb" stroke-width="2"/>
+    <rect x="895" y="500" width="290" height="128" rx="8" fill="#83c6a0" fill-opacity=".12" stroke="#83c6a0" stroke-opacity=".6"/>
+    <text x="911" y="528" font-size="22">Orders</text>
+    <rect x="911" y="549" width="74" height="57" rx="4" fill="#83c6a0" fill-opacity=".22"/>
+    <path d="M921 565h40m-40 10h52m-52 10h25" stroke="#83c6a0" stroke-width="2"/>
+    <rect x="997" y="549" width="74" height="57" rx="4" fill="#83c6a0" fill-opacity=".22"/>
+    <path d="M1007 565h40m-40 10h52m-52 10h25" stroke="#83c6a0" stroke-width="2"/>
+    <rect x="1083" y="549" width="74" height="57" rx="4" fill="#83c6a0" fill-opacity=".22"/>
+    <path d="M1093 565h40m-40 10h52m-52 10h25" stroke="#83c6a0" stroke-width="2"/>
+    <rect x="1205" y="500" width="290" height="128" rx="8" fill="#e3bb78" fill-opacity=".12" stroke="#e3bb78" stroke-opacity=".6"/>
+    <text x="1221" y="528" font-size="22">Catalog</text>
+    <rect x="1221" y="549" width="74" height="57" rx="4" fill="#e3bb78" fill-opacity=".22"/>
+    <path d="M1231 565h40m-40 10h52m-52 10h25" stroke="#e3bb78" stroke-width="2"/>
+    <rect x="1307" y="549" width="74" height="57" rx="4" fill="#e3bb78" fill-opacity=".22"/>
+    <path d="M1317 565h40m-40 10h52m-52 10h25" stroke="#e3bb78" stroke-width="2"/>
+    <rect x="1393" y="549" width="74" height="57" rx="4" fill="#e3bb78" fill-opacity=".22"/>
+    <path d="M1403 565h40m-40 10h52m-52 10h25" stroke="#e3bb78" stroke-width="2"/>
+    <g class="context-agent agent-focused"><circle r="19"/><text text-anchor="middle" y="5">A</text></g>
+    <text x="870" y="704" font-size="25">One agent focuses on one domain module.</text>
+    <text x="870" y="742" class="chart-muted" font-size="22">Local reasoning · explicit contracts</text>
+  </g>
+  <rect x="80" y="800" width="18" height="18" rx="3" fill="#ff9045"/>
+  <text x="110" y="817" font-size="22">Heat = agent attention / reads. Domain colors stay the same on both sides.</text>
+  <text x="80" y="861" class="chart-muted" font-size="19">Conceptual animation, not a benchmark. A modular monolith can have the design on the right.</text>
+</svg>

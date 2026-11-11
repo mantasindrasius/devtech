@@ -1,6 +1,20 @@
 import { expect, test } from 'bun:test';
 import { aDeck } from './support/deck-builder.js';
 
+test('preserves hidden slides in authored content', () => {
+  const source = aDeck().withHidden(true);
+
+  const deck = source.load();
+
+  expect(deck.slides[0].hidden).toBe(true);
+});
+
+test('rejects a hidden flag that is not boolean', () => {
+  const source = aDeck().withHidden('true');
+
+  expect(() => source.load()).toThrow('example.hidden must be boolean');
+});
+
 test('loads a chapter divider without requiring a custom panel resource', () => {
   const source = aDeck().withLayout('chapter');
 

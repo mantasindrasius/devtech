@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
+  <title>Deep modules: implementation behind the interface</title>
+  <desc>A shallow module exposes many operations backed by thin functions. A deep module exposes quote(request) and hides a substantial implementation with orchestration, validation, catalog access, discounts, shipping and money submodules.</desc>
+  <text x="80" y="70" class="chart-accent" font-size="18" letter-spacing="4">DESIGN / LOOK BEHIND THE INTERFACE</text>
+  <text x="80" y="140" class="chart-heading">Deep modules</text>
+  <text x="80" y="190" class="chart-muted" font-size="26">Depth is the implementation you do not need to understand to use the module.</text>
+  <path d="M800 250V740" class="chart-grid" fill="none" stroke-width="2"/>
+  <text x="80" y="266" font-size="32" font-weight="600">Shallow: thin functions</text>
+  <text x="870" y="266" font-size="32" font-weight="600">Deep: substantial implementation</text>
+
+  <rect x="80" y="306" width="640" height="58" rx="5" class="chart-poor" fill="none" stroke-width="3"/>
+  <text x="400" y="343" text-anchor="middle" font-family="monospace" font-size="22">get*() · set*() · calculate*() · format()</text>
+  <g class="chart-poor" fill="none" stroke-width="2">
+    <path d="M155 364V391M320 364V391M485 364V391M650 364V391"/>
+    <rect x="80" y="391" width="150" height="72" rx="5"/>
+    <rect x="245" y="391" width="150" height="72" rx="5"/>
+    <rect x="410" y="391" width="150" height="72" rx="5"/>
+    <rect x="575" y="391" width="145" height="72" rx="5"/>
+  </g>
+  <g text-anchor="middle" font-family="monospace" font-size="20">
+    <text x="155" y="420">getState()</text><text x="320" y="420">setState()</text>
+    <text x="485" y="420">compute()</text><text x="648" y="420">format()</text>
+  </g>
+  <g class="chart-grid" fill="none" stroke-width="3">
+    <path d="M104 439H200M269 439H368M434 439H535M599 439H694"/>
+  </g>
+  <text x="80" y="521" class="chart-muted" font-size="25">Little implementation behind each operation.</text>
+  <text x="80" y="600" font-size="27">The caller still assembles the behavior:</text>
+  <text x="80" y="645" class="chart-muted" font-size="24">ordering · intermediate state · consistency</text>
+
+  <rect x="1030" y="306" width="330" height="58" rx="5" class="chart-good" fill="none" stroke-width="3"/>
+  <text x="1195" y="343" text-anchor="middle" font-family="monospace" font-size="26">quote(request)</text>
+  <path d="M1195 364V407" class="chart-good" fill="none" stroke-width="3"/>
+  <rect x="870" y="383" width="650" height="350" rx="12" class="chart-grid" fill="none" stroke-width="2"/>
+  <rect x="925" y="407" width="540" height="58" rx="6" class="chart-good" fill="none" stroke-width="2"/>
+  <text x="1195" y="444" text-anchor="middle" font-size="24">Quote orchestration + invariants</text>
+  <g class="chart-grid" fill="none" stroke-width="2">
+    <path d="M1195 465V487H995V508M1195 487H1395V508M1195 487V508M995 577V608M1195 577V608M1395 577V608"/>
+    <rect x="905" y="508" width="180" height="69" rx="6"/>
+    <rect x="1105" y="508" width="180" height="69" rx="6"/>
+    <rect x="1305" y="508" width="180" height="69" rx="6"/>
+    <rect x="905" y="608" width="180" height="69" rx="6"/>
+    <rect x="1105" y="608" width="180" height="69" rx="6"/>
+    <rect x="1305" y="608" width="180" height="69" rx="6"/>
+  </g>
+  <g text-anchor="middle" font-size="23">
+    <text x="995" y="549">Validation</text><text x="1195" y="549">Pricing</text><text x="1395" y="549">Shipping</text>
+    <text x="995" y="649">Money rules</text><text x="1195" y="649">Discounts</text><text x="1395" y="649">Catalog adapter</text>
+  </g>
+  <text x="1195" y="711" text-anchor="middle" class="chart-muted" font-size="19">PRIVATE SUBMODULES · NOT CALLER RESPONSIBILITIES</text>
+  <text x="80" y="796" font-size="27">Small public interface. Substantial, cohesive implementation hidden inside.</text>
+  <text x="80" y="840" class="chart-muted" font-size="22">Depth is information hiding, not a giant function or complexity added for its own sake.</text>
+  <text x="80" y="879" class="chart-muted" font-size="17">Concept: John Ousterhout, A Philosophy of Software Design · Implementation schematic, not a line-count metric</text>
+</svg>

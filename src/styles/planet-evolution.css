@@ -1,0 +1,163 @@
+.planet-evolution .visual-art {
+  display: grid;
+  place-items: center;
+  background: #030810;
+}
+
+#slide[data-layout='visual'] .planet-evolution svg {
+  width: 100%;
+  max-width: none;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.planet-evolution .pe-era {
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 1.2s ease,
+    visibility 1.2s;
+}
+
+.planet-evolution .pe-era.is-visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.planet-evolution .pe-kicker {
+  fill: #b9ab8a;
+  font: 15px monospace;
+  letter-spacing: 5px;
+  text-anchor: middle;
+}
+
+.planet-evolution .pe-narration {
+  fill: #f2e4c7;
+  font:
+    42px Georgia,
+    serif;
+  text-anchor: middle;
+}
+
+.planet-evolution .pe-subtitle {
+  fill: #91a8b5;
+  font-size: 20px;
+  text-anchor: middle;
+}
+
+.planet-evolution .pe-note,
+.planet-evolution .pe-planet-label {
+  fill: #d4c49f;
+  font: 15px monospace;
+  letter-spacing: 3px;
+}
+
+.planet-evolution .pe-planet-label,
+.planet-evolution .pe-odd-label {
+  text-anchor: middle;
+}
+
+.planet-evolution .pe-detail {
+  fill: #849ba8;
+  font-size: 16px;
+}
+
+.planet-evolution .pe-odd-label {
+  fill: #d3b6ea;
+  font: 12px monospace;
+  letter-spacing: 1px;
+}
+
+.planet-evolution .pe-progress {
+  fill: #43515d;
+}
+.planet-evolution[data-scene='monolith'] .pe-progress circle:nth-child(1),
+.planet-evolution[data-scene='microservices'] .pe-progress circle:nth-child(2),
+.planet-evolution[data-scene='ai-era'] .pe-progress circle:nth-child(3) {
+  fill: #e0c58c;
+}
+
+.planet-evolution .pe-formation {
+  animation: pe-form 2.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.planet-evolution[data-scene='monolith'] .pe-jovian-haze {
+  animation: pe-haze-drift 18s ease-in-out infinite alternate;
+}
+
+@keyframes pe-haze-drift {
+  from { transform: translateX(-8px); opacity: .16; }
+  to { transform: translateX(12px); opacity: .27; }
+}
+
+.planet-evolution[data-scene='microservices'] .pe-service {
+  animation: pe-form 1.8s var(--arrival) both;
+}
+
+.planet-evolution .pe-volcanoes {
+  opacity: 0;
+  transition: opacity 1.5s;
+}
+.planet-evolution[data-scene='ai-era'] .pe-volcanoes {
+  opacity: 1;
+}
+.planet-evolution[data-scene='ai-era'] .pe-growth {
+  animation: pe-grow 9s var(--growth-delay) ease-out both;
+}
+
+.planet-evolution[data-scene='ai-era'] .pe-eruption {
+  animation: pe-erupt 1.8s var(--eruption-delay) ease-out infinite;
+}
+
+.planet-evolution[data-scene='ai-era'] .pe-birth {
+  animation: pe-form 1.5s var(--arrival) both;
+}
+
+.planet-evolution[hidden] * {
+  animation: none !important;
+}
+
+@keyframes pe-form {
+  from {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pe-grow {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.23);
+  }
+}
+
+@keyframes pe-erupt {
+  0% {
+    opacity: 0.3;
+    transform: translateY(0) scaleY(0.45);
+  }
+  35% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-25px) scaleY(1.2);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .planet-evolution *,
+  .planet-evolution *::before,
+  .planet-evolution *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+  .planet-evolution[data-scene='ai-era'] .pe-growth {
+    transform: scale(1.23);
+  }
+}

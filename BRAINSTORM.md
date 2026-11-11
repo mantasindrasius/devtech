@@ -368,6 +368,120 @@ Closing checklist: **Easy to locate? Easy to understand? Cheap to verify? Safe t
 
 ## Sources discussed
 
+### Design stamina, complexity, and AI cost per PR — research notes (2026-11-11)
+
+**Keep the concepts separate.** Codebase size, cleanliness and complexity are different
+variables. Readable code can implement a complex domain; splitting a function into helpers
+may redistribute complexity and increase navigation rather than reduce it. Investigate
+branching, cognitive complexity, coupling, dependency depth and the scope touched by a task.
+Use tokens **per PR across the full lifecycle**: exploration, planning, implementation,
+tests, agent reviews, fixes and CI-feedback iterations through merge. Sum all agents and
+retries. Report abandoned work and merge/success rates separately to avoid survivor bias.
+For aggregate efficiency, include abandoned-work spend in total tokens divided by merged
+PRs; also track change scope so splitting PRs does not create artificial savings. Raw token
+counts are not dollar cost: cached input, fresh input and output have different prices.
+
+- **Adopted for the slide immediately after the planet animation:**
+  [Martin Fowler — Design Stamina Hypothesis (2007)](https://martinfowler.com/bliki/DesignStaminaHypothesis.html).
+  Conceptual cumulative functionality versus time; delivery velocity is the slope. It is not
+  measured data and its x-axis is not codebase size. Preserve attribution and label the
+  adaptation as conceptual. Do not claim a calibrated design-payoff date.
+- [Google — Understanding Architectural Complexity, Maintenance Burden, and Developer Sentiment (2025)](https://research.google/pubs/understanding-architectural-complexity-maintenance-burden-and-developer-sentiment-a-large-scale-study/).
+  1,200+ C++/Java projects and 7,200 survey responses. Propagation cost and architectural
+  anti-patterns correlate with more LOC devoted to bug fixing rather than features. Relevant
+  to architectural complexity and maintenance; not an AI-token-cost experiment.
+- [Trivedi & Schmitt / SonarSource — Does Code Cleanliness Affect Coding Agents? (2026)](https://arxiv.org/html/2605.20049v1).
+  Controlled minimal pairs: six repository pairs, 33 tasks, 660 trials, Claude Code with
+  Sonnet 4.6. Table 2 reports 7.1% fewer input tokens, 8.5% fewer output tokens and 33.8%
+  fewer revisits on cleaner code, with a −0.9 percentage-point pass-rate difference.
+  Table 3 matters: multi-module tasks used 10.7% fewer input tokens; cognitive-hotspot tasks
+  used 1.8% more. Cleanliness is a bundle of changes, not an isolated complexity variable.
+  Vendor-authored preprint, one agent/model, task-dependent effects and outlier filtering.
+  [Companion blog](https://www.sonarsource.com/blog/a-cleaner-codebase-results-in-less-token-usage/)
+  reports 27 tasks / 540 runs and 7.2% input-token savings; do not mix its denominator with
+  the paper's calibration-inclusive results. Save for discussion; do not present as a
+  universal complexity-to-cost curve.
+- [Hu et al. — Token-Aware Coding Flow (2025)](https://arxiv.org/abs/2504.15989).
+  Preprint studying code smells, refactoring and prompting in reasoning models; reports
+  token reductions up to 50%. Candidate follow-up for complexity-related smells. Check
+  task definitions and raw versus time-/complexity-normalized metrics before charting;
+  the headline is not a general per-task saving for production coding agents.
+- [Bai et al. — How Do AI Agents Spend Your Money? (2026)](https://arxiv.org/html/2604.22750v1).
+  Figure 4 associates expensive attempts with repeated file views and modifications;
+  Figures 8–9 examine context accumulation and token-cost dynamics. Evidence about agent
+  behavior and repeated work, not proof that cyclomatic complexity causes token growth.
+- [Song et al. — Converted, Not Equivalent / T2J-Bench (2026)](https://arxiv.org/html/2605.29054v1).
+  Figure 3(a) directly plots source LOC against mean tokens per conversion task across
+  45 codebases. Correlation is −0.19, essentially flat in this benchmark. Important
+  counterevidence to a universal size-to-token curve; bounded PyTorch-to-JAX conversion
+  tasks do not establish a general law for feature development or maintenance.
+- [CodeAlive — Context on large codebases (2026)](https://codealive.ai/en/blog/context-for-claude-code-and-cursor-on-large-codebases).
+  Vendor reports 2.80M versus 767K tokens per task on a 1.5M-line repository when changing
+  the retrieval/agent approach. Relevant to navigation, not an isolated size or complexity
+  experiment. Verify benchmark definitions before reuse.
+
+- [Gullstrand Heander et al. — CodeHealth Predicts the Token Cost of Agentic Code Review (October 2026)](https://arxiv.org/html/2610.21914v1).
+  Observational preprint: 465 PRs, 246 repositories, three models, five-agent review/fix
+  pipeline. Each CodeHealth point predicted 3.5–6.1% fewer tokens after accounting for
+  changed lines, language and repository. The association concentrated in review iterations.
+  Controlling for whole-file size absorbed it: size and health effects cannot be separated.
+  CodeHealth combines multiple smells, not complexity alone. This measures review and fix,
+  not original implementation, testing and CI through merge; it cannot calibrate our full
+  lifecycle graph. The complexity-tax graph uses section 4.2 tier contrasts as normalized bars:
+  unhealthy = 100; healthy = 65 / 71.1 / 78.2. These are fitted point estimates, not raw
+  means; intervals are omitted on the slide. Full-lifecycle inference stays explicitly open.
+
+**What “healthier code” means in this study:** CodeScene's CodeHealth is a composite
+static-analysis score, not a synonym for fewer lines or more functions. It combines code
+smells such as complex methods, deeply nested conditionals and duplicated logic. On its
+1–10 scale, below 4 is unhealthy, 4 to below 9 is problematic, and 9–10 is healthy. The
+graph compares the sample's median unhealthy score of 2.8 with its median healthy score
+of 9.7. See the [study's definition, section 2.1](https://arxiv.org/html/2610.21914v1#S2.SS1).
+
+Speaker framing: “Code that requires less effort to understand and safely change.” This
+does not imply a simpler business domain, smaller functions everywhere, or more abstraction.
+The study could not separate CodeHealth from the size of the files agents read: use it as
+evidence for a maintainability argument, not a promise that raising a score saves tokens.
+
+### Architectural modularity and cost of change — research notes (2026-11-11)
+
+**Focus:** architectural modularity, not low-level method cleanliness. Investigate coupling
+between modules, dependency cycles, change propagation, and how much of the system a change
+requires understanding, coordinating, testing and deploying. Monolith versus microservices
+is a deployment distinction, not a reliable proxy for healthy versus tangled architecture.
+
+- [MacCormack & Sturtevant — Technical debt and system architecture: The impact of coupling on defect-related activity (2016)](https://www.hbs.edu/ris/Publication%20Files/2016-JSS%20Technical%20Debt_d793c712-5160-4aa9-8761-781b444cc75f.pdf).
+  Two large systems; Table 6 estimates annual corrective-maintenance cost per LOC.
+  Within system C: peripheral $0.71, shared $0.80, control $1.25, core $2.31.
+  Core/peripheral ratio is approximately 3.25. These are allocated costs using total
+  maintenance hours, $100/hour and defect-activity shares, not measured cost per PR.
+  The financial comparison does not control for cyclomatic complexity. Adopted on the
+  coupling-tax graph as four bars, retaining original units and caveats. The 3.25×
+  callout is 2.31 / 0.71 from rounded published figures; it is not a refactoring saving.
+- [Google / Cai et al. — Understanding Architectural Complexity, Maintenance Burden, and Developer Sentiment (2025)](https://research.google/pubs/understanding-architectural-complexity-maintenance-burden-and-developer-sentiment-a-large-scale-study/).
+  1,200+ projects; propagation cost and structural anti-patterns correlate with a greater
+  share of LOC spent fixing bugs rather than adding features. Supports the modularity
+  argument at scale; not a price-per-change or AI-token measurement. Propagation cost is
+  a dependency-reachability measure, not money spent.
+- [Does microservice adoption impact the velocity? A cohort study (2025)](https://link.springer.com/article/10.1007/s10664-025-10673-7).
+  265 open-source projects: 58 microservices and 207 monoliths. No statistically significant
+  velocity difference found. Velocity here is average issue-open duration, not engineering
+  hours per feature. No significant difference does not prove equivalence. Use to challenge
+  automatic claims that microservices make changes cheaper, not to claim monolith superiority.
+
+Suggested narrative: “Good boundaries keep a change local. A network boundary alone does
+not.” Compare well-modularized and tangled designs within either deployment style. For
+our own PR-level evaluation, measure modules/services touched, cross-module co-changes,
+dependency reach, coordinated releases, verification scope and total agent tokens through
+merge. These are proposed measurement dimensions, not a validated cost formula.
+
+**Evidence still needed:** a controlled complexity-versus-full-lifecycle-cost-per-PR result holding
+behavior, task, model, harness, tests and budgets stable. Treat “less task-relevant complexity
+reduces exploration and retries” as a hypothesis to test, not a measured universal curve.
+Measure both success and total tokens across attempts, with cache categories and monetary
+cost separate. Avoid replacing “codebase size” on an existing chart with “complexity” while
+retaining unsupported data points.
+
 - [Matt Pocock: skills repository](https://github.com/mattpocock/skills)
 - [Codebase design: deep modules and vocabulary](https://github.com/mattpocock/skills/blob/main/skills/engineering/codebase-design/SKILL.md)
 - [Deepening: dependencies, adapters, and test strategy](https://github.com/mattpocock/skills/blob/main/skills/engineering/codebase-design/DEEPENING.md)
@@ -382,3 +496,46 @@ Closing checklist: **Easy to locate? Easy to understand? Cheap to verify? Safe t
 - [Brendan Gregg: USE method](https://www.brendangregg.com/usemethod.html)
 
 Sources above were consulted during the discussion. Links to repository main branches can change; pin source revisions before quoting version-sensitive skill instructions in published material. The example code and presentation outline are our illustrative adaptations, not code copied from Pocock's package.
+
+Graph sequence: design stamina → The coupling tax (architectural modularity) → The complexity tax (code-level maintainability). Keep both empirical comparisons distinct.
+
+### How coding agents work — three-phase animation
+
+Use Explore → Plan changes → Implement as a teaching model, with verification inside
+implementation and feedback loops back to exploration/planning. Anthropic's published
+workflow also includes commit; these phases are not a universal agent state machine.
+[Workflow reference](https://academy.claude.com/es/courses/claude-code-101/the-explore-plan-code-commit-workflow).
+
+Planning continues investigation: inspect callers and contracts, resolve ambiguity, choose
+an approach, list affected files and define checks. A written plan is an artifact, not
+necessarily a tool invocation. Plan mode proposes work before editing application files.
+[Common workflows](https://code.claude.com/docs/en/common-workflows).
+
+The slide uses illustrative Claude Code names: Read, Glob, Grep, LSP, Bash,
+EnterPlanMode, AskUserQuestion, ExitPlanMode, Edit and Write. Edit performs targeted string
+replacement; do not present StrReplace as Claude's exact tool name. Glob/Grep and LSP
+availability vary; shell searches can serve the same purpose. Optional task-list tools
+track work but do not themselves perform planning. Other available tools include Agent,
+WebSearch/WebFetch, NotebookEdit, and TaskCreate/TaskUpdate where enabled; they need not
+appear in every change. [Tool reference](https://code.claude.com/docs/en/tools-reference).
+
+The slide starts with a title. Each click reveals one more phase and its independent
+looping illustrative stream. These are simulated examples, not live calls or an exact trace.
+
+### Composition roots for deep modules
+
+[Mark Seemann — Composition Root](https://blog.ploeh.dk/2011/07/28/CompositionRoot/)
+defines application assembly near the entry point. Use an application-specific bootstrap
+module to construct modules and inject their public capabilities. A DI container is optional;
+modules should not retrieve dependencies from a global container. Separate construction
+from business orchestration. [Composition Root Reuse](https://blog.ploeh.dk/2015/01/06/composition-root-reuse/)
+emphasizes that roots are application-specific.
+
+The new side-by-side Monaco slide shows illustrative server and client factory APIs, not
+third-party package documentation. Server: catalog → quotes → checkout, with infrastructure
+adapters. Client: API + cart → checkout → React App, mounted with createRoot. Compose once outside
+React render; inject capabilities through props, and unmount React before module disposal. The root owns lifetimes and disposes
+in dependency order; modules own their subscriptions but not injected dependencies. Real
+startup needs rollback on partial failure. React UI adapters can pass capabilities through
+props or [scoped context](https://react.dev/learn/passing-data-deeply-with-context); context
+distribution is not itself the whole composition root. Keep domain policies in deep modules.

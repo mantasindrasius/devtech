@@ -9,6 +9,7 @@
 - Code resources use `type: code` and `language: typescript` or `javascript`.
 - Diagram resources use `type: mermaid`, a `.mmd` file, a `title`, an accessible `description`, and an optional `caption`.
 - `slides`: ordered entries with stable IDs. A slide's `code` references a code resource. Titles are lists of `{text, accent}` lines, rendered as text rather than executable HTML. Description, takeaway, and speaker notes are YAML strings.
+- Set `hidden: true` on a slide to exclude it from navigation, the sidebar, and the slide count. Omit the flag or set `hidden: false` to restore it. URL numbers refer to the visible slide order. Hidden slides and their resources remain in the source and are still validated; at least one slide must be visible.
 
 ```yaml
 resources:
@@ -88,6 +89,19 @@ The timeline aborts the active run before disposing commands in reverse creation
 ## Renderer registry
 
 Register resource renderers in `src/renderers/register-renderers.js`. Each definition validates metadata and creates `{ panel, show(), hide(), dispose() }`. The panel host owns instances; renderers own their DOM and async rendering work. Ignore late completions after disposal. Keep rendering dependencies in adapters rather than in the timeline or content loader.
+
+Use `type: svg-illustration` with a repository-authored `.svg` file, `title` and `description`
+for static illustrations. Reference it through a step's `panel`; `layout: visual` gives it
+the full slide. Inline SVG can use the deck's theme variables and the chart classes in
+`src/styles/svg-illustration.css`. This renderer is for trusted authored assets.
+
+The `planet-evolution` renderer uses an SVG resource with `title` and `description` metadata.
+Use it with `layout: visual` and steps referencing the same panel, each with a `caption` and
+one of these `scene` values: `monolith`, `microservices`, `ai-era`. Each step waits for the
+presenter's next input; animation within a scene never advances the timeline. CSS owns
+formation, growth and eruptions, stops animations when the panel is hidden, and disables
+motion when the viewer requests reduced motion. The SVG layers use `data-appears-at`
+and optional `data-disappears-at` with zero-based scene indexes.
 
 ## Module map
 

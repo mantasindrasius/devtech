@@ -1,0 +1,78 @@
+.agent-context [data-appears-at] {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 500ms ease;
+}
+.agent-context [data-appears-at].is-visible {
+  opacity: 1;
+  visibility: visible;
+}
+.agent-context .context-shell {
+  fill: var(--surface, #15191f);
+  stroke: var(--border, #30363e);
+  stroke-width: 2;
+}
+.agent-context .context-heat {
+  fill: #ff9045;
+  opacity: 0.08;
+  animation: context-heat 8s ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
+}
+.agent-context .context-agent {
+  fill: var(--text, #e8ecf0);
+  stroke: var(--surface, #15191f);
+  stroke-width: 2;
+}
+.agent-context .context-agent text {
+  fill: var(--surface, #15191f);
+  stroke: none;
+  font: 600 14px monospace;
+}
+.agent-context .context-route {
+  fill: none;
+  stroke: #ff9045;
+  stroke-width: 2;
+  stroke-dasharray: 5 8;
+  opacity: 0.45;
+}
+.agent-context .agent-a { animation: context-search-a 8s ease-in-out infinite; }
+.agent-context .agent-b { animation: context-search-b 10s ease-in-out infinite; }
+.agent-context .agent-c { animation: context-search-c 12s ease-in-out infinite; }
+.agent-context .agent-focused { animation: context-focus 8s ease-in-out infinite; }
+.agent-context [data-appears-at]:not(.is-visible) *,
+.agent-context[hidden] * {
+  animation-play-state: paused;
+}
+@keyframes context-heat {
+  0%, 100% { opacity: 0.08; }
+  22%, 42% { opacity: 0.75; }
+  70% { opacity: 0.18; }
+}
+@keyframes context-search-a {
+  0%, 100% { transform: translate(135px, 370px); }
+  33% { transform: translate(645px, 480px); }
+  66% { transform: translate(305px, 590px); }
+}
+@keyframes context-search-b {
+  0%, 100% { transform: translate(560px, 590px); }
+  33% { transform: translate(220px, 425px); }
+  66% { transform: translate(475px, 370px); }
+}
+@keyframes context-search-c {
+  0%, 100% { transform: translate(390px, 535px); }
+  33% { transform: translate(645px, 370px); }
+  66% { transform: translate(135px, 590px); }
+}
+@keyframes context-focus {
+  0%, 100% { transform: translate(940px, 388px); }
+  33% { transform: translate(1040px, 435px); }
+  66% { transform: translate(1150px, 388px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .agent-context * { animation: none !important; transition: none !important; }
+  .agent-context .context-heat { opacity: 0.28; }
+  .agent-context .agent-a { transform: translate(135px, 370px); }
+  .agent-context .agent-b { transform: translate(560px, 590px); }
+  .agent-context .agent-c { transform: translate(390px, 535px); }
+  .agent-context .agent-focused { transform: translate(1040px, 435px); }
+}

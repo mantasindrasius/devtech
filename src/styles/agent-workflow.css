@@ -1,0 +1,52 @@
+.agent-workflow [data-appears-at] {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 450ms ease;
+}
+
+.agent-workflow [data-appears-at].is-visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.agent-workflow .tool-stream {
+  animation: tool-stream-scroll 24s linear infinite;
+  animation-play-state: paused;
+}
+
+.agent-workflow .is-visible .tool-stream {
+  animation-play-state: running;
+}
+
+.agent-workflow [data-appears-at='2'] .tool-stream {
+  animation-duration: 30s;
+}
+
+.agent-workflow [data-appears-at='3'] .tool-stream {
+  animation-duration: 27s;
+}
+
+.agent-workflow[hidden] .tool-stream {
+  animation-play-state: paused;
+}
+
+.agent-workflow .tool-card {
+  fill: var(--surface, #15191f);
+  stroke: var(--border, #30363e);
+  stroke-width: 1.5;
+}
+
+.agent-workflow .tool-name {
+  fill: var(--accent, #b4ef94);
+  font-family: monospace;
+  font-size: 25px;
+}
+
+@keyframes tool-stream-scroll {
+  to { transform: translateY(-600px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .agent-workflow .tool-stream { animation: none; }
+  .agent-workflow [data-appears-at] { transition: none; }
+}

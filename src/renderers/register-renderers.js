@@ -4,9 +4,20 @@ import { requireText } from '../content/validation.js';
 import { createMermaidPanel } from './mermaid.js';
 import { createStackedProjectPanel, validateStackedProjectStep } from './stacked-project.js';
 import { createSpaceshipPanel, validateSpaceshipStep } from './spaceship-project.js';
+import { planetEvolutionRenderer } from './planet-evolution.js';
+import { svgIllustrationRenderer } from './svg-illustration.js';
+
+import { codeComparisonRenderer } from './code-comparison.js';
+import { agentContextRenderer } from './agent-context.js';
+import { agentWorkflowRenderer } from './agent-workflow.js';
 
 export function registerRenderers() {
   return new Registry('resource renderer')
+    .register('code-comparison', codeComparisonRenderer)
+    .register('agent-context', agentContextRenderer)
+    .register('agent-workflow', agentWorkflowRenderer)
+    .register('svg-illustration', svgIllustrationRenderer)
+    .register('planet-evolution', planetEvolutionRenderer)
     .register('code', {
       validate(resource) {
         validateExample(resource.example);

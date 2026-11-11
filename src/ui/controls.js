@@ -25,6 +25,14 @@ export function bindControls({ root, timeline, code, checks, editor }) {
   }
   listen($('present'), 'click', togglePresentation);
   listen($('next'), 'click', () => timeline.next());
+  listen($('slide'), 'click', (event) => {
+    if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.altKey) return;
+    if (!event.target.closest('.visual-art, .code-comparison')) return;
+    if (event.target.closest('.monaco-editor') && !event.target.closest('[data-advance-on-click]')) return;
+    if (event.target.closest('a, button, input, textarea, [contenteditable]')) return;
+    if (window.getSelection()?.toString()) return;
+    timeline.next();
+  });
   listen($('previous'), 'click', () => timeline.previous());
   listen($('replay'), 'click', () => timeline.replay());
   listen($('reset'), 'click', async () => {

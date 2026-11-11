@@ -3,6 +3,7 @@ import { bindEditorTypography } from './editor/typography.js';
 import { createThemePreference } from './theme/preference.js';
 import { bindTheme } from './theme/controls.js';
 import { loadBrowserDeck } from './content/browser-deck.js';
+import { visibleDeck } from './content/visible-deck.js';
 import { createTimeline } from './core/timeline.js';
 import { wait } from './core/scheduler.js';
 import { monaco, setupEditor } from './editor/setup.js';
@@ -20,11 +21,12 @@ import { bindControls, slideFromHash } from './ui/controls.js';
 function start(root) {
   const actions = registerActions();
   const renderers = registerRenderers();
-  const deck = loadBrowserDeck({ actions, renderers });
+  const authoredDeck = loadBrowserDeck({ actions, renderers });
+  const deck = visibleDeck(authoredDeck);
   const $ = mountShell(root);
   const editor = setupEditor($('editor'));
   const unbindTypography = bindEditorTypography(editor, $('editor'));
-  const models = createModelStore(monaco, deck, localStorage);
+  const models = createModelStore(monaco, authoredDeck, localStorage);
   const theme = createThemePreference(localStorage);
   const unbindTheme = bindTheme({
     preference: theme,
@@ -40,7 +42,7 @@ function start(root) {
   const panels = createPanelHost({
     resources: deck.resources,
     renderers,
-    context: { code, codePanel, editor, theme },
+    context: { code, codePanel, editor, theme, monaco, resources: deck.resources },
   });
   const view = createDeckView({ deck, root, panels });
   const timeline = createTimeline({

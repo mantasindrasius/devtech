@@ -1,0 +1,35 @@
+.svg-illustration .visual-art {
+  display: grid;
+  place-items: center;
+}
+
+.svg-illustration svg {
+  font-family: 'DM Sans', sans-serif;
+  fill: var(--text, #e8ecf0);
+}
+
+.svg-illustration .chart-heading {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 52px;
+  font-weight: 600;
+  letter-spacing: -1.5px;
+}
+
+.svg-illustration .chart-muted {
+  fill: var(--muted, #929daa);
+}
+.svg-illustration .chart-accent {
+  fill: var(--accent, #b4ef94);
+}
+.svg-illustration .chart-grid {
+  stroke: var(--border, #30363e);
+}
+.svg-illustration .chart-good {
+  stroke: var(--accent, #b4ef94);
+}
+.svg-illustration .chart-poor {
+  stroke: var(--blue, #82b7da);
+}
+.svg-illustration .chart-poor-label {
+  fill: var(--blue, #82b7da);
+}
