@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
+  <title>Start with a monolith or microservices?</title>
+  <desc>Monolith: simple operations, coupling risk, in-process I/O. Microservices: independent deployment, premature optimization, well-defined contract.</desc>
+  <text x="80" y="80" class="chart-accent" font-size="18" letter-spacing="4">ARCHITECTURE / CHOOSING A STARTING POINT</text>
+  <text x="80" y="155" class="chart-heading">Start with a monolith or microservices?</text>
+  <path d="M800 265V690" class="chart-grid" fill="none" stroke-width="2"/>
+  <path d="M100 280H710" class="chart-poor" fill="none" stroke-width="4"/>
+  <path d="M890 280H1500" class="chart-good" fill="none" stroke-width="4"/>
+  <text x="100" y="350" font-size="38" font-weight="600">Monolith</text>
+  <text x="890" y="350" font-size="38" font-weight="600">Microservices</text>
+  <g font-size="34">
+    <text x="100" y="447">Simple operations</text>
+    <text x="100" y="528">Coupling risk</text>
+    <text x="890" y="447">Independent deployment</text>
+    <text x="890" y="528">Premature optimization</text>
+    <text x="100" y="609">In-process I/O</text>
+    <text x="890" y="609">Well-defined contract</text>
+  </g>
+</svg>

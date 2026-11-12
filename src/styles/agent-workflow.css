@@ -1,7 +1,9 @@
 .agent-workflow [data-appears-at] {
   opacity: 0;
   visibility: hidden;
-  transition: opacity 450ms ease;
+  transition:
+    opacity 450ms ease,
+    filter 450ms ease;
 }
 
 .agent-workflow [data-appears-at].is-visible {
@@ -9,25 +11,32 @@
   visibility: visible;
 }
 
+/* Phases before the one just revealed recede so the current phase holds the focus. */
+.agent-workflow[data-scene='plan'] [data-appears-at='1'],
+.agent-workflow[data-scene='implement'] [data-appears-at='1'],
+.agent-workflow[data-scene='implement'] [data-appears-at='2'] {
+  opacity: 0.38;
+  filter: grayscale(1);
+}
+
+/* Calls stack like chat messages; the stack steps up when a new call needs the room. */
 .agent-workflow .tool-stream {
-  animation: tool-stream-scroll 24s linear infinite;
-  animation-play-state: paused;
+  transform: translateY(calc(var(--scrolled-calls, 0) * -100px));
+  transition: transform 320ms cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-.agent-workflow .is-visible .tool-stream {
-  animation-play-state: running;
+.agent-workflow .tool-call {
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity 200ms ease,
+    transform 260ms cubic-bezier(0.2, 0.9, 0.3, 1.25);
 }
 
-.agent-workflow [data-appears-at='2'] .tool-stream {
-  animation-duration: 30s;
-}
-
-.agent-workflow [data-appears-at='3'] .tool-stream {
-  animation-duration: 27s;
-}
-
-.agent-workflow[hidden] .tool-stream {
-  animation-play-state: paused;
+.agent-workflow .tool-call[data-state='running'],
+.agent-workflow .tool-call[data-state='done'] {
+  opacity: 1;
+  transform: none;
 }
 
 .agent-workflow .tool-card {
@@ -42,11 +51,93 @@
   font-size: 25px;
 }
 
-@keyframes tool-stream-scroll {
-  to { transform: translateY(-600px); }
+.agent-workflow .tool-card {
+  transition: stroke 200ms ease;
+}
+
+.agent-workflow [data-state='running'] .tool-card {
+  stroke: var(--accent, #b4ef94);
+}
+
+.agent-workflow .tool-spinner {
+  fill: none;
+  stroke: var(--accent, #b4ef94);
+  stroke-width: 3;
+  stroke-dasharray: 38 19;
+  stroke-linecap: round;
+  transform-box: fill-box;
+  transform-origin: center;
+  opacity: 0;
+}
+
+.agent-workflow [data-state='running'] .tool-spinner {
+  opacity: 1;
+  animation: tool-spinner-turn 800ms linear infinite;
+}
+
+.agent-workflow .tool-result {
+  fill: var(--muted, #929daa);
+  font-family: monospace;
+  font-size: 18px;
+  text-anchor: end;
+  opacity: 0;
+  transition: opacity 200ms ease;
+}
+
+.agent-workflow .tool-result--failed {
+  fill: var(--danger, #ff8f85);
+}
+
+.agent-workflow [data-state='done'] .tool-result {
+  opacity: 1;
+}
+
+.agent-workflow .tool-thinking {
+  fill: var(--muted, #929daa);
+  opacity: 0;
+  transition: opacity 180ms ease;
+}
+
+.agent-workflow [data-thinking='true'] .tool-thinking {
+  opacity: 1;
+}
+
+.agent-workflow [data-thinking='true'] .tool-thinking circle {
+  animation: tool-thinking-pulse 1s ease-in-out infinite;
+}
+
+.agent-workflow .tool-thinking circle:nth-child(2) {
+  animation-delay: 160ms;
+}
+
+.agent-workflow .tool-thinking circle:nth-child(3) {
+  animation-delay: 320ms;
+}
+
+.agent-workflow[hidden] * {
+  animation: none !important;
+}
+
+@keyframes tool-spinner-turn {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes tool-thinking-pulse {
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  40% {
+    opacity: 1;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .agent-workflow .tool-stream { animation: none; }
-  .agent-workflow [data-appears-at] { transition: none; }
+  .agent-workflow *,
+  .agent-workflow [data-appears-at] {
+    animation: none !important;
+    transition: none !important;
+  }
 }

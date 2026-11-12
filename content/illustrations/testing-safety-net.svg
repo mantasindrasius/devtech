@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
+  <title>The safety net</title>
+  <desc>Five short points: agents ship more and faster, tests are the cheapest guardrail, a green suite gives confidence to deploy, review the tests first, and tests are the specification agents verify against.</desc>
+  <text x="100" y="158" class="chart-heading">The safety net</text>
+  <g class="chart-accent">
+    <circle cx="114" cy="296" r="7"/>
+    <circle cx="114" cy="406" r="7"/>
+    <circle cx="114" cy="516" r="7"/>
+    <circle cx="114" cy="626" r="7"/>
+    <circle cx="114" cy="736" r="7"/>
+  </g>
+  <g font-size="40">
+    <text x="150" y="310">Agents ship more, faster.</text>
+    <text x="150" y="420">Tests are the cheapest guardrail.</text>
+    <text x="150" y="530">Green suite = confidence to deploy.</text>
+    <text x="150" y="640">Review the tests first.</text>
+    <text x="150" y="750">Tests are the spec agents verify against.</text>
+  </g>
+</svg>

@@ -1,5 +1,8 @@
 import { requireText } from '../content/validation.js';
 import { createArchitectureStory } from './architecture-story.js';
+import { revealedPlayback } from './revealed-playback.js';
+import { playToolCalls, showCompletedToolCalls } from './tool-call-player.js';
+import { toolCallTranscript } from './tool-call-transcript.js';
 
 const phases = ['intro', 'explore', 'plan', 'implement'];
 
@@ -13,9 +16,32 @@ export const agentWorkflowRenderer = {
     if (!phases.includes(step.scene)) throw new Error(`Unknown workflow phase: ${step.scene}`);
     requireText(step.caption, 'agent-workflow.caption');
   },
-  create(resource) {
+  create(resource, { wait, reducedMotion }) {
     const story = createArchitectureStory(resource, phases);
     story.panel.className = 'visual-panel svg-illustration agent-workflow';
-    return story;
+    const sessions = [...story.panel.querySelectorAll('.tool-transcript')].map((element) => {
+      const transcript = toolCallTranscript(element);
+      return revealedPlayback(element.closest('[data-appears-at]'), {
+        play: (signal) => playToolCalls(transcript, { wait, signal }),
+        showStill: () => showCompletedToolCalls(transcript),
+        reset: () => transcript.clear(),
+        reducedMotion,
+      });
+    });
+    return {
+      panel: story.panel,
+      show(step, options) {
+        story.show(step, options);
+        for (const session of sessions) session.sync();
+      },
+      hide() {
+        story.hide();
+        for (const session of sessions) session.stop();
+      },
+      dispose() {
+        for (const session of sessions) session.stop();
+        story.dispose();
+      },
+    };
   },
 };

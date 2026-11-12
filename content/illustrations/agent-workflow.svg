@@ -1,10 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
   <title>How coding agents work</title>
-  <desc>Three click-revealed phases: Explore, Plan changes, Implement. Each contains a looping illustrative tool-call stream. Planning continues exploration; implementation includes verification.</desc>
+  <desc>Three click-revealed phases: Explore, Plan changes, Implement. Each plays an illustrative transcript of tool calls that arrive one at a time, run and return a result. Planning continues exploration; implementation includes verification.</desc>
+  <!-- Each tool call waits data-think-ms, then runs for data-run-ms before its result appears. -->
   <defs>
-    <clipPath id="workflow-clip-0"><rect x="80" y="350" width="440" height="345" rx="12"/></clipPath>
-    <clipPath id="workflow-clip-1"><rect x="580" y="350" width="440" height="345" rx="12"/></clipPath>
-    <clipPath id="workflow-clip-2"><rect x="1080" y="350" width="440" height="345" rx="12"/></clipPath>
+    <clipPath id="workflow-transcript-window"><rect width="440" height="345" rx="12"/></clipPath>
   </defs>
   <text x="80" y="75" class="chart-accent" font-size="18" letter-spacing="4">AGENTS / FROM CONTEXT TO CHANGE</text>
   <text x="80" y="150" class="chart-heading">How coding agents work</text>
@@ -12,48 +11,68 @@
   <g data-appears-at="1">
     <text x="80" y="285" font-size="34" font-weight="600">01 / Explore</text>
     <text x="80" y="325" class="chart-muted" font-size="23">Find the relevant context.</text>
-    <g clip-path="url(#workflow-clip-0)">
+    <g class="tool-transcript" transform="translate(80 350)" clip-path="url(#workflow-transcript-window)">
       <g class="tool-stream">
-        <g>
-          <rect x="80" y="350" width="440" height="88" rx="10" class="tool-card"/>
-          <text x="100" y="383" class="tool-name">Glob</text>
-          <text x="100" y="416" font-size="21" class="chart-muted">src/**/*.ts → locate files</text>
-          <rect x="80" y="450" width="440" height="88" rx="10" class="tool-card"/>
-          <text x="100" y="483" class="tool-name">Grep</text>
-          <text x="100" y="516" font-size="21" class="chart-muted">quote → find symbols &amp; callers</text>
-          <rect x="80" y="550" width="440" height="88" rx="10" class="tool-card"/>
-          <text x="100" y="583" class="tool-name">Read</text>
-          <text x="100" y="616" font-size="21" class="chart-muted">pricing.ts → inspect behavior</text>
-          <rect x="80" y="650" width="440" height="88" rx="10" class="tool-card"/>
-          <text x="100" y="683" class="tool-name">LSP</text>
-          <text x="100" y="716" font-size="21" class="chart-muted">findReferences → follow links</text>
-          <rect x="80" y="750" width="440" height="88" rx="10" class="tool-card"/>
-          <text x="100" y="783" class="tool-name">Bash</text>
-          <text x="100" y="816" font-size="21" class="chart-muted">rg --files → map the repo</text>
-          <rect x="80" y="850" width="440" height="88" rx="10" class="tool-card"/>
-          <text x="100" y="883" class="tool-name">Read</text>
-          <text x="100" y="916" font-size="21" class="chart-muted">pricing.test.ts → learn contracts</text>
+        <g transform="translate(0 0)">
+          <g class="tool-call" data-think-ms="900" data-run-ms="350">
+            <rect width="440" height="88" rx="10" class="tool-card"/>
+            <text x="20" y="33" class="tool-name">Glob</text>
+            <text x="20" y="66" font-size="21" class="chart-muted">src/**/*.ts → locate files</text>
+            <circle cx="408" cy="26" r="9" class="tool-spinner"/>
+            <text x="420" y="32" class="tool-result">38 files</text>
+          </g>
         </g>
-        <g aria-hidden="true">
-          <rect x="80" y="950" width="440" height="88" rx="10" class="tool-card"/>
-          <text x="100" y="983" class="tool-name">Glob</text>
-          <text x="100" y="1016" font-size="21" class="chart-muted">src/**/*.ts → locate files</text>
-          <rect x="80" y="1050" width="440" height="88" rx="10" class="tool-card"/>
-          <text x="100" y="1083" class="tool-name">Grep</text>
-          <text x="100" y="1116" font-size="21" class="chart-muted">quote → find symbols &amp; callers</text>
-          <rect x="80" y="1150" width="440" height="88" rx="10" class="tool-card"/>
-          <text x="100" y="1183" class="tool-name">Read</text>
-          <text x="100" y="1216" font-size="21" class="chart-muted">pricing.ts → inspect behavior</text>
-          <rect x="80" y="1250" width="440" height="88" rx="10" class="tool-card"/>
-          <text x="100" y="1283" class="tool-name">LSP</text>
-          <text x="100" y="1316" font-size="21" class="chart-muted">findReferences → follow links</text>
-          <rect x="80" y="1350" width="440" height="88" rx="10" class="tool-card"/>
-          <text x="100" y="1383" class="tool-name">Bash</text>
-          <text x="100" y="1416" font-size="21" class="chart-muted">rg --files → map the repo</text>
-          <rect x="80" y="1450" width="440" height="88" rx="10" class="tool-card"/>
-          <text x="100" y="1483" class="tool-name">Read</text>
-          <text x="100" y="1516" font-size="21" class="chart-muted">pricing.test.ts → learn contracts</text>
+        <g transform="translate(0 100)">
+          <g class="tool-call" data-think-ms="500" data-run-ms="600">
+            <rect width="440" height="88" rx="10" class="tool-card"/>
+            <text x="20" y="33" class="tool-name">Grep</text>
+            <text x="20" y="66" font-size="21" class="chart-muted">quote → find symbols &amp; callers</text>
+            <circle cx="408" cy="26" r="9" class="tool-spinner"/>
+            <text x="420" y="32" class="tool-result">12 matches</text>
+          </g>
         </g>
+        <g transform="translate(0 200)">
+          <g class="tool-call" data-think-ms="700" data-run-ms="450">
+            <rect width="440" height="88" rx="10" class="tool-card"/>
+            <text x="20" y="33" class="tool-name">Read</text>
+            <text x="20" y="66" font-size="21" class="chart-muted">pricing.ts → inspect behavior</text>
+            <circle cx="408" cy="26" r="9" class="tool-spinner"/>
+            <text x="420" y="32" class="tool-result">214 lines</text>
+          </g>
+        </g>
+        <g transform="translate(0 300)">
+          <g class="tool-call" data-think-ms="1200" data-run-ms="900">
+            <rect width="440" height="88" rx="10" class="tool-card"/>
+            <text x="20" y="33" class="tool-name">LSP</text>
+            <text x="20" y="66" font-size="21" class="chart-muted">findReferences → follow links</text>
+            <circle cx="408" cy="26" r="9" class="tool-spinner"/>
+            <text x="420" y="32" class="tool-result">9 references</text>
+          </g>
+        </g>
+        <g transform="translate(0 400)">
+          <g class="tool-call" data-think-ms="600" data-run-ms="1100">
+            <rect width="440" height="88" rx="10" class="tool-card"/>
+            <text x="20" y="33" class="tool-name">Bash</text>
+            <text x="20" y="66" font-size="21" class="chart-muted">rg --files → map the repo</text>
+            <circle cx="408" cy="26" r="9" class="tool-spinner"/>
+            <text x="420" y="32" class="tool-result">126 paths</text>
+          </g>
+        </g>
+        <g transform="translate(0 500)">
+          <g class="tool-call" data-think-ms="400" data-run-ms="400">
+            <rect width="440" height="88" rx="10" class="tool-card"/>
+            <text x="20" y="33" class="tool-name">Read</text>
+            <text x="20" y="66" font-size="21" class="chart-muted">pricing.test.ts → learn contracts</text>
+            <circle cx="408" cy="26" r="9" class="tool-spinner"/>
+            <text x="420" y="32" class="tool-result">88 lines</text>
+          </g>
+        </g>
+      </g>
+      <g class="tool-thinking" transform="translate(22 320)">
+        <circle r="5"/>
+        <circle cx="18" r="5"/>
+        <circle cx="36" r="5"/>
+        <text x="58" y="7" font-size="20">Thinking…</text>
       </g>
     </g>
   </g>
@@ -61,48 +80,68 @@
     <text x="580" y="285" font-size="34" font-weight="600">02 / Plan changes</text>
     <text x="580" y="325" class="chart-muted" font-size="23">Keep exploring. Decide what changes.</text>
     <text x="537" y="285" class="chart-accent" font-size="32">→</text>
-    <g clip-path="url(#workflow-clip-1)">
+    <g class="tool-transcript" transform="translate(580 350)" clip-path="url(#workflow-transcript-window)">
       <g class="tool-stream">
-        <g>
-          <rect x="580" y="350" width="440" height="88" rx="10" class="tool-card"/>
-          <text x="600" y="383" class="tool-name">EnterPlanMode</text>
-          <text x="600" y="416" font-size="21" class="chart-muted">Investigate before editing</text>
-          <rect x="580" y="450" width="440" height="88" rx="10" class="tool-card"/>
-          <text x="600" y="483" class="tool-name">Read</text>
-          <text x="600" y="516" font-size="21" class="chart-muted">contracts.ts → check boundaries</text>
-          <rect x="580" y="550" width="440" height="88" rx="10" class="tool-card"/>
-          <text x="600" y="583" class="tool-name">Grep</text>
-          <text x="600" y="616" font-size="21" class="chart-muted">quote → assess affected callers</text>
-          <rect x="580" y="650" width="440" height="88" rx="10" class="tool-card"/>
-          <text x="600" y="683" class="tool-name">AskUserQuestion</text>
-          <text x="600" y="716" font-size="21" class="chart-muted">Clarify an ambiguous requirement</text>
-          <rect x="580" y="750" width="440" height="88" rx="10" class="tool-card"/>
-          <text x="600" y="783" class="tool-name">Plan artifact¹</text>
-          <text x="600" y="816" font-size="21" class="chart-muted">Files · approach · risks · tests</text>
-          <rect x="580" y="850" width="440" height="88" rx="10" class="tool-card"/>
-          <text x="600" y="883" class="tool-name">ExitPlanMode</text>
-          <text x="600" y="916" font-size="21" class="chart-muted">Present the proposed approach</text>
+        <g transform="translate(0 0)">
+          <g class="tool-call" data-think-ms="1400" data-run-ms="300">
+            <rect width="440" height="88" rx="10" class="tool-card"/>
+            <text x="20" y="33" class="tool-name">EnterPlanMode</text>
+            <text x="20" y="66" font-size="21" class="chart-muted">Investigate before editing</text>
+            <circle cx="408" cy="26" r="9" class="tool-spinner"/>
+            <text x="420" y="32" class="tool-result">read-only</text>
+          </g>
         </g>
-        <g aria-hidden="true">
-          <rect x="580" y="950" width="440" height="88" rx="10" class="tool-card"/>
-          <text x="600" y="983" class="tool-name">EnterPlanMode</text>
-          <text x="600" y="1016" font-size="21" class="chart-muted">Investigate before editing</text>
-          <rect x="580" y="1050" width="440" height="88" rx="10" class="tool-card"/>
-          <text x="600" y="1083" class="tool-name">Read</text>
-          <text x="600" y="1116" font-size="21" class="chart-muted">contracts.ts → check boundaries</text>
-          <rect x="580" y="1150" width="440" height="88" rx="10" class="tool-card"/>
-          <text x="600" y="1183" class="tool-name">Grep</text>
-          <text x="600" y="1216" font-size="21" class="chart-muted">quote → assess affected callers</text>
-          <rect x="580" y="1250" width="440" height="88" rx="10" class="tool-card"/>
-          <text x="600" y="1283" class="tool-name">AskUserQuestion</text>
-          <text x="600" y="1316" font-size="21" class="chart-muted">Clarify an ambiguous requirement</text>
-          <rect x="580" y="1350" width="440" height="88" rx="10" class="tool-card"/>
-          <text x="600" y="1383" class="tool-name">Plan artifact¹</text>
-          <text x="600" y="1416" font-size="21" class="chart-muted">Files · approach · risks · tests</text>
-          <rect x="580" y="1450" width="440" height="88" rx="10" class="tool-card"/>
-          <text x="600" y="1483" class="tool-name">ExitPlanMode</text>
-          <text x="600" y="1516" font-size="21" class="chart-muted">Present the proposed approach</text>
+        <g transform="translate(0 100)">
+          <g class="tool-call" data-think-ms="600" data-run-ms="450">
+            <rect width="440" height="88" rx="10" class="tool-card"/>
+            <text x="20" y="33" class="tool-name">Read</text>
+            <text x="20" y="66" font-size="21" class="chart-muted">contracts.ts → check boundaries</text>
+            <circle cx="408" cy="26" r="9" class="tool-spinner"/>
+            <text x="420" y="32" class="tool-result">61 lines</text>
+          </g>
         </g>
+        <g transform="translate(0 200)">
+          <g class="tool-call" data-think-ms="500" data-run-ms="650">
+            <rect width="440" height="88" rx="10" class="tool-card"/>
+            <text x="20" y="33" class="tool-name">Grep</text>
+            <text x="20" y="66" font-size="21" class="chart-muted">quote → assess affected callers</text>
+            <circle cx="408" cy="26" r="9" class="tool-spinner"/>
+            <text x="420" y="32" class="tool-result">7 callers</text>
+          </g>
+        </g>
+        <g transform="translate(0 300)">
+          <g class="tool-call" data-think-ms="1600" data-run-ms="3200">
+            <rect width="440" height="88" rx="10" class="tool-card"/>
+            <text x="20" y="33" class="tool-name">AskUserQuestion</text>
+            <text x="20" y="66" font-size="21" class="chart-muted">Clarify an ambiguous requirement</text>
+            <circle cx="408" cy="26" r="9" class="tool-spinner"/>
+            <text x="420" y="32" class="tool-result">answered</text>
+          </g>
+        </g>
+        <g transform="translate(0 400)">
+          <g class="tool-call" data-think-ms="2200" data-run-ms="1500">
+            <rect width="440" height="88" rx="10" class="tool-card"/>
+            <text x="20" y="33" class="tool-name">Plan artifact¹</text>
+            <text x="20" y="66" font-size="21" class="chart-muted">Files · approach · risks · tests</text>
+            <circle cx="408" cy="26" r="9" class="tool-spinner"/>
+            <text x="420" y="32" class="tool-result">4 files</text>
+          </g>
+        </g>
+        <g transform="translate(0 500)">
+          <g class="tool-call" data-think-ms="700" data-run-ms="2000">
+            <rect width="440" height="88" rx="10" class="tool-card"/>
+            <text x="20" y="33" class="tool-name">ExitPlanMode</text>
+            <text x="20" y="66" font-size="21" class="chart-muted">Present the proposed approach</text>
+            <circle cx="408" cy="26" r="9" class="tool-spinner"/>
+            <text x="420" y="32" class="tool-result">approved</text>
+          </g>
+        </g>
+      </g>
+      <g class="tool-thinking" transform="translate(22 320)">
+        <circle r="5"/>
+        <circle cx="18" r="5"/>
+        <circle cx="36" r="5"/>
+        <text x="58" y="7" font-size="20">Thinking…</text>
       </g>
     </g>
   </g>
@@ -110,48 +149,68 @@
     <text x="1080" y="285" font-size="34" font-weight="600">03 / Implement</text>
     <text x="1080" y="325" class="chart-muted" font-size="23">Edit → run checks → repair.</text>
     <text x="1037" y="285" class="chart-accent" font-size="32">→</text>
-    <g clip-path="url(#workflow-clip-2)">
+    <g class="tool-transcript" transform="translate(1080 350)" clip-path="url(#workflow-transcript-window)">
       <g class="tool-stream">
-        <g>
-          <rect x="1080" y="350" width="440" height="88" rx="10" class="tool-card"/>
-          <text x="1100" y="383" class="tool-name">Read</text>
-          <text x="1100" y="416" font-size="21" class="chart-muted">pricing.ts → inspect current code</text>
-          <rect x="1080" y="450" width="440" height="88" rx="10" class="tool-card"/>
-          <text x="1100" y="483" class="tool-name">Edit</text>
-          <text x="1100" y="516" font-size="21" class="chart-muted">Replace a targeted code fragment</text>
-          <rect x="1080" y="550" width="440" height="88" rx="10" class="tool-card"/>
-          <text x="1100" y="583" class="tool-name">Write</text>
-          <text x="1100" y="616" font-size="21" class="chart-muted">Create pricing-policy.test.ts</text>
-          <rect x="1080" y="650" width="440" height="88" rx="10" class="tool-card"/>
-          <text x="1100" y="683" class="tool-name">Bash</text>
-          <text x="1100" y="716" font-size="21" class="chart-muted">bun test → verify behavior</text>
-          <rect x="1080" y="750" width="440" height="88" rx="10" class="tool-card"/>
-          <text x="1100" y="783" class="tool-name">Read</text>
-          <text x="1100" y="816" font-size="21" class="chart-muted">Test output → diagnose failure</text>
-          <rect x="1080" y="850" width="440" height="88" rx="10" class="tool-card"/>
-          <text x="1100" y="883" class="tool-name">Edit</text>
-          <text x="1100" y="916" font-size="21" class="chart-muted">Fix → run the checks again</text>
+        <g transform="translate(0 0)">
+          <g class="tool-call" data-think-ms="800" data-run-ms="400">
+            <rect width="440" height="88" rx="10" class="tool-card"/>
+            <text x="20" y="33" class="tool-name">Read</text>
+            <text x="20" y="66" font-size="21" class="chart-muted">pricing.ts → inspect current code</text>
+            <circle cx="408" cy="26" r="9" class="tool-spinner"/>
+            <text x="420" y="32" class="tool-result">214 lines</text>
+          </g>
         </g>
-        <g aria-hidden="true">
-          <rect x="1080" y="950" width="440" height="88" rx="10" class="tool-card"/>
-          <text x="1100" y="983" class="tool-name">Read</text>
-          <text x="1100" y="1016" font-size="21" class="chart-muted">pricing.ts → inspect current code</text>
-          <rect x="1080" y="1050" width="440" height="88" rx="10" class="tool-card"/>
-          <text x="1100" y="1083" class="tool-name">Edit</text>
-          <text x="1100" y="1116" font-size="21" class="chart-muted">Replace a targeted code fragment</text>
-          <rect x="1080" y="1150" width="440" height="88" rx="10" class="tool-card"/>
-          <text x="1100" y="1183" class="tool-name">Write</text>
-          <text x="1100" y="1216" font-size="21" class="chart-muted">Create pricing-policy.test.ts</text>
-          <rect x="1080" y="1250" width="440" height="88" rx="10" class="tool-card"/>
-          <text x="1100" y="1283" class="tool-name">Bash</text>
-          <text x="1100" y="1316" font-size="21" class="chart-muted">bun test → verify behavior</text>
-          <rect x="1080" y="1350" width="440" height="88" rx="10" class="tool-card"/>
-          <text x="1100" y="1383" class="tool-name">Read</text>
-          <text x="1100" y="1416" font-size="21" class="chart-muted">Test output → diagnose failure</text>
-          <rect x="1080" y="1450" width="440" height="88" rx="10" class="tool-card"/>
-          <text x="1100" y="1483" class="tool-name">Edit</text>
-          <text x="1100" y="1516" font-size="21" class="chart-muted">Fix → run the checks again</text>
+        <g transform="translate(0 100)">
+          <g class="tool-call" data-think-ms="1500" data-run-ms="350">
+            <rect width="440" height="88" rx="10" class="tool-card"/>
+            <text x="20" y="33" class="tool-name">Edit</text>
+            <text x="20" y="66" font-size="21" class="chart-muted">Replace a targeted code fragment</text>
+            <circle cx="408" cy="26" r="9" class="tool-spinner"/>
+            <text x="420" y="32" class="tool-result">+6 −2</text>
+          </g>
         </g>
+        <g transform="translate(0 200)">
+          <g class="tool-call" data-think-ms="1300" data-run-ms="400">
+            <rect width="440" height="88" rx="10" class="tool-card"/>
+            <text x="20" y="33" class="tool-name">Write</text>
+            <text x="20" y="66" font-size="21" class="chart-muted">Create pricing-policy.test.ts</text>
+            <circle cx="408" cy="26" r="9" class="tool-spinner"/>
+            <text x="420" y="32" class="tool-result">+48</text>
+          </g>
+        </g>
+        <g transform="translate(0 300)">
+          <g class="tool-call" data-think-ms="600" data-run-ms="2600">
+            <rect width="440" height="88" rx="10" class="tool-card"/>
+            <text x="20" y="33" class="tool-name">Bash</text>
+            <text x="20" y="66" font-size="21" class="chart-muted">bun test → verify behavior</text>
+            <circle cx="408" cy="26" r="9" class="tool-spinner"/>
+            <text x="420" y="32" class="tool-result tool-result--failed">1 failed</text>
+          </g>
+        </g>
+        <g transform="translate(0 400)">
+          <g class="tool-call" data-think-ms="500" data-run-ms="400">
+            <rect width="440" height="88" rx="10" class="tool-card"/>
+            <text x="20" y="33" class="tool-name">Read</text>
+            <text x="20" y="66" font-size="21" class="chart-muted">Test output → diagnose failure</text>
+            <circle cx="408" cy="26" r="9" class="tool-spinner"/>
+            <text x="420" y="32" class="tool-result">23 lines</text>
+          </g>
+        </g>
+        <g transform="translate(0 500)">
+          <g class="tool-call" data-think-ms="1700" data-run-ms="350">
+            <rect width="440" height="88" rx="10" class="tool-card"/>
+            <text x="20" y="33" class="tool-name">Edit</text>
+            <text x="20" y="66" font-size="21" class="chart-muted">Fix → run the checks again</text>
+            <circle cx="408" cy="26" r="9" class="tool-spinner"/>
+            <text x="420" y="32" class="tool-result">+3 −1</text>
+          </g>
+        </g>
+      </g>
+      <g class="tool-thinking" transform="translate(22 320)">
+        <circle r="5"/>
+        <circle cx="18" r="5"/>
+        <circle cx="36" r="5"/>
+        <text x="58" y="7" font-size="20">Thinking…</text>
       </g>
     </g>
   </g>

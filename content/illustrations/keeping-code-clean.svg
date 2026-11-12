@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
+  <title>Keeping the code clean</title>
+  <desc>Define clean code, validate it, make side effects explicit, keep responsibilities small, and require a review and cleanup loop before publishing a PR.</desc>
+  <text x="100" y="80" class="chart-accent" font-size="18" letter-spacing="4">CLEAN CODE / ENFORCE THE STANDARD</text>
+  <text x="100" y="158" class="chart-heading">Keeping the code clean</text>
+  <g class="chart-accent">
+    <circle cx="111" cy="257" r="5"/>
+    <circle cx="111" cy="352" r="5"/>
+    <circle cx="111" cy="432" r="5"/>
+    <circle cx="111" cy="542" r="5"/>
+  </g>
+  <g font-size="30">
+    <text x="144" y="269">Your repo needs a definition of clean code</text>
+    <text x="144" y="311">and a way to validate it.</text>
+    <text x="144" y="364">Avoid hidden side effects. Prefer well-defined events.</text>
+    <text x="144" y="444">Single responsibility. Small files, classes and functions.</text>
+    <text x="144" y="554" class="chart-accent" font-weight="600">Pressure the agent.</text>
+  </g>
+  <text x="144" y="615" font-family="monospace" font-size="34" class="chart-accent">/pr-wrap</text>
+  <text x="380" y="613" class="chart-muted" font-size="23">Example workflow · condensed from qape-hq</text>
+  <g fill="none" class="chart-grid" stroke-width="2">
+    <rect x="144" y="650" width="280" height="115" rx="10"/>
+    <rect x="490" y="650" width="280" height="115" rx="10"/>
+    <rect x="836" y="650" width="280" height="115" rx="10"/>
+    <rect x="1182" y="650" width="280" height="115" rx="10"/>
+  </g>
+  <g text-anchor="middle">
+    <g font-size="29" class="chart-accent" font-weight="600">
+      <text x="284" y="695">Validate</text>
+      <text x="630" y="695">Refactor</text>
+      <text x="976" y="695">Revalidate</text>
+      <text x="1322" y="695">Wrap</text>
+    </g>
+    <g font-size="21" class="chart-muted">
+      <text x="284" y="738">Plan + test readability</text>
+      <text x="630" y="738">Fix issues + split files</text>
+      <text x="976" y="738">Lint + types + tests</text>
+      <text x="1322" y="738">Docs + PR readiness</text>
+    </g>
+    <g font-size="32" class="chart-accent">
+      <text x="457" y="717">→</text><text x="803" y="717">→</text><text x="1149" y="717">→</text>
+    </g>
+  </g>
+  <text x="144" y="826" font-size="24" class="chart-muted">Fix findings. Re-run checks. Require evidence before calling it done.</text>
+</svg>

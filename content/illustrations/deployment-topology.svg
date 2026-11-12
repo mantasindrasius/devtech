@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
+  <title>Deep Modules PoV: Both are good</title>
+  <desc>The same six deep modules in one monolith become three services with two modules each. Checkout calls Quotes, Cart calls Checkout, Quotes calls Catalog, and Orders calls Shipping. Checkout publishes OrderPlaced to Orders; cross-service connections become RPC and Kafka.</desc>
+  <defs><marker id="deployment-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" class="chart-accent"/></marker></defs>
+  <text x="80" y="75" class="chart-accent" font-size="18" letter-spacing="4">ARCHITECTURE / MODULES BEFORE DEPLOYMENT</text>
+  <text x="80" y="150" class="chart-heading">Deep Modules PoV: Both are good</text>
+  <text x="80" y="202" class="chart-muted" font-size="26">Keep the module boundaries. Choose where they run.</text>
+  <g data-appears-at="0" data-disappears-at="1">
+    <rect x="70" y="245" width="1460" height="505" rx="18" class="deployment-boundary"/>
+    <text x="95" y="281" font-size="24">MONOLITH · ONE PROCESS</text>
+  </g>
+  <g data-appears-at="1">
+    <rect x="90" y="330" width="420" height="400" rx="16" class="deployment-boundary"/>
+    <text x="114" y="365" font-size="25">Commerce service</text>
+    <rect x="590" y="330" width="420" height="400" rx="16" class="deployment-boundary"/>
+    <text x="614" y="365" font-size="25">Pricing service</text>
+    <rect x="1090" y="330" width="420" height="400" rx="16" class="deployment-boundary"/>
+    <text x="1114" y="365" font-size="25">Fulfillment service</text>
+  </g>
+  <rect x="120" y="395" width="360" height="110" rx="8" class="module-body"/>
+  <rect x="185" y="380" width="230" height="34" rx="5" class="module-port"/>
+  <text x="300" y="403" text-anchor="middle" font-family="monospace" font-size="18">placeOrder()</text>
+  <text x="300" y="450" text-anchor="middle" font-size="29">Checkout</text>
+  <path d="M155 473h68m12 0h80m12 0h95m-267 12h110m12 0h145" class="chart-grid" fill="none" stroke-width="4"/>
+  <rect x="120" y="570" width="360" height="110" rx="8" class="module-body"/>
+  <rect x="185" y="555" width="230" height="34" rx="5" class="module-port"/>
+  <text x="300" y="578" text-anchor="middle" font-family="monospace" font-size="18">items()</text>
+  <text x="300" y="625" text-anchor="middle" font-size="29">Cart</text>
+  <path d="M155 648h68m12 0h80m12 0h95m-267 12h110m12 0h145" class="chart-grid" fill="none" stroke-width="4"/>
+  <rect x="620" y="395" width="360" height="110" rx="8" class="module-body"/>
+  <rect x="685" y="380" width="230" height="34" rx="5" class="module-port"/>
+  <text x="800" y="403" text-anchor="middle" font-family="monospace" font-size="18">quote()</text>
+  <text x="800" y="450" text-anchor="middle" font-size="29">Quotes</text>
+  <path d="M655 473h68m12 0h80m12 0h95m-267 12h110m12 0h145" class="chart-grid" fill="none" stroke-width="4"/>
+  <rect x="620" y="570" width="360" height="110" rx="8" class="module-body"/>
+  <rect x="685" y="555" width="230" height="34" rx="5" class="module-port"/>
+  <text x="800" y="578" text-anchor="middle" font-family="monospace" font-size="18">pricesFor()</text>
+  <text x="800" y="625" text-anchor="middle" font-size="29">Catalog</text>
+  <path d="M655 648h68m12 0h80m12 0h95m-267 12h110m12 0h145" class="chart-grid" fill="none" stroke-width="4"/>
+  <rect x="1120" y="395" width="360" height="110" rx="8" class="module-body"/>
+  <rect x="1185" y="380" width="230" height="34" rx="5" class="module-port"/>
+  <text x="1300" y="403" text-anchor="middle" font-family="monospace" font-size="18">onOrderPlaced()</text>
+  <text x="1300" y="450" text-anchor="middle" font-size="29">Orders</text>
+  <path d="M1155 473h68m12 0h80m12 0h95m-267 12h110m12 0h145" class="chart-grid" fill="none" stroke-width="4"/>
+  <rect x="1120" y="570" width="360" height="110" rx="8" class="module-body"/>
+  <rect x="1185" y="555" width="230" height="34" rx="5" class="module-port"/>
+  <text x="1300" y="578" text-anchor="middle" font-family="monospace" font-size="18">schedule()</text>
+  <text x="1300" y="625" text-anchor="middle" font-size="29">Shipping</text>
+  <path d="M1155 648h68m12 0h80m12 0h95m-267 12h110m12 0h145" class="chart-grid" fill="none" stroke-width="4"/>
+  <path d="M300 555V508" class="call-arrow"/>
+  <path d="M800 505V552" class="call-arrow"/>
+  <path d="M1300 505V552" class="call-arrow"/>
+  <path d="M480 447H617" class="call-arrow"/>
+  <path d="M450 395V310H1450V392" class="call-arrow event-arrow"/>
+  <g data-appears-at="0" data-disappears-at="1">
+    <text x="550" y="431" text-anchor="middle" font-size="18" class="chart-accent">Call</text>
+    <text x="800" y="296" text-anchor="middle" font-size="21">OrderPlaced · in-process event</text>
+    <text x="80" y="807" font-size="28">One deployment. Public module contracts. In-process communication.</text>
+  </g>
+  <g data-appears-at="1">
+    <text x="550" y="431" text-anchor="middle" font-size="22" class="chart-accent">RPC</text>
+    <text x="800" y="296" text-anchor="middle" font-size="23" class="chart-accent">Kafka · OrderPlaced → consumer</text>
+    <text x="80" y="807" font-size="28">Three deployments. Same capabilities. Transport adapters at the boundaries.</text>
+  </g>
+  <text x="80" y="855" class="chart-muted" font-size="20">Solid arrows: calls · Dashed arrow: event flow · Distribution adds latency, retries and delivery semantics.</text>
+</svg>

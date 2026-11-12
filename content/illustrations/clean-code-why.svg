@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
+  <title>Why bother?</title>
+  <desc>Clean code makes agentic coding more effective. SOLID, design patterns and extensible code benefit agents and developers.</desc>
+  <text x="100" y="80" class="chart-accent" font-size="18" letter-spacing="4">CLEAN CODE / WHY IT MATTERS</text>
+  <text x="100" y="158" class="chart-heading">Why bother?</text>
+  <g class="chart-accent">
+    <circle cx="111" cy="307" r="5"/>
+    <circle cx="111" cy="457" r="5"/>
+    <circle cx="111" cy="607" r="5"/>
+  </g>
+  <g font-size="34">
+    <text x="144" y="319">Simpler, cleaner code makes agentic coding <tspan class="chart-accent" font-weight="700">more effective.</tspan></text>
+    <text x="144" y="469">Agents will enjoy SOLID and design patterns. So will you.</text>
+    <text x="144" y="619">Code that is open for extension keeps the design less rigid.</text>
+  </g>
+</svg>

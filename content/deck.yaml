@@ -7,6 +7,66 @@ presenter:
   company: Wix.com
   initials: mi
 resources:
+  code-metrics-rescue:
+    type: svg-illustration
+    file: illustrations/code-metrics-rescue.svg
+    title: Code metrics for the rescue
+    description: Cyclomatic complexity, the CRAP index and a PR cleanup loop help prioritize risky code for improvement.
+  keeping-code-clean:
+    type: svg-illustration
+    file: illustrations/keeping-code-clean.svg
+    title: Keeping the code clean
+    description: Repository standards, explicit effects, small responsibilities and a condensed pr-wrap validation and cleanup workflow.
+  clean-code-why:
+    type: svg-illustration
+    file: illustrations/clean-code-why.svg
+    title: Why bother?
+    description: Simpler code, SOLID, design patterns and openness to extension make changes easier for agents and developers.
+  testable-design:
+    type: testable-design
+    file: illustrations/testable-design.svg
+    title: Testable design
+    description: An application core of deep modules covered by fast in-memory tests, then ports and adapters to infrastructure covered by an end-to-end suite.
+  testing-shape:
+    type: testing-pyramid
+    file: illustrations/testing-shape.svg
+    title: Testing pyramid
+    description: Test layer trade-offs, followed by a diamond emphasizing in-memory integration tests and isolated parallel module tests.
+  ideal-fluent-test:
+    type: code
+    file: snippets/ideal-fluent-test.ts
+    language: typescript
+  test-hygiene:
+    type: ideal-test
+    code: ideal-fluent-test
+    file: illustrations/test-hygiene.svg
+    title: The ideal test
+    description: Fast to run, deterministic, assertive and readable tests keep agent feedback loops short and provide common ground for human reviewers and agents.
+  legacy-plan-a:
+    type: svg-illustration
+    file: illustrations/legacy-plan-a.svg
+    title: 'Plan A: rewrite the system'
+    description: Two short points. Rewriting the system is cheap now, and existing tests make the rewrite even cheaper.
+  legacy-plan-b:
+    type: svg-illustration
+    file: illustrations/legacy-plan-b.svg
+    title: 'Plan B: transition the system'
+    description: Four short points beside the cover of Working Effectively with Legacy Code. Design the target system, reference it in the planning skill, and follow every PR with a proportional refactoring PR that moves closer to the target.
+  testing-safety-net:
+    type: svg-illustration
+    file: illustrations/testing-safety-net.svg
+    title: The safety net
+    description: Five short points on tests as agent guardrails, deployment confidence, the first thing to review and an executable specification.
+  deployment-topology:
+    type: deployment-topology
+    file: illustrations/deployment-topology.svg
+    title: 'Deep Modules PoV: Both are good'
+    description: One monolith containing six deep modules transitions to three microservices with two modules each, preserving relationships and labeling cross-service RPC and Kafka communication.
+  deployment-start:
+    type: svg-illustration
+    file: illustrations/monolith-or-microservices.svg
+    title: Start with a monolith or microservices?
+    description: Side-by-side comparison of monolith and microservices operations, coupling, deployment, I/O and contracts.
   composition-roots:
     type: code-comparison
     file: snippets/composition-server.ts
@@ -24,6 +84,11 @@ resources:
     file: illustrations/deep-modules.svg
     title: Deep modules — implementation depth
     description: Thin functions behind a shallow interface versus a substantial implementation containing private submodules behind a small quote interface.
+  deep-modules-intro:
+    type: topic-intro
+    file: illustrations/deep-modules-intro.svg
+    title: Deep modules
+    description: The title fills the slide like a separator, then settles into a heading above four short points about deep modules beside a shallow module, drawn as a wide interface over a thin body, and a deep module, drawn as a narrow interface over a tall body.
   deep-modules-comparison:
     type: code-comparison
     file: snippets/shallow-quote-interface.ts
@@ -49,12 +114,12 @@ resources:
     type: agent-context
     file: illustrations/agent-context.svg
     title: Same change. Different context.
-    description: Click-revealed comparison of subagents searching scattered domain fragments versus one agent focused on a coherent module. Heat represents illustrative attention, not measured cost.
+    description: Click-revealed comparison of subagents hopping between scattered domain fragments, pausing at each to make tool calls, versus one agent focused on a coherent module. Heat represents illustrative attention, not measured cost.
   agent-workflow:
     type: agent-workflow
     file: illustrations/agent-workflow.svg
     title: How coding agents work
-    description: Click to reveal Explore, Plan changes and Implement, each with a continuously scrolling illustrative tool-call stream.
+    description: Click to reveal Explore, Plan changes and Implement, each playing an illustrative transcript of tool calls that arrive one at a time, run and return a result.
   ease-of-change:
     type: svg-illustration
     file: illustrations/ease-of-change.svg
@@ -789,6 +854,8 @@ slides:
       Click once for the tightly coupled monolith; three labeled subagents traverse fragments
       of the same color-coded domains. Orange heat represents illustrative reads and attention.
       Click again for the modular design; Billing is cohesive and the agent stays within it.
+      Token counters above the agents are illustrative: on the monolith side context fills
+      three times faster, so those agents regularly stop to compact it.
       This is a conceptual comparison, not a measured three-to-one staffing or cost claim.
       Cross-domain tasks can still require several modules and agents. A modular monolith
       can have the right-hand organization; deployment topology is not the distinction.
@@ -808,6 +875,39 @@ slides:
         panel: agent-context
         scene: modular
         caption: A coherent module lets the agent focus on a bounded change.
+  - id: deep-modules-intro
+    name: Deep modules
+    label: ARCHITECTURE FOR AGENTS
+    layout: visual
+    title:
+      - text: Deep modules
+    description: A small interface that hides a lot of useful behaviour.
+    code: introduction
+    takeaway: Much behaviour behind a small interface.
+    notes: >-
+      The slide opens as a separator showing only the title; click to settle it into the
+      heading and reveal the points. Introduce the idea before the code. A module can be a function, a class, a package or a
+      larger slice. Its interface is everything a caller must know: types, invariants, ordering,
+      errors, configuration and performance characteristics. Depth means useful behaviour
+      behind a small interface, not a large line count. The shallow box has a wide interface
+      and little behind it, so every caller coordinates the workflow. The deep box has a
+      narrow interface over a tall body: it owns the behaviour. Locality keeps
+      related knowledge, changes, bugs and verification together. The deletion test asks
+      whether removing the module would spread complexity across callers or merely remove
+      indirection. A seam needs a real reason to vary; avoid speculative ports and
+      pass-through layers. The concept is Ousterhout's, from A Philosophy of Software Design,
+      as advocated in Matt Pocock's skills. The next slide shows the same contrast in code.
+    steps:
+      - id: title
+        label: Deep modules
+        panel: deep-modules-intro
+        scene: title
+        caption: Deep modules.
+      - id: points
+        label: What makes a module deep
+        panel: deep-modules-intro
+        scene: points
+        caption: A small interface, everything a caller must know, hiding a lot of behaviour.
   - id: deep-modules-comparison
     name: Deep modules
     label: ARCHITECTURE FOR AGENTS
@@ -878,289 +978,56 @@ slides:
         label: Server and client composition roots
         panel: composition-roots
         face: interface
-  - id: agent-exploration
-    name: How agents explore
+  - id: deployment-start
+    name: Start with a monolith or microservices?
     label: ARCHITECTURE FOR AGENTS
+    layout: visual
     title:
-      - text: How agents explore
-    description: Find the entry point. Trace the contract. Locate the proof.
+      - text: Start with a monolith or microservices?
+    description: Compare operations, dependencies and communication.
     code: introduction
-    takeaway: Make discovery a short path.
+    takeaway: Choose boundaries and communication deliberately.
     notes: >-
-      [4:23–5:19 · 56 seconds]
-
-
-      Walk through a real change: where is the capability, what can change, and how will I know?
-      Agents vary in tools and strategy; this is a useful workflow, not a claim about every model.
-      Give each package an entry point, a public contract and a fast check.
+      Compare the initial operational tradeoffs. A monolith offers simple operations and
+      in-process communication, but unmanaged dependencies create coupling risk.
+      Microservices support independent deployment and require explicit contracts across
+      service boundaries. Introducing distribution too early can be premature optimization.
+      A network boundary does not guarantee a good contract; that remains a design responsibility.
     steps:
-      - id: message
-        label: How agents explore
-        panel: agent-exploration
-        reveal:
-          - description
-          - principles
-          - takeaway
-  - id: agent-struggle
-    name: A small task. A huge context.
+      - id: comparison
+        label: Choose boundaries before deployment
+        panel: deployment-start
+  - id: deployment-topology
+    name: 'Deep Modules PoV: Both are good'
     label: ARCHITECTURE FOR AGENTS
+    layout: visual
     title:
-      - text: A small task. A huge context.
-    description: Hidden coupling turns exploration into repeated guessing.
+      - text: 'Deep Modules PoV: Both are good'
+    description: Keep module boundaries; choose deployment boundaries.
     code: introduction
-    takeaway: Context size is a symptom. Coupling is often the cause.
+    takeaway: Deep modules compose in one process or across services.
     notes: >-
-      [5:19–6:15 · 56 seconds]
-
-
-      Complex architecture forces broad retrieval: callers, shared mutable state, implicit ordering
-      and infrastructure. A larger context window does not remove ambiguity. Look for repeated
-      searches, retries and unrelated files touched. Preserve headroom for the task, tool output and
-      review.
+      Start with six deep modules inside a single process. Cart calls Checkout, Checkout
+      calls Quotes, Quotes calls Catalog, and Orders calls Shipping. Checkout publishes
+      OrderPlaced, consumed by Orders. Click to replace the outer boundary with Commerce,
+      Pricing and Fulfillment services, two deep modules each. Checkout-to-Quotes becomes
+      RPC; the OrderPlaced flow uses Kafka. Internal calls stay in-process. Arrows indicate
+      call or event direction, not return paths. The event arrow abstracts the broker and
+      transport adapters. This is a deployment schematic, not a claim extraction is free:
+      remote failures, latency, serialization, data ownership, retries and idempotent
+      consumers still need deliberate design. Event publication needs appropriate reliability,
+      for example an outbox when coordinated with a database write.
     steps:
-      - id: message
-        label: A small task. A huge context.
-        panel: context-burden
-        reveal:
-          - description
-          - principles
-          - takeaway
-  - id: velocity-cost
-    name: Measure velocity, quality & cost
-    label: ARCHITECTURE FOR AGENTS
-    title:
-      - text: Measure velocity, quality & cost
-    description: Count accepted outcomes, including retries, review and regressions.
-    code: introduction
-    takeaway: Cost per accepted task is the useful denominator.
-    notes: >-
-      [6:15–7:16 · 61 seconds]
-
-
-      These curves illustrate the hypothesis, not empirical results. Track comparable tasks,
-      model/toolchain, elapsed time, token spend, human review and production regressions. Do not
-      reward output volume alone.
-    steps:
-      - id: message
-        label: Measure velocity, quality & cost
-        panel: velocity-curve
-        reveal:
-          - description
-          - principles
-          - takeaway
-      - id: cost
-        label: Cost per accepted task
-        panel: cost-curve
-        reveal:
-          - description
-          - principles
-          - takeaway
-  - id: reasoning-budget
-    name: The “stupid agents” rule
-    label: ARCHITECTURE FOR AGENTS
-    title:
-      - text: The “stupid agents” rule.
-    description: Make routine changes simple enough for less capable models. Give frontier models less
-      work to untangle.
-    code: introduction
-    takeaway: Spend reasoning on the problem.
-    notes: >-
-      [7:16–8:17 · 61 seconds]
-
-
-      This is a design goal and an empirical hypothesis. Smaller models still have limits; better
-      structure does not guarantee correctness. Compare representative tasks and retain the same
-      acceptance bar.
-    steps:
-      - id: message
-        label: The idea
-        reveal:
-          - description
-          - author
-          - principles
-          - takeaway
-        panel: reasoning-budget
-  - id: deep-module-concept
-    name: Small interface. Deep capability.
-    label: ARCHITECTURE FOR AGENTS
-    title:
-      - text: Small interface. Deep capability.
-    description: Small packages and functions; cohesive knowledge behind a stable contract.
-    code: introduction
-    takeaway: Hide decisions that callers should not own.
-    notes: >-
-      [8:17–9:09 · 52 seconds]
-
-
-      Deep modules hide substantial implementation behind a simple interface. Avoid a package per
-      helper: that moves orchestration to every caller. Small is about cognitive surface, not
-      arbitrary line counts. Matt Pocock draws on John Ousterhout. Existing research links:
-      https://github.com/mattpocock/skills/blob/main/skills/engineering/codebase-design/SKILL.md
-    steps:
-      - id: message
-        label: Small interface. Deep capability.
-        panel: deep-module
-        reveal:
-          - description
-          - principles
-          - takeaway
-  - id: cohesive-packages
-    name: "Example: one quote capability"
-    label: ARCHITECTURE FOR AGENTS
-    title:
-      - text: One quote capability.
-    description: Hide meaningful complexity. Keep related knowledge together.
-    code: shallow-quote
-    takeaway: Reduce what callers must know, not just file length.
-    notes: >-
-      [9:09–10:52 · 103 seconds]
-
-
-      Small does not mean a package per function. Avoid forcing one feature across many fragments. A
-      modular monolith can provide these boundaries without distributed-system costs.
-
-
-      Matt Pocock advocates deep modules, drawing on John Ousterhout. A module may be a function,
-      class, package, or larger slice. Interface includes errors, invariants, configuration, and
-      performance, not merely types. These quote snippets are illustrative excerpts, not a runnable
-      package. Ask the deletion test: would removing the module spread its knowledge across callers,
-      or remove empty indirection? Four beats, about 25 seconds each. Sources:
-      https://github.com/mattpocock/skills/blob/main/skills/engineering/codebase-design/SKILL.md and
-      https://github.com/mattpocock/skills/blob/main/skills/engineering/codebase-design/DEEPENING.md
-    steps:
-      - id: shallow
-        label: "BAD: the caller coordinates the policy"
-        panel: shallow-quote
-        reveal:
-          - description
-          - takeaway
-      - id: deep
-        label: "GOOD: one capability hides the workflow"
-        panel: deep-quote
-        reveal:
-          - description
-          - takeaway
-      - id: seam
-        label: The same interface serves callers and tests
-        panel: deep-module
-        reveal:
-          - description
-          - takeaway
-      - id: package
-        label: Private helpers, explicit public exports
-        panel: quote-package
-        reveal:
-          - description
-          - takeaway
-  - id: start-modular
-    name: Monolith or microservices?
-    label: ARCHITECTURE FOR AGENTS
-    title:
-      - text: Monolith or microservices?
-    description: Start with module boundaries. Split deployment when there is a reason.
-    code: introduction
-    takeaway: Modularity is a design choice. Distribution has a cost.
-    notes: >-
-      [10:52–11:53 · 61 seconds]
-
-
-      A modular monolith can be a good starting point when one deployment and shared operations fit
-      the team. Extract a service for independently justified scaling, isolation, ownership or
-      release needs. Account for latency, failure modes, consistency and observability. A process
-      boundary does not repair a weak module boundary.
-    steps:
-      - id: message
-        label: Monolith or microservices?
-        panel: package-boundaries
-        reveal:
-          - description
-          - principles
-          - takeaway
-  - id: solid-extensibility
-    name: "SOLID: open for extensions"
-    label: ARCHITECTURE FOR AGENTS
-    title:
-      - text: SOLID boundaries.
-      - accent: Open for extensions.
-    description: Add a capability through a focused contract, an implementation and composition.
-    code: solid-extension
-    takeaway: A new behavior should have an obvious home.
-    notes: >-
-      [11:53–12:56 · 63 seconds]
-
-
-      S: separate policy, I/O and composition. O: provide deliberate extension points. L: preserve
-      observable behavior, errors and completion semantics across implementations. I: expose only
-      what the consumer needs. D: inject capabilities rather than importing concrete infrastructure.
-
-
-      Use Strategy for interchangeable behavior, Adapter for external systems, and a registry when
-      named implementations need selection. Patterns should reduce the number of places an agent
-      must understand and edit. The notification example adds a channel at the composition root
-      without putting channel-specific branches into confirmation policy. Verify each notifier
-      against the same contract, including failures. Do not build speculative abstractions.
-    steps:
-      - id: principles
-        label: SOLID makes the extension path explicit
-        panel: solid-extension
-        reveal:
-          - description
-          - takeaway
-      - id: extension
-        label: "Example: inject a notification strategy"
-        panel: notification-strategy
-        reveal:
-          - description
-          - takeaway
-  - id: composition-deployment
-    name: Compose capabilities. Choose deployment.
-    label: ARCHITECTURE FOR AGENTS
-    title:
-      - text: Compose capabilities. Choose deployment.
-    description: Keep business policy independent of transport and hosting.
-    code: composition-deployment
-    takeaway: Make the safe deployment path executable.
-    notes: >-
-      [12:56–14:03 · 67 seconds]
-
-
-      Use factories, adapters and strategies to compose explicit contracts. Deployment flexibility
-      is not free: local and remote calls differ in failure and consistency. Agents can produce
-      plausible but unsafe infrastructure changes; do not assume operational competence from code
-      competence. Provide approved templates, least-privilege capabilities, dry runs, rollout gates
-      and rollback evidence.
-    steps:
-      - id: message
-        label: Compose capabilities. Choose deployment.
-        panel: composition-deployment
-        reveal:
-          - description
-          - principles
-          - takeaway
-  - id: frontend-modules
-    name: Deep modules belong in the frontend too
-    label: ARCHITECTURE FOR AGENTS
-    title:
-      - text: Deep modules belong in the frontend too
-    description: A user capability owns state, validation and effects.
-    code: frontend-module
-    takeaway: The UI should not coordinate every policy.
-    notes: >-
-      [14:03–14:59 · 56 seconds]
-
-
-      A checkout module can hide asynchronous state transitions and validation without hiding
-      user-visible errors. Keep rendering separate from policy. Test user behavior through the
-      public contract; avoid exposing internal setters to satisfy tests. Small components alone do
-      not guarantee a simple feature.
-    steps:
-      - id: message
-        label: Deep modules belong in the frontend too
-        panel: frontend-module
-        reveal:
-          - description
-          - principles
-          - takeaway
+      - id: monolith
+        label: Deep modules in one monolith
+        panel: deployment-topology
+        scene: monolith
+        caption: Six deep modules, one deployment, in-process calls and events.
+      - id: microservices
+        label: Deep modules across microservices
+        panel: deployment-topology
+        scene: microservices
+        caption: The same capabilities across three services, connected by RPC and Kafka.
   - id: chapter-2
     name: Testing
     label: 02 / TESTING
@@ -1179,79 +1046,145 @@ slides:
         label: Testing
         reveal:
           - description
-  - id: guardrails-hexagon
-    name: Agents need executable guardrails
+  - id: testing-safety-net
+    name: The safety net
     label: TESTING
+    layout: visual
     title:
-      - text: Agents need executable guardrails
-    description: Ports and adapters make the core easy to test.
+      - text: The safety net
+    description: Confidence to ship faster and more frequently.
     code: introduction
-    takeaway: Fast tests and realistic boundaries complement each other.
+    takeaway: Tests make intended behavior executable and verifiable.
     notes: >-
-      [15:10–16:22 · 72 seconds]
-
-
-      Tests constrain behavior more precisely than prose alone. Hexagonal architecture isolates
-      external I/O behind ports. In-memory adapters accelerate domain feedback; contract tests check
-      that they respect the real adapter semantics. Keep integration tests for serialization,
-      transactions and infrastructure.
+      Agents increase the volume and speed of changes, making trustworthy guardrails essential.
+      Fast automated tests are a cheap, repeatable feedback mechanism. Keep the suite maintained
+      so a green result supports deployment confidence. Shift review attention toward whether
+      tests specify the right behavior, cover meaningful failures and assert real outcomes;
+      this does not eliminate implementation, security or architectural review. Agents can run
+      tests and repair their own changes, but an agent writing both code and tests can repeat
+      the same misunderstanding in both. Review the specification independently. Testable
+      designs tend to make dependencies and responsibilities explicit. Tests are a living
+      specification, not proof that every requirement or production risk is covered.
     steps:
-      - id: message
-        label: Agents need executable guardrails
-        panel: testing-hexagon
-        reveal:
-          - description
-          - principles
-          - takeaway
-  - id: executable-intent
-    name: Test hygiene preserves velocity
+      - id: safety-net
+        label: The safety net
+        panel: testing-safety-net
+  - id: testable-design
+    name: Testable design
     label: TESTING
+    layout: visual
     title:
-      - text: Readable tests.
-      - accent: Trustworthy failures.
-    description: Intent-first names. Fluent scenarios. Deterministic inputs. Actionable failures.
-    code: fluent-order-test
-    takeaway: Hide infrastructure details, not the behavior.
-    notes: >-
-      [16:22–17:34 · 72 seconds]
-
-
-      Use Given/When/Then domain vocabulary. Avoid leaking fixture plumbing into the story. Inject
-      time, randomness and I/O. Quarantine flakes with an owner and a deadline; do not normalize
-      rerunning until green. Track flake rate and time spent diagnosing false alarms. Agents waste
-      context and retries on ambiguous failures.
-    steps:
-      - id: message
-        label: The idea
-        reveal:
-          - description
-          - author
-          - principles
-          - takeaway
-  - id: testing-pyramid
-    name: Use the cheapest trustworthy proof
-    label: TESTING
-    title:
-      - text: Use the cheapest trustworthy proof
-    description: Many focused checks. Fewer expensive journeys.
+      - text: Testable design
+    description: Test the modules in memory. Test the adapters end to end.
     code: introduction
-    takeaway: Move proof closer to the change.
+    takeaway: Test real modules through ports; substitute infrastructure adapters.
     notes: >-
-      [17:34–18:35 · 61 seconds]
-
-
-      The pyramid is a cost and feedback heuristic, not a fixed percentage target. Exercise core
-      rules cheaply, real boundaries intentionally, and critical user journeys end to end. Use
-      mutation testing selectively to check assertion strength. Coverage indicates execution, not
-      correctness.
+      Start with the application core: real deep modules composed together and covered by
+      in-memory tests that run in milliseconds on every change. Click to add the ports and
+      adapters. Ports are contracts owned by the application. Inbound adapters invoke its use
+      cases; outbound adapters implement contracts required by the core. The lines show
+      connections, not compile-time dependency direction; infrastructure depends on
+      application contracts. The six sides are a drawing convention, not six prescribed
+      layers. The E2E suite exercises the whole system through its real adapters, so keep it
+      for real infrastructure and deployed behavior and retain adapter contract tests.
     steps:
-      - id: message
-        label: Use the cheapest trustworthy proof
-        panel: testing-pyramid
-        reveal:
-          - description
-          - principles
-          - takeaway
+      - id: in-memory
+        label: Fast in-memory tests
+        panel: testable-design
+        scene: core
+        caption: Real modules composed together and tested in memory in milliseconds.
+      - id: end-to-end
+        label: Ports, adapters and E2E
+        panel: testable-design
+        scene: adapters
+        caption: Ports and adapters connect infrastructure; an E2E suite tests the whole system.
+  - id: test-hygiene
+    name: The ideal test
+    label: TESTING
+    layout: visual
+    title:
+      - text: The ideal test
+    description: Fast to run. Deterministic. Assertive. Readable.
+    code: introduction
+    takeaway: Clear, trustworthy feedback keeps the loop short.
+    notes: >-
+      Emphasize the four attributes. Fast includes both building the tests and running them.
+      Deterministic tests control time, randomness and external dependencies. Assertive means
+      meaningful assertions that fail when behavior is wrong and explain what was expected;
+      merely running code or checking a truthy result is often insufficient. Flaky results
+      and vague assertions send agents into unnecessary diagnosis and retries. Readable tests
+      express behavior in shared domain language so reviewers and agents can agree on intent.
+      Prefer clear scenarios, explicit outcomes and small fixtures over clever test machinery.
+    steps:
+      - id: fast
+        label: Fast to run
+        panel: test-hygiene
+        scene: fast
+        caption: Fast builds and tests shorten every verification loop.
+      - id: deterministic
+        label: Deterministic
+        panel: test-hygiene
+        scene: deterministic
+        caption: Repeatable results prevent wasted diagnosis and retries.
+      - id: assertive
+        label: Assertive
+        panel: test-hygiene
+        scene: assertive
+        caption: Precise assertions explain what behavior is wrong.
+      - id: readable
+        label: Readable
+        panel: test-hygiene
+        scene: readable
+        caption: Fluent tests express shared intent for humans and agents.
+  - id: testing-shape
+    name: Testing pyramid
+    label: TESTING
+    layout: visual
+    title:
+      - text: Testing pyramid
+    description: Invest in fast, trustworthy feedback.
+    code: introduction
+    takeaway: Test behavior at useful boundaries. Run module tests concurrently.
+    notes: >-
+      Start with the familiar pyramid. Reveal E2E, integration/component and unit trade-offs
+      one click at a time, then reshape into a diamond. This is a recommended emphasis for
+      this talk, not a universal test-count ratio. Implementation-coupled unit tests constrain
+      refactoring; focused behavioral unit tests remain useful for algorithms and domain rules.
+      In-memory integration tests compose real modules with controlled adapters. They cannot
+      establish real infrastructure compatibility: retain contract tests and a small set of E2Es.
+      The final lanes represent independent modules, not more architectural layers. Give every
+      module test run its own state, clock and fixtures; cap concurrency to available CPU and memory.
+    steps:
+      - id: pyramid
+        label: The familiar pyramid
+        panel: testing-shape
+        scene: pyramid
+        caption: Three layers of confidence.
+      - id: e2e
+        label: E2E trade-offs
+        panel: testing-shape
+        scene: e2e
+        caption: E2Es verify deployed journeys but are slow.
+      - id: integration
+        label: Integration trade-offs
+        panel: testing-shape
+        scene: integration
+        caption: In-memory integration and component tests offer fast behavioral feedback.
+      - id: unit
+        label: Unit trade-offs
+        panel: testing-shape
+        scene: unit
+        caption: Implementation-coupled unit tests make refactoring expensive.
+      - id: diamond
+        label: Favor the middle
+        panel: testing-shape
+        scene: diamond
+        caption: Emphasize integration tests with a small focused unit layer.
+      - id: parallel
+        label: Run module tests concurrently
+        panel: testing-shape
+        scene: parallel
+        caption: Independent modules are tested in parallel with isolated in-memory state.
   - id: chapter-3
     name: Clean code
     label: 03 / CLEAN CODE
@@ -1270,6 +1203,74 @@ slides:
         label: Clean code
         reveal:
           - description
+  - id: clean-code-why
+    name: Why bother?
+    label: CLEAN CODE
+    layout: visual
+    title:
+      - text: Why bother?
+    description: Cleaner code makes agentic coding more effective.
+    code: introduction
+    takeaway: Keep changes understandable and the design open for extension.
+    notes: >-
+      Simpler, cleaner code reduces the knowledge needed to make a safe change.
+      SOLID and familiar design patterns provide shared vocabulary for developers and agents.
+      Use patterns where they clarify responsibilities and extension points, not to add
+      unnecessary abstraction. Open for extension means new behavior can fit through clear
+      contracts without repeatedly rewriting stable orchestration.
+    steps:
+      - id: why
+        label: Why bother?
+        panel: clean-code-why
+  - id: keeping-code-clean
+    name: Keeping the code clean
+    label: CLEAN CODE
+    layout: visual
+    title:
+      - text: Keeping the code clean
+    description: Define the standard and make the agent prove it meets it.
+    code: introduction
+    takeaway: Validate, refactor, revalidate. Require evidence.
+    notes: >-
+      Define clean code in repository skills and enforce objective rules with linting,
+      static analysis and tests. Avoid hidden effects; well-defined events make meaningful
+      changes explicit, but events do not eliminate side effects or replace clear contracts.
+      Small units should have cohesive responsibilities, not arbitrary fragmentation.
+      The illustration condenses ~/Code/qape-hq/.agents/commands/pr-wrap.md, inspected for
+      this slide; it is an example, not a command installed in this presentation repository.
+      That workflow validates against the plan, reviews fluent readability for changed tests,
+      enforces a 500-line source-file gate with context-sensitive handling, applies planned
+      cleanups, revalidates after changes, and requires lint, types and tests to pass.
+      It also resolves newly introduced code issues, records TODO decisions and wraps docs
+      before opening the PR ready. Optional reviews depend on the planned scope; production
+      readiness is not run for every change. The point is explicit obligations and evidence,
+      not merely asking the agent to try harder. CI and review happen after wrap.
+    steps:
+      - id: standards
+        label: Keeping the code clean
+        panel: keeping-code-clean
+  - id: code-metrics-rescue
+    name: Code metrics for the rescue
+    label: CLEAN CODE
+    layout: visual
+    title:
+      - text: Code metrics for the rescue
+    description: Measure risk, then improve the code.
+    code: introduction
+    takeaway: Use metrics to guide judgment, not to chase a score.
+    notes: >-
+      Cyclomatic complexity estimates independent execution paths. Tools such as lizard
+      help locate functions worth inspecting; counts depend on language and tool conventions.
+      CRAP combines cyclomatic complexity and test coverage to highlight change risk.
+      Coverage alone does not establish meaningful assertions or correct behavior.
+      Protect behavior with tests, simplify responsibilities and control flow, and rerun
+      verification during PR cleanup. Do not reduce a score by hiding branches in helpers
+      or replacing readable code with clever expressions. The following code example shows
+      how guard clauses can improve readability without changing cyclomatic complexity.
+    steps:
+      - id: metrics
+        label: Code metrics for the rescue
+        panel: code-metrics-rescue
   - id: small-functions
     name: Make policy visible. Prove it stays correct.
     label: CLEAN CODE
@@ -1336,8 +1337,137 @@ slides:
           - description
           - takeaway
   - id: chapter-4
+    name: Legacy
+    label: 04 / LEGACY
+    layout: chapter
+    title:
+      - accent: Legacy
+    description: Make change safe before making it fast.
+    code: introduction
+    takeaway: Make change safe before making it fast.
+    notes: |-
+      [30:11–30:22 · 11 seconds]
+
+      Transition: Make change safe before making it fast.
+    steps:
+      - id: chapter
+        label: Legacy
+        reveal:
+          - description
+  - id: legacy-rewrite
+    name: 'Plan A: rewrite the system'
+    label: LEGACY
+    layout: visual
+    title:
+      - text: 'Plan A: rewrite the system'
+    description: It is cheap now, and cheaper still with existing tests.
+    code: introduction
+    takeaway: With agents and a test suite, a rewrite is a realistic first option.
+    notes: >-
+      Agents make rewriting cheap, so consider it first. An existing test suite makes it
+      cheaper still: the tests define the behavior the new system must preserve and let
+      agents verify their own work. Evaluate rewriting a bounded capability when it removes
+      substantial accidental complexity and behavior can be preserved and verified. Compare
+      domain knowledge, migration cost, compatibility, parallel running and rollback.
+      Optimized code with lost behavior is not progress. When a rewrite is not viable, move
+      to plan B.
+    steps:
+      - id: plan-a
+        label: 'Plan A: rewrite the system'
+        panel: legacy-plan-a
+  - id: legacy-transition
+    name: 'Plan B: transition the system'
+    label: LEGACY
+    layout: visual
+    title:
+      - text: 'Plan B: transition the system'
+    description: Design the target, then move toward it with every PR.
+    code: introduction
+    takeaway: Pair every change with a proportional step toward the target design.
+    notes: >-
+      Reference: Michael Feathers, Working Effectively with Legacy Code. Characterization
+      tests record existing behavior; seams create places to isolate dependencies. See the
+      publisher sample on the seam model:
+      https://ptgmedia.pearsoncmg.com/images/9780131177055/samplepages/0131177052.pdf
+      First write down the target system design: dependency direction, approved patterns,
+      examples and forbidden coupling. Reference that design from the planning skill so every
+      plan is made with the destination in view. Instruct the skill to follow each regular PR
+      with a refactoring PR of proportional size that moves the touched code closer to the
+      target design. Keep the follow-up scoped and reviewable.
+    steps:
+      - id: plan-b
+        label: 'Plan B: transition the system'
+        panel: legacy-plan-b
+  - id: legacy-tax
+    name: Every PR pays a small architecture tax
+    label: LEGACY
+    title:
+      - text: Every PR pays a small architecture tax
+    description: Soften the ground → implement → leave it cleaner.
+    code: review-and-cleanup
+    takeaway: Each change should make the next one easier.
+    notes: >-
+      [32:41–33:48 · 67 seconds]
+
+
+      Encode the architectural destination in skills: dependency direction, approved patterns,
+      examples and forbidden coupling. First isolate a seam or simplify the local area, then
+      implement the change, then apply the Boy Scout Rule with focused cleanup. Review whether the
+      PR moves toward or away from the vision; cite concrete dependencies or contracts, not a vague
+      score. Keep cleanup scoped and reviewable.
+    steps:
+      - id: message
+        label: Every PR pays a small architecture tax
+        panel: review-and-cleanup
+        reveal:
+          - description
+          - principles
+          - takeaway
+  - id: chapter-5
+    name: Agent skills
+    label: 05 / AGENT SKILLS
+    layout: chapter
+    title:
+      - accent: Agent skills
+    description: Build a team around explicit responsibilities.
+    code: introduction
+    takeaway: Build a team around explicit responsibilities.
+    notes: |-
+      [28:48–28:59 · 11 seconds]
+
+      Transition: Build a team around explicit responsibilities.
+    steps:
+      - id: chapter
+        label: Agent skills
+        reveal:
+          - description
+  - id: agent-team
+    name: Encode standards. Assign responsibilities.
+    label: AGENT SKILLS
+    title:
+      - text: Encode standards. Assign responsibilities.
+    description: Implementer, reviewer, verifier—and one clear owner.
+    code: agent-team
+    takeaway: You design the working system around the agents.
+    notes: >-
+      [28:59–30:11 · 72 seconds]
+
+
+      Skills hold repository-specific procedures and examples. Keep them focused, discoverable and
+      versioned. Define allowed tools, escalation and completion evidence. Independent review
+      reduces shared blind spots but is not a correctness guarantee. Do not confuse multiple agents
+      with independent proof; acceptance checks remain explicit.
+    steps:
+      - id: message
+        label: Encode standards. Assign responsibilities.
+        panel: agent-team
+        reveal:
+          - description
+          - principles
+          - takeaway
+  - id: chapter-6
     name: Pushing changes
-    label: 04 / PUSHING CHANGES
+    label: 06 / PUSHING CHANGES
     layout: chapter
     title:
       - accent: Pushing changes
@@ -1456,9 +1586,9 @@ slides:
           - description
           - principles
           - takeaway
-  - id: chapter-5
+  - id: chapter-7
     name: Production feedback
-    label: 05 / PRODUCTION FEEDBACK
+    label: 07 / PRODUCTION FEEDBACK
     layout: chapter
     title:
       - accent: Production feedback
@@ -1517,141 +1647,6 @@ slides:
       - id: message
         label: An X-ray of your project
         panel: project-xray
-        reveal:
-          - description
-          - principles
-          - takeaway
-  - id: chapter-6
-    name: Agent skills
-    label: 06 / AGENT SKILLS
-    layout: chapter
-    title:
-      - accent: Agent skills
-    description: Build a team around explicit responsibilities.
-    code: introduction
-    takeaway: Build a team around explicit responsibilities.
-    notes: |-
-      [28:48–28:59 · 11 seconds]
-
-      Transition: Build a team around explicit responsibilities.
-    steps:
-      - id: chapter
-        label: Agent skills
-        reveal:
-          - description
-  - id: agent-team
-    name: Encode standards. Assign responsibilities.
-    label: AGENT SKILLS
-    title:
-      - text: Encode standards. Assign responsibilities.
-    description: Implementer, reviewer, verifier—and one clear owner.
-    code: agent-team
-    takeaway: You design the working system around the agents.
-    notes: >-
-      [28:59–30:11 · 72 seconds]
-
-
-      Skills hold repository-specific procedures and examples. Keep them focused, discoverable and
-      versioned. Define allowed tools, escalation and completion evidence. Independent review
-      reduces shared blind spots but is not a correctness guarantee. Do not confuse multiple agents
-      with independent proof; acceptance checks remain explicit.
-    steps:
-      - id: message
-        label: Encode standards. Assign responsibilities.
-        panel: agent-team
-        reveal:
-          - description
-          - principles
-          - takeaway
-  - id: chapter-7
-    name: Legacy
-    label: 07 / LEGACY
-    layout: chapter
-    title:
-      - accent: Legacy
-    description: Make change safe before making it fast.
-    code: introduction
-    takeaway: Make change safe before making it fast.
-    notes: |-
-      [30:11–30:22 · 11 seconds]
-
-      Transition: Make change safe before making it fast.
-    steps:
-      - id: chapter
-        label: Legacy
-        reveal:
-          - description
-  - id: legacy-rewrite
-    name: Should we rewrite for agents?
-    label: LEGACY
-    title:
-      - text: Should we rewrite for agents?
-    description: Compare replacement with a safer path through the existing system.
-    code: introduction
-    takeaway: Rewrite deliberately. Preserve what the business depends on.
-    notes: >-
-      [30:22–31:29 · 67 seconds]
-
-
-      Evaluate rewriting a bounded capability when it removes substantial accidental complexity and
-      behavior can be preserved and verified. Compare domain knowledge, migration cost,
-      compatibility, parallel running and rollback. Prefer incremental replacement where uncertainty
-      is high. A whole-system rewrite is not the default; optimized code with lost behavior is not
-      progress.
-    steps:
-      - id: message
-        label: Should we rewrite for agents?
-        panel: package-boundaries
-        reveal:
-          - description
-          - principles
-          - takeaway
-  - id: legacy-seams
-    name: Find a seam. Capture behavior.
-    label: LEGACY
-    title:
-      - text: Find a seam. Capture behavior.
-    description: "Michael Feathers: Working Effectively with Legacy Code. Characterize → isolate →
-      change → verify."
-    code: legacy-seam
-    takeaway: Create evidence before changing the structure.
-    notes: >-
-      [31:29–32:41 · 72 seconds]
-
-
-      Michael Feathers, Working Effectively with Legacy Code: characterization tests record existing
-      behavior; seams create places to isolate dependencies. These tests may capture bugs: decide
-      explicitly what to preserve and what to change. See the publisher sample on the seam model:
-      https://ptgmedia.pearsoncmg.com/images/9780131177055/samplepages/0131177052.pdf
-    steps:
-      - id: message
-        label: Find a seam. Capture behavior.
-        panel: legacy-seam
-        reveal:
-          - description
-          - principles
-          - takeaway
-  - id: legacy-tax
-    name: Every PR pays a small architecture tax
-    label: LEGACY
-    title:
-      - text: Every PR pays a small architecture tax
-    description: Soften the ground → implement → leave it cleaner.
-    code: review-and-cleanup
-    takeaway: Each change should make the next one easier.
-    notes: >-
-      [32:41–33:48 · 67 seconds]
-
-
-      Encode the architectural destination in skills: dependency direction, approved patterns,
-      examples and forbidden coupling. First isolate a seam or simplify the local area, then
-      implement the change, then apply the Boy Scout Rule with focused cleanup. Review whether the
-      PR moves toward or away from the vision; cite concrete dependencies or contracts, not a vague
-      score. Keep cleanup scoped and reviewable.
-    steps:
-      - id: message
-        label: Every PR pays a small architecture tax
-        panel: review-and-cleanup
         reveal:
           - description
           - principles

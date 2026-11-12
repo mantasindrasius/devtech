@@ -1,0 +1,33 @@
+.ideal-test [data-appears-at] { opacity: 0; visibility: hidden; }
+.ideal-test [data-appears-at].is-visible { opacity: 1; visibility: visible; }
+.ideal-test[data-animate='true'] [data-appears-at] { transition: opacity 250ms ease; }
+.ideal-test .attribute-tab {
+  fill: var(--accent, #b4ef94);
+  fill-opacity: calc(var(--tab-active, 0) * 0.08);
+}
+.ideal-test .attribute-label {
+  fill: var(--text, #e8ecf0);
+  font-weight: 500;
+}
+.ideal-test .tab-baseline {
+  fill: none;
+  stroke: var(--border, #30363e);
+  stroke-width: 1;
+}
+.ideal-test .tab-indicator {
+  stroke: var(--accent, #b4ef94);
+  stroke-width: 4;
+  stroke-linecap: round;
+  opacity: var(--tab-active, 0);
+}
+.ideal-test[data-scene='fast'] [data-tab='fast'],
+.ideal-test[data-scene='deterministic'] [data-tab='deterministic'],
+.ideal-test[data-scene='assertive'] [data-tab='assertive'],
+.ideal-test[data-scene='readable'] [data-tab='readable'] {
+  --tab-active: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+  .ideal-test [data-appears-at] { transition: none !important; }
+}
+
+.ideal-test-editor { border: 1px solid var(--border); border-radius: 10px; overflow: hidden; box-sizing: border-box; }

@@ -1,0 +1,30 @@
+.deployment-topology [data-appears-at] { opacity: 0; visibility: hidden; }
+.deployment-topology [data-appears-at].is-visible { opacity: 1; visibility: visible; }
+.deployment-topology[data-animate='true'] [data-appears-at] {
+  transition: opacity 800ms ease, visibility 800ms;
+}
+.deployment-topology .deployment-boundary {
+  fill: none;
+  stroke: var(--border, #30363e);
+  stroke-width: 2;
+}
+.deployment-topology .module-body {
+  fill: var(--surface, #15191f);
+  stroke: var(--blue, #82b7da);
+  stroke-width: 2;
+}
+.deployment-topology .module-port {
+  fill: var(--surface, #15191f);
+  stroke: var(--accent, #b4ef94);
+  stroke-width: 2;
+}
+.deployment-topology .call-arrow {
+  fill: none;
+  stroke: var(--accent, #b4ef94);
+  stroke-width: 2.5;
+  marker-end: url(#deployment-arrow);
+}
+.deployment-topology .event-arrow { stroke-dasharray: 7 7; }
+@media (prefers-reduced-motion: reduce) {
+  .deployment-topology [data-appears-at] { transition: none !important; }
+}

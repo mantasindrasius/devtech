@@ -42,7 +42,16 @@ function start(root) {
   const panels = createPanelHost({
     resources: deck.resources,
     renderers,
-    context: { code, codePanel, editor, theme, monaco, resources: deck.resources },
+    context: {
+      code,
+      codePanel,
+      editor,
+      theme,
+      monaco,
+      resources: deck.resources,
+      wait,
+      reducedMotion,
+    },
   });
   const view = createDeckView({ deck, root, panels });
   const timeline = createTimeline({

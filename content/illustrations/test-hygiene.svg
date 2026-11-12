@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
+<title>The ideal test</title>
+<text x="100" y="80" class="chart-accent" font-size="18" letter-spacing="4">TESTING / QUALITY OF FEEDBACK</text>
+<text x="100" y="158" class="chart-heading">The ideal test</text>
+<path d="M100 310H1495" class="tab-baseline"/>
+<g class="attribute" data-tab="fast">
+  <rect x="100" y="220" width="330" height="90" rx="8" class="attribute-tab"/>
+  <text x="265" y="276" text-anchor="middle" font-size="30" class="attribute-label">Fast to run</text>
+  <path d="M124 310H406" class="tab-indicator"/>
+</g>
+<g class="attribute" data-tab="deterministic">
+  <rect x="455" y="220" width="330" height="90" rx="8" class="attribute-tab"/>
+  <text x="620" y="276" text-anchor="middle" font-size="30" class="attribute-label">Deterministic</text>
+  <path d="M479 310H761" class="tab-indicator"/>
+</g>
+<g class="attribute" data-tab="assertive">
+  <rect x="810" y="220" width="330" height="90" rx="8" class="attribute-tab"/>
+  <text x="975" y="276" text-anchor="middle" font-size="30" class="attribute-label">Assertive</text>
+  <path d="M834 310H1116" class="tab-indicator"/>
+</g>
+<g class="attribute" data-tab="readable">
+  <rect x="1165" y="220" width="330" height="90" rx="8" class="attribute-tab"/>
+  <text x="1330" y="276" text-anchor="middle" font-size="30" class="attribute-label">Readable</text>
+  <path d="M1189 310H1471" class="tab-indicator"/>
+</g>
+<g data-appears-at="0" data-disappears-at="1">
+<text x="100" y="390" font-size="36" class="chart-accent">Agents run tests a lot.</text>
+<text x="100" y="455" font-size="29" class="chart-muted">Make them build and run fast.</text>
+<text x="100" y="520" font-size="29" class="chart-muted">Short feedback loops let agents verify every small change.</text>
+</g>
+<g data-appears-at="1" data-disappears-at="2">
+<text x="100" y="390" font-size="36" class="chart-accent">Same input. Same result.</text>
+<text x="100" y="455" font-size="29" class="chart-muted">Flaky tests confuse agents and trigger unnecessary retries.</text>
+<text x="100" y="520" font-size="29" class="chart-muted">Control time, randomness and external dependencies.</text>
+</g>
+<g data-appears-at="2" data-disappears-at="3">
+<text x="100" y="390" font-size="36" class="chart-accent">Fail for the right reason.</text>
+<text x="100" y="455" font-size="29" class="chart-muted">Vague assertions send agents into longer diagnosis loops.</text>
+<text x="100" y="520" font-size="29" class="chart-muted">Assert the exact outcome; explain what was expected.</text>
+</g>
+<g data-appears-at="3" data-disappears-at="4">
+<text x="100" y="390" font-size="36" class="chart-accent">Agents are language machines.</text>
+<text x="100" y="455" font-size="29" class="chart-muted">Readable tests are common ground for human reviewers and agents.</text>
+<foreignObject x="100" y="492" width="1395" height="355">
+  <div xmlns="http://www.w3.org/1999/xhtml" class="ideal-test-editor" style="width:100%;height:100%"></div>
+</foreignObject>
+</g>
+</svg>

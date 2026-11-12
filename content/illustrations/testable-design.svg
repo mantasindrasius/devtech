@@ -1,0 +1,210 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 940">
+<title>Testable design</title>
+<desc>An application core holding four deep modules is covered by a component test suite that runs in memory, each test passing within 100 milliseconds. A click adds ports and adapters to web services, reporting, a user interface, persistence, messaging and payments, all covered by an end-to-end suite whose tests take from half a second to three seconds.</desc>
+<defs><marker id="hex-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M1 1L9 5L1 9" fill="none" stroke="currentColor" stroke-width="1.5"/></marker></defs>
+<text x="100" y="118" class="chart-heading">Testable design</text>
+<!-- Each test-run takes data-run-ms and flashes the elements whose ids are in data-targets. -->
+<g data-appears-at="0">
+  <g class="test-suite suite-component" transform="translate(1150 196)">
+    <text class="suite-title" y="24">Component tests · in memory</text>
+    <g transform="translate(0 66)">
+      <g class="test-run" data-run-ms="12" data-targets="td-checkout td-pricing">
+        <circle class="test-spinner" cx="11" cy="-7" r="7"/>
+        <text class="test-check" x="2">✓</text>
+        <text class="test-name" x="34">checkout totals</text>
+        <text class="test-time" x="390" text-anchor="end"/>
+      </g>
+    </g>
+    <g transform="translate(0 98)">
+      <g class="test-run" data-run-ms="8" data-targets="td-pricing">
+        <circle class="test-spinner" cx="11" cy="-7" r="7"/>
+        <text class="test-check" x="2">✓</text>
+        <text class="test-name" x="34">applies coupon</text>
+        <text class="test-time" x="390" text-anchor="end"/>
+      </g>
+    </g>
+    <g transform="translate(0 130)">
+      <g class="test-run" data-run-ms="5" data-targets="td-checkout">
+        <circle class="test-spinner" cx="11" cy="-7" r="7"/>
+        <text class="test-check" x="2">✓</text>
+        <text class="test-name" x="34">rejects empty cart</text>
+        <text class="test-time" x="390" text-anchor="end"/>
+      </g>
+    </g>
+    <g transform="translate(0 162)">
+      <g class="test-run" data-run-ms="31" data-targets="td-catalog td-orders">
+        <circle class="test-spinner" cx="11" cy="-7" r="7"/>
+        <text class="test-check" x="2">✓</text>
+        <text class="test-name" x="34">reserves stock</text>
+        <text class="test-time" x="390" text-anchor="end"/>
+      </g>
+    </g>
+    <g transform="translate(0 194)">
+      <g class="test-run" data-run-ms="4" data-targets="td-pricing">
+        <circle class="test-spinner" cx="11" cy="-7" r="7"/>
+        <text class="test-check" x="2">✓</text>
+        <text class="test-name" x="34">price rounding</text>
+        <text class="test-time" x="390" text-anchor="end"/>
+      </g>
+    </g>
+    <g transform="translate(0 226)">
+      <g class="test-run" data-run-ms="46" data-targets="td-orders td-checkout">
+        <circle class="test-spinner" cx="11" cy="-7" r="7"/>
+        <text class="test-check" x="2">✓</text>
+        <text class="test-name" x="34">creates order</text>
+        <text class="test-time" x="390" text-anchor="end"/>
+      </g>
+    </g>
+    <g transform="translate(0 258)">
+      <g class="test-run" data-run-ms="17" data-targets="td-catalog">
+        <circle class="test-spinner" cx="11" cy="-7" r="7"/>
+        <text class="test-check" x="2">✓</text>
+        <text class="test-name" x="34">out of stock</text>
+        <text class="test-time" x="390" text-anchor="end"/>
+      </g>
+    </g>
+    <g transform="translate(0 290)">
+      <g class="test-run" data-run-ms="72" data-targets="td-orders">
+        <circle class="test-spinner" cx="11" cy="-7" r="7"/>
+        <text class="test-check" x="2">✓</text>
+        <text class="test-name" x="34">order history</text>
+        <text class="test-time" x="390" text-anchor="end"/>
+      </g>
+    </g>
+    <text class="suite-summary" y="332"/>
+  </g>
+</g>
+<g data-appears-at="1">
+  <g class="test-suite suite-e2e" transform="translate(1150 560)">
+    <text class="suite-title" y="24">E2E suite · real adapters</text>
+    <g transform="translate(0 66)">
+      <g class="test-run" data-run-ms="2400" data-targets="td-ui td-checkout td-pricing td-payments td-persistence">
+        <circle class="test-spinner" cx="11" cy="-7" r="7"/>
+        <text class="test-check" x="2">✓</text>
+        <text class="test-name" x="34">guest checkout</text>
+        <text class="test-time" x="390" text-anchor="end"/>
+      </g>
+    </g>
+    <g transform="translate(0 98)">
+      <g class="test-run" data-run-ms="900" data-targets="td-ui td-catalog td-persistence">
+        <circle class="test-spinner" cx="11" cy="-7" r="7"/>
+        <text class="test-check" x="2">✓</text>
+        <text class="test-name" x="34">browse catalog</text>
+        <text class="test-time" x="390" text-anchor="end"/>
+      </g>
+    </g>
+    <g transform="translate(0 130)">
+      <g class="test-run" data-run-ms="1600" data-targets="td-messaging td-orders td-persistence">
+        <circle class="test-spinner" cx="11" cy="-7" r="7"/>
+        <text class="test-check" x="2">✓</text>
+        <text class="test-name" x="34">order confirmation</text>
+        <text class="test-time" x="390" text-anchor="end"/>
+      </g>
+    </g>
+    <g transform="translate(0 162)">
+      <g class="test-run" data-run-ms="3000" data-targets="td-reporting td-orders td-persistence">
+        <circle class="test-spinner" cx="11" cy="-7" r="7"/>
+        <text class="test-check" x="2">✓</text>
+        <text class="test-name" x="34">sales report</text>
+        <text class="test-time" x="390" text-anchor="end"/>
+      </g>
+    </g>
+    <text class="suite-summary" y="204"/>
+  </g>
+</g>
+<g transform="translate(-55 60) scale(0.8)">
+<g data-appears-at="1">
+<rect x="140" y="178" width="1320" height="734" rx="28" class="e2e-scope"/>
+<rect x="700" y="154" width="200" height="48" rx="24" class="e2e-tag"/>
+<text x="800" y="188" text-anchor="middle" font-size="27" class="e2e-label">E2E suite</text>
+</g>
+<polygon points="800.0,305.0 986.2,412.5 986.2,627.5 800.0,735.0 613.8,627.5 613.8,412.5" class="core-shell"/>
+<g id="td-checkout" class="deep-module module-checkout">
+<rect x="645" y="430" width="150" height="76" rx="8" class="module-box"/>
+<rect x="695" y="426" width="50" height="8" rx="3" class="port"/>
+<text x="720" y="459" text-anchor="middle" font-size="25">Checkout</text>
+<rect x="657" y="475" width="34" height="18" rx="3" class="module-internal"/>
+<rect x="697" y="475" width="43" height="18" rx="3" class="module-internal"/>
+<rect x="746" y="475" width="36" height="18" rx="3" class="module-internal"/>
+</g>
+<g id="td-pricing" class="deep-module module-pricing">
+<rect x="805" y="430" width="150" height="76" rx="8" class="module-box"/>
+<rect x="855" y="426" width="50" height="8" rx="3" class="port"/>
+<text x="880" y="459" text-anchor="middle" font-size="25">Pricing</text>
+<rect x="817" y="475" width="34" height="18" rx="3" class="module-internal"/>
+<rect x="857" y="475" width="43" height="18" rx="3" class="module-internal"/>
+<rect x="906" y="475" width="36" height="18" rx="3" class="module-internal"/>
+</g>
+<g id="td-catalog" class="deep-module module-catalog">
+<rect x="645" y="550" width="150" height="76" rx="8" class="module-box"/>
+<rect x="695" y="546" width="50" height="8" rx="3" class="port"/>
+<text x="720" y="579" text-anchor="middle" font-size="25">Catalog</text>
+<rect x="657" y="595" width="34" height="18" rx="3" class="module-internal"/>
+<rect x="697" y="595" width="43" height="18" rx="3" class="module-internal"/>
+<rect x="746" y="595" width="36" height="18" rx="3" class="module-internal"/>
+</g>
+<g id="td-orders" class="deep-module module-orders">
+<rect x="805" y="550" width="150" height="76" rx="8" class="module-box"/>
+<rect x="855" y="546" width="50" height="8" rx="3" class="port"/>
+<text x="880" y="579" text-anchor="middle" font-size="25">Orders</text>
+<rect x="817" y="595" width="34" height="18" rx="3" class="module-internal"/>
+<rect x="857" y="595" width="43" height="18" rx="3" class="module-internal"/>
+<rect x="906" y="595" width="36" height="18" rx="3" class="module-internal"/>
+</g>
+<path d="M795 465H805 M720 506V550 M880 506V550" class="internal-link"/>
+<path d="M795 465H805 M720 506V550 M880 506V550" class="internal-link"/>
+<g data-appears-at="1">
+<polygon id="td-web" points="800.0,305.0 800.0,205.0 1072.8,362.5 986.2,412.5" class="adapter-sector sector-0"/>
+<path d="M1160,280L936.4,283.8" class="connection radial-link"/>
+<circle cx="893.0977309068272" cy="358.75" r="8" class="port"/>
+<text transform="translate(914.7 321.2) rotate(30)" text-anchor="middle" dominant-baseline="central" font-size="26" class="chart-poor-label">Web services</text>
+<path transform="translate(1160.0 280.0)" d="M-98 22 C-128 20 -132 -14 -106 -23 C-114 -49 -76 -63 -57 -44 C-39 -70 -6 -64 8 -47 C32 -66 66 -54 68 -35 C100 -43 124 -21 109 -1 C137 22 109 47 82 38 C63 58 34 51 22 40 C-5 61 -35 53 -46 40 C-71 55 -102 46 -98 22Z" class="external-system"/>
+<text x="1160" y="288" text-anchor="middle" font-size="28">Web</text>
+<polygon id="td-reporting" points="986.2,412.5 1072.8,362.5 1072.8,677.5 986.2,627.5" class="adapter-sector sector-1"/>
+<path d="M1189,520L1072.8,520.0" class="connection radial-link"/>
+<circle cx="986.1954618136543" cy="520.0" r="8" class="port"/>
+<text transform="translate(1029.5 520.0) rotate(-90)" text-anchor="middle" dominant-baseline="central" font-size="26" class="chart-poor-label">Reporting</text>
+<g transform="translate(1270 520)">
+<rect x="-61" y="-51" width="115" height="96" rx="5" class="external-system"/>
+<rect x="-71" y="-41" width="115" height="96" rx="5" class="external-system"/>
+<rect x="-81" y="-31" width="115" height="96" rx="5" class="external-system"/>
+<path d="M-62 -10H14 M-62 4H14 M-62 18H-16 M-62 48V33H-46V48 M-32 48V25H-16V48 M-2 48V16H14V48" class="symbol-detail"/>
+<text x="0" y="95" text-anchor="middle" font-size="28">Reports</text>
+</g>
+<polygon id="td-ui" points="986.2,627.5 1072.8,677.5 800.0,835.0 800.0,735.0" class="adapter-sector sector-0"/>
+<path d="M1117,780L936.4,756.2" class="connection radial-link"/>
+<circle cx="893.0977309068272" cy="681.25" r="8" class="port"/>
+<text transform="translate(914.7 718.8) rotate(-30)" text-anchor="middle" dominant-baseline="central" font-size="26" class="chart-poor-label">User interface</text>
+<g transform="translate(1160 780)">
+<circle cx="0" cy="-30" r="23" class="external-system"/>
+<path d="M-43 38V19C-43 -13 43 -13 43 19V38Z" class="external-system"/>
+<text x="0" y="72" text-anchor="middle" font-size="28">User</text>
+</g>
+<polygon id="td-persistence" points="800.0,735.0 800.0,835.0 527.2,677.5 613.8,627.5" class="adapter-sector sector-1"/>
+<path d="M506,780L663.6,756.2" class="connection radial-link"/>
+<circle cx="706.9022690931729" cy="681.25" r="8" class="port"/>
+<text transform="translate(685.3 718.8) rotate(30)" text-anchor="middle" dominant-baseline="central" font-size="26" class="chart-poor-label">Persistence</text>
+<g transform="translate(440 780)">
+<path d="M-66 -35V32C-66 62 66 62 66 32V-35Z" class="external-system"/>
+<ellipse cx="0" cy="-35" rx="66" ry="18" class="external-system"/>
+<path d="M-66 -2C-66 23 66 23 66 -2 M-66 22C-66 47 66 47 66 22" class="symbol-detail"/>
+<text x="0" y="83" text-anchor="middle" font-size="28">Database</text>
+</g>
+<polygon id="td-messaging" points="613.8,627.5 527.2,677.5 527.2,362.5 613.8,412.5" class="adapter-sector sector-0"/>
+<path d="M300,520L527.2,520.0" class="connection radial-link"/>
+<circle cx="613.8045381863457" cy="520.0" r="8" class="port"/>
+<text transform="translate(570.5 520.0) rotate(-90)" text-anchor="middle" dominant-baseline="central" font-size="26" class="chart-poor-label">Messaging</text>
+<path transform="translate(300.0 520.0)" d="M-98 22 C-128 20 -132 -14 -106 -23 C-114 -49 -76 -63 -57 -44 C-39 -70 -6 -64 8 -47 C32 -66 66 -54 68 -35 C100 -43 124 -21 109 -1 C137 22 109 47 82 38 C63 58 34 51 22 40 C-5 61 -35 53 -46 40 C-71 55 -102 46 -98 22Z" class="external-system"/>
+<text x="300" y="528" text-anchor="middle" font-size="28">Message broker</text>
+<polygon id="td-payments" points="613.8,412.5 527.2,362.5 800.0,205.0 800.0,305.0" class="adapter-sector sector-1"/>
+<path d="M500,280L663.6,283.8" class="connection radial-link"/>
+<circle cx="706.9" cy="358.75" r="8" class="port"/>
+<text transform="translate(685.3 321.3) rotate(-30)" text-anchor="middle" dominant-baseline="central" font-size="26" class="chart-poor-label">Payments</text>
+<g transform="translate(410 280)">
+<rect x="-80" y="-52" width="160" height="104" rx="10" class="external-system"/>
+<path d="M-80 -22H80 M-58 12H-12 M-58 30H24" class="symbol-detail"/>
+<text x="0" y="86" text-anchor="middle" font-size="28">Payment provider</text>
+</g>
+</g>
+</g>
+</svg>

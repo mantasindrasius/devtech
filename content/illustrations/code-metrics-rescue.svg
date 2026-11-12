@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
+  <title>Code metrics for the rescue</title>
+  <desc>Use cyclomatic complexity tools such as lizard and the CRAP index to identify risky code and guide refactoring and cleanup in each PR.</desc>
+  <text x="100" y="80" class="chart-accent" font-size="18" letter-spacing="4">CLEAN CODE / MEASURE &amp; IMPROVE</text>
+  <text x="100" y="158" class="chart-heading">Code metrics for the rescue</text>
+  <g class="chart-accent">
+    <circle cx="111" cy="287" r="5"/>
+    <circle cx="111" cy="437" r="5"/>
+    <circle cx="111" cy="587" r="5"/>
+  </g>
+  <g font-size="34">
+    <text x="144" y="299">Cyclomatic complexity tools, such as <tspan font-family="monospace" class="chart-accent">lizard</tspan>.</text>
+    <text x="144" y="449"><tspan class="chart-accent" font-weight="600">CRAP index:</tspan> identify complex and untested code.</text>
+    <text x="144" y="599">Make refactoring and cleanup part of the PR.</text>
+  </g>
+  <g class="chart-muted" font-size="25">
+    <text x="144" y="346">Find functions with too many independent execution paths.</text>
+    <text x="144" y="496">Combine complexity with test coverage to prioritize attention.</text>
+    <text x="144" y="646">Measure → add behavioral tests → simplify → verify.</text>
+  </g>
+  <text x="144" y="792" class="chart-accent" font-size="27">Use metrics to guide judgment, not to chase a score.</text>
+</svg>

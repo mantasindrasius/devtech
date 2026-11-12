@@ -1,3 +1,5 @@
+import { testableDesignRenderer } from './testable-design.js';
+import { testingPyramidRenderer } from './testing-pyramid.js';
 import { showExampleBanner, validateExample } from '../ui/example-banner.js';
 import { Registry } from '../core/registry.js';
 import { requireText } from '../content/validation.js';
@@ -7,15 +9,23 @@ import { createSpaceshipPanel, validateSpaceshipStep } from './spaceship-project
 import { planetEvolutionRenderer } from './planet-evolution.js';
 import { svgIllustrationRenderer } from './svg-illustration.js';
 
+import { idealTestRenderer } from './ideal-test.js';
+import { deploymentTopologyRenderer } from './deployment-topology.js';
 import { codeComparisonRenderer } from './code-comparison.js';
 import { agentContextRenderer } from './agent-context.js';
 import { agentWorkflowRenderer } from './agent-workflow.js';
+import { topicIntroRenderer } from './topic-intro.js';
 
 export function registerRenderers() {
   return new Registry('resource renderer')
+    .register('testable-design', testableDesignRenderer)
+    .register('testing-pyramid', testingPyramidRenderer)
+    .register('ideal-test', idealTestRenderer)
+    .register('deployment-topology', deploymentTopologyRenderer)
     .register('code-comparison', codeComparisonRenderer)
     .register('agent-context', agentContextRenderer)
     .register('agent-workflow', agentWorkflowRenderer)
+    .register('topic-intro', topicIntroRenderer)
     .register('svg-illustration', svgIllustrationRenderer)
     .register('planet-evolution', planetEvolutionRenderer)
     .register('code', {

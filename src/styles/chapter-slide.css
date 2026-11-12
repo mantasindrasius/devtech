@@ -41,6 +41,9 @@
   display: none;
 }
 
+/* Presenting mode restyles every slide; restate the chapter's own margins and single column. */
 :root.presenting #slide[data-layout='chapter'] {
+  grid-template-columns: minmax(0, 1fr);
   min-height: 100svh;
+  padding: clamp(40px, 7vw, 130px);
 }

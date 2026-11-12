@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
+  <title>Testing pyramid</title>
+  <text x="100" y="80" class="chart-accent" font-size="18" letter-spacing="4">TESTING / WHERE TO INVEST</text>
+  <text x="100" y="158" class="chart-heading">Testing pyramid</text>
+  <path d="M400 240 L500 400 L300 400 Z" class="test-layer e2e-color e2e-layer"/>
+  <path d="M300 400 L500 400 L620 600 L620 600 L620 600 L180 600 L180 600 L180 600 Z" class="test-layer integration-color integration-layer"/>
+  <path d="M180 600 L620 600 L720 760 L80 760 Z" class="test-layer unit-color unit-layer"/>
+  <g text-anchor="middle" font-size="28" font-weight="500">
+    <text x="400" y="367" class="e2e-label">E2E</text>
+    <g data-appears-at="0" data-disappears-at="5">
+      <text x="400" y="488">Integration</text>
+      <text x="400" y="526">&amp; component</text>
+    </g>
+    <text x="400" y="695" class="unit-label">Unit</text>
+  </g>
+  <g data-appears-at="1" data-disappears-at="4">
+    <text x="820" y="280" class="chart-poor-label" font-size="31">E2E / Deployment confidence</text>
+    <text x="820" y="328" font-size="27">+ Verify critical deployed journeys</text>
+    <text x="820" y="369" class="chart-muted" font-size="27">− Slow; depend on the environment</text>
+  </g>
+  <g data-appears-at="2" data-disappears-at="4">
+    <text x="820" y="455" class="chart-accent" font-size="31">Integration / Best value in memory</text>
+    <text x="820" y="503" font-size="27">+ Real modules, fast behavioral feedback</text>
+    <text x="820" y="544" class="chart-muted" font-size="27">− Cannot prove real infrastructure works</text>
+  </g>
+  <g data-appears-at="3" data-disappears-at="4">
+    <text x="820" y="630" font-size="31">Unit / Keep them focused</text>
+    <text x="820" y="678" font-size="27">+ Fast, precise checks of domain rules</text>
+    <text x="820" y="719" class="chart-muted" font-size="27">− Testing internals makes refactoring harder</text>
+  </g>
+  <g data-appears-at="4" data-disappears-at="5">
+    <text x="820" y="340" class="chart-accent" font-size="38">Favor the middle.</text>
+    <text x="820" y="410" font-size="29">Many in-memory integration</text>
+    <text x="820" y="453" font-size="29">and component tests.</text>
+    <text x="820" y="530" class="chart-muted" font-size="28">A few critical E2E journeys.</text>
+    <text x="820" y="580" class="chart-muted" font-size="28">A small, focused set of unit tests.</text>
+    <text x="820" y="680" class="chart-muted" font-size="23">An emphasis, not a universal ratio.</text>
+  </g>
+  <g data-appears-at="5">
+    <path d="M266 410H534 M266 490H534 M266 570H534 M266 650H534" class="parallel-lane"/>
+    <g font-size="22" text-anchor="middle">
+      <text x="400" y="395">Checkout module</text>
+      <text x="400" y="475">Catalog module</text>
+      <text x="400" y="555">Pricing module</text>
+      <text x="400" y="635">Orders module</text>
+    </g>
+    <g>
+      <circle cx="282" cy="410" r="6" class="runner" style="--test: 0; --lane: 0"/><circle cx="316" cy="410" r="6" class="runner" style="--test: 1; --lane: 0"/><circle cx="350" cy="410" r="6" class="runner" style="--test: 2; --lane: 0"/><circle cx="384" cy="410" r="6" class="runner" style="--test: 3; --lane: 0"/><circle cx="418" cy="410" r="6" class="runner" style="--test: 4; --lane: 0"/><circle cx="452" cy="410" r="6" class="runner" style="--test: 5; --lane: 0"/><circle cx="486" cy="410" r="6" class="runner" style="--test: 6; --lane: 0"/><circle cx="520" cy="410" r="6" class="runner" style="--test: 7; --lane: 0"/>
+      <circle cx="282" cy="490" r="6" class="runner" style="--test: 0; --lane: 1"/><circle cx="316" cy="490" r="6" class="runner" style="--test: 1; --lane: 1"/><circle cx="350" cy="490" r="6" class="runner" style="--test: 2; --lane: 1"/><circle cx="384" cy="490" r="6" class="runner" style="--test: 3; --lane: 1"/><circle cx="418" cy="490" r="6" class="runner" style="--test: 4; --lane: 1"/><circle cx="452" cy="490" r="6" class="runner" style="--test: 5; --lane: 1"/><circle cx="486" cy="490" r="6" class="runner" style="--test: 6; --lane: 1"/><circle cx="520" cy="490" r="6" class="runner" style="--test: 7; --lane: 1"/>
+      <circle cx="282" cy="570" r="6" class="runner" style="--test: 0; --lane: 2"/><circle cx="316" cy="570" r="6" class="runner" style="--test: 1; --lane: 2"/><circle cx="350" cy="570" r="6" class="runner" style="--test: 2; --lane: 2"/><circle cx="384" cy="570" r="6" class="runner" style="--test: 3; --lane: 2"/><circle cx="418" cy="570" r="6" class="runner" style="--test: 4; --lane: 2"/><circle cx="452" cy="570" r="6" class="runner" style="--test: 5; --lane: 2"/><circle cx="486" cy="570" r="6" class="runner" style="--test: 6; --lane: 2"/><circle cx="520" cy="570" r="6" class="runner" style="--test: 7; --lane: 2"/>
+      <circle cx="282" cy="650" r="6" class="runner" style="--test: 0; --lane: 3"/><circle cx="316" cy="650" r="6" class="runner" style="--test: 1; --lane: 3"/><circle cx="350" cy="650" r="6" class="runner" style="--test: 2; --lane: 3"/><circle cx="384" cy="650" r="6" class="runner" style="--test: 3; --lane: 3"/><circle cx="418" cy="650" r="6" class="runner" style="--test: 4; --lane: 3"/><circle cx="452" cy="650" r="6" class="runner" style="--test: 5; --lane: 3"/><circle cx="486" cy="650" r="6" class="runner" style="--test: 6; --lane: 3"/><circle cx="520" cy="650" r="6" class="runner" style="--test: 7; --lane: 3"/>
+    </g>
+    <text x="820" y="340" class="chart-accent" font-size="33">Independent modules. Parallel tests.</text>
+    <text x="820" y="415" font-size="29">Real modules. In-memory adapters.</text>
+    <text x="820" y="485" class="chart-muted" font-size="28">Own state, fixtures and clock per module.</text>
+    <text x="820" y="535" class="chart-muted" font-size="28">No shared database or network required.</text>
+    <text x="820" y="615" font-size="29">Shorter feedback loops.</text>
+    <text x="820" y="680" class="chart-muted" font-size="23">Bound concurrency to CPU and memory.</text>
+  </g>
+</svg>

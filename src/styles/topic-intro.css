@@ -1,0 +1,39 @@
+.topic-intro [data-appears-at] {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 200ms ease;
+}
+
+/* The points wait for the title to settle into place above them. */
+.topic-intro [data-appears-at].is-visible {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 500ms ease 450ms;
+}
+
+.topic-intro .topic-kicker {
+  fill: var(--accent, #b4ef94);
+  font-family: monospace;
+  font-size: 24px;
+  letter-spacing: 5px;
+}
+
+/* One title, two roles: a separator-sized title, then the heading of the points. */
+.topic-intro .topic-title {
+  transform-box: fill-box;
+  transform-origin: left bottom;
+  transition:
+    transform 750ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    fill 750ms ease;
+}
+
+.topic-intro[data-scene='title'] .topic-title {
+  fill: var(--accent, #b4ef94);
+  transform: translateY(340px) scale(2.6);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .topic-intro * {
+    transition: none !important;
+  }
+}
