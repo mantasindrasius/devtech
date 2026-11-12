@@ -67,6 +67,145 @@
   letter-spacing: 1px;
 }
 
+.planet-evolution .pe-limb {
+  fill: none;
+  stroke: #dac59f;
+  stroke-opacity: 0.45;
+  stroke-width: 1.5px;
+}
+
+/* Module names on Jupiter's storms. */
+.planet-evolution .pe-code-name {
+  fill: #fff6df;
+  stroke: #2a1c14;
+  stroke-width: 2.4px;
+  paint-order: stroke;
+  font: 10px monospace;
+}
+
+/* Jupiter's dependencies: a faint ribbon of gas with wisps flowing along it. */
+.planet-evolution .pe-gas-stream,
+.planet-evolution .pe-gas-wisp {
+  fill: none;
+  stroke-linecap: round;
+}
+
+.planet-evolution .pe-gas-stream {
+  stroke-width: 7px;
+  opacity: 0.22;
+}
+
+.planet-evolution .pe-gas-wisp {
+  stroke-width: 2px;
+  stroke-dasharray: 16 12;
+  opacity: 0.65;
+  animation: pe-gas-flow 2.8s linear infinite;
+}
+
+@keyframes pe-gas-flow {
+  to {
+    stroke-dashoffset: -28px;
+  }
+}
+
+/* A service's dependencies: ridges between its mountains, then rivers of lava. */
+.planet-evolution .pe-ridge,
+.planet-evolution .pe-ridge-shadow,
+.planet-evolution .pe-lava-channel,
+.planet-evolution .pe-lava {
+  fill: none;
+  stroke-linecap: round;
+}
+
+.planet-evolution .pe-ridge-shadow {
+  stroke: #14181b;
+  stroke-width: 9px;
+  opacity: 0.45;
+}
+
+.planet-evolution .pe-ridge {
+  stroke: #e6dcc4;
+  stroke-width: 3.5px;
+  opacity: 0.85;
+}
+
+.planet-evolution .pe-lava-channel {
+  stroke: #2a120b;
+  stroke-width: 9px;
+}
+
+.planet-evolution .pe-lava,
+.planet-evolution .pe-lava-surge {
+  fill: none;
+  stroke-linecap: round;
+}
+
+.planet-evolution .pe-ridge-shadow {
+  stroke: #14181b;
+  stroke-width: 9px;
+  opacity: 0.45;
+}
+
+.planet-evolution .pe-ridge {
+  stroke: #e6dcc4;
+  stroke-width: 3.5px;
+  opacity: 0.85;
+}
+
+.planet-evolution .pe-lava-channel {
+  stroke: #2a120b;
+  stroke-width: 9px;
+}
+
+.planet-evolution .pe-lava {
+  stroke: #ff7a22;
+  stroke-width: 5px;
+}
+
+.planet-evolution .pe-lava-surge {
+  stroke: #ffe08a;
+  stroke-width: 2.2px;
+  stroke-dasharray: 14 22;
+}
+
+.planet-evolution[data-scene='ai-era'] .pe-lava-surge {
+  animation: pe-lava-flow 2.4s linear infinite;
+}
+
+@keyframes pe-lava-flow {
+  to {
+    stroke-dashoffset: -36px;
+  }
+}
+
+/* Modules nobody planned: new volcanoes pop up once a planet has turned volcanic. */
+.planet-evolution .pe-sprout {
+  opacity: 0;
+  transform: scale(0);
+  transition:
+    transform 0.6s ease,
+    opacity 0.6s ease;
+}
+
+.planet-evolution[data-scene='ai-era'] .pe-sprout {
+  opacity: 1;
+  transform: scale(1);
+  transition:
+    transform 1.6s cubic-bezier(0.34, 1.56, 0.64, 1)
+      calc(var(--growth-delay) + 7s + var(--sprout-delay)),
+    opacity 0.5s ease calc(var(--growth-delay) + 7s + var(--sprout-delay));
+}
+
+/* Submodule names hang below each peak at the same on-screen size on every planet. */
+.planet-evolution .pe-peak-name {
+  fill: #f6eedb;
+  stroke: #14181b;
+  stroke-width: calc(2.4px / var(--planet-scale));
+  paint-order: stroke;
+  font: 600 calc(9px / var(--planet-scale)) monospace;
+  dominant-baseline: hanging;
+}
+
 .planet-evolution .pe-progress {
   fill: #43515d;
 }
@@ -80,32 +219,117 @@
   animation: pe-form 2.8s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
-.planet-evolution[data-scene='monolith'] .pe-jovian-haze {
-  animation: pe-haze-drift 18s ease-in-out infinite alternate;
+/* Rotation: a repeating surface tile scrolls one period behind the planet's disc. */
+.planet-evolution .pe-spin {
+  animation: pe-spin var(--spin-seconds) linear infinite;
 }
 
-@keyframes pe-haze-drift {
-  from { transform: translateX(-8px); opacity: .16; }
-  to { transform: translateX(12px); opacity: .27; }
+@keyframes pe-spin {
+  from {
+    transform: translateX(calc(-1 * var(--spin-period)));
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* Asteroid belts: dashed rock streams drift along the lane between two planets. */
+.planet-evolution .pe-belt-dust {
+  fill: none;
+  stroke: #a9b7b4;
+  stroke-width: 26px;
+  stroke-linecap: round;
+  opacity: 0.06;
+}
+
+.planet-evolution .pe-rocks {
+  fill: none;
+  animation: pe-belt-drift var(--belt-seconds) linear infinite;
+}
+
+.planet-evolution .pe-rocks--inbound {
+  animation-direction: reverse;
+}
+
+@keyframes pe-belt-drift {
+  to {
+    stroke-dashoffset: calc(-1 * var(--belt-period));
+  }
+}
+
+.planet-evolution .pe-era:not(.is-visible) .pe-spin,
+.planet-evolution .pe-era:not(.is-visible) .pe-gas-wisp,
+.planet-evolution .pe-era:not(.is-visible) .pe-rocks {
+  animation-play-state: paused;
 }
 
 .planet-evolution[data-scene='microservices'] .pe-service {
   animation: pe-form 1.8s var(--arrival) both;
 }
 
-.planet-evolution .pe-volcanoes {
-  opacity: 0;
-  transition: opacity 1.5s;
+/* The AI era: each service planet swells and its rock gives way to a volcanic surface. */
+.planet-evolution .pe-growth,
+.planet-evolution .pe-planet-label {
+  transition: transform 1.2s ease;
 }
-.planet-evolution[data-scene='ai-era'] .pe-volcanoes {
-  opacity: 1;
+
+.planet-evolution[data-scene='ai-era'] .pe-growth,
+.planet-evolution[data-scene='ai-era'] .pe-planet-label {
+  transition: transform 11s cubic-bezier(0.3, 0, 0.2, 1) var(--growth-delay);
 }
+
 .planet-evolution[data-scene='ai-era'] .pe-growth {
-  animation: pe-grow 9s var(--growth-delay) ease-out both;
+  transform: scale(var(--growth));
+}
+
+.planet-evolution[data-scene='ai-era'] .pe-planet-label {
+  transform: translateY(var(--label-drop));
+}
+
+.planet-evolution .pe-volcanic,
+.planet-evolution .pe-fever,
+.planet-evolution .pe-plumes,
+.planet-evolution .pe-new-belt {
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 1.2s ease,
+    visibility 1.2s;
+}
+
+.planet-evolution[data-scene='ai-era'] .pe-volcanic,
+.planet-evolution[data-scene='ai-era'] .pe-fever,
+.planet-evolution[data-scene='ai-era'] .pe-plumes,
+.planet-evolution[data-scene='ai-era'] .pe-new-belt {
+  opacity: 1;
+  visibility: visible;
+}
+
+.planet-evolution[data-scene='ai-era'] .pe-volcanic,
+.planet-evolution[data-scene='ai-era'] .pe-fever {
+  transition:
+    opacity 8s ease-in-out calc(var(--growth-delay) + 1.5s),
+    visibility 0s calc(var(--growth-delay) + 1.5s);
+}
+
+.planet-evolution[data-scene='ai-era'] .pe-plumes {
+  transition:
+    opacity 3s ease calc(var(--growth-delay) + 6s),
+    visibility 0s calc(var(--growth-delay) + 6s);
+}
+
+.planet-evolution[data-scene='ai-era'] .pe-new-belt {
+  transition:
+    opacity 2.5s ease var(--arrival),
+    visibility 0s var(--arrival);
+}
+
+.planet-evolution[data-scene='ai-era'] .pe-hotspot {
+  animation: pe-pulse 2.8s ease-in-out infinite alternate;
 }
 
 .planet-evolution[data-scene='ai-era'] .pe-eruption {
-  animation: pe-erupt 1.8s var(--eruption-delay) ease-out infinite;
+  animation: pe-erupt 4.2s var(--eruption-delay) ease-out infinite;
 }
 
 .planet-evolution[data-scene='ai-era'] .pe-birth {
@@ -127,37 +351,39 @@
   }
 }
 
-@keyframes pe-grow {
+@keyframes pe-pulse {
   from {
-    transform: scale(1);
+    opacity: 0.45;
   }
   to {
-    transform: scale(1.23);
+    opacity: 1;
   }
 }
 
 @keyframes pe-erupt {
   0% {
-    opacity: 0.3;
-    transform: translateY(0) scaleY(0.45);
+    opacity: 0;
+    transform: scale(0.25);
   }
-  35% {
+  25% {
     opacity: 1;
+  }
+  70% {
+    opacity: 0.8;
+    transform: scale(1);
   }
   100% {
     opacity: 0;
-    transform: translateY(-25px) scaleY(1.2);
+    transform: scale(1.08);
   }
 }
 
+/* Without motion the scenes still show their end states: grown, volcanic, connected. */
 @media (prefers-reduced-motion: reduce) {
   .planet-evolution *,
   .planet-evolution *::before,
   .planet-evolution *::after {
     animation: none !important;
     transition: none !important;
-  }
-  .planet-evolution[data-scene='ai-era'] .pe-growth {
-    transform: scale(1.23);
   }
 }

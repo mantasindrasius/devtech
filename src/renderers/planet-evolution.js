@@ -1,5 +1,6 @@
 import { requireText } from '../content/validation.js';
 import { createArchitectureStory } from './architecture-story.js';
+import { createPlanetPainters, paintPlanetArt } from './planet-painters/planet-painters.js';
 
 const scenes = ['monolith', 'microservices', 'ai-era'];
 
@@ -15,7 +16,10 @@ export const planetEvolutionRenderer = {
     requireText(step.caption, 'planet-evolution.caption');
   },
   create(resource) {
-    const story = createArchitectureStory(resource, scenes);
+    const painters = createPlanetPainters();
+    const story = createArchitectureStory(resource, scenes, {
+      prepareArt: (art) => paintPlanetArt(art, painters),
+    });
     story.panel.className = 'visual-panel architecture-story planet-evolution';
     return story;
   },

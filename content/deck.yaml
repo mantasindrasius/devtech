@@ -79,7 +79,7 @@ resources:
     type: planet-evolution
     file: illustrations/planet-evolution.svg
     title: The evolution of software worlds
-    description: A cutaway monolith planet becomes a system of modular microservice planets. The AI era brings rapid growth, volcanic eruptions and unexpected new worlds.
+    description: A slowly spinning gas giant carries the monolith's tangled modules in its cloud bands. It gives way to spinning rocky microservice planets connected by asteroid belts. In the AI era those planets swell into volcanic worlds and unexpected new worlds appear.
   introduction:
     type: code
     file: snippets/introduction.ts

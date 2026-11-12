@@ -99,9 +99,30 @@ The `planet-evolution` renderer uses an SVG resource with `title` and `descripti
 Use it with `layout: visual` and steps referencing the same panel, each with a `caption` and
 one of these `scene` values: `monolith`, `microservices`, `ai-era`. Each step waits for the
 presenter's next input; animation within a scene never advances the timeline. CSS owns
-formation, growth and eruptions, stops animations when the panel is hidden, and disables
-motion when the viewer requests reduced motion. The SVG layers use `data-appears-at`
+formation, rotation, growth and eruptions, stops animations when the panel is hidden, and
+disables motion when the viewer requests reduced motion. The SVG layers use `data-appears-at`
 and optional `data-disappears-at` with zero-based scene indexes.
+
+Planet surfaces and asteroid belts are generated when the panel is created. An empty
+`<g data-paint="…">` in the SVG is filled by the painter registered under that kind in
+`src/renderers/planet-painters/planet-painters.js`; its other `data-*` attributes are the
+painter's options. Every painter takes an integer `data-seed`, so the art is identical on
+every render.
+
+| `data-paint` | Options | Result |
+| --- | --- | --- |
+| `jovian` | `data-spin-seconds` | Banded gas giant: modules are storms, dependencies are gas streams |
+| `rocky` | `data-spin-seconds`, `data-module-columns` (4 or more), `data-module-names` (comma-separated) | Cratered planet: modules are named mountains joined by ridges |
+| `volcanic` | Same as `rocky` | Io-like surface: modules are named volcanoes joined by lava rivers, plus one newly erupting volcano per column |
+| `asteroid-belt` | `data-lane` (SVG path between two planets) | Rock streams drifting both ways |
+
+A `volcanic` surface given the same seed, spin time and module options as a `rocky` one
+raises its volcanoes exactly where the mountains stand, so one can fade into the other. A planet has two
+rows of modules, so give it twice as many names as columns.
+
+Surface painters draw inside a disc of radius 200, so place them in a group clipped by
+`#pe-disc` and scale that group to the planet's size. Set `--planet-scale` to the same
+scale on the planet's `pe-service` group so module names keep one on-screen size.
 
 ## Module map
 
