@@ -10,7 +10,7 @@
   </g>
   <g font-size="34">
     <text data-bullet="1" x="144" y="319">Simpler, cleaner code makes agentic coding <tspan class="chart-accent" font-weight="700">more effective.</tspan></text>
-    <text data-bullet="2" x="144" y="469">Smaller files and code units save context &amp; tokens</text>
+    <text data-bullet="2" x="144" y="469">Smaller files and code units save context &amp; tokens.</text>
     <text data-bullet="3" x="144" y="619">Code that is open for extension keeps the design less rigid.</text>
   </g>
 </svg>

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
+  <title>Summary</title>
+  <desc>Our changing role, investing in agent velocity and reliability, avoiding vibe neglection, and doing more with fewer tokens.</desc>
+  <text x="100" y="158" class="chart-heading">Summary</text>
+  <g class="chart-accent">
+    <circle data-bullet="1" cx="111" cy="297" r="6"/>
+    <circle data-bullet="2" cx="111" cy="427" r="6"/>
+    <circle data-bullet="3" cx="111" cy="557" r="6"/>
+    <circle data-bullet="4" cx="111" cy="687" r="6"/>
+  </g>
+  <g font-size="36">
+    <text data-bullet="1" x="144" y="309">Our job has rapidly shifted and it's still in progress.</text>
+    <text data-bullet="2" x="144" y="419">Invest in your code-base to keep your agents'<tspan x="144" dy="48"><tspan class="chart-accent" font-weight="700">velocity</tspan> and <tspan class="chart-accent" font-weight="700">reliability</tspan>.</tspan></text>
+    <text data-bullet="3" x="144" y="569">Don't let the <tspan class="chart-accent" font-weight="700">Vibe coding</tspan> become <tspan class="chart-accent" font-weight="700">Vibe neglection</tspan>.</text>
+    <text data-bullet="4" x="144" y="699">Save your tokens and do <tspan class="chart-accent" font-weight="700">more with less</tspan>.</text>
+  </g>
+</svg>

@@ -7,6 +7,11 @@ presenter:
   company: Wix.com
   initials: mi
 resources:
+  agent-skills-explorer:
+    type: svg-illustration
+    file: illustrations/agent-skills-explorer.svg
+    title: Save your prompts, maintain your skills
+    description: Selected .agents/skills folders with pr-lifecycle, clean-code, planning, deep-modules, refactor and fluent-tests, each containing SKILL.md.
   read-code-less:
     bulletCount: 4
     type: svg-sequence
@@ -126,12 +131,18 @@ resources:
     file: illustrations/legacy-plan-a.svg
     title: 'Plan A: rewrite the system'
     description: Two short points. Rewriting the system is cheap now, and existing tests make the rewrite even cheaper.
-  legacy-plan-b:
+  summary-points:
+    type: svg-illustration
     bulletCount: 4
+    file: illustrations/summary.svg
+    title: Summary
+    description: Invest in code quality to sustain agent velocity and reliability, avoid vibe neglection, and do more with fewer tokens.
+  legacy-plan-b:
+    bulletCount: 5
     type: svg-illustration
     file: illustrations/legacy-plan-b.svg
     title: 'Plan B: transition the system'
-    description: Four short points beside the cover of Working Effectively with Legacy Code. Design the target system, reference it in the planning skill, and follow every PR with a proportional refactoring PR that moves closer to the target.
+    description: Five short points beside the cover of Working Effectively with Legacy Code. The fourth point replaces the cover with a looping ten-second animation organizing scattered code into modules within the same boundary. The final point calls for a team effort.
   testing-safety-net:
     bulletCount: 5
     type: svg-illustration
@@ -1946,6 +1957,10 @@ slides:
         label: "Point 4"
         panel: "legacy-plan-b"
         bullets: 4
+      - id: point-5
+        label: "Make it a team effort"
+        panel: "legacy-plan-b"
+        bullets: 5
   - id: chapter-5
     name: Agent skills
     label: 05 / AGENT SKILLS
@@ -1965,10 +1980,11 @@ slides:
         reveal:
           - description
   - id: agent-team
-    name: Encode standards. Assign responsibilities.
+    name: Save your prompts, maintain your skills
     label: AGENT SKILLS
+    layout: visual
     title:
-      - text: Encode standards. Assign responsibilities.
+      - text: Save your prompts, maintain your skills
     description: Implementer, reviewer, verifier—and one clear owner.
     code: agent-team
     takeaway: You design the working system around the agents.
@@ -1976,14 +1992,15 @@ slides:
       [28:59–30:11 · 72 seconds]
 
 
+      The explorer shows a selected subset of the repository skills.
       Skills hold repository-specific procedures and examples. Keep them focused, discoverable and
       versioned. Define allowed tools, escalation and completion evidence. Independent review
       reduces shared blind spots but is not a correctness guarantee. Do not confuse multiple agents
       with independent proof; acceptance checks remain explicit.
     steps:
       - id: message
-        label: Encode standards. Assign responsibilities.
-        panel: agent-team
+        label: Save your prompts, maintain your skills
+        panel: agent-skills-explorer
         reveal:
           - description
           - principles
@@ -1991,18 +2008,37 @@ slides:
   - id: chapter-9
     name: Summary
     label: 06 / SUMMARY
-    layout: chapter
+    layout: visual
     title:
       - accent: Summary
-    description: "Our job is changing: we set the standards for agents."
+    description: Our job has rapidly shifted and it's still in progress.
     code: introduction
-    takeaway: "Our job is changing: we set the standards for agents."
+    takeaway: Save your tokens and do more with less.
     notes: |-
       [36:18–36:29 · 11 seconds]
 
-      Transition: Our job is changing: we set the standards for agents.
+      Our job has rapidly shifted and it's still in progress.
+      Invest in your code-base to keep your agents' velocity and reliability.
+      Don't let the Vibe coding become Vibe neglection.
+      Save your tokens and do more with less.
     steps:
-      - id: chapter
+      - id: summary
         label: Summary
-        reveal:
-          - description
+        panel: summary-points
+        bullets: 0
+      - id: shifting-role
+        label: Our changing role
+        panel: summary-points
+        bullets: 1
+      - id: invest
+        label: Velocity and reliability
+        panel: summary-points
+        bullets: 2
+      - id: avoid-neglection
+        label: Avoid vibe neglection
+        panel: summary-points
+        bullets: 3
+      - id: more-with-less
+        label: More with less
+        panel: summary-points
+        bullets: 4

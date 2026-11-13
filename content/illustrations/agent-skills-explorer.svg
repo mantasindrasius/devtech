@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
+  <title>Save your prompts, maintain your skills</title>
+  <desc>An editor-style file explorer showing selected folders in the .agents/skills directory with pr-lifecycle, clean-code, planning, deep-modules, refactor and fluent-tests skills, each containing SKILL.md.</desc>
+  <defs>
+    <g id="skill-folder" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round">
+      <path d="M0 4H10L14 8H28V25H0Z"/>
+    </g>
+    <g id="skill-file" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round">
+      <path d="M2 0H17L25 8V29H2Z M17 0V8H25"/>
+      <path d="M7 15V23 M7 15L12 20L17 15V23"/>
+    </g>
+    <path id="skill-chevron" d="M0 0L6 6L12 0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+  </defs>
+  <text x="80" y="150" class="chart-heading">Save your prompts, maintain your skills</text>
+  <rect x="430" y="220" width="740" height="620" rx="14" style="fill: var(--surface, #15191f); stroke: var(--border, #30363e)" stroke-width="2"/>
+  <text x="465" y="265" class="chart-muted" font-size="21" letter-spacing="3">EXPLORER</text>
+  <text x="1118" y="265" class="chart-muted" font-size="28">···</text>
+  <path d="M430 288H1170" class="chart-grid" stroke-width="1"/>
+  <g transform="translate(100 0)" font-family="'SFMono-Regular', Consolas, monospace" font-size="28" style="fill: var(--text, #e8ecf0)">
+    <use href="#skill-chevron" x="365" y="317" style="color: var(--muted, #929daa)"/>
+    <use href="#skill-folder" x="392" y="301" style="color: var(--blue, #82b7da)"/>
+    <text x="438" y="327">.agents</text>
+    <use href="#skill-chevron" x="395" y="360" style="color: var(--muted, #929daa)"/>
+    <use href="#skill-folder" x="422" y="344" style="color: var(--blue, #82b7da)"/>
+    <text x="468" y="370">skills</text>
+    <path d="M402 382V807 M432 425V807" class="chart-grid" stroke-width="1"/>
+    <use href="#skill-chevron" x="425" y="404" style="color: var(--muted, #929daa)"/>
+    <use href="#skill-folder" x="452" y="388" style="color: var(--blue, #82b7da)"/>
+    <text x="498" y="414">pr-lifecycle</text>
+    <use href="#skill-file" x="485" y="423" style="color: var(--accent-text, #b4ef94)"/>
+    <text x="530" y="450" class="chart-muted" font-size="25">SKILL.md</text>
+    <use href="#skill-chevron" x="425" y="472" style="color: var(--muted, #929daa)"/>
+    <use href="#skill-folder" x="452" y="456" style="color: var(--blue, #82b7da)"/>
+    <text x="498" y="482">clean-code</text>
+    <use href="#skill-file" x="485" y="491" style="color: var(--accent-text, #b4ef94)"/>
+    <text x="530" y="518" class="chart-muted" font-size="25">SKILL.md</text>
+    <use href="#skill-chevron" x="425" y="540" style="color: var(--muted, #929daa)"/>
+    <use href="#skill-folder" x="452" y="524" style="color: var(--blue, #82b7da)"/>
+    <text x="498" y="550">planning</text>
+    <use href="#skill-file" x="485" y="559" style="color: var(--accent-text, #b4ef94)"/>
+    <text x="530" y="586" class="chart-muted" font-size="25">SKILL.md</text>
+    <use href="#skill-chevron" x="425" y="608" style="color: var(--muted, #929daa)"/>
+    <use href="#skill-folder" x="452" y="592" style="color: var(--blue, #82b7da)"/>
+    <text x="498" y="618">deep-modules</text>
+    <use href="#skill-file" x="485" y="627" style="color: var(--accent-text, #b4ef94)"/>
+    <text x="530" y="654" class="chart-muted" font-size="25">SKILL.md</text>
+    <use href="#skill-chevron" x="425" y="676" style="color: var(--muted, #929daa)"/>
+    <use href="#skill-folder" x="452" y="660" style="color: var(--blue, #82b7da)"/>
+    <text x="498" y="686">refactor</text>
+    <use href="#skill-file" x="485" y="695" style="color: var(--accent-text, #b4ef94)"/>
+    <text x="530" y="722" class="chart-muted" font-size="25">SKILL.md</text>
+    <use href="#skill-chevron" x="425" y="744" style="color: var(--muted, #929daa)"/>
+    <use href="#skill-folder" x="452" y="728" style="color: var(--blue, #82b7da)"/>
+    <text x="498" y="754">fluent-tests</text>
+    <use href="#skill-file" x="485" y="763" style="color: var(--accent-text, #b4ef94)"/>
+    <text x="530" y="790" class="chart-muted" font-size="25">SKILL.md</text>
+  </g>
+</svg>

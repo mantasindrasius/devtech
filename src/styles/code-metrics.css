@@ -14,17 +14,8 @@
 .metrics-terminal, .metrics-chat { padding: 24px; }
 .metrics-terminal pre { font: 18px/1.65 monospace; margin: 24px 0; }
 .metrics-terminal a { color: var(--blue); font-size: 18px; }
-.metrics-terminal .lizard-output { margin-top: 0; }
-.lizard-columns {
-  display: grid;
-  grid-template-columns: repeat(4, 10ch) 1fr;
-  font: 18px monospace;
-  color: var(--blue);
-}
-.lizard-columns span { display: flex; flex-direction: column; justify-content: end; font-size: 15px; text-align: center; }
-.lizard-columns span:last-child { align-items: start; padding-left: 4px; }
-.lizard-columns span:last-child b { margin-left: 8ch; }
-.lizard-columns b { display: block; font-size: 28px; font-weight: 400; }
+.metrics-terminal .lizard-output { margin: 0 0 24px; }
+.lizard-annotations { pointer-events: none; }
 .metrics-coverage-covered { background: rgba(74, 180, 100, .18); }
 .metrics-coverage-uncovered { background: rgba(235, 85, 105, .18); }
 .metrics-coverage-gutter-covered { border-left: 4px solid #4ab464; margin-left: 3px; }
@@ -36,14 +27,23 @@
 .metrics-chat strong { color: var(--accent); }
 .metrics-chat p { margin: 6px 0 0; }
 .metrics-chat pre { margin: 10px 0 0; font: 18px/1.4 monospace; }
-.code-metrics[data-scene='cleanup'] .metrics-chat article {
-  animation: metrics-reply 450ms ease both;
-  animation-delay: var(--reply-delay, 0ms);
+.metrics-chat .review-pass { color: var(--accent-text, #b4ef94); }
+.metrics-chat .review-fail { color: var(--error, #ef7d86); }
+.metrics-chat .review-warning { color: var(--blue, #82b7da); }
+.metrics-chat .review-pending { color: var(--muted); }
+.metrics-chat .chat-agent p { margin-top: 14px; }
+.metrics-chat .response-context {
+  max-height: 72px;
+  overflow: hidden;
+  color: var(--muted);
+  mask-image: linear-gradient(transparent, #000);
 }
-.code-metrics[hidden] .metrics-chat article { animation: none; }
-@keyframes metrics-reply {
-  from { opacity: 0; transform: translateY(12px); }
-  to { opacity: 1; transform: translateY(0); }
+.metrics-chat .response-context p { margin: 0 0 8px; }
+.metrics-chat .response-summary { display: block; margin-top: 22px; }
+.metrics-chat [data-stream][hidden] { display: none; }
+.metrics-chat .streaming::after {
+  content: '▍';
+  color: var(--accent);
 }
 @media (prefers-reduced-motion: reduce) {
   .code-metrics *, .code-metrics[data-scene='cleanup'] .metrics-chat article {

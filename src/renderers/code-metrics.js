@@ -1,6 +1,8 @@
 import { requireText } from '../content/validation.js';
 import { createArchitectureStory } from './architecture-story.js';
 import { coverageDecorations } from './coverage-decorations.js';
+import { revealedPlayback } from './revealed-playback.js';
+import { wordStreamTranscript, playWordStream } from './word-stream.js';
 
 const scenes = ['intro', 'lizard', 'low', 'high', 'cleanup'];
 
@@ -13,7 +15,7 @@ export const codeMetricsRenderer = {
   validateStep(step) {
     if (!scenes.includes(step.scene)) throw new Error(`Unknown metrics scene: ${step.scene}`);
   },
-  create(resource, { monaco, resources }) {
+  create(resource, { monaco, resources, wait, reducedMotion }) {
     const snippets = ['low', 'high'].map((kind) => {
       const snippet = resources[resource[`${kind}Code`]];
       if (snippet?.type !== 'code') throw new Error(`Missing ${kind} CRAP example`);
@@ -25,6 +27,15 @@ export const codeMetricsRenderer = {
       model.deltaDecorations([], coverageDecorations(resource.coverage[kind], model.getLineCount()));
     const story = createArchitectureStory(resource, scenes);
     story.panel.className = 'visual-panel svg-illustration code-metrics';
+    const chat = story.panel.querySelector('.metrics-chat');
+    const transcript = wordStreamTranscript(chat);
+    const playback = revealedPlayback(chat.closest('[data-appears-at]'), {
+      play: (signal) => playWordStream(transcript, { wait, signal }),
+      showStill: transcript.complete,
+      reset: transcript.clear,
+      reducedMotion,
+    });
+    transcript.clear();
     const container = story.panel.querySelector('.metrics-editor');
     const editor = monaco.editor.create(container, {
       readOnly: true, domReadOnly: true, automaticLayout: true,
@@ -41,13 +52,19 @@ export const codeMetricsRenderer = {
       ...story,
       show(step, options) {
         story.show(step, options);
+        playback.sync();
         container.inert = !models[step.scene];
         if (!models[step.scene]) return;
         editor.setModel(models[step.scene]);
         editor.setScrollTop(0);
         editor.layout();
       },
+      hide() {
+        playback.stop();
+        story.hide();
+      },
       dispose() {
+        playback.stop();
         editor.dispose();
         Object.values(models).forEach((model) => model.dispose());
         story.dispose();

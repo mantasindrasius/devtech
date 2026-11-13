@@ -6,6 +6,10 @@ Read the relevant repository skills before implementing, refactoring, reviewing,
 - [SOLID design](.agents/skills/solid-design/SKILL.md): responsibilities, contracts, dependencies, and lifecycle ownership.
 - [Clean Code](.agents/skills/clean-code/SKILL.md): small files and functions, naming, control flow, and focused refactoring.
 - [Fluent tests](.agents/skills/fluent-tests/SKILL.md): behavior-focused Bun tests, builders, drivers, and deterministic async checks.
+- [Planning](.agents/skills/planning/SKILL.md): evidence-based feature plans and incremental migrations.
+- [Deep modules](.agents/skills/deep-modules/SKILL.md): small public interfaces, hidden implementation, and application composition.
+- [Refactor](.agents/skills/refactor/SKILL.md): focused structural improvements with behavior-preserving verification.
+- [PR lifecycle](.agents/skills/pr-lifecycle/SKILL.md): verification, cleanup, review readiness, and documentation updates.
 
 Apply these to the requested change. Existing oversized modules are not permission for an unrelated rewrite. Documentation-only edits do not require production refactoring.
 
