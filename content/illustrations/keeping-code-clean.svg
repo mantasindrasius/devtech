@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
+  <title>Keeping the code clean</title>
+  <desc>Clean-code rules on the left. A circular Prompt, Plan, Implement, Clean-up, Refactor and Update docs workflow on the right, revealed with Self-improvement loop.</desc>
+  <defs>
+    <marker id="cleanup-cycle-arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M2 2L10 6L2 10" fill="none" stroke="context-stroke" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+  <text x="100" y="80" class="chart-accent" font-size="18" letter-spacing="4">CLEAN CODE / ENFORCE THE STANDARD</text>
+  <text x="100" y="158" class="chart-heading">Keeping the code clean</text>
+  <g class="chart-accent">
+    <circle data-bullet="1" cx="111" cy="287" r="5"/>
+    <circle data-bullet="2" cx="111" cy="427" r="5"/>
+    <circle data-bullet="3" cx="111" cy="567" r="5"/>
+    <circle data-bullet="4" cx="111" cy="727" r="5"/>
+  </g>
+  <g font-size="30">
+    <text data-bullet="1" x="144" y="299"><tspan x="144">Your repo needs a definition of clean code</tspan><tspan x="144" dy="42">and a way to validate it.</tspan></text>
+    <text data-bullet="2" x="144" y="439"><tspan x="144">Avoid hidden side effects.</tspan><tspan x="144" dy="42">Prefer well-defined events.</tspan></text>
+    <text data-bullet="3" x="144" y="579">Single responsibility.</text>
+    <text data-bullet="4" x="144" y="739" class="chart-accent" font-weight="600">Self-improvement loop</text>
+  </g>
+  <!-- Adapted from scenic-engine's red-green-refactor-diagnostics circular workflow. -->
+  <g data-bullet="4">
+    <path d="M810 245V800" class="chart-grid" stroke-width="1"/>
+    <g fill="none" stroke-width="3" stroke-linecap="round" marker-end="url(#cleanup-cycle-arrow)">
+      <path d="M1280 313Q1420 348 1435 454" class="chart-poor"/>
+      <path d="M1435 550Q1420 660 1310 710" class="chart-good"/>
+      <path d="M1070 710Q960 660 950 590" class="chart-good"/>
+      <path d="M950 402Q970 348 1100 313" class="chart-poor"/>
+    </g>
+    <g text-anchor="middle" font-size="34" font-weight="600">
+      <text x="1190" y="315">Prompt</text>
+      <text x="1435" y="515" class="chart-poor-label">Plan</text>
+      <text x="1190" y="735">Implement</text>
+      <text x="960" y="461" class="chart-accent"><tspan x="960">Clean-up,</tspan><tspan x="960" dy="42">Refactor</tspan><tspan x="960" dy="42">&amp; Update docs</tspan></text>
+    </g>
+  </g>
+</svg>

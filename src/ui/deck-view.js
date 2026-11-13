@@ -14,6 +14,7 @@ export function createDeckView({ deck, root, panels }) {
     show(state) {
       const { slide, slideIndex, stepIndex, step, first, last } = state;
       $('slide').dataset.layout = slide.layout ?? 'standard';
+      $('slide').dataset.slideId = slide.id;
       const resource = deck.resources[step.panel ?? slide.code];
       for (const id of ['tab-name', 'crumb', 'code-file'])
         $(id).textContent = resource.file.split('/').at(-1);

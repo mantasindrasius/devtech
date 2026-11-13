@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
+  <title>Start with a monolith or microservices?</title>
+  <desc>Monolith: simple operations, coupling risk, in-process I/O. Microservices: independent deployment, premature optimization, well-defined contract.</desc>
+  <text x="80" y="80" class="chart-accent" font-size="18" letter-spacing="4">ARCHITECTURE / CHOOSING A STARTING POINT</text>
+  <text x="80" y="155" class="chart-heading">Start with a monolith or microservices?</text>
+  <path d="M800 265V690" class="chart-grid" fill="none" stroke-width="2"/>
+  <path d="M100 280H710" class="chart-poor" fill="none" stroke-width="4"/>
+  <path d="M890 280H1500" class="chart-good" fill="none" stroke-width="4"/>
+  <text x="100" y="350" font-size="38" font-weight="600">Monolith</text>
+  <text x="890" y="350" font-size="38" font-weight="600">Microservices</text>
+  <g font-size="34">
+    <text data-bullet="1" x="150" y="447">Simple operations</text>
+    <text data-bullet="2" x="150" y="528">In-process I/O</text>
+    <text data-bullet="3" x="150" y="609">Coupling risk</text>
+    <text data-bullet="4" x="940" y="447">Independent deployment</text>
+    <text data-bullet="5" x="940" y="528">Well-defined contract</text>
+    <text data-bullet="6" x="940" y="609">Premature optimization</text>
+  </g>
+  <g fill="none" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="chart-good">
+    <path data-bullet="1" d="M104 433L112 441L128 421"/><path data-bullet="2" d="M104 514L112 522L128 502"/>
+    <path data-bullet="4" d="M894 433L902 441L918 421"/><path data-bullet="5" d="M894 514L902 522L918 502"/>
+  </g>
+  <g fill="none" stroke-width="4" stroke-linecap="round" style="stroke: var(--error, #ef7d86)">
+    <path data-bullet="3" d="M106 583L126 603 M126 583L106 603"/><path data-bullet="6" d="M896 583L916 603 M916 583L896 603"/>
+  </g>
+</svg>

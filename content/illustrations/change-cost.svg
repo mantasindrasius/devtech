@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
+  <title>Tokens per change</title>
+  <desc>Two conceptual quadratic curves on identical scales. As a system grows, context coupling raises tokens per comparable change. The target curve rises much more slowly. These are illustrations, not measured predictions.</desc>
+  <text x="100" y="150" class="chart-heading">Tokens per change</text>
+  <text x="100" y="280" font-size="32">When context keeps growing</text>
+  <g class="chart-grid" fill="none">
+    <path d="M180 350V690H700" stroke-width="2"/>
+    <path d="M180 400H700M180 500H700M180 600H700" opacity=".4"/>
+  </g>
+  <text transform="translate(120 520) rotate(-90)" text-anchor="middle" font-size="23" class="chart-muted">Tokens per change</text>
+  <text x="440" y="740" text-anchor="middle" font-size="25" class="chart-muted">System growth →</text>
+  <path d="M180 650Q430 650 680 400" fill="none" class="chart-poor" stroke-width="6" stroke-linecap="round"/>
+  <g data-appears-at="1">
+    <path d="M800 240V770" class="chart-grid" stroke-width="1"/>
+    <text x="870" y="265" font-size="32" class="chart-accent">The goal: to keep the cost</text>
+    <text x="870" y="307" font-size="32" class="chart-accent">on similar level</text>
+    <g class="chart-grid" fill="none">
+      <path d="M940 350V690H1460" stroke-width="2"/>
+      <path d="M940 400H1460M940 500H1460M940 600H1460" opacity=".4"/>
+    </g>
+    <text transform="translate(880 520) rotate(-90)" text-anchor="middle" font-size="23" class="chart-muted">Tokens per change</text>
+    <text x="1200" y="740" text-anchor="middle" font-size="25" class="chart-muted">System growth →</text>
+    <path d="M940 650Q1190 650 1440 600" fill="none" class="chart-good" stroke-width="6" stroke-linecap="round"/>
+  </g>
+  <text x="100" y="850" class="chart-muted" font-size="19">Conceptual · comparable changes · same model and workflow · identical scales</text>
+</svg>

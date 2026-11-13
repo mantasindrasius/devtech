@@ -1,9 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
   <title>Good design sustains delivery</title>
   <desc>A conceptual adaptation of Martin Fowler's Design Stamina Hypothesis. Without design, cumulative functionality rises faster initially but flattens; with good design, delivery continues and overtakes it. No measured data or numerical scale.</desc>
-  <text x="100" y="83" class="chart-accent" font-size="18" letter-spacing="4">ARCHITECTURE / THE ECONOMICS OF CHANGE</text>
   <text x="100" y="155" class="chart-heading">Good design sustains delivery.</text>
-  <text x="100" y="205" class="chart-muted" font-size="25">The slope is your delivery speed.</text>
 
   <g fill="none" class="chart-grid" stroke-width="1">
     <path d="M230 310H1440M230 420H1440M230 530H1440" opacity=".45"/>
@@ -17,7 +15,7 @@
   <text x="730" y="321" font-size="21" class="chart-muted">Design payoff</text>
   <text x="1180" y="249" font-size="27" class="chart-accent">Good design</text>
   <text x="1170" y="474" font-size="27" class="chart-poor-label">No design</text>
-  <text x="100" y="789" font-size="24">Invest in the structure that makes the next change easier.</text>
-  <text x="100" y="840" class="chart-muted" font-size="17">Adapted from Martin Fowler · Design Stamina Hypothesis (2007) · Conceptual, not measured data</text>
-  <text x="100" y="868" class="chart-muted" font-size="16">martinfowler.com/bliki/DesignStaminaHypothesis.html</text>
+  <a href="https://martinfowler.com/bliki/DesignStaminaHypothesis.html" target="_blank" rel="noopener noreferrer">
+    <text x="100" y="850" class="chart-muted" font-size="19">Source: Martin Fowler · Design Stamina Hypothesis (2007) · Conceptual illustration</text>
+  </a>
 </svg>

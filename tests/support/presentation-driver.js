@@ -5,10 +5,15 @@ export function aPresentation() {
   const actions = new Registry('step action');
   const observed = { events: [], errors: [], cleanups: 0, shown: [], completed: [] };
   let steps = [{ id: 'start', label: 'Start' }];
+  let slides;
   let timeline;
   return {
     withSteps(value) {
       steps = value;
+      return this;
+    },
+    withSlides(value) {
+      slides = value;
       return this;
     },
     withAction(kind, create) {
@@ -27,7 +32,7 @@ export function aPresentation() {
     },
     mount() {
       timeline = createTimeline({
-        deck: { slides: [{ id: 'example', code: 'sample', steps }] },
+        deck: { slides: slides ?? [{ id: 'example', code: 'sample', steps }] },
         actions,
         context: { code: { show() {} }, checks: { clear() {} } },
         view: {

@@ -4,8 +4,10 @@ import { bindEditorTypography } from '../editor/typography.js';
 
 export const codeComparisonRenderer = {
   validate(resource) {
-    for (const key of ['title', 'leftTitle', 'rightTitle', 'right', 'takeaway'])
+    for (const key of ['title', 'right'])
       requireText(resource[key], `code-comparison.${key}`);
+    for (const key of ['leftTitle', 'rightTitle', 'takeaway'])
+      if (resource[key] !== undefined) requireText(resource[key], `code-comparison.${key}`);
     const hasBacks = resource.leftImplementation !== undefined || resource.rightImplementation !== undefined;
     if (!hasBacks) return;
     for (const side of ['leftImplementation', 'rightImplementation']) {
@@ -19,6 +21,8 @@ export const codeComparisonRenderer = {
   validateStep(step) {
     if (!['interface', 'implementation'].includes(step.face))
       throw new Error(`Unknown comparison face: ${step.face}`);
+    if (step.revealRight !== undefined && typeof step.revealRight !== 'boolean')
+      throw new Error('revealRight must be a boolean');
   },
   create(resource, { monaco, resources }) {
     const right = resources[resource.right];
@@ -35,14 +39,21 @@ export const codeComparisonRenderer = {
       createPane(monaco, resource.rightTitle, right.source, 'deep', resource.rightImplementation),
     ];
     columns.append(...panes.map((pane) => pane.element));
-    const takeaway = document.createElement('p');
-    takeaway.textContent = resource.takeaway;
-    panel.append(title, columns, takeaway);
+    panel.append(title, columns);
+    if (resource.takeaway) {
+      const takeaway = document.createElement('p');
+      takeaway.textContent = resource.takeaway;
+      panel.append(takeaway);
+    }
     return {
       panel,
       show(step, { continuing } = {}) {
         panel.dataset.animate = String(Boolean(continuing));
         panel.dataset.face = step.face;
+        const rightVisible = step.revealRight !== false;
+        panes[1].element.classList.toggle('comparison-pane-hidden', !rightVisible);
+        panes[1].element.inert = !rightVisible;
+        panes[1].element.setAttribute('aria-hidden', String(!rightVisible));
         panes.forEach((pane) => pane.showFace(step.face));
         panel.hidden = false;
         panes.forEach((pane) => pane.layout());
@@ -62,8 +73,11 @@ export const codeComparisonRenderer = {
 function createPane(monaco, title, source, kind, implementation) {
   const element = document.createElement('section');
   element.className = `comparison-pane ${kind}`;
-  const heading = document.createElement('h2');
-  heading.textContent = title;
+  if (title) {
+    const heading = document.createElement('h2');
+    heading.textContent = title;
+    element.append(heading);
+  }
   const container = document.createElement('div');
   container.className = 'comparison-editor';
   const card = document.createElement('div');
@@ -77,7 +91,7 @@ function createPane(monaco, title, source, kind, implementation) {
   turner.append(front);
   if (back) turner.append(back);
   card.append(turner);
-  element.append(heading, card);
+  element.append(card);
   const model = monaco.editor.createModel(source, 'typescript');
   const editor = monaco.editor.create(container, {
     model, readOnly: true, domReadOnly: true,
@@ -87,7 +101,7 @@ function createPane(monaco, title, source, kind, implementation) {
     renderLineHighlight: 'none', overviewRulerLanes: 0,
     wordWrap: 'off', stickyScroll: { enabled: false },
     fontFamily: '"SFMono-Regular", Consolas, monospace',
-    ariaLabel: title,
+    ariaLabel: title ?? `${kind} module interface`,
   });
   let unbindTypography;
   return {

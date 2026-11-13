@@ -1,0 +1,75 @@
+.testing-pyramid [data-appears-at] { opacity: 0; visibility: hidden; }
+.testing-pyramid [data-appears-at].is-visible { opacity: 1; visibility: visible; }
+.testing-pyramid .test-layer { stroke-width: 2; fill-opacity: .15; }
+.testing-pyramid .e2e-color { fill: var(--blue, #82b7da); stroke: var(--blue, #82b7da); }
+.testing-pyramid .integration-color { fill: var(--accent, #b4ef94); stroke: var(--accent, #b4ef94); }
+.testing-pyramid .unit-color { fill: var(--muted, #929daa); stroke: var(--muted, #929daa); }
+.testing-pyramid .unit-layer { d: path('M180 600 L620 600 L720 760 L80 760 Z'); }
+.testing-pyramid .integration-layer {
+  d: path('M300 400 L500 400 L620 600 L620 600 L620 600 L180 600 L180 600 L180 600 Z');
+}
+.testing-pyramid .e2e-layer { d: path('M400 240 L500 400 L300 400 Z'); }
+.testing-pyramid:is([data-scene='diamond'], [data-scene='parallel']) .e2e-layer {
+  d: path('M400 240 L485.556 350 L314.444 350 Z');
+}
+.testing-pyramid:is([data-scene='diamond'], [data-scene='parallel']) .integration-layer {
+  d: path('M314.444 350 L485.556 350 L610 510 L610 510 L485.556 670 L314.444 670 L190 510 L190 510 Z');
+}
+.testing-pyramid:is([data-scene='diamond'], [data-scene='parallel']) .unit-layer {
+  d: path('M314.444 670 L485.556 670 L400 780 L400 780 Z');
+}
+.testing-pyramid .e2e-label { transform: translateY(0); }
+.testing-pyramid:is([data-scene='diamond'], [data-scene='parallel']) .e2e-label {
+  transform: translateY(-40px);
+}
+.testing-pyramid .unit-label { transform: translateY(0); }
+.testing-pyramid:is([data-scene='diamond'], [data-scene='parallel']) .unit-label {
+  transform: translateY(5px);
+  font-size: 28px;
+}
+.testing-pyramid[data-scene='parallel'] .e2e-layer {
+  d: path('M400 210 L485.556 320 L314.444 320 Z');
+}
+.testing-pyramid[data-scene='parallel'] .integration-layer {
+  d: path('M314.444 320 L485.556 320 L610 480 L610 580 L485.556 740 L314.444 740 L190 580 L190 480 Z');
+}
+.testing-pyramid[data-scene='parallel'] .unit-layer {
+  d: path('M314.444 740 L485.556 740 L400 850 L400 850 Z');
+}
+.testing-pyramid[data-scene='parallel'] .e2e-label { transform: translateY(-70px); }
+.testing-pyramid[data-scene='parallel'] .unit-label { transform: translateY(75px); }
+.testing-pyramid[data-animate='true'] .test-layer { transition: d 900ms cubic-bezier(.22,.7,.2,1); }
+.testing-pyramid[data-animate='true'] :is(.unit-label, .e2e-label) { transition: transform 900ms ease; }
+.testing-pyramid[data-animate='true'] [data-appears-at] { transition: opacity 350ms ease; }
+.testing-pyramid .parallel-lane { stroke: var(--accent, #b4ef94); stroke-width: 2; stroke-dasharray: 6 8; }
+/* Passing tests pop into each module's lane one at a time; lanes fill side by side. */
+.testing-pyramid .runner {
+  fill: var(--accent, #b4ef94);
+  transform-box: fill-box;
+  transform-origin: center;
+}
+/* Starting with the scene makes the first tests pop in right after the click. */
+.testing-pyramid[data-scene='parallel'] .runner {
+  animation: test-pop 4.2s ease-out infinite backwards;
+  animation-delay: calc(var(--test) * 0.3s + var(--lane) * 0.075s);
+}
+.testing-pyramid[hidden] .runner { animation-play-state: paused; }
+@keyframes test-pop {
+  0% { opacity: 0; transform: scale(0); }
+  4% { opacity: 1; transform: scale(1.6); }
+  9%, 78% { opacity: 1; transform: scale(1); }
+  84%, 100% { opacity: 0; transform: scale(0.4); }
+}
+.testing-pyramid .unit-tradeoffs { transform: translateY(0); }
+.testing-pyramid[data-scene='parallel'] .unit-tradeoffs { transform: translateY(45px); }
+.testing-pyramid .parallel-benefit { transform: translateY(-24px); }
+.testing-pyramid[data-scene='parallel'] .parallel-benefit { transform: translateY(0); }
+.testing-pyramid[data-animate='true'] .unit-tradeoffs {
+  transition: transform 900ms cubic-bezier(.22,.7,.2,1), opacity 350ms ease;
+}
+.testing-pyramid[data-animate='true'] .parallel-benefit {
+  transition: transform 900ms cubic-bezier(.22,.7,.2,1), opacity 650ms ease 150ms;
+}
+@media (prefers-reduced-motion: reduce) {
+  .testing-pyramid * { transition: none !important; animation: none !important; }
+}

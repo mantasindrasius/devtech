@@ -12,67 +12,84 @@
   stroke: var(--border, #30363e);
   stroke-width: 2;
 }
+/* Heat follows the agents: a module glows while one reads it, then cools slowly. */
 .agent-context .context-heat {
   fill: #ff9045;
   opacity: 0.08;
-  animation: context-heat 8s ease-in-out infinite;
-  animation-delay: var(--delay, 0s);
+  transition: opacity 3s ease;
 }
+.agent-context .context-heat[data-readers]:not([data-readers='0']) {
+  opacity: 0.75;
+  transition: opacity 220ms ease;
+}
+/* Agents stay put while they work and hop quickly between modules. */
 .agent-context .context-agent {
   fill: var(--text, #e8ecf0);
   stroke: var(--surface, #15191f);
   stroke-width: 2;
 }
-.agent-context .context-agent text {
+.agent-context .context-agent[data-pace='travelling'] {
+  transition: transform 480ms cubic-bezier(0.6, 0, 0.2, 1);
+}
+.agent-context .context-agent:not([data-pace]) {
+  visibility: hidden;
+}
+.agent-context .agent-letter {
   fill: var(--surface, #15191f);
   stroke: none;
-  font: 600 14px monospace;
+  font: 600 19px monospace;
 }
-.agent-context .context-route {
-  fill: none;
-  stroke: #ff9045;
-  stroke-width: 2;
-  stroke-dasharray: 5 8;
+/* Each agent's context window: a token count and a gauge that fills as it reads. */
+.agent-context .agent-tokens {
+  fill: var(--text, #e8ecf0);
+  stroke: var(--surface, #15191f);
+  stroke-width: 4px;
+  paint-order: stroke;
+  font: 600 20px monospace;
+}
+.agent-context .agent-meter-track {
+  fill: var(--border, #30363e);
+  stroke: none;
+}
+.agent-context .agent-meter-fill {
+  fill: var(--accent, #b4ef94);
+  stroke: none;
+  transition: width 100ms linear;
+}
+.agent-context [data-context='nearly-full'] .agent-meter-fill,
+.agent-context [data-context='compacting'] .agent-meter-fill,
+.agent-context [data-context='compacting'] .agent-tokens {
+  fill: #ff9045;
+}
+/* A compacting agent is stalled: its marker dims until the context is summarised. */
+.agent-context .context-agent > circle {
+  transition: opacity 200ms ease;
+}
+.agent-context [data-context='compacting'] > circle {
   opacity: 0.45;
 }
-.agent-context .agent-a { animation: context-search-a 8s ease-in-out infinite; }
-.agent-context .agent-b { animation: context-search-b 10s ease-in-out infinite; }
-.agent-context .agent-c { animation: context-search-c 12s ease-in-out infinite; }
-.agent-context .agent-focused { animation: context-focus 8s ease-in-out infinite; }
-.agent-context [data-appears-at]:not(.is-visible) *,
-.agent-context[hidden] * {
-  animation-play-state: paused;
+/* The tool call an agent is making, shown as a bubble beside it. */
+.agent-context .agent-bubble {
+  opacity: 0;
+  transition: opacity 140ms ease;
 }
-@keyframes context-heat {
-  0%, 100% { opacity: 0.08; }
-  22%, 42% { opacity: 0.75; }
-  70% { opacity: 0.18; }
+.agent-context .agent-bubble[data-calling='true'] {
+  opacity: 1;
 }
-@keyframes context-search-a {
-  0%, 100% { transform: translate(135px, 370px); }
-  33% { transform: translate(645px, 480px); }
-  66% { transform: translate(305px, 590px); }
+.agent-context .agent-bubble-box {
+  fill: var(--surface, #15191f);
+  stroke: var(--accent, #b4ef94);
+  stroke-width: 1.5;
 }
-@keyframes context-search-b {
-  0%, 100% { transform: translate(560px, 590px); }
-  33% { transform: translate(220px, 425px); }
-  66% { transform: translate(475px, 370px); }
+.agent-context .agent-bubble-text {
+  fill: var(--text, #e8ecf0);
+  stroke: none;
+  font: 21px monospace;
 }
-@keyframes context-search-c {
-  0%, 100% { transform: translate(390px, 535px); }
-  33% { transform: translate(645px, 370px); }
-  66% { transform: translate(135px, 590px); }
-}
-@keyframes context-focus {
-  0%, 100% { transform: translate(940px, 388px); }
-  33% { transform: translate(1040px, 435px); }
-  66% { transform: translate(1150px, 388px); }
+.agent-context .agent-bubble-tool {
+  fill: var(--accent, #b4ef94);
+  font-weight: 600;
 }
 @media (prefers-reduced-motion: reduce) {
-  .agent-context * { animation: none !important; transition: none !important; }
-  .agent-context .context-heat { opacity: 0.28; }
-  .agent-context .agent-a { transform: translate(135px, 370px); }
-  .agent-context .agent-b { transform: translate(560px, 590px); }
-  .agent-context .agent-c { transform: translate(390px, 535px); }
-  .agent-context .agent-focused { transform: translate(1040px, 435px); }
+  .agent-context * { transition: none !important; }
 }

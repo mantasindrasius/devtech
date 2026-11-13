@@ -1,0 +1,170 @@
+.testable-design [data-appears-at] { opacity: 0; visibility: hidden; }
+.testable-design [data-appears-at].is-visible { opacity: 1; visibility: visible; }
+.testable-design[data-animate='true'] [data-appears-at] { transition: opacity 600ms ease; }
+.testable-design .core-shell {
+  fill: var(--accent, #b4ef94);
+  fill-opacity: .05;
+  stroke: var(--accent, #b4ef94);
+  stroke-width: 3;
+}
+.testable-design .adapter-box {
+  fill: var(--surface, #15191f);
+  stroke: var(--blue, #82b7da);
+  stroke-width: 2;
+}
+.testable-design .port {
+  fill: var(--surface, #15191f);
+  stroke: var(--accent, #b4ef94);
+  stroke-width: 3;
+}
+.testable-design .connection {
+  fill: none;
+  stroke: var(--blue, #82b7da);
+  stroke-width: 2;
+}
+.testable-design .module-box {
+  fill: var(--surface, #15191f);
+  stroke: var(--accent, #b4ef94);
+  stroke-width: 1.5;
+}
+.testable-design .module-internal {
+  fill: var(--accent, #b4ef94);
+  fill-opacity: .12;
+  stroke: var(--accent, #b4ef94);
+  stroke-opacity: .35;
+}
+.testable-design .adapter-sector {
+  fill: var(--blue, #82b7da);
+  fill-opacity: .07;
+  stroke: var(--blue, #82b7da);
+  stroke-width: 1.5;
+}
+.testable-design .sector-1 { fill-opacity: .13; }
+.testable-design .adapter-node { fill: var(--blue, #82b7da); }
+.testable-design .external-system {
+  fill: var(--surface, #15191f);
+  stroke: var(--muted, #929daa);
+  stroke-width: 1.5;
+}
+.testable-design .symbol-detail {
+  fill: none;
+  stroke: var(--blue, #82b7da);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.testable-design .radial-link {
+  color: var(--blue, #82b7da);
+  marker-end: url(#hex-arrow);
+}
+.testable-design #hex-arrow path { stroke: var(--blue, #82b7da); }
+.testable-design #growth-hex-arrow path { stroke: var(--blue, #82b7da); }
+.testable-design .module-checkout { --module-color: #78b8e8; }
+.testable-design .module-pricing { --module-color: #c9a0e8; }
+.testable-design .module-catalog { --module-color: #82c9a1; }
+.testable-design .module-orders { --module-color: #e8b575; }
+.testable-design .deep-module .module-box {
+  fill: var(--module-color);
+  fill-opacity: .14;
+  stroke: var(--module-color);
+  stroke-width: 2;
+}
+.testable-design .deep-module .port { stroke: var(--module-color); }
+.testable-design .deep-module .module-internal {
+  fill: var(--module-color);
+  fill-opacity: .35;
+  stroke: var(--module-color);
+}
+:root[data-theme='light'] .testable-design .module-checkout { --module-color: #286eaa; }
+:root[data-theme='light'] .testable-design .module-pricing { --module-color: #8750ac; }
+:root[data-theme='light'] .testable-design .module-catalog { --module-color: #267c52; }
+:root[data-theme='light'] .testable-design .module-orders { --module-color: #a5691f; }
+.testable-design .internal-link {
+  fill: none;
+  stroke: var(--accent, #b4ef94);
+  stroke-width: 1.5;
+}
+.testable-design .tested-tag {
+  fill: var(--surface, #15191f);
+  stroke: var(--accent, #b4ef94);
+  stroke-width: 2;
+}
+.testable-design .tested-label { fill: var(--accent, #b4ef94); }
+.testable-design .e2e-scope {
+  fill: none;
+  stroke: var(--text, #e8ecf0);
+  stroke-width: 2.5;
+  stroke-dasharray: 14 10;
+}
+.testable-design .e2e-tag {
+  fill: var(--surface, #15191f);
+  stroke: var(--text, #e8ecf0);
+  stroke-width: 2;
+}
+.testable-design .e2e-label { fill: var(--text, #e8ecf0); }
+/* Test suites: rows wait dimmed, spin while running, then show a check and their time. */
+.testable-design .suite-title {
+  fill: var(--text, #e8ecf0);
+  font-size: 25px;
+  font-weight: 600;
+}
+.testable-design .suite-component .suite-title { fill: var(--accent, #b4ef94); }
+.testable-design .test-name,
+.testable-design .test-time,
+.testable-design .suite-summary {
+  font-family: monospace;
+  font-size: 20px;
+}
+.testable-design .test-name { fill: var(--text, #e8ecf0); }
+.testable-design .test-time,
+.testable-design .suite-summary { fill: var(--muted, #929daa); }
+.testable-design .test-check {
+  fill: var(--accent, #b4ef94);
+  font-size: 21px;
+}
+.testable-design .test-spinner {
+  fill: none;
+  stroke: var(--accent, #b4ef94);
+  stroke-width: 2.5;
+  stroke-dasharray: 30 14;
+  stroke-linecap: round;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.testable-design .test-run:not([data-state='passed']) .test-check,
+.testable-design .test-run:not([data-state='passed']) .test-time,
+.testable-design .test-run:not([data-state='running']) .test-spinner {
+  visibility: hidden;
+}
+.testable-design .test-run:not([data-state='passed'], [data-state='running']) .test-name {
+  opacity: 0.35;
+}
+.testable-design .test-run[data-state='running'] .test-spinner {
+  animation: td-spinner 700ms linear infinite;
+}
+@keyframes td-spinner {
+  to { transform: rotate(360deg); }
+}
+/* What a test exercises flashes when the test starts and keeps pulsing while it runs. */
+.testable-design [data-test-pulse='a'] { animation: td-test-pulse-a 450ms ease-out; }
+.testable-design [data-test-pulse='b'] { animation: td-test-pulse-b 450ms ease-out; }
+.testable-design [data-tests-running]:not([data-tests-running='0']) {
+  animation: td-under-test 320ms ease-in-out infinite alternate;
+}
+@keyframes td-test-pulse-a {
+  from { filter: brightness(1.9) saturate(1.4); }
+  to { filter: none; }
+}
+@keyframes td-test-pulse-b {
+  from { filter: brightness(1.9) saturate(1.4); }
+  to { filter: none; }
+}
+@keyframes td-under-test {
+  from { filter: brightness(1.3); }
+  to { filter: brightness(2) saturate(1.4); }
+}
+.testable-design[hidden] * { animation: none !important; }
+@media (prefers-reduced-motion: reduce) {
+  .testable-design * { animation: none !important; }
+  .testable-design [data-appears-at] { transition: none !important; }
+}

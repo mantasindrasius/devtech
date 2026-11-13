@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
+  <title>The ideal test</title>
+  <desc>A checkout test evolves from slow, random and vague to fast, deterministic, assertive and readable. The editor shows inline changes for deterministic input and precise assertions.</desc>
+  <text x="80" y="150" class="chart-heading">The ideal test</text>
+  <g data-appears-at="1" data-attribute="fast">
+    <circle cx="92" cy="278" r="6" class="chart-accent"/>
+    <text x="120" y="290" class="test-attribute">Fast to run</text>
+    <text x="120" y="332" class="test-reason">In-memory adapters.</text>
+    <text x="120" y="367" class="test-reason">Shorter feedback loops.</text>
+  </g>
+  <g data-appears-at="2" data-attribute="deterministic">
+    <circle cx="92" cy="423" r="6" class="chart-accent"/>
+    <text x="120" y="435" class="test-attribute">Deterministic</text>
+    <text x="120" y="477" class="test-reason">Fixed inputs. Repeatable results.</text>
+    <text x="120" y="512" class="test-reason">No wasted diagnosis.</text>
+  </g>
+  <g data-appears-at="3" data-attribute="assertive">
+    <circle cx="92" cy="568" r="6" class="chart-accent"/>
+    <text x="120" y="580" class="test-attribute">Assertive</text>
+    <text x="120" y="622" class="test-reason">Verify the exact business outcome.</text>
+    <text x="120" y="657" class="test-reason">Catch meaningful regressions.</text>
+  </g>
+  <g data-appears-at="4" data-attribute="readable">
+    <circle cx="92" cy="713" r="6" class="chart-accent"/>
+    <text x="120" y="725" class="test-attribute">Readable</text>
+    <text x="120" y="767" class="test-reason">Fluent intent. Given / When / Then.</text>
+    <text x="120" y="802" class="test-reason">Shared language for people &amp; agents.</text>
+  </g>
+  <foreignObject x="650" y="230" width="870" height="610">
+    <div xmlns="http://www.w3.org/1999/xhtml" class="ideal-test-editor"></div>
+  </foreignObject>
+</svg>

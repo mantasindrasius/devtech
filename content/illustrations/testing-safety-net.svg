@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
+  <title>The safety net</title>
+  <desc>Tests provide guardrails for growing delivery volume. GitHub Octoverse 2026 reports 10.0, 12.9 and 34.3 billion commits for the twelve months ending September 2024, 2025 and 2026, across public and private repositories.</desc>
+  <text x="100" y="150" class="chart-heading">The safety net</text>
+  <path data-bullet="1" d="M870 230V770" class="chart-grid" stroke-width="1"/>
+  <g font-size="30">
+    <text data-bullet="1" x="100" y="290">Agents ship more, faster.</text>
+    <text data-bullet="2" x="100" y="385">Tests are the cheapest guardrail.</text>
+    <text data-bullet="3" x="100" y="480">Green suite = confidence to deploy.</text>
+    <text data-bullet="4" x="100" y="575">Review the tests first.</text>
+    <text data-bullet="5" x="100" y="670">Tests are the spec agents verify against.</text>
+  </g>
+  <g data-bullet="1">
+  <text x="960" y="250" font-size="29">GitHub commits</text>
+  <text x="960" y="288" class="chart-muted" font-size="20">Billions · public + private repositories</text>
+  <g fill="none" class="chart-grid" stroke-width="1">
+    <path d="M990 345V690H1480" stroke-width="2"/>
+    <path d="M990 610H1480 M990 530H1480 M990 450H1480 M990 370H1480" opacity=".4"/>
+  </g>
+  <g class="chart-muted" font-size="18" text-anchor="end">
+    <text x="975" y="697">0</text><text x="975" y="617">10</text>
+    <text x="975" y="537">20</text><text x="975" y="457">30</text><text x="975" y="377">40</text>
+  </g>
+  <path d="M1040 610L1235 586.8L1430 415.6" fill="none" class="chart-good" stroke-width="5" stroke-linejoin="round"/>
+  <g class="chart-accent">
+    <circle cx="1040" cy="610" r="7"/><circle cx="1235" cy="586.8" r="7"/><circle cx="1430" cy="415.6" r="7"/>
+  </g>
+  <g text-anchor="middle" font-size="24">
+    <text x="1040" y="587">10.0B</text><text x="1235" y="563">12.9B</text>
+    <text x="1430" y="392" class="chart-accent" font-weight="600">34.3B</text>
+    <text x="1040" y="728" class="chart-muted">2024</text><text x="1235" y="728" class="chart-muted">2025</text><text x="1430" y="728" class="chart-muted">2026</text>
+  </g>
+  <text x="960" y="779" class="chart-muted" font-size="19">12-month periods ending September 30</text>
+  <text x="960" y="813" class="chart-accent" font-size="21">&gt;40% of PRs agent-started · Sept 2026</text>
+  <a href="https://github.blog/news-insights/octoverse/octoverse-commits-pushes-reach-new-highs-in-2026-as-developers-build-with-agents/" target="_blank" rel="noopener noreferrer">
+    <text x="100" y="865" class="chart-muted" font-size="18">Source: GitHub Octoverse 2026 · Platform activity, not an estimate of AI-caused growth</text>
+  </a>
+  </g>
+</svg>

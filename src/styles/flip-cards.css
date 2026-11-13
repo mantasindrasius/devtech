@@ -1,0 +1,62 @@
+/* A flat card flip: the showing face narrows to its centre line, then the other widens. */
+.flip-cards .flip-front,
+.flip-cards .flip-back {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.flip-cards .flip-front {
+  transform: scaleX(1);
+  transition: transform 280ms ease-out calc(280ms + var(--flip-delay, 0ms));
+}
+
+.flip-cards .flip-back {
+  transform: scaleX(0);
+  transition: transform 280ms ease-in var(--flip-delay, 0ms);
+}
+
+.flip-cards[data-scene='back'] .flip-front {
+  transform: scaleX(0);
+  transition: transform 280ms ease-in var(--flip-delay, 0ms);
+}
+
+.flip-cards[data-scene='back'] .flip-back {
+  transform: scaleX(1);
+  transition: transform 280ms ease-out calc(280ms + var(--flip-delay, 0ms));
+}
+
+.flip-cards .flip-card-face {
+  fill: var(--surface, #15191f);
+  stroke: var(--border, #30363e);
+  stroke-width: 2;
+}
+
+/* Fibres on cloth: a gap in the surface colour makes a thread pass over the ones below. */
+.flip-cards .cloth-weave {
+  fill: none;
+  stroke: var(--border, #30363e);
+  stroke-width: 1;
+  opacity: 0.6;
+}
+
+.flip-cards .fiber,
+.flip-cards .fiber-gap {
+  fill: none;
+  stroke-linecap: round;
+}
+
+.flip-cards .fiber-gap {
+  stroke: var(--surface, #15191f);
+}
+
+.flip-cards .fiber-knot {
+  fill: var(--surface, #15191f);
+  stroke: var(--text, #e8ecf0);
+  stroke-width: 3;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flip-cards * {
+    transition: none !important;
+  }
+}

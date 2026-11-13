@@ -1,0 +1,6 @@
+.svg-sequence [data-appears-at] { opacity: 0; visibility: hidden; }
+.svg-sequence [data-appears-at].is-visible { opacity: 1; visibility: visible; }
+.svg-sequence[data-animate='true'] [data-appears-at] { transition: opacity 350ms ease; }
+@media (prefers-reduced-motion: reduce) {
+  .svg-sequence [data-appears-at] { transition: none; }
+}

@@ -13,6 +13,7 @@
   gap: 36px;
 }
 .comparison-pane { min-width: 0; }
+.comparison-pane-hidden { visibility: hidden; pointer-events: none; }
 .comparison-pane h2 {
   font-size: clamp(20px, 1.7vw, 30px);
   margin: 0;
@@ -24,6 +25,10 @@
   height: 62svh;
   font-size: clamp(14px, 1.25vw, 25px);
   border: 1px solid var(--border, #30363e);
+}
+
+#slide[data-slide-id='composition-roots'] .comparison-editor {
+  font-size: clamp(12px, 1vw, 20px);
 }
 .code-comparison > p {
   color: var(--muted, #929daa);

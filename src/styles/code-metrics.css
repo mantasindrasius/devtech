@@ -1,0 +1,53 @@
+.code-metrics [data-appears-at] { opacity: 0; visibility: hidden; }
+.code-metrics [data-appears-at].is-visible { opacity: 1; visibility: visible; }
+.code-metrics[data-animate='true'] [data-appears-at] { transition: opacity 250ms ease; }
+.metrics-editor, .metrics-terminal, .metrics-chat {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--surface);
+  color: var(--text);
+}
+.metrics-terminal, .metrics-chat { padding: 24px; }
+.metrics-terminal pre { font: 18px/1.65 monospace; margin: 24px 0; }
+.metrics-terminal a { color: var(--blue); font-size: 18px; }
+.metrics-terminal .lizard-output { margin: 0 0 24px; }
+.lizard-annotations { pointer-events: none; }
+.metrics-coverage-covered { background: rgba(74, 180, 100, .18); }
+.metrics-coverage-uncovered { background: rgba(235, 85, 105, .18); }
+.metrics-coverage-gutter-covered { border-left: 4px solid #4ab464; margin-left: 3px; }
+.metrics-coverage-gutter-uncovered { border-left: 4px solid #eb5569; margin-left: 3px; }
+.metrics-chat { padding: 20px; font: 20px/1.3 'Space Grotesk', sans-serif; }
+.metrics-chat header, .metrics-terminal header { color: var(--muted); font: 18px monospace; }
+.metrics-chat article { margin-top: 12px; padding: 10px 14px; border-left: 3px solid var(--blue); }
+.metrics-chat article:last-child { border-color: var(--accent); }
+.metrics-chat strong { color: var(--accent); }
+.metrics-chat p { margin: 6px 0 0; }
+.metrics-chat pre { margin: 10px 0 0; font: 18px/1.4 monospace; }
+.metrics-chat .review-pass { color: var(--accent-text, #b4ef94); }
+.metrics-chat .review-fail { color: var(--error, #ef7d86); }
+.metrics-chat .review-warning { color: var(--blue, #82b7da); }
+.metrics-chat .review-pending { color: var(--muted); }
+.metrics-chat .chat-agent p { margin-top: 14px; }
+.metrics-chat .response-context {
+  max-height: 72px;
+  overflow: hidden;
+  color: var(--muted);
+  mask-image: linear-gradient(transparent, #000);
+}
+.metrics-chat .response-context p { margin: 0 0 8px; }
+.metrics-chat .response-summary { display: block; margin-top: 22px; }
+.metrics-chat [data-stream][hidden] { display: none; }
+.metrics-chat .streaming::after {
+  content: '▍';
+  color: var(--accent);
+}
+@media (prefers-reduced-motion: reduce) {
+  .code-metrics *, .code-metrics[data-scene='cleanup'] .metrics-chat article {
+    animation: none !important;
+    transition: none !important;
+  }
+}

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
+  <title>Sustainable System Design without Reading the Code</title>
+  <g font-family="Space Grotesk, sans-serif" font-size="82" font-weight="600" letter-spacing="-3">
+    <text x="100" y="310">Sustainable System Design</text>
+    <text x="100" y="415" class="chart-accent">without Reading the Code</text>
+  </g>
+  <text x="100" y="788" font-size="32" font-weight="500">Mantas Indrašius</text>
+  <text x="100" y="830" font-size="26" class="chart-muted">Dev Lead, Wix.com</text>
+  <a href="https://www.linkedin.com/in/mantasindrasius/" target="_blank" rel="noopener noreferrer" aria-label="Mantas Indrašius on LinkedIn">
+    <g transform="translate(920 796)">
+      <rect width="38" height="38" rx="4" fill="#0a66c2"/>
+      <g fill="#ffffff">
+        <circle cx="9" cy="10" r="3"/>
+        <path d="M6 15H12V32H6Z M16 15H22V17C24 13 33 13 33 22V32H27V23C27 18 22 18 22 23V32H16Z"/>
+      </g>
+    </g>
+    <text x="974" y="824" font-size="27" class="chart-muted">linkedin.com/in/mantasindrasius</text>
+  </a>
+</svg>

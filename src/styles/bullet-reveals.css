@@ -1,0 +1,12 @@
+.visual-panel [data-bullet] {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 250ms ease;
+}
+.visual-panel [data-bullet].bullet-visible {
+  opacity: 1;
+  visibility: visible;
+}
+@media (prefers-reduced-motion: reduce) {
+  .visual-panel [data-bullet] { transition: none; }
+}
