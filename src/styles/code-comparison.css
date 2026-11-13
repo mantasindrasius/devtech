@@ -117,3 +117,25 @@
   .code-comparison .comparison-turner,
   .code-comparison .comparison-card { transition: none !important; }
 }
+
+.code-flip-stage { width: 100%; perspective: 1800px; }
+.code-flip-turner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  width: 100%;
+  transform-style: preserve-3d;
+}
+.code-flip-face {
+  grid-area: 1 / 1;
+  backface-visibility: hidden;
+  background: var(--surface, #15191f);
+}
+.code-flip-face[data-side='back'] { transform: rotateY(180deg); }
+.code-flip-face.client h2 { border-color: var(--accent, #b4ef94); }
+.code-flip[data-side='back'] .code-flip-turner { transform: rotateY(180deg); }
+.code-flip[data-animate='true'] .code-flip-turner {
+  transition: transform 900ms cubic-bezier(.22,.7,.2,1);
+}
+@media (prefers-reduced-motion: reduce) {
+  .code-flip .code-flip-turner { transition: none !important; }
+}

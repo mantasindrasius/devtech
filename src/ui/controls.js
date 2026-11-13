@@ -76,6 +76,7 @@ export function bindControls({ root, timeline, code, checks, editor }) {
   }
 
   function onKey(event) {
+    if (event.target?.closest?.('select')) return;
     if (event.defaultPrevented || event.target?.closest?.('.context-view')) return;
     if (editor.hasTextFocus() || event.metaKey || event.ctrlKey || event.altKey) return;
     if (event.repeat) return;

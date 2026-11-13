@@ -83,3 +83,40 @@
   stroke-linecap: round;
   stroke-linejoin: round;
 }
+
+.typography-control, .typography-control label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.typography-control {
+  margin-right: 18px;
+  font-size: 12px;
+  color: var(--muted, #929daa);
+}
+.typography-control select {
+  height: 34px;
+  border-radius: 6px;
+  border: 1px solid var(--border, #373e47);
+  background: var(--surface, #15191f);
+  color: var(--text, #e8ecf0);
+  font: inherit;
+  padding: 0 6px;
+}
+.typography-control select:focus-visible {
+  outline: 2px solid var(--accent, #b4ef94);
+  outline-offset: 3px;
+}
+:root.presenting .typography-control,
+:root:fullscreen .typography-control { display: none; }
+@media (max-width: 800px) {
+  .topbar .project-name, .topbar .brand-sub { display: none; }
+  .typography-control { gap: 5px; margin-right: 8px; }
+  .typography-control label { gap: 4px; }
+  .theme-control { gap: 4px; margin-right: 8px; }
+}
+@media (max-width: 600px) {
+  .topbar { flex-wrap: wrap; height: auto; min-height: 65px; padding: 10px 14px; gap: 8px; }
+  .typography-control { order: 4; flex-basis: 100%; justify-content: center; margin-right: 0; }
+  .topbar kbd { display: none; }
+}

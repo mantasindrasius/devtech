@@ -17,6 +17,7 @@ import { svgIllustrationRenderer } from './svg-illustration.js';
 import { idealTestRenderer } from './ideal-test.js';
 import { deploymentTopologyRenderer } from './deployment-topology.js';
 import { codeComparisonRenderer } from './code-comparison.js';
+import { codeFlipRenderer } from './code-flip.js';
 import { agentContextRenderer } from './agent-context.js';
 import { agentWorkflowRenderer } from './agent-workflow.js';
 import { topicIntroRenderer } from './topic-intro.js';
@@ -33,6 +34,7 @@ export function registerRenderers() {
     .register('ideal-test', idealTestRenderer)
     .register('deployment-topology', deploymentTopologyRenderer)
     .register('code-comparison', codeComparisonRenderer)
+    .register('code-flip', codeFlipRenderer)
     .register('agent-context', agentContextRenderer)
     .register('agent-workflow', agentWorkflowRenderer)
     .register('topic-intro', withBulletReveals(topicIntroRenderer))

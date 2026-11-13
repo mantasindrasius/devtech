@@ -133,10 +133,15 @@ resources:
     description: Two short points. Rewriting the system is cheap now, and existing tests make the rewrite even cheaper.
   summary-points:
     type: svg-illustration
-    bulletCount: 4
+    bulletCount: 5
     file: illustrations/summary.svg
     title: Summary
-    description: Invest in code quality to sustain agent velocity and reliability, avoid vibe neglection, and do more with fewer tokens.
+    description: Code design and clean code remain assets. Invest in agent velocity and reliability, use test guardrails, avoid vibe neglection, and focus on your next system design.
+  questions:
+    type: svg-illustration
+    file: illustrations/questions.svg
+    title: Questions
+    description: Scan the QR code to open github.com/mantasindrasius/devtech.
   legacy-plan-b:
     bulletCount: 5
     type: svg-illustration
@@ -161,7 +166,7 @@ resources:
     title: Start with a monolith or microservices?
     description: Side-by-side comparison of monolith and microservices operations, coupling, deployment, I/O and contracts.
   composition-roots:
-    type: code-comparison
+    type: code-flip
     file: snippets/composition-server.ts
     right: composition-client
     title: Compose deep modules into an app
@@ -1283,13 +1288,11 @@ slides:
       - id: composition
         label: Server composition root
         panel: composition-roots
-        face: interface
-        revealRight: false
+        face: front
       - id: react-client
-        label: Reveal React client composition root
+        label: Flip to React client composition root
         panel: composition-roots
-        face: interface
-        revealRight: true
+        face: back
   - id: deployment-start
     name: Start with a monolith or microservices?
     label: ARCHITECTURE FOR AGENTS
@@ -2011,34 +2014,53 @@ slides:
     layout: visual
     title:
       - accent: Summary
-    description: Our job has rapidly shifted and it's still in progress.
+    description: Code design & clean code are still the assets.
     code: introduction
-    takeaway: Save your tokens and do more with less.
+    takeaway: Now you can skip reading the code, and start on your next system design.
     notes: |-
       [36:18–36:29 · 11 seconds]
 
-      Our job has rapidly shifted and it's still in progress.
+      Code design & clean code are still the assets.
       Invest in your code-base to keep your agents' velocity and reliability.
+      Use guardrails, like tests, to freely deploy on EoD of Friday.
       Don't let the Vibe coding become Vibe neglection.
-      Save your tokens and do more with less.
+      Now you can skip reading the code, and start on your next system design.
     steps:
       - id: summary
         label: Summary
         panel: summary-points
         bullets: 0
-      - id: shifting-role
-        label: Our changing role
+      - id: design-assets
+        label: Code design and clean code
         panel: summary-points
         bullets: 1
       - id: invest
         label: Velocity and reliability
         panel: summary-points
         bullets: 2
+      - id: guardrails
+        label: Tests as guardrails
+        panel: summary-points
+        bullets: 3
       - id: avoid-neglection
         label: Avoid vibe neglection
         panel: summary-points
-        bullets: 3
-      - id: more-with-less
-        label: More with less
-        panel: summary-points
         bullets: 4
+      - id: next-system
+        label: Your next system design
+        panel: summary-points
+        bullets: 5
+  - id: questions
+    name: Questions
+    label: QUESTIONS
+    layout: visual
+    title:
+      - text: Questions
+    description: github.com/mantasindrasius/devtech
+    code: introduction
+    takeaway: Explore the presentation and its source code.
+    notes: Invite questions. The QR code and link open https://github.com/mantasindrasius/devtech.
+    steps:
+      - id: questions
+        label: Questions
+        panel: questions
