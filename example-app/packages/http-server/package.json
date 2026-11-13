@@ -1,0 +1,15 @@
+{
+  "name": "@example/http-server",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "@example/contracts": "workspace:*",
+    "@example/catalog": "workspace:*",
+    "@example/quotes": "workspace:*",
+    "@example/orders": "workspace:*"
+  }
+}
