@@ -31,13 +31,9 @@
         "@example/sqlite-store": "workspace:*",
       },
       "devDependencies": {
-        "@playwright/test": "1.58.2",
-        "@testing-library/dom": "10.4.1",
-        "@testing-library/react": "16.3.3",
         "@types/bun": "1.4.4",
         "@types/react": "19.2.14",
         "@types/react-dom": "19.2.3",
-        "happy-dom": "20.14.6",
         "typescript": "5.9.3",
       },
     },
@@ -62,6 +58,11 @@
         "react": "19.2.4",
         "react-dom": "19.2.4",
       },
+      "devDependencies": {
+        "@testing-library/dom": "10.4.1",
+        "@testing-library/react": "16.3.3",
+        "happy-dom": "20.14.6",
+      },
     },
     "example-app/packages/cart": {
       "name": "@example/cart",
@@ -75,6 +76,9 @@
       "version": "1.0.0",
       "dependencies": {
         "@example/contracts": "workspace:*",
+      },
+      "devDependencies": {
+        "@example/sqlite-store": "workspace:*",
       },
     },
     "example-app/packages/checkout": {
@@ -95,6 +99,9 @@
         "@example/contracts": "workspace:*",
         "@example/orders": "workspace:*",
         "@example/quotes": "workspace:*",
+      },
+      "devDependencies": {
+        "@playwright/test": "1.58.2",
       },
     },
     "example-app/packages/contracts": {
@@ -125,6 +132,10 @@
         "@example/contracts": "workspace:*",
         "@example/quotes": "workspace:*",
       },
+      "devDependencies": {
+        "@example/catalog": "workspace:*",
+        "@example/sqlite-store": "workspace:*",
+      },
     },
     "example-app/packages/quotes": {
       "name": "@example/quotes",
@@ -132,6 +143,9 @@
       "dependencies": {
         "@example/catalog": "workspace:*",
         "@example/contracts": "workspace:*",
+      },
+      "devDependencies": {
+        "@example/sqlite-store": "workspace:*",
       },
     },
     "example-app/packages/sqlite-store": {

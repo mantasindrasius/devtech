@@ -2,7 +2,7 @@ import { expect, test } from 'bun:test';
 import { mkdtempSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
-import { aBasket, aShop } from '../support/shop-driver';
+import { aBasket, aShop } from '../../../../test-support/shop-driver';
 
 test('file-backed orders survive closing and reopening the application', async () => {
   const directory = mkdtempSync(join(tmpdir(), 'deep-shop-'));

@@ -9,5 +9,9 @@
   "dependencies": {
     "@example/contracts": "workspace:*",
     "@example/cart": "workspace:*"
+  },
+  "scripts": {
+    "test": "bun test ./tests",
+    "test:integration": "bun test ./tests/integration"
   }
 }

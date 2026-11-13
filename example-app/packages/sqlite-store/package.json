@@ -10,5 +10,9 @@
     "@example/contracts": "workspace:*",
     "@example/catalog": "workspace:*",
     "@example/orders": "workspace:*"
+  },
+  "scripts": {
+    "test": "bun test ./tests",
+    "test:integration": "bun test ./tests/integration"
   }
 }
