@@ -1,4 +1,8 @@
 import './style.css';
+import { createTypographyPreference } from './typography/preference.js';
+import { bindTypographyControls } from './typography/controls.js';
+import { bindMonacoScale } from './typography/editor-scale.js';
+import { bindSlideScale } from './typography/slide-scale.js';
 import { bindEditorTypography } from './editor/typography.js';
 import { createThemePreference } from './theme/preference.js';
 import { bindTheme } from './theme/controls.js';
@@ -24,6 +28,10 @@ function start(root) {
   const authoredDeck = loadBrowserDeck({ actions, renderers });
   const deck = visibleDeck(authoredDeck);
   const $ = mountShell(root);
+  const typography = createTypographyPreference(localStorage);
+  const unbindFontControls = bindTypographyControls($('typography'), typography);
+  const unbindCodeScale = bindMonacoScale(monaco, typography);
+  const unbindSlideScale = bindSlideScale($('slide'), typography);
   const editor = setupEditor($('editor'));
   const unbindTypography = bindEditorTypography(editor, $('editor'));
   const models = createModelStore(monaco, authoredDeck, localStorage);
@@ -64,6 +72,9 @@ function start(root) {
   void timeline.select(slideFromHash());
   return () => {
     unbind();
+    unbindFontControls();
+    unbindCodeScale();
+    unbindSlideScale();
     unbindTypography();
     unbindTheme();
     timeline.dispose();

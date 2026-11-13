@@ -7,6 +7,7 @@ export function mountShell(root) {
         <button type="button" data-theme="light" aria-label="Light theme" title="Light theme" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></svg></button>
         <button type="button" data-theme="dark" aria-label="Dark theme" title="Dark theme" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14a9 9 0 0 1-10.5-10.5A9 9 0 1 0 20.5 14Z"/></svg></button>
       </div>
+      <div id="typography" class="typography-control" role="group" aria-label="Font sizes"></div>
       <button id="present" class="quiet">▷ <span>Present</span><kbd>F</kbd></button>
     </header>
     <div class="workspace">
