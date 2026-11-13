@@ -11,5 +11,9 @@
     "@example/catalog": "workspace:*",
     "@example/quotes": "workspace:*",
     "@example/orders": "workspace:*"
+  },
+  "scripts": {
+    "test": "bun test ./tests",
+    "test:integration": "bun test ./tests/integration"
   }
 }

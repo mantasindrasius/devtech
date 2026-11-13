@@ -9,5 +9,13 @@
   "dependencies": {
     "@example/contracts": "workspace:*",
     "@example/quotes": "workspace:*"
+  },
+  "scripts": {
+    "test": "bun test ./tests",
+    "test:integration": "bun test ./tests/integration"
+  },
+  "devDependencies": {
+    "@example/sqlite-store": "workspace:*",
+    "@example/catalog": "workspace:*"
   }
 }

@@ -1,7 +1,7 @@
 import { fireEvent, render } from '@testing-library/react';
 import { composeClient } from '@example/composition/client';
-import { App } from '../../apps/web/src/App';
-import { aShop } from './shop-driver';
+import { App } from '../../src/App';
+import { aShop } from '../../../../test-support/shop-driver';
 
 /** The UI talks through real client/server modules and SQLite; only the network is in-process. */
 export function aShopScreen() {

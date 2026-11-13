@@ -1,7 +1,8 @@
 import { afterEach, expect, test } from 'bun:test';
-import { composeClient } from '@example/composition/client';
+import { createCart } from '@example/cart';
+import { createCheckout } from '@example/checkout';
 import type { Quote, ShopApi } from '@example/contracts';
-import { aShop } from '../support/shop-driver';
+import { aShop } from '../../../../test-support/shop-driver';
 
 const cleanups: Array<() => void> = [];
 afterEach(() =>
@@ -12,7 +13,9 @@ afterEach(() =>
 );
 function aSession(adapt: (api: ShopApi) => ShopApi = (api) => api) {
   const shop = aShop().build();
-  const modules = composeClient(adapt(shop.api));
+  const cart = createCart();
+  const checkout = createCheckout({ cart, api: adapt(shop.api) });
+  const modules = { cart, checkout, dispose: () => checkout.dispose() };
   cleanups.push(() => {
     modules.dispose();
     shop.dispose();

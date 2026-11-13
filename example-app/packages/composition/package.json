@@ -14,5 +14,13 @@
     "@example/orders": "workspace:*",
     "@example/cart": "workspace:*",
     "@example/checkout": "workspace:*"
+  },
+  "scripts": {
+    "test": "bun run test:e2e",
+    "test:e2e": "bun run --cwd ../.. build && playwright test",
+    "test:install-browser": "playwright install chromium"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.58.2"
   }
 }

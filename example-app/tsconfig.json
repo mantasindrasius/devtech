@@ -12,5 +12,5 @@
     "types": ["bun", "react", "react-dom"],
     "lib": ["ES2022", "DOM", "DOM.Iterable"]
   },
-  "include": ["packages", "apps", "scripts", "tests", "playwright.config.ts"]
+  "include": ["packages", "apps", "scripts", "tests", "test-support"]
 }

@@ -60,12 +60,13 @@ example-app/
     http-server/           HTTP-to-domain translation and error mapping
     http-client/           Fetch adapter, HTTP errors and cancellation
     contracts/             Shared wire types and domain error vocabulary
-  tests/
-    unit/                  A few isolated pricing-policy checks
-    integration/           Most behavior checks, including real SQLite
-    component/             React + actual modules + in-process HTTP + SQLite
-    e2e/                   Two real Chromium journeys
-    support/               Fluent basket builders and domain/UI drivers
+  packages/*/tests/        Unit/integration tests owned by each module
+  packages/composition/
+    tests/e2e/             Two real Chromium journeys; wiring owns E2Es only
+    playwright.config.ts   Browser/server lifecycle for the E2Es
+  apps/web/tests/          React component tests and UI drivers
+  tests/architecture/      Cross-package boundary checks
+  test-support/            Shared fluent basket builder and backend fixture
   scripts/                 Build, startup and browser launch
 ```
 
@@ -143,7 +144,7 @@ From the repository root:
 
 ```sh
 # First run on a host without the matching Chromium build:
-bun node_modules/@playwright/test/cli.js install chromium
+bun run --cwd example-app/packages/composition test:install-browser
 
 # Type-check and run every example test, including real browser E2Es:
 bun run test:example
@@ -161,6 +162,19 @@ bun run --cwd example-app test:integration
 bun run --cwd example-app test:component
 bun run --cwd example-app test:e2e
 ```
+
+Each module owns its integration tests. Run one package independently, for example:
+
+```sh
+bun run --cwd example-app/packages/quotes test
+bun run --cwd example-app/packages/cart test
+bun run --cwd example-app/apps/web test
+bun run --cwd example-app/packages/composition test
+```
+
+The layer runner discovers package scripts and runs module suites concurrently. Shared
+fixtures remain at the example root; they contain no tests. Only the wiring package owns
+E2Es, including their Playwright configuration and browser dependency.
 
 The distribution is a **rhombus**: few isolated units, a broad middle, few E2Es.
 
