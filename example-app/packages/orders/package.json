@@ -1,0 +1,13 @@
+{
+  "name": "@example/orders",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "@example/contracts": "workspace:*",
+    "@example/quotes": "workspace:*"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "name": "@example/composition",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./server": "./src/server.ts",
+    "./client": "./src/client.ts"
+  },
+  "dependencies": {
+    "@example/contracts": "workspace:*",
+    "@example/catalog": "workspace:*",
+    "@example/quotes": "workspace:*",
+    "@example/orders": "workspace:*",
+    "@example/cart": "workspace:*",
+    "@example/checkout": "workspace:*"
+  }
+}

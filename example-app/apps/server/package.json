@@ -1,0 +1,11 @@
+{
+  "name": "@example/server",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "dependencies": {
+    "@example/composition": "workspace:*",
+    "@example/sqlite-store": "workspace:*",
+    "@example/http-server": "workspace:*"
+  }
+}

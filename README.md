@@ -4,6 +4,10 @@
 
 ## Run
 
+For the standalone server + React deep-module example with SQLite and a rhombus-shaped
+test suite, see [Field Supply](example-app/README.md). Run it with `bun run example-app`;
+the command starts its own server and opens your browser. Verify it with `bun run test:example`.
+
 Use Bun 1.4.4 (pinned in `package.json`), then:
 
 ```sh
