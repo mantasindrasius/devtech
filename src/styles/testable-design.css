@@ -58,6 +58,7 @@
   marker-end: url(#hex-arrow);
 }
 .testable-design #hex-arrow path { stroke: var(--blue, #82b7da); }
+.testable-design #growth-hex-arrow path { stroke: var(--blue, #82b7da); }
 .testable-design .module-checkout { --module-color: #78b8e8; }
 .testable-design .module-pricing { --module-color: #c9a0e8; }
 .testable-design .module-catalog { --module-color: #82c9a1; }

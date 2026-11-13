@@ -7,6 +7,7 @@
     "dev": "bun --bun vite --host 127.0.0.1",
     "build": "bun run content:check && bun --bun vite build",
     "preview": "bun --bun vite preview --host 127.0.0.1",
+    "serve": "bun scripts/serve-dist.mjs",
     "prepare": "bun node_modules/husky/bin.js",
     "registry:check": "bun scripts/check-private-registry.mjs",
     "registry:sanitize": "bun scripts/sanitize-registry.mjs",

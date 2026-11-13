@@ -11,11 +11,12 @@ test('reveals one design per click and returns to the monolith on replay', async
   await presentation.mount();
 
   await presentation.next();
+  await presentation.next();
   await presentation.previous();
   await presentation.replay();
 
   expect(presentation.observations().shown).toEqual([
-    'monolith', 'microservices', 'monolith', 'monolith',
+    'monolith', 'microservices', 'independent', 'microservices', 'monolith',
   ]);
   expect(presentation.observations().errors).toEqual([]);
   presentation.dispose();

@@ -9,7 +9,7 @@
     <rect x="70" y="245" width="1460" height="505" rx="18" class="deployment-boundary"/>
     <text x="95" y="281" font-size="24">MONOLITH · ONE PROCESS</text>
   </g>
-  <g data-appears-at="1">
+  <g data-appears-at="1" data-disappears-at="2">
     <rect x="90" y="330" width="420" height="400" rx="16" class="deployment-boundary"/>
     <text x="114" y="365" font-size="25">Commerce service</text>
     <rect x="590" y="330" width="420" height="400" rx="16" class="deployment-boundary"/>
@@ -60,7 +60,26 @@
   <g data-appears-at="1">
     <text x="550" y="431" text-anchor="middle" font-size="22" class="chart-accent">RPC</text>
     <text x="800" y="296" text-anchor="middle" font-size="23" class="chart-accent">Kafka · OrderPlaced → consumer</text>
-    <text x="80" y="807" font-size="28">Three deployments. Same capabilities. Transport adapters at the boundaries.</text>
+
   </g>
   <text x="80" y="855" class="chart-muted" font-size="20">Solid arrows: calls · Dashed arrow: event flow · Distribution adds latency, retries and delivery semantics.</text>
+<g data-appears-at="1" data-disappears-at="2"><text x="80" y="807" font-size="28">Three deployments. Same capabilities. Transport adapters at the boundaries.</text></g>
+<g data-appears-at="2">
+<rect x="100" y="372" width="400" height="140" rx="12" class="deployment-boundary"/>
+<rect x="100" y="548" width="400" height="148" rx="12" class="deployment-boundary"/>
+<text x="300" y="355" text-anchor="middle" font-size="23">Checkout service</text>
+<text x="300" y="729" text-anchor="middle" font-size="23">Cart service</text>
+<text x="335" y="535" class="chart-accent" font-size="18">RPC</text>
+<rect x="600" y="372" width="400" height="140" rx="12" class="deployment-boundary"/>
+<rect x="600" y="548" width="400" height="148" rx="12" class="deployment-boundary"/>
+<text x="800" y="355" text-anchor="middle" font-size="23">Quotes service</text>
+<text x="800" y="729" text-anchor="middle" font-size="23">Catalog service</text>
+<text x="835" y="535" class="chart-accent" font-size="18">RPC</text>
+<rect x="1100" y="372" width="400" height="140" rx="12" class="deployment-boundary"/>
+<rect x="1100" y="548" width="400" height="148" rx="12" class="deployment-boundary"/>
+<text x="1300" y="355" text-anchor="middle" font-size="23">Orders service</text>
+<text x="1300" y="729" text-anchor="middle" font-size="23">Shipping service</text>
+<text x="1335" y="535" class="chart-accent" font-size="18">RPC</text>
+<text x="80" y="807" font-size="28">Six deployments. One deep module per service.</text>
+</g>
 </svg>

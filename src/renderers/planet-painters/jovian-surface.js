@@ -1,4 +1,4 @@
-import { drawGasStreams, drawStormName, drawStormSpots } from './jovian-weather.js';
+import { drawGasStreams, drawStormSpots } from './jovian-weather.js';
 import { createModuleGraph, linksIntoHub } from './module-graph.js';
 import { rounded, seededRandom } from './seeded-random.js';
 import { discRadius, spinningSurface } from './spinning-surface.js';
@@ -23,7 +23,7 @@ const bands = [
 ];
 
 const moduleRows = [-142, -98, -52, -8, 34, 82, 126];
-const redSpot = { x: 420, y: 52, name: 'utils' };
+const redSpot = { x: 420, y: 52, name: 'Core' };
 
 /** A gas giant: the monolith's modules are its storms, their dependencies its gas streams. */
 export function paintJovianSurface({ seed, spinSeconds }) {
@@ -90,7 +90,7 @@ function drawRedSpot() {
 <ellipse rx="38" ry="21" fill="#a63d27"/>
 <ellipse rx="24" ry="12" fill="#7f2a1e"/>
 <path d="M-44 -6Q-10 -24 30 -14M-36 10Q0 24 42 6" fill="none" stroke="#e6a37d" stroke-width="2" opacity=".6"/>
-${drawStormName(redSpot.name, -42)}
+<text class="pe-code-name pe-code-name--hub" y="-44" text-anchor="middle">${redSpot.name}</text>
 </g>`;
 }
 

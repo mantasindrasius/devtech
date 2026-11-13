@@ -7,7 +7,6 @@
   </defs>
   <text x="80" y="75" class="chart-accent" font-size="18" letter-spacing="4">AGENTS / FROM CONTEXT TO CHANGE</text>
   <text x="80" y="150" class="chart-heading">How coding agents work</text>
-  <text x="80" y="203" class="chart-muted" font-size="25">A useful workflow, not a rigid pipeline. New evidence sends the agent back.</text>
   <g data-appears-at="1">
     <text x="80" y="285" font-size="34" font-weight="600">01 / Explore</text>
     <text x="80" y="325" class="chart-muted" font-size="23">Find the relevant context.</text>
@@ -121,7 +120,7 @@
         <g transform="translate(0 400)">
           <g class="tool-call" data-think-ms="2200" data-run-ms="1500">
             <rect width="440" height="88" rx="10" class="tool-card"/>
-            <text x="20" y="33" class="tool-name">Plan artifact¹</text>
+            <text x="20" y="33" class="tool-name">Plan artifact</text>
             <text x="20" y="66" font-size="21" class="chart-muted">Files · approach · risks · tests</text>
             <circle cx="408" cy="26" r="9" class="tool-spinner"/>
             <text x="420" y="32" class="tool-result">4 files</text>
@@ -215,7 +214,6 @@
     </g>
   </g>
   <g data-appears-at="2">
-    <text x="80" y="760" font-size="24">¹ Planning is reasoning + a proposed plan, not a universal “Plan” tool.</text>
   </g>
   <text x="80" y="814" class="chart-muted" font-size="20">Illustrative Claude Code calls · Tool availability varies · Edit performs string replacement</text>
   <text x="80" y="850" class="chart-muted" font-size="18">Sources: Anthropic workflow guidance · code.claude.com/docs/en/tools-reference</text>

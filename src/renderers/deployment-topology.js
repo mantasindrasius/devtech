@@ -1,7 +1,7 @@
 import { requireText } from '../content/validation.js';
 import { createArchitectureStory } from './architecture-story.js';
 
-const scenes = ['monolith', 'microservices'];
+const scenes = ['monolith', 'microservices', 'independent'];
 
 export const deploymentTopologyRenderer = {
   validate(resource) {

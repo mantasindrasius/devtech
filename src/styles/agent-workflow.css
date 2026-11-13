@@ -19,6 +19,14 @@
   filter: grayscale(1);
 }
 
+/* Keep faded transcripts frozen, including CSS spinners and thinking indicators. */
+.agent-workflow[data-scene='plan'] [data-appears-at='1'] *,
+.agent-workflow[data-scene='implement'] [data-appears-at='1'] *,
+.agent-workflow[data-scene='implement'] [data-appears-at='2'] * {
+  animation-play-state: paused !important;
+  transition: none !important;
+}
+
 /* Calls stack like chat messages; the stack steps up when a new call needs the room. */
 .agent-workflow .tool-stream {
   transform: translateY(calc(var(--scrolled-calls, 0) * -100px));

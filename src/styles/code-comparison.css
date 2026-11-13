@@ -25,6 +25,10 @@
   font-size: clamp(14px, 1.25vw, 25px);
   border: 1px solid var(--border, #30363e);
 }
+
+#slide[data-slide-id='composition-roots'] .comparison-editor {
+  font-size: clamp(12px, 1vw, 20px);
+}
 .code-comparison > p {
   color: var(--muted, #929daa);
   font-size: clamp(18px, 1.6vw, 28px);

@@ -4,10 +4,10 @@ import { aDeck } from './support/deck-builder.js';
 import { aPresentation } from './support/presentation-driver.js';
 
 const authoredDeck = parse(await Bun.file(new URL('../content/deck.yaml', import.meta.url)).text());
-const opening = authoredDeck.slides.find((slide) => slide.id === 'software-worlds');
+const eras = authoredDeck.slides.filter((slide) => slide.id.startsWith('software-worlds'));
 
-test('advances one software era per click and returns to the monolith on replay', async () => {
-  const presentation = aPresentation().withSteps(opening.steps);
+test('navigates separate software-era slides and replays the current era', async () => {
+  const presentation = aPresentation().withSlides(eras);
   await presentation.mount();
   expect(presentation.observations().shown).toEqual(['monolith']);
 
@@ -21,8 +21,9 @@ test('advances one software era per click and returns to the monolith on replay'
     'microservices',
     'ai-era',
     'microservices',
-    'monolith',
+    'microservices',
   ]);
+  expect(eras.map((slide) => slide.steps.length)).toEqual([1, 1, 1]);
   expect(presentation.observations().errors).toEqual([]);
   presentation.dispose();
 });

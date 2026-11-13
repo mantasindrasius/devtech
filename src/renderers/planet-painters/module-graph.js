@@ -1,5 +1,6 @@
 import { point } from './seeded-random.js';
 
+/** `Core` is not here: the Jovian painter reserves it for the Great Red Spot. */
 const moduleNames = [
   'orders',
   'billing',
@@ -23,7 +24,6 @@ const moduleNames = [
   'legacy',
   'helpers',
   'common',
-  'core',
   'db',
   'cache',
   'queue',

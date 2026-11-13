@@ -66,7 +66,10 @@ function validateStep(step, slide, resources, actions, renderers) {
     requireText(step.description, `${slide.id}.${step.id}.description`);
   if (step.panel !== undefined && !resources[step.panel])
     throw new Error(`Unknown panel resource: ${step.panel}`);
-  if (step.panel !== undefined) renderers.get(resources[step.panel].type).validateStep?.(step);
+  if (step.panel !== undefined) {
+    const resource = resources[step.panel];
+    renderers.get(resource.type).validateStep?.(step, resource);
+  }
   if (
     step.reveal !== undefined &&
     (!Array.isArray(step.reveal) ||

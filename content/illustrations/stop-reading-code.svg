@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
+  <title>The design looks clean and organized. Can we stop reading the code yet?</title>
+  <g text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="62" font-weight="500" letter-spacing="-1.5">
+    <text x="800" y="380">“The design looks clean and organized.</text>
+    <text x="800" y="475" class="chart-accent">Can we stop reading the code yet?”</text>
+  </g>
+</svg>

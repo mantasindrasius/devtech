@@ -1,5 +1,8 @@
+import { moduleGrowthRenderer } from './module-growth.js';
+import { svgSequenceRenderer } from './svg-sequence.js';
 import { testableDesignRenderer } from './testable-design.js';
 import { testingPyramidRenderer } from './testing-pyramid.js';
+import { changeCostRenderer } from './change-cost.js';
 import { showExampleBanner, validateExample } from '../ui/example-banner.js';
 import { Registry } from '../core/registry.js';
 import { requireText } from '../content/validation.js';
@@ -15,17 +18,22 @@ import { codeComparisonRenderer } from './code-comparison.js';
 import { agentContextRenderer } from './agent-context.js';
 import { agentWorkflowRenderer } from './agent-workflow.js';
 import { topicIntroRenderer } from './topic-intro.js';
+import { flipCardsRenderer } from './flip-cards.js';
 
 export function registerRenderers() {
   return new Registry('resource renderer')
+    .register('svg-sequence', svgSequenceRenderer)
     .register('testable-design', testableDesignRenderer)
     .register('testing-pyramid', testingPyramidRenderer)
+    .register('change-cost', changeCostRenderer)
+    .register('module-growth', moduleGrowthRenderer)
     .register('ideal-test', idealTestRenderer)
     .register('deployment-topology', deploymentTopologyRenderer)
     .register('code-comparison', codeComparisonRenderer)
     .register('agent-context', agentContextRenderer)
     .register('agent-workflow', agentWorkflowRenderer)
     .register('topic-intro', topicIntroRenderer)
+    .register('flip-cards', flipCardsRenderer)
     .register('svg-illustration', svgIllustrationRenderer)
     .register('planet-evolution', planetEvolutionRenderer)
     .register('code', {

@@ -270,8 +270,6 @@
 </g>
 </g>
 <path d="M1090 414H1190" stroke="#bca77c" stroke-width="1"/>
-<text x="1210" y="412" class="pe-note">ONE WORLD</text>
-<text x="1210" y="440" class="pe-detail">Many connected modules</text>
 <text x="800" y="769" class="pe-narration">In the beginning, there was the monolith.</text>
 <text x="800" y="812" class="pe-subtitle">One deployment. An entire world of dependencies.</text>
 </g>

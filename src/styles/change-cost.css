@@ -1,0 +1,14 @@
+.change-cost [data-appears-at] {
+  opacity: 0;
+  visibility: hidden;
+}
+.change-cost [data-appears-at].is-visible {
+  opacity: 1;
+  visibility: visible;
+}
+.change-cost[data-animate='true'] [data-appears-at] {
+  transition: opacity 650ms ease;
+}
+@media (prefers-reduced-motion: reduce) {
+  .change-cost [data-appears-at] { transition: none; }
+}

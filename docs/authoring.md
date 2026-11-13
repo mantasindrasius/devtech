@@ -108,6 +108,10 @@ class `topic-title`; steps use the scenes `title` and `points`, each with a `cap
 `title` the element fills the slide like a separator, and in `points` it settles into its
 authored position while layers marked `data-appears-at="1"` fade in.
 
+The `flip-cards` renderer turns cards drawn in an SVG over on a click. Each card is a group
+containing a `.flip-front` and a `.flip-back` of the same size; steps use the scenes `front`
+and `back`, each with a `caption`. A `--flip-delay` on a card's group staggers its flip.
+
 Planet surfaces and asteroid belts are generated when the panel is created. An empty
 `<g data-paint="…">` in the SVG is filled by the painter registered under that kind in
 `src/renderers/planet-painters/planet-painters.js`; its other `data-*` attributes are the

@@ -1,12 +1,43 @@
 version: 1
 id: architecture-for-ai
-title: Designing Architectures that AI can work with
+title: Sustainable System Design without Reading the Code
 presenter:
   name: Mantas Indrašius
   role: Dev Lead
   company: Wix.com
   initials: mi
 resources:
+  read-code-less:
+    type: svg-sequence
+    scenes: [depends, yes, design, limits, focus]
+    file: illustrations/read-code-less.svg
+    title: Should we try to read the code less?
+    description: It depends. Build the system so you do not have to read every change, and focus on high-level problems.
+  stop-reading-code:
+    type: svg-illustration
+    file: illustrations/stop-reading-code.svg
+    title: Can we stop reading the code yet?
+    description: The design looks clean and organized. Can we stop reading the code yet?
+  module-growth:
+    type: module-growth
+    file: illustrations/module-growth.svg
+    title: Grow the system with deep modules
+    description: Start with Quotes and reveal Catalog, Checkout and Orders one click at a time inside the application hexagon.
+  change-cost:
+    type: change-cost
+    file: illustrations/change-cost.svg
+    title: Tokens per change
+    description: Conceptual curves compare rising context cost with the goal of keeping tokens per comparable change nearly stable as a system grows.
+  opening-title:
+    type: svg-illustration
+    file: illustrations/opening.svg
+    title: Sustainable System Design without Reading the Code
+    description: Mantas Indrašius — linkedin.com/in/mantasindrasius
+  myself-wix:
+    type: svg-illustration
+    file: illustrations/myself-wix.svg
+    title: Myself and Wix
+    description: Mantas Indrašius and Wix — AI Site Builder, Base44 apps, and an SME business suite.
   code-metrics-rescue:
     type: svg-illustration
     file: illustrations/code-metrics-rescue.svg
@@ -121,10 +152,10 @@ resources:
     title: How coding agents work
     description: Click to reveal Explore, Plan changes and Implement, each playing an illustrative transcript of tool calls that arrive one at a time, run and return a result.
   ease-of-change:
-    type: svg-illustration
+    type: flip-cards
     file: illustrations/ease-of-change.svg
     title: Ease of change
-    description: Side-by-side comparison of a tightly coupled monolithic architecture and a decoupled architecture, emphasizing dependencies, modularity and change effort.
+    description: Two cards compare a tightly coupled monolithic architecture with a decoupled one, then flip to show intertwined fibres on a cloth beside loose, separate bundles of fibres.
   coupling-cost:
     type: svg-illustration
     file: illustrations/coupling-cost.svg
@@ -430,11 +461,12 @@ resources:
     language: typescript
 slides:
   - id: opening
-    name: Designing Architectures that AI can work with
+    name: Sustainable System Design without Reading the Code
     label: OPENING
+    layout: visual
     title:
-      - text: Designing Architectures
-      - accent: that AI can work with
+      - text: Sustainable System Design
+      - accent: without Reading the Code
     description: From a local change to production evidence.
     code: introduction
     takeaway: Make correct changes ordinary.
@@ -447,18 +479,14 @@ slides:
     steps:
       - id: message
         label: The idea
-        reveal:
-          - description
-          - author
-          - principles
-          - takeaway
+        panel: opening-title
     author: true
   - id: about-me
-    name: About me
+    name: Myself and Wix
     label: OPENING
+    layout: visual
     title:
-      - text: About me.
-      - accent: Code, people, circuits.
+      - text: Myself and Wix
     description: Full-stack developer at Innovations Vilnius. AI-first since Claude 4.0 (June 2025).
     code: about-me
     takeaway: 13 years at Wix · 3 kids · Embedded Software & Electronics
@@ -472,40 +500,55 @@ slides:
       then connect the maker mindset to designing systems that people and AI can understand.
     steps:
       - id: introduction
-        label: About me
-        reveal:
-          - description
-          - author
-          - takeaway
+        label: Myself and Wix
+        panel: myself-wix
     author: true
   - id: software-worlds
-    name: The evolution of software worlds
+    name: In the beginning, there was the monolith
     label: OPENING
     layout: visual
     title:
-      - text: The evolution of software worlds
-    description: Monolith. Microservices. The AI era.
+      - text: In the beginning, there was the monolith
+    description: In the beginning, there was the monolith.
     code: introduction
     takeaway: Faster creation demands stronger boundaries and feedback.
     notes: >-
-      A creation-story opening inspired by the atmosphere of Civilization I.
-      In the beginning there was the monolith: one world with a dense, interconnected interior.
-      Click: microservices distribute the modules among smaller worlds; connections remain.
-      Click: AI accelerates creation. Existing worlds grow, volcanoes erupt, and strange new
-      services appear. Speed amplifies the architecture we already have. This is a metaphor for
-      uncontrolled change, not a claim that AI or microservices inevitably cause instability.
-      Pause in each era; nothing advances to the next era without the clicker.
+      A creation-story opening inspired by the atmosphere of Civilization I. One large world has a dense, interconnected interior.
     steps:
       - id: monolith
         label: In the beginning, there was the monolith
         panel: planet-evolution
         scene: monolith
         caption: In the beginning, there was the monolith.
+  - id: software-worlds-microservices
+    name: Then microservices were invented
+    label: OPENING
+    layout: visual
+    title:
+      - text: Then microservices were invented
+    description: Then microservices were invented.
+    code: introduction
+    takeaway: Faster creation demands stronger boundaries and feedback.
+    notes: >-
+      Microservices distribute modules among smaller worlds; connections remain.
+    steps:
       - id: microservices
         label: Then microservices were invented
         panel: planet-evolution
         scene: microservices
         caption: Then microservices were invented.
+  - id: software-worlds-ai-era
+    name: Then the AI era came
+    label: OPENING
+    layout: visual
+    title:
+      - text: Then the AI era came
+    description: Then the AI era came.
+    code: introduction
+    takeaway: Faster creation demands stronger boundaries and feedback.
+    notes: >-
+      AI accelerates creation. Existing worlds grow, volcanoes erupt and strange new services appear. This is a metaphor for uncontrolled change, not a claim that AI or microservices inevitably cause instability.
+    steps:
       - id: ai-era
         label: Then the AI era came
         panel: planet-evolution
@@ -533,8 +576,21 @@ slides:
       Do not equate cleanliness, small functions or more modules with lower complexity. The
       follow-up research question is how branching, coupling and the task's dependency scope
       affect agent cost per merged PR across its full lifecycle. References and limitations are saved in BRAINSTORM.md.
-
-      Advance once for architectural coupling versus maintenance cost. Table 6, System C,
+    steps:
+      - id: design-stamina
+        label: Design sustains delivery
+        panel: design-stamina
+  - id: coupling-cost
+    name: The coupling tax
+    label: OPENING
+    layout: visual
+    title:
+      - text: The coupling tax
+    description: Architectural coupling and maintenance cost.
+    code: introduction
+    takeaway: Architectural coupling and maintenance cost.
+    notes: >-
+      Architectural coupling versus maintenance cost. Table 6, System C,
       reports peripheral 0.71, shared 0.80, control 1.25 and core 2.31 USD per LOC per year.
       The ratio 2.31 / 0.71 is approximately 3.25, based on rounded published values.
       Categories describe dependency structure, not deployment styles or a continuous scale.
@@ -549,22 +605,29 @@ slides:
       or evidence that refactoring causes a 3.25-fold saving. Emphasize modularity and local
       changes in either monoliths or microservices. AI cost through merge remains a separate
       research question. Source: MacCormack and Sturtevant (2016), Table 6, System C.
-
-      Advance again for The complexity tax: code-level maintainability, measured through
+    steps:
+      - id: chart
+        label: The coupling tax
+        panel: coupling-cost
+  - id: complexity-cost
+    name: The complexity tax
+    label: OPENING
+    layout: visual
+    title:
+      - text: The complexity tax
+    description: Code-level maintainability and review-and-fix token usage.
+    code: introduction
+    takeaway: Code-level maintainability and review-and-fix token usage.
+    notes: >-
+      Code-level maintainability: code-level maintainability, measured through
       composite CodeHealth rather than complexity alone. The bars use published fitted
       tier contrasts normalized per model, not raw token averages. Intervals are omitted.
       CodeHealth and file size cannot be separated here; no causal savings are established.
       Only review and fixes are measured, not the full PR lifecycle.
       Source: https://arxiv.org/html/2610.21914v1 section 4.2.
     steps:
-      - id: design-stamina
-        label: Design sustains delivery
-        panel: design-stamina
-      - id: coupling-cost
-        label: The coupling tax — architectural modularity
-        panel: coupling-cost
-      - id: complexity-cost
-        label: The complexity tax — code-level maintainability
+      - id: chart
+        label: The complexity tax
         panel: complexity-cost
   - id: ease-of-change
     name: Ease of change
@@ -581,10 +644,20 @@ slides:
       cohesive modules reduce the scope to understand and verify. Monolithic deployment
       does not require tangled architecture: a modular monolith can satisfy the right column.
       Faster and cheaper development is the design objective, not a guaranteed saving.
+      Click to flip both cards. Tightly coupled code is like fibres woven through a cloth:
+      pull one and the others move with it. Decoupled code is like loose bundles lying side
+      by side: each can be lifted out and changed on its own.
     steps:
-      - id: ease-of-change
+      - id: comparison
         label: Ease of change
         panel: ease-of-change
+        scene: front
+        caption: Tightly coupled dependencies compared with boundaries that keep changes local.
+      - id: fibers
+        label: Intertwined versus loose
+        panel: ease-of-change
+        scene: back
+        caption: Intertwined fibres on a cloth beside loose bundles that can be pulled one at a time.
   - id: context-cost
     hidden: true
     name: Five lines of change. Half a repo of context.
@@ -786,18 +859,17 @@ slides:
     layout: chapter
     title:
       - accent: Architecture for agents
-    description: Reduce the knowledge a correct change requires.
+    description: Architecture for agents
     code: introduction
-    takeaway: Reduce the knowledge a correct change requires.
+    takeaway: Architecture for agents
     notes: |-
       [4:12–4:23 · 11 seconds]
 
-      Transition: Reduce the knowledge a correct change requires.
+      Transition to architecture for agents.
     steps:
       - id: chapter
         label: Architecture for agents
-        reveal:
-          - description
+        reveal: []
   - id: agent-workflow
     name: How coding agents work
     label: ARCHITECTURE FOR AGENTS
@@ -875,6 +947,35 @@ slides:
         panel: agent-context
         scene: modular
         caption: A coherent module lets the agent focus on a bounded change.
+  - id: change-cost
+    name: Tokens per change
+    label: ARCHITECTURE FOR AGENTS
+    layout: visual
+    title:
+      - text: Tokens per change
+    description: The goal is to keep the cost on a similar level.
+    code: introduction
+    takeaway: Keep the context of a change local as the system grows.
+    notes: >-
+      These are conceptual quadratic curves, not empirical fits or numerical predictions.
+      Compare similar changes with the same model and workflow. Tokens per change means
+      the total across exploration, planning, implementation, verification and review/fix
+      iterations for a PR, not just code generation. The left curve illustrates growing
+      context and coordination cost. Advance once to reveal the target: modular boundaries
+      and local verification keep the curve low and slowly rising. Both graphs share the
+      same scale and baseline. Token usage is one cost proxy; pricing, caching and model
+      choice also affect monetary cost. This is a design objective, not a measured guarantee.
+    steps:
+      - id: growing
+        label: Growing context cost
+        panel: change-cost
+        scene: growing
+        caption: Tokens per comparable change rise as context grows.
+      - id: goal
+        label: Keep the cost on a similar level
+        panel: change-cost
+        scene: goal
+        caption: Our goal is a much flatter curve as the system grows.
   - id: deep-modules-intro
     name: Deep modules
     label: ARCHITECTURE FOR AGENTS
@@ -926,7 +1027,7 @@ slides:
       domain types such as Money and Item are omitted for focus. Contract documentation
       must still define units, errors and guarantees. Read-only Monaco models are isolated
       from saved demo code. Source concept is Ousterhout's deep modules.
-      Click to flip both code cards in place into implementation diagrams. Shallow operations
+      Start with the implementation diagrams, then click to flip both cards to the code interfaces. Shallow operations
       wrap little behavior; the caller coordinates them. Both interfaces support event
       subscriptions and return Unsubscribe, a cleanup function. StateListener receives
       intermediate pricing-state changes; StepListener receives workflow-step notifications.
@@ -937,14 +1038,50 @@ slides:
       capability and complexity it abstracts, not merely having fewer methods. Submodule
       connections are illustrative, not a prescribed dependency graph.
     steps:
-      - id: comparison
-        label: Shallow versus deep modules
-        panel: deep-modules-comparison
-        face: interface
       - id: implementation-depth
-        label: Look behind the interfaces
+        label: Shallow versus deep implementation
         panel: deep-modules-comparison
         face: implementation
+      - id: comparison
+        label: Reveal the code interfaces
+        panel: deep-modules-comparison
+        face: interface
+  - id: module-growth
+    name: Grow the system with deep modules
+    label: ARCHITECTURE FOR AGENTS
+    layout: visual
+    title:
+      - text: Grow the system with deep modules
+    description: Add capabilities behind small interfaces.
+    code: introduction
+    takeaway: Extend the system one cohesive module at a time.
+    notes: >-
+      Continue from the Quotes interface in the preceding code example. Quotes is already
+      present. Add Catalog, Checkout and Orders with successive clicks. Each module brings
+      a small public interface and its own implementation. The hexagon and adapters retain
+      the visual vocabulary of Testable design; this slide focuses on modular growth,
+      without its running test suites. Connections show collaboration, not deployment units.
+    steps:
+      - id: quotes
+        label: Quotes
+        panel: module-growth
+        scene: quotes
+        caption: Quotes is part of the system.
+      - id: catalog
+        label: Catalog
+        panel: module-growth
+        scene: catalog
+        caption: Catalog is part of the system.
+      - id: checkout
+        label: Checkout
+        panel: module-growth
+        scene: checkout
+        caption: Checkout is part of the system.
+      - id: orders
+        label: Orders
+        panel: module-growth
+        scene: orders
+        caption: Orders is part of the system.
   - id: composition-roots
     name: Compose deep modules into an app
     label: ARCHITECTURE FOR AGENTS
@@ -1011,7 +1148,8 @@ slides:
       calls Quotes, Quotes calls Catalog, and Orders calls Shipping. Checkout publishes
       OrderPlaced, consumed by Orders. Click to replace the outer boundary with Commerce,
       Pricing and Fulfillment services, two deep modules each. Checkout-to-Quotes becomes
-      RPC; the OrderPlaced flow uses Kafka. Internal calls stay in-process. Arrows indicate
+      RPC; the OrderPlaced flow uses Kafka. Internal calls stay in-process. A third click makes each module a separate microservice;
+      the remaining module-to-module calls now use RPC. Arrows indicate
       call or event direction, not return paths. The event arrow abstracts the broker and
       transport adapters. This is a deployment schematic, not a claim extraction is free:
       remote failures, latency, serialization, data ownership, retries and idempotent
@@ -1028,12 +1166,67 @@ slides:
         panel: deployment-topology
         scene: microservices
         caption: The same capabilities across three services, connected by RPC and Kafka.
+      - id: independent
+        label: One microservice per module
+        panel: deployment-topology
+        scene: independent
+        caption: Six independent services; cross-module calls now use RPC.
+  - id: stop-reading-code
+    name: Can we stop reading the code yet?
+    label: ARCHITECTURE FOR AGENTS
+    layout: visual
+    title:
+      - text: Can we stop reading the code yet?
+    description: The design looks clean and organized. Can we stop reading the code yet?
+    code: introduction
+    takeaway: The design looks clean and organized. Can we stop reading the code yet?
+    notes: Pause on the question before moving into Testable design.
+    steps:
+      - id: question
+        label: Can we stop reading the code yet?
+        panel: stop-reading-code
+  - id: read-code-less
+    name: Should we try to read the code less?
+    label: ARCHITECTURE FOR AGENTS
+    layout: visual
+    title:
+      - text: Should we try to read the code less?
+    description: It depends
+    code: introduction
+    takeaway: But we can scale to focus on high-level problems
+    notes: Connect the preceding question to the guardrails in the next chapter.
+    steps:
+      - id: depends
+        label: It depends...
+        panel: read-code-less
+        scene: depends
+        caption: It depends...
+      - id: yes
+        label: It depends... But actually yes
+        panel: read-code-less
+        scene: yes
+        caption: It depends... But actually yes
+      - id: design
+        label: You should build your system in a way so you don't have to.
+        panel: read-code-less
+        scene: design
+        caption: You should build your system in a way so you don't have to.
+      - id: limits
+        label: We're single-thread readers. This doesn't scale.
+        panel: read-code-less
+        scene: limits
+        caption: We're single-thread readers. This doesn't scale.
+      - id: focus
+        label: But we can scale to focus on high-level problems.
+        panel: read-code-less
+        scene: focus
+        caption: But we can scale to focus on high-level problems.
   - id: chapter-2
-    name: Testing
-    label: 02 / TESTING
+    name: Testable design
+    label: 02 / TESTABLE DESIGN
     layout: chapter
     title:
-      - accent: Testing
+      - accent: Testable design
     description: Give agents fast, trustworthy guardrails.
     code: introduction
     takeaway: Give agents fast, trustworthy guardrails.
@@ -1043,9 +1236,8 @@ slides:
       Transition: Give agents fast, trustworthy guardrails.
     steps:
       - id: chapter
-        label: Testing
-        reveal:
-          - description
+        label: Testable design
+        reveal: []
   - id: testing-safety-net
     name: The safety net
     label: TESTING
@@ -1065,6 +1257,12 @@ slides:
       the same misunderstanding in both. Review the specification independently. Testable
       designs tend to make dependencies and responsibilities explicit. Tests are a living
       specification, not proof that every requirement or production risk is covered.
+      Chart source: GitHub Octoverse 2026 (October 28, updated November 6, 2026).
+      Commits across public and private repos total 10.0B, 12.9B and 34.3B for the
+      twelve months ending September 30 in 2024, 2025 and 2026. These are commit counts,
+      not lines of code or unique changes. Over 40 percent of PRs were agent-started
+      in September 2026. GitHub associates the acceleration with agent adoption; the
+      aggregate comparison does not isolate a causal effect of agents.
     steps:
       - id: safety-net
         label: The safety net
@@ -1272,6 +1470,7 @@ slides:
         label: Code metrics for the rescue
         panel: code-metrics-rescue
   - id: small-functions
+    hidden: true
     name: Make policy visible. Prove it stays correct.
     label: CLEAN CODE
     title:
@@ -1313,6 +1512,7 @@ slides:
           - description
           - takeaway
   - id: risk-signals
+    hidden: true
     name: Metrics guide investigation
     label: CLEAN CODE
     title:
@@ -1398,31 +1598,6 @@ slides:
       - id: plan-b
         label: 'Plan B: transition the system'
         panel: legacy-plan-b
-  - id: legacy-tax
-    name: Every PR pays a small architecture tax
-    label: LEGACY
-    title:
-      - text: Every PR pays a small architecture tax
-    description: Soften the ground → implement → leave it cleaner.
-    code: review-and-cleanup
-    takeaway: Each change should make the next one easier.
-    notes: >-
-      [32:41–33:48 · 67 seconds]
-
-
-      Encode the architectural destination in skills: dependency direction, approved patterns,
-      examples and forbidden coupling. First isolate a seam or simplify the local area, then
-      implement the change, then apply the Boy Scout Rule with focused cleanup. Review whether the
-      PR moves toward or away from the vision; cite concrete dependencies or contracts, not a vague
-      score. Keep cleanup scoped and reviewable.
-    steps:
-      - id: message
-        label: Every PR pays a small architecture tax
-        panel: review-and-cleanup
-        reveal:
-          - description
-          - principles
-          - takeaway
   - id: chapter-5
     name: Agent skills
     label: 05 / AGENT SKILLS
@@ -1465,273 +1640,9 @@ slides:
           - description
           - principles
           - takeaway
-  - id: chapter-6
-    name: Pushing changes
-    label: 06 / PUSHING CHANGES
-    layout: chapter
-    title:
-      - accent: Pushing changes
-    description: Turn high output into small, reviewable decisions.
-    code: introduction
-    takeaway: Turn high output into small, reviewable decisions.
-    notes: |-
-      [21:25–21:36 · 11 seconds]
-
-      Transition: Turn high output into small, reviewable decisions.
-    steps:
-      - id: chapter
-        label: Pushing changes
-        reveal:
-          - description
-  - id: agent-review
-    name: Reviews still need evidence
-    label: PUSHING CHANGES
-    title:
-      - text: Make reviews visual.
-    description: What changed? Why? How was it proved? Show the behavior.
-    code: reviewer-contract
-    takeaway: Review is a reasoning task, not a second thumbs-up.
-    notes: >-
-      [21:36–22:48 · 72 seconds]
-
-
-      Use an independent reviewing agent plus human judgment at risk boundaries. Attach screenshots,
-      before/after flows, traces or benchmark results to make behavior assessable. Ask for
-      evidence-backed readability findings: public surface, coupling, hidden state and test clarity.
-      A numeric agent score is a triage aid, not an approval authority. Split generated volume
-      before review. Preserve required gates.
-    steps:
-      - id: message
-        label: The idea
-        reveal:
-          - description
-          - author
-          - principles
-          - takeaway
-  - id: reviewable-stack
-    name: Small PRs. Small review contexts.
-    label: PUSHING CHANGES
-    title:
-      - text: Small PRs.
-      - accent: Stack the work.
-    description: One intent per change. Review against its parent. Leave context headroom.
-    code: introduction
-    takeaway: Small reviews do not replace integration evidence.
-    notes: >-
-      [22:48–24:00 · 72 seconds]
-
-
-      What changed, why is it needed, and how was it validated? Keep PRs small enough to understand
-      alongside relevant contracts, tests and tool output. Context-window maximum is not a target.
-      Stack preparation, implementation and cleanup as independently reviewable commits or PRs.
-      Develop descendants while ancestors verify; rebase and revalidate after parent changes.
-      Preserve integration gates.
-    steps:
-      - id: message
-        label: The idea
-        reveal:
-          - description
-          - author
-          - principles
-          - takeaway
-        panel: pr-stack
-  - id: verification-ladder
-    name: The agent’s verification loop
-    label: PUSHING CHANGES
-    title:
-      - text: Shorten the correction loop.
-    description: Specify → failing check → smallest change → verify → refactor.
-    code: introduction
-    takeaway: Continuing work is not declaring it verified.
-    notes: >-
-      [24:00–25:12 · 72 seconds]
-
-
-      Use TDD where behavior is clear: establish a meaningful failing assertion, implement, and
-      refactor under tests. An agent should read the failure, form a hypothesis, make a narrow
-      correction, and rerun the smallest relevant check. Expand to contracts and integration checks
-      before acceptance. Avoid blind retries and broad edits in response to an unclear failure.
-    steps:
-      - id: message
-        label: The idea
-        reveal:
-          - description
-          - author
-          - principles
-          - takeaway
-        panel: verification-ladder
-  - id: ci-builds
-    name: Fast, reproducible builds compound
-    label: PUSHING CHANGES
-    title:
-      - text: Fast, reproducible builds compound
-    description: Nx / Bazel — affected work, caching, parallel execution and readable CI feedback.
-    code: reproducible-builds
-    takeaway: CI is part of the coding loop.
-    notes: >-
-      [25:12–26:29 · 77 seconds]
-
-
-      Measure queue time, setup, execution and cache misses separately. Pin tools and dependencies;
-      declare all task inputs. Nx provides affected task selection and remote task caching; Bazel
-      supports remote caching and distributed build/test execution. Choose based on repository shape
-      and operational cost. Teach agents to submit checks to CI or a remote development machine,
-      track the exact revision, fetch logs and report failures. Sources:
-      https://nx.dev/docs/features/ci-features/remote-cache and https://bazel.build/remote/rbe
-    steps:
-      - id: message
-        label: Fast, reproducible builds compound
-        panel: reproducible-builds
-        reveal:
-          - description
-          - principles
-          - takeaway
-  - id: chapter-7
-    name: Production feedback
-    label: 07 / PRODUCTION FEEDBACK
-    layout: chapter
-    title:
-      - accent: Production feedback
-    description: Production teaches the next change.
-    code: introduction
-    takeaway: Production teaches the next change.
-    notes: |-
-      [26:29–26:40 · 11 seconds]
-
-      Transition: Production teaches the next change.
-    steps:
-      - id: chapter
-        label: Production feedback
-        reveal:
-          - description
-  - id: production-outcomes
-    name: Define success before release
-    label: PRODUCTION FEEDBACK
-    title:
-      - text: Define success before release.
-    description: User outcomes, latency, errors, resource cost and rollback thresholds.
-    code: release-evidence
-    takeaway: Observe what users needed to happen.
-    notes: >-
-      [26:40–27:47 · 67 seconds]
-
-
-      Wire structured logs, metrics, trace IDs and bounded diagnostic hooks into the code. Separate
-      business success from infrastructure health. Define the baseline, intended improvement,
-      rollout gates and rollback action. Watch cardinality and avoid logging sensitive payloads.
-      Feed production incidents into regression tests and design improvements.
-    steps:
-      - id: message
-        label: The idea
-        reveal:
-          - description
-          - author
-          - principles
-          - takeaway
-  - id: project-xray
-    name: An X-ray of your project
-    label: PRODUCTION FEEDBACK
-    title:
-      - text: An X-ray of your project
-    description: See dependencies, failure paths, ownership and hot spots.
-    code: introduction
-    takeaway: Make invisible costs visible.
-    notes: >-
-      [27:47–28:48 · 61 seconds]
-
-
-      Overlay a dependency map with traces, latency, ownership and frequently changed modules. Make
-      a failing request or slow path visible. Use before/after evidence in a PR and after release. A
-      diagram must answer a decision, not merely decorate documentation.
-    steps:
-      - id: message
-        label: An X-ray of your project
-        panel: project-xray
-        reveal:
-          - description
-          - principles
-          - takeaway
-  - id: chapter-8
-    name: Extra tips
-    label: 08 / EXTRA TIPS
-    layout: chapter
-    title:
-      - accent: Extra tips
-    description: Protect momentum when the environment is imperfect.
-    code: introduction
-    takeaway: Protect momentum when the environment is imperfect.
-    notes: |-
-      [33:48–33:59 · 11 seconds]
-
-      Transition: Protect momentum when the environment is imperfect.
-    steps:
-      - id: chapter
-        label: Extra tips
-        reveal:
-          - description
-  - id: overlap-work
-    name: When slow checks are unavoidable
-    label: EXTRA TIPS
-    title:
-      - text: Keep moving while CI runs.
-    description: Smaller build units, in-memory tests, remote capacity and PR stacks.
-    code: introduction
-    takeaway: Decouple progress from waiting.
-    notes: >-
-      [33:59–35:11 · 72 seconds]
-
-
-      First reduce the affected graph and isolate expensive boundaries. Parallelize independent
-      tasks; use in-memory tests for policy plus real adapter checks. On a congested laptop, offload
-      verification to CI or remote development machines. Agents must read logs and associate
-      evidence with the exact revision. Stack independent next steps while checks run, but do not
-      merge unverified work. Revalidate descendants when a parent changes.
-    steps:
-      - id: message
-        label: The idea
-        reveal:
-          - description
-          - author
-          - principles
-          - takeaway
-        panel: stack-overlap
-  - id: cpu-profiling
-    name: Profile routinely. Keep the map current.
-    label: EXTRA TIPS
-    title:
-      - text: Profile the system.
-      - accent: Refresh its map.
-    description: CPU, memory, traces—and documentation that changes with the code.
-    code: introduction
-    takeaway: Optimization starts with evidence.
-    notes: >-
-      [35:11–36:18 · 67 seconds]
-
-
-      Use CPU profiles for hot paths, allocation/heap profiles for retained memory and traces for
-      waiting. Compare representative workloads before and after. Wire performance findings back
-      into tests and budgets. Maintain documentation in the PR lifecycle: changed contract → update
-      local map/examples → reviewer checks accuracy → production findings revise skills. Give
-      documents owners and make runnable examples fail when they drift.
-    steps:
-      - id: message
-        label: The idea
-        reveal:
-          - description
-          - author
-          - principles
-          - takeaway
-        panel: cpu-profile
-      - id: documentation
-        label: Close the documentation cycle
-        panel: production-learning
-        reveal:
-          - description
-          - principles
-          - takeaway
   - id: chapter-9
     name: Summary
-    label: 09 / SUMMARY
+    label: 06 / SUMMARY
     layout: chapter
     title:
       - accent: Summary
@@ -1747,29 +1658,3 @@ slides:
         label: Summary
         reveal:
           - description
-  - id: closing
-    name: Velocity. Quality. Cost.
-    label: SUMMARY
-    title:
-      - text: Velocity. Quality. Cost.
-    description: Invest in flexible architecture, clean code and fast evidence.
-    code: presentation-summary
-    takeaway: Set the standards. Build the feedback. Measure the outcome.
-    notes: >-
-      [36:29–38:00 · 91 seconds]
-
-
-      Recap the central thesis: lower the intelligence a correct routine change requires. We choose
-      boundaries, acceptance standards and the feedback system. Invest deliberately and measure
-      velocity, quality and total cost together. Invite questions during the remaining time.
-
-
-      [38:00–40:00 · Questions / timing buffer]
-    steps:
-      - id: message
-        label: Velocity. Quality. Cost.
-        panel: presentation-summary
-        reveal:
-          - description
-          - principles
-          - takeaway

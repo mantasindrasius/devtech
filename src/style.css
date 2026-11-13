@@ -38,6 +38,8 @@
 
 @import './styles/topic-intro.css';
 
+@import './styles/flip-cards.css';
+
 @import './styles/code-comparison.css';
 
 @import './styles/deployment-topology.css';
@@ -47,3 +49,5 @@
 @import './styles/testing-pyramid.css';
 
 @import './styles/testable-design.css';
+@import './styles/change-cost.css';
+@import './styles/svg-sequence.css';

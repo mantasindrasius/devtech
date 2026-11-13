@@ -31,7 +31,7 @@ ${drawStormName(name, -height - 9)}
 </g>`;
 }
 
-export function drawStormName(name, y) {
+function drawStormName(name, y) {
   return `<text class="pe-code-name" y="${rounded(y)}" text-anchor="middle">${name}</text>`;
 }
 

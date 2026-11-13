@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
+  <title>Should we try to read the code less?</title>
+  <text x="100" y="158" class="chart-heading">Should we try to read the code less?</text>
+  <g font-size="34">
+    <circle cx="111" cy="297" r="5" class="chart-accent"/>
+    <text x="144" y="309">It depends...</text>
+    <g data-appears-at="1"><text x="340" y="309" class="chart-accent">But actually yes</text></g>
+    <g data-appears-at="2">
+      <circle cx="111" cy="407" r="5" class="chart-accent"/>
+      <text x="144" y="419">You should build your system in a way so you don't have to.</text>
+    </g>
+    <g data-appears-at="3">
+      <circle cx="111" cy="517" r="5" class="chart-accent"/>
+      <text x="144" y="529">We're single-thread readers. This doesn't scale.</text>
+    </g>
+    <g data-appears-at="4">
+      <circle cx="111" cy="627" r="5" class="chart-accent"/>
+      <text x="144" y="639">But we can scale to focus on high-level problems.</text>
+    </g>
+  </g>
+</svg>

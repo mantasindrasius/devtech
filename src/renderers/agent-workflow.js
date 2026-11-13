@@ -32,7 +32,9 @@ export const agentWorkflowRenderer = {
       panel: story.panel,
       show(step, options) {
         story.show(step, options);
-        for (const session of sessions) session.sync();
+        sessions.forEach((session, index) => {
+          session.sync({ active: index + 1 === phases.indexOf(step.scene) });
+        });
       },
       hide() {
         story.hide();

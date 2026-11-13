@@ -1,9 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
   <title>The coupling tax: architectural coupling and maintenance cost</title>
   <desc>System C, Table 6, MacCormack and Sturtevant (2016). Estimated annual corrective-maintenance cost per line of code: peripheral 0.71 dollars, shared 0.80, control 1.25, core 2.31. Core costs approximately 3.25 times peripheral. Allocated costs, not cost per PR or AI tokens.</desc>
-  <text x="100" y="75" class="chart-accent" font-size="18" letter-spacing="4">ARCHITECTURE / THE ECONOMICS OF CHANGE</text>
   <text x="100" y="146" class="chart-heading">The coupling tax.</text>
-  <text x="100" y="194" class="chart-muted" font-size="26">Tightly coupled components cost more to maintain.</text>
   <text x="1490" y="143" text-anchor="end" class="chart-accent" font-size="60" font-weight="600">3.25×</text>
   <text x="1490" y="184" text-anchor="end" class="chart-muted" font-size="20">Mutually dependent vs. few dependencies</text>
 
@@ -15,12 +13,6 @@
     <text x="100" y="400">Used by many components</text>
     <text x="100" y="500">Depends on many components</text>
     <text x="100" y="600">Mutually dependent cluster</text>
-  </g>
-  <g font-size="20" class="chart-muted">
-    <text x="100" y="332">Peripheral · limited links in either direction</text>
-    <text x="100" y="432">Shared · few dependencies of its own</text>
-    <text x="100" y="532">Control · few components depend on it</text>
-    <text x="100" y="632">Core · largest group linked by cycles</text>
   </g>
   <rect x="550" y="280" width="244.24" height="46" rx="5" class="chart-accent"/>
   <g class="chart-poor-label">
@@ -38,11 +30,9 @@
     <text x="550" y="680">0</text><text x="722" y="680">0.50</text>
     <text x="894" y="680">1.00</text><text x="1066" y="680">1.50</text>
     <text x="1238" y="680">2.00</text><text x="1410" y="680">2.50</text>
-    <text x="980" y="725" font-size="24">Estimated maintenance cost · USD / line of code / year</text>
+    <text x="980" y="725" font-size="24">Allocated maintenance cost · USD / line of code / year</text>
   </g>
-  <text x="100" y="780" font-size="25">Modularity matters: keep changes local by managing dependencies.</text>
-  <text x="100" y="821" class="chart-muted" font-size="19">One system · Allocated maintenance costs · Not cost per PR, AI tokens, or a causal refactoring estimate</text>
   <a href="https://www.hbs.edu/ris/Publication%20Files/2016-JSS%20Technical%20Debt_d793c712-5160-4aa9-8761-781b444cc75f.pdf" target="_blank" rel="noopener noreferrer">
-    <text x="100" y="866" class="chart-muted" font-size="18">Source: MacCormack &amp; Sturtevant, 2016 · Technical debt and system architecture · Table 6, System C</text>
+    <text x="100" y="850" class="chart-muted" font-size="18">Source: MacCormack &amp; Sturtevant, 2016 · Technical debt and system architecture · Table 6, System C</text>
   </a>
 </svg>

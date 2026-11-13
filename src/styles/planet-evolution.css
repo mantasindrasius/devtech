@@ -83,6 +83,12 @@
   font: 10px monospace;
 }
 
+/* The Great Red Spot is the Core module everything depends on. */
+.planet-evolution .pe-code-name--hub {
+  font: 700 16px monospace;
+  letter-spacing: 1px;
+}
+
 /* Jupiter's dependencies: a faint ribbon of gas with wisps flowing along it. */
 .planet-evolution .pe-gas-stream,
 .planet-evolution .pe-gas-wisp {
