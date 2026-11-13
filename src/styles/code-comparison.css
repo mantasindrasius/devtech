@@ -13,6 +13,7 @@
   gap: 36px;
 }
 .comparison-pane { min-width: 0; }
+.comparison-pane-hidden { visibility: hidden; pointer-events: none; }
 .comparison-pane h2 {
   font-size: clamp(20px, 1.7vw, 30px);
   margin: 0;

@@ -15,11 +15,11 @@
   <g transform="translate(100 400)">
     <g class="flip-front">
       <rect width="610" height="330" rx="14" class="flip-card-face"/>
-      <g class="chart-poor-label"><circle cx="34" cy="72" r="6"/><circle cx="34" cy="163" r="6"/><circle cx="34" cy="254" r="6"/></g>
+      <g class="chart-poor-label"><circle data-bullet="1" cx="34" cy="72" r="6"/><circle data-bullet="2" cx="34" cy="163" r="6"/><circle data-bullet="3" cx="34" cy="254" r="6"/></g>
       <g font-size="30">
-        <text x="62" y="83">Tangled dependencies</text>
-        <text x="62" y="174">Scattered logic</text>
-        <text x="62" y="265">Risky changes</text>
+        <text data-bullet="1" x="62" y="83">Tangled dependencies</text>
+        <text data-bullet="2" x="62" y="174">Scattered logic</text>
+        <text data-bullet="3" x="62" y="265">Risky changes</text>
       </g>
     </g>
     <g class="flip-back">
@@ -34,11 +34,11 @@
   <g transform="translate(890 400)" style="--flip-delay: 140ms">
     <g class="flip-front">
       <rect width="610" height="330" rx="14" class="flip-card-face"/>
-      <g class="chart-accent"><circle cx="34" cy="72" r="6"/><circle cx="34" cy="163" r="6"/><circle cx="34" cy="254" r="6"/></g>
+      <g class="chart-accent"><circle data-bullet="4" cx="34" cy="72" r="6"/><circle data-bullet="5" cx="34" cy="163" r="6"/><circle data-bullet="6" cx="34" cy="254" r="6"/></g>
       <g font-size="30">
-        <text x="62" y="83">Organized dependencies</text>
-        <text x="62" y="174">Modular design</text>
-        <text x="62" y="265">Faster, cheaper changes</text>
+        <text data-bullet="4" x="62" y="83">Organized dependencies</text>
+        <text data-bullet="5" x="62" y="174">Modular design</text>
+        <text data-bullet="6" x="62" y="265">Faster, cheaper changes</text>
       </g>
     </g>
     <g class="flip-back">

@@ -393,3 +393,15 @@
     transition: none !important;
   }
 }
+
+.planet-evolution .pe-opening-title {
+  fill: #f2e4c7;
+  font-size: 82px;
+  font-weight: 600;
+  letter-spacing: -2px;
+  text-anchor: middle;
+}
+
+.planet-evolution[data-scene='title'] .pe-orbit {
+  visibility: hidden;
+}

@@ -2,7 +2,7 @@ import { requireText } from '../content/validation.js';
 import { createArchitectureStory } from './architecture-story.js';
 import { createPlanetPainters, paintPlanetArt } from './planet-painters/planet-painters.js';
 
-const scenes = ['monolith', 'microservices', 'ai-era'];
+const scenes = ['title', 'monolith', 'microservices', 'ai-era'];
 
 export const planetEvolutionRenderer = {
   validate(resource) {

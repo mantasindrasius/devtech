@@ -253,9 +253,12 @@
 <circle cx="357" cy="357" r="0.65" opacity="0.51"/>
 <circle cx="754" cy="624" r="0.65" opacity="0.63"/>
 </g>
-<ellipse cx="800" cy="465" rx="680" ry="285" stroke="#557b8a" stroke-opacity=".12" fill="none"/>
-<text x="800" y="76" class="pe-kicker">A BRIEF HISTORY OF SOFTWARE WORLDS</text>
-<g data-appears-at="0" data-disappears-at="1" class="pe-era pe-monolith">
+<ellipse class="pe-orbit" cx="800" cy="465" rx="680" ry="285" stroke="#557b8a" stroke-opacity=".12" fill="none"/>
+<g data-appears-at="0" data-disappears-at="1" class="pe-era pe-opening">
+<text x="800" y="414" class="pe-opening-title">A brief history of</text>
+<text x="800" y="510" class="pe-opening-title">software development</text>
+</g>
+<g data-appears-at="1" data-disappears-at="2" class="pe-era pe-monolith">
 <g transform="translate(800 432) scale(1.32)">
 <g class="pe-formation">
 <circle r="217" fill="url(#pe-warm-limb)"/>
@@ -273,7 +276,7 @@
 <text x="800" y="769" class="pe-narration">In the beginning, there was the monolith.</text>
 <text x="800" y="812" class="pe-subtitle">One deployment. An entire world of dependencies.</text>
 </g>
-<g data-appears-at="1" class="pe-era pe-system">
+<g data-appears-at="2" class="pe-era pe-system">
 <g class="pe-belts">
 <g data-paint="asteroid-belt" data-seed="1" data-lane="M330 300Q520 235 720 255"></g>
 <g data-paint="asteroid-belt" data-seed="2" data-lane="M720 255Q960 240 1180 330"></g>
@@ -423,11 +426,11 @@
 </g>
 </g>
 </g>
-<g data-appears-at="1" data-disappears-at="2" class="pe-era">
+<g data-appears-at="2" data-disappears-at="3" class="pe-era">
 <text x="800" y="769" class="pe-narration">Then microservices were invented.</text>
 <text x="800" y="812" class="pe-subtitle">Smaller worlds. Simpler surfaces. More connections.</text>
 </g>
-<g data-appears-at="2" class="pe-era pe-ai">
+<g data-appears-at="3" class="pe-era pe-ai">
 <g class="pe-strange" style="--arrival:1.4s" transform="translate(160 570)">
 <g class="pe-birth">
 <ellipse rx="61" ry="13" transform="rotate(-28)" fill="none" stroke="#c4a7ef" stroke-width="5" opacity=".8"/>
@@ -463,7 +466,7 @@
 <text x="800" y="769" class="pe-narration">Then the AI era came.</text>
 <text x="800" y="812" class="pe-subtitle">Worlds grow. New ones appear. Pressure builds.</text>
 </g>
-<g class="pe-progress">
+<g data-appears-at="1" class="pe-era pe-progress">
 <circle cx="774" cy="858" r="3"/>
 <circle cx="800" cy="858" r="3"/>
 <circle cx="826" cy="858" r="3"/>

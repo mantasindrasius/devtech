@@ -1,8 +1,15 @@
+import { bindSwipeNavigation } from './swipe-navigation.js';
+
 export function bindControls({ root, timeline, code, checks, editor }) {
   const lifecycle = new AbortController();
   const listen = (element, event, handler) =>
     element.addEventListener(event, handler, { signal: lifecycle.signal });
   const $ = (id) => root.querySelector(`#${id}`);
+  bindSwipeNavigation(
+    $('slide'),
+    () => timeline.select(timeline.snapshot().slideIndex - 1),
+    lifecycle.signal,
+  );
   let presenting = false;
   function setPresenting(active) {
     presenting = active;
@@ -27,7 +34,7 @@ export function bindControls({ root, timeline, code, checks, editor }) {
   listen($('next'), 'click', () => timeline.next());
   listen($('slide'), 'click', (event) => {
     if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.altKey) return;
-    if (!event.target.closest('.visual-art, .code-comparison')) return;
+    if (!event.target.closest('.visual-art, .code-comparison, #slide[data-layout="chapter"]')) return;
     if (event.target.closest('.monaco-editor') && !event.target.closest('[data-advance-on-click]')) return;
     if (event.target.closest('a, button, input, textarea, [contenteditable]')) return;
     if (window.getSelection()?.toString()) return;
@@ -56,7 +63,7 @@ export function bindControls({ root, timeline, code, checks, editor }) {
     signal: lifecycle.signal,
   });
   listen(document, 'keydown', onKey);
-  setPresenting(true);
+  setPresenting(false);
   return () => lifecycle.abort();
 
   function onEscape(event) {

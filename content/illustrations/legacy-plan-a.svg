@@ -3,11 +3,11 @@
   <desc>Two short points: rewriting the system is cheap now, and existing tests make the rewrite even cheaper.</desc>
   <text x="100" y="158" class="chart-heading"><tspan class="chart-accent">Plan A:</tspan> rewrite the system</text>
   <g class="chart-accent">
-    <circle cx="114" cy="296" r="7"/>
-    <circle cx="114" cy="406" r="7"/>
+    <circle data-bullet="1" cx="114" cy="296" r="7"/>
+    <circle data-bullet="2" cx="114" cy="406" r="7"/>
   </g>
   <g font-size="40">
-    <text x="150" y="310">It’s cheap now.</text>
-    <text x="150" y="420">Existing tests make it even cheaper.</text>
+    <text data-bullet="1" x="150" y="310">It’s cheap now.</text>
+    <text data-bullet="2" x="150" y="420">Existing tests make it even cheaper.</text>
   </g>
 </svg>

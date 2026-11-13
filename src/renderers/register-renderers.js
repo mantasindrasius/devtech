@@ -1,3 +1,5 @@
+import { withBulletReveals } from './bullet-reveals.js';
+import { codeMetricsRenderer } from './code-metrics.js';
 import { moduleGrowthRenderer } from './module-growth.js';
 import { svgSequenceRenderer } from './svg-sequence.js';
 import { testableDesignRenderer } from './testable-design.js';
@@ -22,9 +24,10 @@ import { flipCardsRenderer } from './flip-cards.js';
 
 export function registerRenderers() {
   return new Registry('resource renderer')
-    .register('svg-sequence', svgSequenceRenderer)
+    .register('code-metrics', withBulletReveals(codeMetricsRenderer))
+    .register('svg-sequence', withBulletReveals(svgSequenceRenderer))
     .register('testable-design', testableDesignRenderer)
-    .register('testing-pyramid', testingPyramidRenderer)
+    .register('testing-pyramid', withBulletReveals(testingPyramidRenderer))
     .register('change-cost', changeCostRenderer)
     .register('module-growth', moduleGrowthRenderer)
     .register('ideal-test', idealTestRenderer)
@@ -32,9 +35,9 @@ export function registerRenderers() {
     .register('code-comparison', codeComparisonRenderer)
     .register('agent-context', agentContextRenderer)
     .register('agent-workflow', agentWorkflowRenderer)
-    .register('topic-intro', topicIntroRenderer)
-    .register('flip-cards', flipCardsRenderer)
-    .register('svg-illustration', svgIllustrationRenderer)
+    .register('topic-intro', withBulletReveals(topicIntroRenderer))
+    .register('flip-cards', withBulletReveals(flipCardsRenderer))
+    .register('svg-illustration', withBulletReveals(svgIllustrationRenderer))
     .register('planet-evolution', planetEvolutionRenderer)
     .register('code', {
       validate(resource) {

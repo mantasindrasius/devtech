@@ -4,13 +4,13 @@
   <text x="100" y="80" class="chart-accent" font-size="18" letter-spacing="4">CLEAN CODE / WHY IT MATTERS</text>
   <text x="100" y="158" class="chart-heading">Why bother?</text>
   <g class="chart-accent">
-    <circle cx="111" cy="307" r="5"/>
-    <circle cx="111" cy="457" r="5"/>
-    <circle cx="111" cy="607" r="5"/>
+    <circle data-bullet="1" cx="111" cy="307" r="5"/>
+    <circle data-bullet="2" cx="111" cy="457" r="5"/>
+    <circle data-bullet="3" cx="111" cy="607" r="5"/>
   </g>
   <g font-size="34">
-    <text x="144" y="319">Simpler, cleaner code makes agentic coding <tspan class="chart-accent" font-weight="700">more effective.</tspan></text>
-    <text x="144" y="469">Agents will enjoy SOLID and design patterns. So will you.</text>
-    <text x="144" y="619">Code that is open for extension keeps the design less rigid.</text>
+    <text data-bullet="1" x="144" y="319">Simpler, cleaner code makes agentic coding <tspan class="chart-accent" font-weight="700">more effective.</tspan></text>
+    <text data-bullet="2" x="144" y="469">Smaller files and code units save context &amp; tokens</text>
+    <text data-bullet="3" x="144" y="619">Code that is open for extension keeps the design less rigid.</text>
   </g>
 </svg>

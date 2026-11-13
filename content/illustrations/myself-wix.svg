@@ -7,22 +7,22 @@
   <text x="900" y="190" class="chart-heading">Wix</text>
   <text x="100" y="285" class="chart-accent" font-size="36" font-weight="600">Mantas Indrašius</text>
   <g font-size="29">
-    <text x="100" y="350">Full-stack developer</text>
-    <text x="100" y="415">13 years at Wix</text>
-    <text x="100" y="480">Currently at Innovations Vilnius</text>
-    <text x="100" y="545">AI-first since Claude 4.0 · June 2025</text>
-    <text x="100" y="610">3 kids</text>
-    <text x="100" y="675">Embedded Software, Electronics &amp; IoT</text>
+    <text data-bullet="1" x="100" y="350">Full-stack developer</text>
+    <text data-bullet="2" x="100" y="415">13 years at Wix</text>
+    <text data-bullet="3" x="100" y="480">Currently at Innovations Vilnius</text>
+    <text data-bullet="4" x="100" y="545">AI-first since Claude 4.0 · June 2025</text>
+    <text data-bullet="5" x="100" y="610">3 kids</text>
+    <text data-bullet="6" x="100" y="675">Embedded Software, Electronics &amp; IoT</text>
   </g>
   <g>
-    <text x="900" y="285" class="chart-accent" font-size="20" font-family="monospace">01 / WEBSITES</text>
-    <text x="900" y="330" font-size="36" font-weight="600">AI Site Builder</text>
-    <text x="900" y="405" class="chart-accent" font-size="20" font-family="monospace">02 / APPS</text>
-    <text x="900" y="450" font-size="36" font-weight="600">Base44</text>
-    <text x="900" y="525" class="chart-accent" font-size="20" font-family="monospace">03 / BUSINESS</text>
-    <text x="900" y="570" font-size="36" font-weight="600">SME business suite</text>
-    <text x="900" y="645" class="chart-accent" font-size="20" font-family="monospace">04 / AI ASSET DESIGN</text>
-    <text x="900" y="690" font-size="36" font-weight="600">Wixel</text>
-    <text x="900" y="780" class="chart-muted" font-size="29">Many more</text>
+    <text data-bullet="7" x="900" y="285" class="chart-accent" font-size="20" font-family="monospace">01 / WEBSITES</text>
+    <text data-bullet="7" x="900" y="330" font-size="36" font-weight="600">AI Site Builder</text>
+    <text data-bullet="8" x="900" y="405" class="chart-accent" font-size="20" font-family="monospace">02 / APPS</text>
+    <text data-bullet="8" x="900" y="450" font-size="36" font-weight="600">Base44</text>
+    <text data-bullet="9" x="900" y="525" class="chart-accent" font-size="20" font-family="monospace">03 / BUSINESS</text>
+    <text data-bullet="9" x="900" y="570" font-size="36" font-weight="600">SME business suite</text>
+    <text data-bullet="10" x="900" y="645" class="chart-accent" font-size="20" font-family="monospace">04 / AI ASSET DESIGN</text>
+    <text data-bullet="10" x="900" y="690" font-size="36" font-weight="600">Wixel</text>
+    <text data-bullet="11" x="900" y="780" class="chart-muted" font-size="29">Many more</text>
   </g>
 </svg>

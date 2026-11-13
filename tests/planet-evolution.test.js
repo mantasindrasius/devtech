@@ -9,21 +9,23 @@ const eras = authoredDeck.slides.filter((slide) => slide.id.startsWith('software
 test('navigates separate software-era slides and replays the current era', async () => {
   const presentation = aPresentation().withSlides(eras);
   await presentation.mount();
-  expect(presentation.observations().shown).toEqual(['monolith']);
+  expect(presentation.observations().shown).toEqual(['title']);
 
+  await presentation.next();
   await presentation.next();
   await presentation.next();
   await presentation.previous();
   await presentation.replay();
 
   expect(presentation.observations().shown).toEqual([
+    'title',
     'monolith',
     'microservices',
     'ai-era',
     'microservices',
     'microservices',
   ]);
-  expect(eras.map((slide) => slide.steps.length)).toEqual([1, 1, 1]);
+  expect(eras.map((slide) => slide.steps.length)).toEqual([2, 1, 1]);
   expect(presentation.observations().errors).toEqual([]);
   presentation.dispose();
 });

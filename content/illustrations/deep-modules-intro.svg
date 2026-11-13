@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
   <title>Deep modules</title>
-  <desc>The title Deep modules fills the slide, then settles into a heading. Four short points about deep modules beside two outline boxes: a shallow module with a wide interface over a thin body, and a deep module with a narrow interface over a tall body.</desc>
+  <desc>The title Deep modules fills the slide, then settles into a heading. Three short points about deep modules beside two outline boxes: a shallow module with a wide interface over a thin body, and a deep module with a narrow interface over a tall body.</desc>
   <g data-appears-at="0" data-disappears-at="1">
     <text x="80" y="330" class="topic-kicker">ARCHITECTURE FOR AGENTS</text>
   </g>
@@ -9,15 +9,13 @@
   <g data-appears-at="1">
   <g font-size="40">
     <g style="fill: var(--accent, #b4ef94)">
-      <circle cx="94" cy="296" r="7"/>
-      <circle cx="94" cy="416" r="7"/>
-      <circle cx="94" cy="536" r="7"/>
-      <circle cx="94" cy="656" r="7"/>
+      <circle data-bullet="1" cx="94" cy="296" r="7"/>
+      <circle data-bullet="2" cx="94" cy="416" r="7"/>
+      <circle data-bullet="3" cx="94" cy="536" r="7"/>
     </g>
-    <text x="130" y="310">Small interface, lots of behaviour.</text>
-    <text x="130" y="430">Interface = all a caller must know.</text>
-    <text x="130" y="550">Depth ≠ lines of code.</text>
-    <text x="130" y="670">Delete it: does complexity spread?</text>
+    <text data-bullet="1" x="130" y="310">Small interface, lots of behaviour.</text>
+    <text data-bullet="2" x="130" y="430">Interface = all a caller must know.</text>
+    <text data-bullet="3" x="130" y="550"><tspan x="130">Single package with</tspan><tspan x="130" dy="52">well defined dependencies</tspan></text>
   </g>
 
   <rect x="1000" y="262" width="440" height="84" rx="10" class="chart-grid" fill="none" stroke-width="2"/>

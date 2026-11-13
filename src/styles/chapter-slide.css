@@ -1,4 +1,5 @@
 #slide[data-layout='chapter'] {
+  touch-action: pan-y pinch-zoom;
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   grid-template-rows: 1fr;

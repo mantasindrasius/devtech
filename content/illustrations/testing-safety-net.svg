@@ -2,14 +2,15 @@
   <title>The safety net</title>
   <desc>Tests provide guardrails for growing delivery volume. GitHub Octoverse 2026 reports 10.0, 12.9 and 34.3 billion commits for the twelve months ending September 2024, 2025 and 2026, across public and private repositories.</desc>
   <text x="100" y="150" class="chart-heading">The safety net</text>
-  <path d="M870 230V770" class="chart-grid" stroke-width="1"/>
+  <path data-bullet="1" d="M870 230V770" class="chart-grid" stroke-width="1"/>
   <g font-size="30">
-    <text x="100" y="290">Agents ship more, faster.</text>
-    <text x="100" y="385">Tests are the cheapest guardrail.</text>
-    <text x="100" y="480">Green suite = confidence to deploy.</text>
-    <text x="100" y="575">Review the tests first.</text>
-    <text x="100" y="670">Tests are the spec agents verify against.</text>
+    <text data-bullet="1" x="100" y="290">Agents ship more, faster.</text>
+    <text data-bullet="2" x="100" y="385">Tests are the cheapest guardrail.</text>
+    <text data-bullet="3" x="100" y="480">Green suite = confidence to deploy.</text>
+    <text data-bullet="4" x="100" y="575">Review the tests first.</text>
+    <text data-bullet="5" x="100" y="670">Tests are the spec agents verify against.</text>
   </g>
+  <g data-bullet="1">
   <text x="960" y="250" font-size="29">GitHub commits</text>
   <text x="960" y="288" class="chart-muted" font-size="20">Billions · public + private repositories</text>
   <g fill="none" class="chart-grid" stroke-width="1">
@@ -34,4 +35,5 @@
   <a href="https://github.blog/news-insights/octoverse/octoverse-commits-pushes-reach-new-highs-in-2026-as-developers-build-with-agents/" target="_blank" rel="noopener noreferrer">
     <text x="100" y="865" class="chart-muted" font-size="18">Source: GitHub Octoverse 2026 · Platform activity, not an estimate of AI-caused growth</text>
   </a>
+  </g>
 </svg>

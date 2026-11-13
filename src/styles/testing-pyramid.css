@@ -60,6 +60,16 @@
   9%, 78% { opacity: 1; transform: scale(1); }
   84%, 100% { opacity: 0; transform: scale(0.4); }
 }
+.testing-pyramid .unit-tradeoffs { transform: translateY(0); }
+.testing-pyramid[data-scene='parallel'] .unit-tradeoffs { transform: translateY(45px); }
+.testing-pyramid .parallel-benefit { transform: translateY(-24px); }
+.testing-pyramid[data-scene='parallel'] .parallel-benefit { transform: translateY(0); }
+.testing-pyramid[data-animate='true'] .unit-tradeoffs {
+  transition: transform 900ms cubic-bezier(.22,.7,.2,1), opacity 350ms ease;
+}
+.testing-pyramid[data-animate='true'] .parallel-benefit {
+  transition: transform 900ms cubic-bezier(.22,.7,.2,1), opacity 650ms ease 150ms;
+}
 @media (prefers-reduced-motion: reduce) {
   .testing-pyramid * { transition: none !important; animation: none !important; }
 }

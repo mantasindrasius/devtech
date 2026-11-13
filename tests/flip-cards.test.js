@@ -10,11 +10,11 @@ test('flips the comparison cards to their pictures and back on replay', async ()
   const presentation = aPresentation().withSteps(slide.steps);
   await presentation.mount();
 
-  await presentation.next();
+  for (let click = 0; click < 7; click++) await presentation.next();
   await presentation.replay();
 
-  expect(slide.steps.map(({ scene }) => scene)).toEqual(['front', 'back']);
-  expect(presentation.observations().shown).toEqual(['comparison', 'fibers', 'comparison']);
+  expect(slide.steps.map(({ scene }) => scene)).toEqual([...Array(7).fill('front'), 'back']);
+  expect(presentation.observations().shown).toEqual(['comparison', 'point-1', 'point-2', 'point-3', 'point-4', 'point-5', 'point-6', 'fibers', 'comparison']);
   expect(presentation.observations().errors).toEqual([]);
   presentation.dispose();
 });

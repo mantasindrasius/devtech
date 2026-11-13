@@ -8,6 +8,7 @@ presenter:
   initials: mi
 resources:
   read-code-less:
+    bulletCount: 4
     type: svg-sequence
     scenes: [depends, yes, design, limits, focus]
     file: illustrations/read-code-less.svg
@@ -34,21 +35,45 @@ resources:
     title: Sustainable System Design without Reading the Code
     description: Mantas Indrašius — linkedin.com/in/mantasindrasius
   myself-wix:
+    bulletCount: 11
     type: svg-illustration
     file: illustrations/myself-wix.svg
     title: Myself and Wix
     description: Mantas Indrašius and Wix — AI Site Builder, Base44 apps, and an SME business suite.
+  metrics-low-crap:
+    type: code
+    file: snippets/metrics-low-crap.ts
+    language: typescript
+  metrics-high-crap:
+    type: code
+    file: snippets/metrics-high-crap.ts
+    language: typescript
   code-metrics-rescue:
-    type: svg-illustration
+    bulletCount: 3
+    type: code-metrics
     file: illustrations/code-metrics-rescue.svg
     title: Code metrics for the rescue
     description: Cyclomatic complexity, the CRAP index and a PR cleanup loop help prioritize risky code for improvement.
+    lowCode: metrics-low-crap
+    highCode: metrics-high-crap
+    coverage:
+      low: [{ line: 4, covered: true }]
+      high:
+        - { line: 7, covered: false }
+        - { line: 8, covered: false }
+        - { line: 10, covered: false }
+        - { line: 12, covered: false }
+        - { line: 13, covered: false }
+        - { line: 17, covered: false }
+        - { line: 18, covered: false }
   keeping-code-clean:
+    bulletCount: 4
     type: svg-illustration
     file: illustrations/keeping-code-clean.svg
     title: Keeping the code clean
     description: Repository standards, explicit effects, small responsibilities and a condensed pr-wrap validation and cleanup workflow.
   clean-code-why:
+    bulletCount: 3
     type: svg-illustration
     file: illustrations/clean-code-why.svg
     title: Why bother?
@@ -59,6 +84,7 @@ resources:
     title: Testable design
     description: An application core of deep modules covered by fast in-memory tests, then ports and adapters to infrastructure covered by an end-to-end suite.
   testing-shape:
+    bulletCount: 7
     type: testing-pyramid
     file: illustrations/testing-shape.svg
     title: Testing pyramid
@@ -67,23 +93,47 @@ resources:
     type: code
     file: snippets/ideal-fluent-test.ts
     language: typescript
+  ideal-test-base:
+    type: code
+    file: snippets/ideal-test-base.ts
+    language: typescript
+  ideal-test-fast:
+    type: code
+    file: snippets/ideal-test-fast.ts
+    language: typescript
+  ideal-test-deterministic:
+    type: code
+    file: snippets/ideal-test-deterministic.ts
+    language: typescript
+  ideal-test-assertive:
+    type: code
+    file: snippets/ideal-test-assertive.ts
+    language: typescript
   test-hygiene:
     type: ideal-test
-    code: ideal-fluent-test
+    versions:
+      base: ideal-test-base
+      fast: ideal-test-fast
+      deterministic: ideal-test-deterministic
+      assertive: ideal-test-assertive
+      readable: ideal-fluent-test
     file: illustrations/test-hygiene.svg
     title: The ideal test
     description: Fast to run, deterministic, assertive and readable tests keep agent feedback loops short and provide common ground for human reviewers and agents.
   legacy-plan-a:
+    bulletCount: 2
     type: svg-illustration
     file: illustrations/legacy-plan-a.svg
     title: 'Plan A: rewrite the system'
     description: Two short points. Rewriting the system is cheap now, and existing tests make the rewrite even cheaper.
   legacy-plan-b:
+    bulletCount: 4
     type: svg-illustration
     file: illustrations/legacy-plan-b.svg
     title: 'Plan B: transition the system'
     description: Four short points beside the cover of Working Effectively with Legacy Code. Design the target system, reference it in the planning skill, and follow every PR with a proportional refactoring PR that moves closer to the target.
   testing-safety-net:
+    bulletCount: 5
     type: svg-illustration
     file: illustrations/testing-safety-net.svg
     title: The safety net
@@ -94,6 +144,7 @@ resources:
     title: 'Deep Modules PoV: Both are good'
     description: One monolith containing six deep modules transitions to three microservices with two modules each, preserving relationships and labeling cross-service RPC and Kafka communication.
   deployment-start:
+    bulletCount: 6
     type: svg-illustration
     file: illustrations/monolith-or-microservices.svg
     title: Start with a monolith or microservices?
@@ -116,6 +167,7 @@ resources:
     title: Deep modules — implementation depth
     description: Thin functions behind a shallow interface versus a substantial implementation containing private submodules behind a small quote interface.
   deep-modules-intro:
+    bulletCount: 3
     type: topic-intro
     file: illustrations/deep-modules-intro.svg
     title: Deep modules
@@ -125,9 +177,6 @@ resources:
     file: snippets/shallow-quote-interface.ts
     right: deep-quote-interface
     title: Deep modules
-    leftTitle: Shallow — workflow and state exposed
-    rightTitle: Deep — intent exposed, policy hidden
-    takeaway: A small interface abstracts a substantial implementation. Click to look inside.
     leftImplementation:
       interface: get*() · set*() · calculate*() · on*()
       parts: ['getState()', 'setState()', 'compute()', 'emitStep()']
@@ -152,6 +201,7 @@ resources:
     title: How coding agents work
     description: Click to reveal Explore, Plan changes and Implement, each playing an illustrative transcript of tool calls that arrive one at a time, run and return a result.
   ease-of-change:
+    bulletCount: 6
     type: flip-cards
     file: illustrations/ease-of-change.svg
     title: Ease of change
@@ -500,8 +550,53 @@ slides:
       then connect the maker mindset to designing systems that people and AI can understand.
     steps:
       - id: introduction
-        label: Myself and Wix
-        panel: myself-wix
+        label: "Myself and Wix"
+        panel: "myself-wix"
+        bullets: 0
+      - id: point-1
+        label: "Point 1"
+        panel: "myself-wix"
+        bullets: 1
+      - id: point-2
+        label: "Point 2"
+        panel: "myself-wix"
+        bullets: 2
+      - id: point-3
+        label: "Point 3"
+        panel: "myself-wix"
+        bullets: 3
+      - id: point-4
+        label: "Point 4"
+        panel: "myself-wix"
+        bullets: 4
+      - id: point-5
+        label: "Point 5"
+        panel: "myself-wix"
+        bullets: 5
+      - id: point-6
+        label: "Point 6"
+        panel: "myself-wix"
+        bullets: 6
+      - id: point-7
+        label: "Point 7"
+        panel: "myself-wix"
+        bullets: 7
+      - id: point-8
+        label: "Point 8"
+        panel: "myself-wix"
+        bullets: 8
+      - id: point-9
+        label: "Point 9"
+        panel: "myself-wix"
+        bullets: 9
+      - id: point-10
+        label: "Point 10"
+        panel: "myself-wix"
+        bullets: 10
+      - id: point-11
+        label: "Point 11"
+        panel: "myself-wix"
+        bullets: 11
     author: true
   - id: software-worlds
     name: In the beginning, there was the monolith
@@ -515,6 +610,11 @@ slides:
     notes: >-
       A creation-story opening inspired by the atmosphere of Civilization I. One large world has a dense, interconnected interior.
     steps:
+      - id: title
+        label: A brief history of software development
+        panel: planet-evolution
+        scene: title
+        caption: A brief history of software development.
       - id: monolith
         label: In the beginning, there was the monolith
         panel: planet-evolution
@@ -649,15 +749,53 @@ slides:
       by side: each can be lifted out and changed on its own.
     steps:
       - id: comparison
-        label: Ease of change
-        panel: ease-of-change
-        scene: front
-        caption: Tightly coupled dependencies compared with boundaries that keep changes local.
+        label: "Ease of change"
+        panel: "ease-of-change"
+        scene: "front"
+        caption: "Tightly coupled dependencies compared with boundaries that keep changes local."
+        bullets: 0
+      - id: point-1
+        label: "Point 1"
+        panel: "ease-of-change"
+        scene: "front"
+        caption: "Tightly coupled dependencies compared with boundaries that keep changes local."
+        bullets: 1
+      - id: point-2
+        label: "Point 2"
+        panel: "ease-of-change"
+        scene: "front"
+        caption: "Tightly coupled dependencies compared with boundaries that keep changes local."
+        bullets: 2
+      - id: point-3
+        label: "Point 3"
+        panel: "ease-of-change"
+        scene: "front"
+        caption: "Tightly coupled dependencies compared with boundaries that keep changes local."
+        bullets: 3
+      - id: point-4
+        label: "Point 4"
+        panel: "ease-of-change"
+        scene: "front"
+        caption: "Tightly coupled dependencies compared with boundaries that keep changes local."
+        bullets: 4
+      - id: point-5
+        label: "Point 5"
+        panel: "ease-of-change"
+        scene: "front"
+        caption: "Tightly coupled dependencies compared with boundaries that keep changes local."
+        bullets: 5
+      - id: point-6
+        label: "Point 6"
+        panel: "ease-of-change"
+        scene: "front"
+        caption: "Tightly coupled dependencies compared with boundaries that keep changes local."
+        bullets: 6
       - id: fibers
-        label: Intertwined versus loose
-        panel: ease-of-change
-        scene: back
-        caption: Intertwined fibres on a cloth beside loose bundles that can be pulled one at a time.
+        label: "Intertwined versus loose"
+        panel: "ease-of-change"
+        scene: "back"
+        caption: "Intertwined fibres on a cloth beside loose bundles that can be pulled one at a time."
+        bullets: 6
   - id: context-cost
     hidden: true
     name: Five lines of change. Half a repo of context.
@@ -1000,15 +1138,29 @@ slides:
       as advocated in Matt Pocock's skills. The next slide shows the same contrast in code.
     steps:
       - id: title
-        label: Deep modules
-        panel: deep-modules-intro
-        scene: title
-        caption: Deep modules.
+        label: "Deep modules"
+        panel: "deep-modules-intro"
+        scene: "title"
+        caption: "Deep modules."
+        bullets: 0
       - id: points
-        label: What makes a module deep
-        panel: deep-modules-intro
-        scene: points
-        caption: A small interface, everything a caller must know, hiding a lot of behaviour.
+        label: "Point 1"
+        panel: "deep-modules-intro"
+        scene: "points"
+        caption: "A small interface, everything a caller must know, hiding a lot of behaviour."
+        bullets: 1
+      - id: point-2
+        label: "Point 2"
+        panel: "deep-modules-intro"
+        scene: "points"
+        caption: "A small interface, everything a caller must know, hiding a lot of behaviour."
+        bullets: 2
+      - id: point-3
+        label: "Point 3"
+        panel: "deep-modules-intro"
+        scene: "points"
+        caption: "A small interface, everything a caller must know, hiding a lot of behaviour."
+        bullets: 3
   - id: deep-modules-comparison
     name: Deep modules
     label: ARCHITECTURE FOR AGENTS
@@ -1039,9 +1191,15 @@ slides:
       connections are illustrative, not a prescribed dependency graph.
     steps:
       - id: implementation-depth
-        label: Shallow versus deep implementation
+        label: Shallow implementation
         panel: deep-modules-comparison
         face: implementation
+        revealRight: false
+      - id: deep-implementation
+        label: Reveal the deep implementation
+        panel: deep-modules-comparison
+        face: implementation
+        revealRight: true
       - id: comparison
         label: Reveal the code interfaces
         panel: deep-modules-comparison
@@ -1112,9 +1270,15 @@ slides:
       https://react.dev/learn/passing-data-deeply-with-context
     steps:
       - id: composition
-        label: Server and client composition roots
+        label: Server composition root
         panel: composition-roots
         face: interface
+        revealRight: false
+      - id: react-client
+        label: Reveal React client composition root
+        panel: composition-roots
+        face: interface
+        revealRight: true
   - id: deployment-start
     name: Start with a monolith or microservices?
     label: ARCHITECTURE FOR AGENTS
@@ -1132,8 +1296,33 @@ slides:
       A network boundary does not guarantee a good contract; that remains a design responsibility.
     steps:
       - id: comparison
-        label: Choose boundaries before deployment
-        panel: deployment-start
+        label: "Choose boundaries before deployment"
+        panel: "deployment-start"
+        bullets: 0
+      - id: point-1
+        label: "Point 1"
+        panel: "deployment-start"
+        bullets: 1
+      - id: point-2
+        label: "Point 2"
+        panel: "deployment-start"
+        bullets: 2
+      - id: point-3
+        label: "Point 3"
+        panel: "deployment-start"
+        bullets: 3
+      - id: point-4
+        label: "Point 4"
+        panel: "deployment-start"
+        bullets: 4
+      - id: point-5
+        label: "Point 5"
+        panel: "deployment-start"
+        bullets: 5
+      - id: point-6
+        label: "Point 6"
+        panel: "deployment-start"
+        bullets: 6
   - id: deployment-topology
     name: 'Deep Modules PoV: Both are good'
     label: ARCHITECTURE FOR AGENTS
@@ -1196,31 +1385,42 @@ slides:
     takeaway: But we can scale to focus on high-level problems
     notes: Connect the preceding question to the guardrails in the next chapter.
     steps:
+      - id: intro
+        label: "Should we try to read the code less?"
+        panel: "read-code-less"
+        scene: "depends"
+        caption: "It depends..."
+        bullets: 0
       - id: depends
-        label: It depends...
-        panel: read-code-less
-        scene: depends
-        caption: It depends...
+        label: "It depends..."
+        panel: "read-code-less"
+        scene: "depends"
+        caption: "It depends..."
+        bullets: 1
       - id: yes
-        label: It depends... But actually yes
-        panel: read-code-less
-        scene: yes
-        caption: It depends... But actually yes
+        label: "It depends... But actually yes"
+        panel: "read-code-less"
+        scene: "yes"
+        caption: "It depends... But actually yes"
+        bullets: 1
       - id: design
-        label: You should build your system in a way so you don't have to.
-        panel: read-code-less
-        scene: design
-        caption: You should build your system in a way so you don't have to.
+        label: "You should build your system in a way so you don't have to."
+        panel: "read-code-less"
+        scene: "design"
+        caption: "You should build your system in a way so you don't have to."
+        bullets: 2
       - id: limits
-        label: We're single-thread readers. This doesn't scale.
-        panel: read-code-less
-        scene: limits
-        caption: We're single-thread readers. This doesn't scale.
+        label: "We're single-thread readers. This doesn't scale."
+        panel: "read-code-less"
+        scene: "limits"
+        caption: "We're single-thread readers. This doesn't scale."
+        bullets: 3
       - id: focus
-        label: But we can scale to focus on high-level problems.
-        panel: read-code-less
-        scene: focus
-        caption: But we can scale to focus on high-level problems.
+        label: "But we can scale to focus on high-level problems."
+        panel: "read-code-less"
+        scene: "focus"
+        caption: "But we can scale to focus on high-level problems."
+        bullets: 4
   - id: chapter-2
     name: Testable design
     label: 02 / TESTABLE DESIGN
@@ -1265,8 +1465,29 @@ slides:
       aggregate comparison does not isolate a causal effect of agents.
     steps:
       - id: safety-net
-        label: The safety net
-        panel: testing-safety-net
+        label: "The safety net"
+        panel: "testing-safety-net"
+        bullets: 0
+      - id: point-1
+        label: "Point 1"
+        panel: "testing-safety-net"
+        bullets: 1
+      - id: point-2
+        label: "Point 2"
+        panel: "testing-safety-net"
+        bullets: 2
+      - id: point-3
+        label: "Point 3"
+        panel: "testing-safety-net"
+        bullets: 3
+      - id: point-4
+        label: "Point 4"
+        panel: "testing-safety-net"
+        bullets: 4
+      - id: point-5
+        label: "Point 5"
+        panel: "testing-safety-net"
+        bullets: 5
   - id: testable-design
     name: Testable design
     label: TESTING
@@ -1296,44 +1517,6 @@ slides:
         panel: testable-design
         scene: adapters
         caption: Ports and adapters connect infrastructure; an E2E suite tests the whole system.
-  - id: test-hygiene
-    name: The ideal test
-    label: TESTING
-    layout: visual
-    title:
-      - text: The ideal test
-    description: Fast to run. Deterministic. Assertive. Readable.
-    code: introduction
-    takeaway: Clear, trustworthy feedback keeps the loop short.
-    notes: >-
-      Emphasize the four attributes. Fast includes both building the tests and running them.
-      Deterministic tests control time, randomness and external dependencies. Assertive means
-      meaningful assertions that fail when behavior is wrong and explain what was expected;
-      merely running code or checking a truthy result is often insufficient. Flaky results
-      and vague assertions send agents into unnecessary diagnosis and retries. Readable tests
-      express behavior in shared domain language so reviewers and agents can agree on intent.
-      Prefer clear scenarios, explicit outcomes and small fixtures over clever test machinery.
-    steps:
-      - id: fast
-        label: Fast to run
-        panel: test-hygiene
-        scene: fast
-        caption: Fast builds and tests shorten every verification loop.
-      - id: deterministic
-        label: Deterministic
-        panel: test-hygiene
-        scene: deterministic
-        caption: Repeatable results prevent wasted diagnosis and retries.
-      - id: assertive
-        label: Assertive
-        panel: test-hygiene
-        scene: assertive
-        caption: Precise assertions explain what behavior is wrong.
-      - id: readable
-        label: Readable
-        panel: test-hygiene
-        scene: readable
-        caption: Fluent tests express shared intent for humans and agents.
   - id: testing-shape
     name: Testing pyramid
     label: TESTING
@@ -1354,35 +1537,120 @@ slides:
       module test run its own state, clock and fixtures; cap concurrency to available CPU and memory.
     steps:
       - id: pyramid
-        label: The familiar pyramid
-        panel: testing-shape
-        scene: pyramid
-        caption: Three layers of confidence.
+        label: "The familiar pyramid"
+        panel: "testing-shape"
+        scene: "pyramid"
+        caption: "Three layers of confidence."
+        bullets: 0
       - id: e2e
-        label: E2E trade-offs
-        panel: testing-shape
-        scene: e2e
-        caption: E2Es verify deployed journeys but are slow.
+        label: "E2E trade-offs"
+        panel: "testing-shape"
+        scene: "e2e"
+        caption: "E2Es verify deployed journeys but are slow."
+        bullets: 0
+      - id: e2e-pro
+        label: "Advantage"
+        panel: "testing-shape"
+        scene: "e2e"
+        caption: "E2Es verify deployed journeys but are slow."
+        bullets: 1
+      - id: e2e-con
+        label: "Trade-off"
+        panel: "testing-shape"
+        scene: "e2e"
+        caption: "E2Es verify deployed journeys but are slow."
+        bullets: 2
       - id: integration
-        label: Integration trade-offs
-        panel: testing-shape
-        scene: integration
-        caption: In-memory integration and component tests offer fast behavioral feedback.
+        label: "Integration trade-offs"
+        panel: "testing-shape"
+        scene: "integration"
+        caption: "In-memory integration and component tests offer fast behavioral feedback."
+        bullets: 2
+      - id: integration-pro
+        label: "Advantage"
+        panel: "testing-shape"
+        scene: "integration"
+        caption: "In-memory integration and component tests offer fast behavioral feedback."
+        bullets: 3
+      - id: integration-con
+        label: "Trade-off"
+        panel: "testing-shape"
+        scene: "integration"
+        caption: "In-memory integration and component tests offer fast behavioral feedback."
+        bullets: 4
       - id: unit
-        label: Unit trade-offs
-        panel: testing-shape
-        scene: unit
-        caption: Implementation-coupled unit tests make refactoring expensive.
+        label: "Unit trade-offs"
+        panel: "testing-shape"
+        scene: "unit"
+        caption: "Implementation-coupled unit tests make refactoring expensive."
+        bullets: 4
+      - id: unit-pro
+        label: "Advantage"
+        panel: "testing-shape"
+        scene: "unit"
+        caption: "Implementation-coupled unit tests make refactoring expensive."
+        bullets: 5
+      - id: unit-con
+        label: "Trade-off"
+        panel: "testing-shape"
+        scene: "unit"
+        caption: "Implementation-coupled unit tests make refactoring expensive."
+        bullets: 6
       - id: diamond
-        label: Favor the middle
-        panel: testing-shape
-        scene: diamond
-        caption: Emphasize integration tests with a small focused unit layer.
+        label: "Emphasize integration tests"
+        panel: "testing-shape"
+        scene: "diamond"
+        caption: "Emphasize integration tests with a small focused unit layer."
+        bullets: 6
       - id: parallel
-        label: Run module tests concurrently
-        panel: testing-shape
-        scene: parallel
-        caption: Independent modules are tested in parallel with isolated in-memory state.
+        label: "Run module tests concurrently"
+        panel: "testing-shape"
+        scene: "parallel"
+        caption: "Independent modules are tested in parallel with isolated in-memory state."
+        bullets: 7
+  - id: test-hygiene
+    name: The ideal test
+    label: TESTING
+    layout: visual
+    title:
+      - text: The ideal test
+    description: Fast to run. Deterministic. Assertive. Readable.
+    code: introduction
+    takeaway: Clear, trustworthy feedback keeps the loop short.
+    notes: >-
+      Emphasize the four attributes. Fast includes both building the tests and running them.
+      Deterministic tests control time, randomness and external dependencies. Assertive means
+      meaningful assertions that fail when behavior is wrong and explain what was expected;
+      merely running code or checking a truthy result is often insufficient. Flaky results
+      and vague assertions send agents into unnecessary diagnosis and retries. Readable tests
+      express behavior in shared domain language so reviewers and agents can agree on intent.
+      Prefer clear scenarios, explicit outcomes and small fixtures over clever test machinery.
+    steps:
+      - id: base
+        label: A test with room to improve
+        panel: test-hygiene
+        scene: base
+        caption: A database-backed test with random input and a vague assertion.
+      - id: fast
+        label: Fast to run
+        panel: test-hygiene
+        scene: fast
+        caption: Fast builds and tests shorten every verification loop.
+      - id: deterministic
+        label: Deterministic
+        panel: test-hygiene
+        scene: deterministic
+        caption: Repeatable results prevent wasted diagnosis and retries.
+      - id: assertive
+        label: Assertive
+        panel: test-hygiene
+        scene: assertive
+        caption: Precise assertions explain what behavior is wrong.
+      - id: readable
+        label: Readable
+        panel: test-hygiene
+        scene: readable
+        caption: Fluent tests express shared intent for humans and agents.
   - id: chapter-3
     name: Clean code
     label: 03 / CLEAN CODE
@@ -1418,8 +1686,21 @@ slides:
       contracts without repeatedly rewriting stable orchestration.
     steps:
       - id: why
-        label: Why bother?
-        panel: clean-code-why
+        label: "Why bother?"
+        panel: "clean-code-why"
+        bullets: 0
+      - id: point-1
+        label: "Point 1"
+        panel: "clean-code-why"
+        bullets: 1
+      - id: point-2
+        label: "Point 2"
+        panel: "clean-code-why"
+        bullets: 2
+      - id: point-3
+        label: "Point 3"
+        panel: "clean-code-why"
+        bullets: 3
   - id: keeping-code-clean
     name: Keeping the code clean
     label: CLEAN CODE
@@ -1434,19 +1715,32 @@ slides:
       static analysis and tests. Avoid hidden effects; well-defined events make meaningful
       changes explicit, but events do not eliminate side effects or replace clear contracts.
       Small units should have cohesive responsibilities, not arbitrary fragmentation.
-      The illustration condenses ~/Code/qape-hq/.agents/commands/pr-wrap.md, inspected for
-      this slide; it is an example, not a command installed in this presentation repository.
-      That workflow validates against the plan, reviews fluent readability for changed tests,
-      enforces a 500-line source-file gate with context-sensitive handling, applies planned
-      cleanups, revalidates after changes, and requires lint, types and tests to pass.
-      It also resolves newly introduced code issues, records TODO decisions and wraps docs
-      before opening the PR ready. Optional reviews depend on the planned scope; production
-      readiness is not run for every change. The point is explicit obligations and evidence,
-      not merely asking the agent to try harder. CI and review happen after wrap.
+      The circular workflow is adapted from scenic-engine's
+      scenes/wix-eng-2026/assets/red-green-refactor-diagnostics.svg.
+      Prompt, plan, implement, then clean up and refactor before the next cycle.
+      Cleanup is an explicit obligation: validate the result against the repository's
+      standards and re-run checks after refactoring.
     steps:
       - id: standards
-        label: Keeping the code clean
-        panel: keeping-code-clean
+        label: "Keeping the code clean"
+        panel: "keeping-code-clean"
+        bullets: 0
+      - id: point-1
+        label: "Point 1"
+        panel: "keeping-code-clean"
+        bullets: 1
+      - id: point-2
+        label: "Point 2"
+        panel: "keeping-code-clean"
+        bullets: 2
+      - id: point-3
+        label: "Point 3"
+        panel: "keeping-code-clean"
+        bullets: 3
+      - id: point-4
+        label: "Point 4"
+        panel: "keeping-code-clean"
+        bullets: 4
   - id: code-metrics-rescue
     name: Code metrics for the rescue
     label: CLEAN CODE
@@ -1455,20 +1749,48 @@ slides:
       - text: Code metrics for the rescue
     description: Measure risk, then improve the code.
     code: introduction
-    takeaway: Use metrics to guide judgment, not to chase a score.
+    takeaway: Measure changes, protect behavior, and clean up before merging.
     notes: >-
-      Cyclomatic complexity estimates independent execution paths. Tools such as lizard
-      help locate functions worth inspecting; counts depend on language and tool conventions.
-      CRAP combines cyclomatic complexity and test coverage to highlight change risk.
-      Coverage alone does not establish meaningful assertions or correct behavior.
-      Protect behavior with tests, simplify responsibilities and control flow, and rerun
-      verification during PR cleanup. Do not reduce a score by hiding branches in helpers
-      or replacing readable code with clever expressions. The following code example shows
-      how guard clauses can improve readability without changing cyclomatic complexity.
+      Lizard's documented CLI output is excerpted from
+      https://github.com/terryyin/lizard/blob/master/README.rst (Example use).
+      This is not output measured from this repository. Lizard reports complexity,
+      not CRAP: coverage must come from a separate coverage report.
+      CRAP = C² × (1 − coverage)³ + C, with coverage as a fraction.
+      Reference: https://dx42.github.io/gmetrics/metrics/CrapMetric.html.
+      The shipping snippets illustrate simpler covered code (C=2, coverage=100%, CRAP=2)
+      versus expanded, untested policy (C=6, coverage=0%, CRAP=42).
+      They represent different feature scopes, not equivalent refactorings.
+      Coverage is assumed for illustration. Full coverage does not prove assertion quality.
+      The simulated chat uses fictional file sizes and coverage; classifyOrder grows
+      from C=3 at full coverage (CRAP=3) to C=8 at 50% coverage (CRAP=16).
+      The final reply proposes cleanup rather than claiming verified work.
     steps:
       - id: metrics
         label: Code metrics for the rescue
         panel: code-metrics-rescue
+        scene: intro
+        bullets: 0
+      - id: point-1
+        label: Lizard complexity report
+        panel: code-metrics-rescue
+        scene: lizard
+        bullets: 1
+      - id: point-2
+        label: Low CRAP function
+        panel: code-metrics-rescue
+        scene: low
+        bullets: 2
+      - id: high-crap
+        label: High CRAP function
+        panel: code-metrics-rescue
+        scene: high
+        bullets: 2
+      - id: point-3
+        label: Agent PR cleanup report
+        panel: code-metrics-rescue
+        scene: cleanup
+        bullets: 3
+
   - id: small-functions
     hidden: true
     name: Make policy visible. Prove it stays correct.
@@ -1573,8 +1895,17 @@ slides:
       to plan B.
     steps:
       - id: plan-a
-        label: 'Plan A: rewrite the system'
-        panel: legacy-plan-a
+        label: "Plan A: rewrite the system"
+        panel: "legacy-plan-a"
+        bullets: 0
+      - id: point-1
+        label: "Point 1"
+        panel: "legacy-plan-a"
+        bullets: 1
+      - id: point-2
+        label: "Point 2"
+        panel: "legacy-plan-a"
+        bullets: 2
   - id: legacy-transition
     name: 'Plan B: transition the system'
     label: LEGACY
@@ -1596,8 +1927,25 @@ slides:
       target design. Keep the follow-up scoped and reviewable.
     steps:
       - id: plan-b
-        label: 'Plan B: transition the system'
-        panel: legacy-plan-b
+        label: "Plan B: transition the system"
+        panel: "legacy-plan-b"
+        bullets: 0
+      - id: point-1
+        label: "Point 1"
+        panel: "legacy-plan-b"
+        bullets: 1
+      - id: point-2
+        label: "Point 2"
+        panel: "legacy-plan-b"
+        bullets: 2
+      - id: point-3
+        label: "Point 3"
+        panel: "legacy-plan-b"
+        bullets: 3
+      - id: point-4
+        label: "Point 4"
+        panel: "legacy-plan-b"
+        bullets: 4
   - id: chapter-5
     name: Agent skills
     label: 05 / AGENT SKILLS

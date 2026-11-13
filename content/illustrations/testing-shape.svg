@@ -13,28 +13,30 @@
     </g>
     <text x="400" y="695" class="unit-label">Unit</text>
   </g>
-  <g data-appears-at="1" data-disappears-at="4">
+  <g data-appears-at="1">
     <text x="820" y="280" class="chart-poor-label" font-size="31">E2E / Deployment confidence</text>
-    <text x="820" y="328" font-size="27">+ Verify critical deployed journeys</text>
-    <text x="820" y="369" class="chart-muted" font-size="27">− Slow; depend on the environment</text>
+    <path data-bullet="1" d="M784 314L792 322L808 302" fill="none" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="chart-good"/>
+    <text data-bullet="1" x="820" y="328" font-size="27">Verify critical deployed journeys</text>
+    <path data-bullet="2" d="M786 343L806 363 M806 343L786 363" fill="none" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" style="stroke: var(--error, #ef7d86)"/>
+    <text data-bullet="2" x="820" y="369" class="chart-muted" font-size="27">Slow; depend on the environment</text>
   </g>
-  <g data-appears-at="2" data-disappears-at="4">
+  <g data-appears-at="2">
     <text x="820" y="455" class="chart-accent" font-size="31">Integration / Best value in memory</text>
-    <text x="820" y="503" font-size="27">+ Real modules, fast behavioral feedback</text>
-    <text x="820" y="544" class="chart-muted" font-size="27">− Cannot prove real infrastructure works</text>
+    <path data-bullet="3" d="M784 489L792 497L808 477" fill="none" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="chart-good"/>
+    <text data-bullet="3" x="820" y="503" font-size="27">Real modules, fast behavioral feedback</text>
+    <path data-bullet="4" d="M786 518L806 538 M806 518L786 538" fill="none" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" style="stroke: var(--error, #ef7d86)"/>
+    <text data-bullet="4" x="820" y="544" class="chart-muted" font-size="27">Cannot prove real infrastructure works</text>
   </g>
-  <g data-appears-at="3" data-disappears-at="4">
+  <g data-bullet="7" class="parallel-benefit">
+    <path d="M784 571L792 579L808 559" fill="none" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="chart-good"/>
+    <text x="820" y="585" font-size="27">Parallel-test friendly</text>
+  </g>
+  <g data-appears-at="3" class="unit-tradeoffs">
     <text x="820" y="630" font-size="31">Unit / Keep them focused</text>
-    <text x="820" y="678" font-size="27">+ Fast, precise checks of domain rules</text>
-    <text x="820" y="719" class="chart-muted" font-size="27">− Testing internals makes refactoring harder</text>
-  </g>
-  <g data-appears-at="4" data-disappears-at="5">
-    <text x="820" y="340" class="chart-accent" font-size="38">Favor the middle.</text>
-    <text x="820" y="410" font-size="29">Many in-memory integration</text>
-    <text x="820" y="453" font-size="29">and component tests.</text>
-    <text x="820" y="530" class="chart-muted" font-size="28">A few critical E2E journeys.</text>
-    <text x="820" y="580" class="chart-muted" font-size="28">A small, focused set of unit tests.</text>
-    <text x="820" y="680" class="chart-muted" font-size="23">An emphasis, not a universal ratio.</text>
+    <path data-bullet="5" d="M784 664L792 672L808 652" fill="none" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="chart-good"/>
+    <text data-bullet="5" x="820" y="678" font-size="27">Fast, precise checks of domain rules</text>
+    <path data-bullet="6" d="M786 693L806 713 M806 693L786 713" fill="none" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" style="stroke: var(--error, #ef7d86)"/>
+    <text data-bullet="6" x="820" y="719" class="chart-muted" font-size="27">Testing internals makes refactoring harder</text>
   </g>
   <g data-appears-at="5">
     <path d="M266 410H534 M266 490H534 M266 570H534 M266 650H534" class="parallel-lane"/>
@@ -50,11 +52,5 @@
       <circle cx="282" cy="570" r="6" class="runner" style="--test: 0; --lane: 2"/><circle cx="316" cy="570" r="6" class="runner" style="--test: 1; --lane: 2"/><circle cx="350" cy="570" r="6" class="runner" style="--test: 2; --lane: 2"/><circle cx="384" cy="570" r="6" class="runner" style="--test: 3; --lane: 2"/><circle cx="418" cy="570" r="6" class="runner" style="--test: 4; --lane: 2"/><circle cx="452" cy="570" r="6" class="runner" style="--test: 5; --lane: 2"/><circle cx="486" cy="570" r="6" class="runner" style="--test: 6; --lane: 2"/><circle cx="520" cy="570" r="6" class="runner" style="--test: 7; --lane: 2"/>
       <circle cx="282" cy="650" r="6" class="runner" style="--test: 0; --lane: 3"/><circle cx="316" cy="650" r="6" class="runner" style="--test: 1; --lane: 3"/><circle cx="350" cy="650" r="6" class="runner" style="--test: 2; --lane: 3"/><circle cx="384" cy="650" r="6" class="runner" style="--test: 3; --lane: 3"/><circle cx="418" cy="650" r="6" class="runner" style="--test: 4; --lane: 3"/><circle cx="452" cy="650" r="6" class="runner" style="--test: 5; --lane: 3"/><circle cx="486" cy="650" r="6" class="runner" style="--test: 6; --lane: 3"/><circle cx="520" cy="650" r="6" class="runner" style="--test: 7; --lane: 3"/>
     </g>
-    <text x="820" y="340" class="chart-accent" font-size="33">Independent modules. Parallel tests.</text>
-    <text x="820" y="415" font-size="29">Real modules. In-memory adapters.</text>
-    <text x="820" y="485" class="chart-muted" font-size="28">Own state, fixtures and clock per module.</text>
-    <text x="820" y="535" class="chart-muted" font-size="28">No shared database or network required.</text>
-    <text x="820" y="615" font-size="29">Shorter feedback loops.</text>
-    <text x="820" y="680" class="chart-muted" font-size="23">Bound concurrency to CPU and memory.</text>
   </g>
 </svg>

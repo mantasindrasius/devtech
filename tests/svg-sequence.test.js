@@ -14,10 +14,11 @@ test('answers the question before revealing each supporting point', async () => 
   await presentation.next();
   await presentation.next();
   await presentation.next();
+  await presentation.next();
   await presentation.replay();
 
   expect(presentation.observations().shown).toEqual([
-    'depends', 'yes', 'design', 'limits', 'focus', 'depends',
+    'intro', 'depends', 'yes', 'design', 'limits', 'focus', 'intro',
   ]);
   presentation.dispose();
 });
