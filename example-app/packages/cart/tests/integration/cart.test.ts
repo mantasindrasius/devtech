@@ -14,6 +14,7 @@ test('adding the same product combines quantities and persists the result', () =
   expect(cart.getSnapshot()).toEqual([{ productId: 'daypack', quantity: 2 }]);
   expect(saved).toEqual(cart.getSnapshot());
 });
+
 test('removing the final quantity removes the line and notifies subscribers', () => {
   const cart = createCart();
   cart.add('flask');
@@ -25,6 +26,7 @@ test('removing the final quantity removes the line and notifies subscribers', ()
   expect(changes).toBe(1);
   expect(cart.getSnapshot()).toEqual([{ productId: 'lamp', quantity: 1 }]);
 });
+
 test('corrupt saved cart entries are discarded while valid entries are restored', () => {
   const cart = createCart({
     read: () => [null, { productId: 'flask', quantity: 2 }, { productId: 'lamp', quantity: -3 }],
@@ -32,6 +34,7 @@ test('corrupt saved cart entries are discarded while valid entries are restored'
   });
   expect(cart.getSnapshot()).toEqual([{ productId: 'flask', quantity: 2 }]);
 });
+
 test('quantity limits are enforced by the module rather than just the controls', () => {
   const cart = createCart();
   expect(() => cart.setQuantity('flask', 21)).toThrow('Quantity');

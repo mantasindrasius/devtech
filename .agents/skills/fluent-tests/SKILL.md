@@ -14,6 +14,7 @@ Tests explain setup, action, and outcome without making readers decode selectors
 - Import `test`, `expect`, and lifecycle helpers from `bun:test`. Preserve the existing JS/TS choice; do not add a framework to get fluent syntax.
 - Name tests for outcome and condition: “blocks a push when an outgoing commit contains a private registry reference.” Avoid `works`, `should`, method names alone, or workflow/PR labels.
 - Use visually separated Given, When, Then sections. One behavior per test; several assertions can establish that one outcome.
+- Keep a blank line between test cases, and between lifecycle hooks or helpers and the next test, so scenarios remain visually distinct.
 - Keep scenarios flat, normally with at most one `describe` layer. Split success, rejection, deletion, and cleanup into separate tests.
 - Do not branch on results or catch failures and accept an alternate outcome. Use `toThrow` or awaited rejection assertions. Cleanup in lifecycle hooks or `try/finally` is allowed.
 - Use `test.each` for named tables of equivalent cases, rather than loops hiding multiple scenarios inside one test.

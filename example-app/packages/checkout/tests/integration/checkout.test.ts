@@ -34,6 +34,7 @@ test('checkout composes the cart, HTTP client, domain modules and SQLite', async
   expect(session.shop.modules.orders.get(state.order!.id)).toEqual(state.order!);
   expect(session.cart.getSnapshot()).toEqual([]);
 });
+
 test('changing the cart invalidates the previous quote', async () => {
   const session = aSession();
   session.cart.add('flask');
@@ -41,6 +42,7 @@ test('changing the cart invalidates the previous quote', async () => {
   session.cart.add('lamp');
   expect(session.checkout.getSnapshot()).toEqual({ phase: 'idle' });
 });
+
 test('an invalid coupon reports a readable error and can be corrected', async () => {
   const session = aSession();
   session.cart.add('flask');
@@ -49,6 +51,7 @@ test('an invalid coupon reports a readable error and can be corrected', async ()
   await session.checkout.review('TRAIL10');
   expect(session.checkout.getSnapshot().phase).toBe('ready');
 });
+
 test('a stale quote response cannot overwrite a newer cart', async () => {
   let resolve!: (quote: Quote) => void;
   const session = aSession((api) => ({
@@ -66,6 +69,7 @@ test('a stale quote response cannot overwrite a newer cart', async () => {
   await pending;
   expect(session.checkout.getSnapshot()).toEqual({ phase: 'idle' });
 });
+
 test('retrying after a lost response reuses the original order request', async () => {
   const ids: string[] = [];
   const session = aSession((api) => ({
@@ -86,6 +90,7 @@ test('retrying after a lost response reuses the original order request', async (
   expect(ids[0]).toBe(ids[1]);
   expect(session.checkout.getSnapshot().phase).toBe('confirmed');
 });
+
 test('disposed checkout ignores pending responses and removes subscriptions', async () => {
   let resolve!: (quote: Quote) => void;
   const session = aSession((api) => ({
