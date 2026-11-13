@@ -22,6 +22,7 @@ test('an empty cart explains the next action and cannot be checked out', async (
   );
   expect(shop.view.getByText(/Add something to get started/)).toBeTruthy();
 });
+
 test('quantity controls update the cart and remove the final item', async () => {
   const shop = screen();
   await shop.ready();
@@ -33,6 +34,7 @@ test('quantity controls update the cart and remove the final item', async () => 
   shop.decrease('Daypack');
   expect(shop.view.queryByLabelText('Daypack quantity')).toBeNull();
 });
+
 test('review shows the server-calculated discount and shipping', async () => {
   const shop = screen();
   await shop.ready();
@@ -43,6 +45,7 @@ test('review shows the server-calculated discount and shipping', async () => {
 
   expect(await shop.total()).toBe('€99.50');
 });
+
 test('invalid coupons are readable and recoverable without losing the cart', async () => {
   const shop = screen();
   await shop.ready();
@@ -55,6 +58,7 @@ test('invalid coupons are readable and recoverable without losing the cart', asy
   expect(await shop.total()).toBe('€27.50');
   expect(shop.view.queryByRole('alert')).toBeNull();
 });
+
 test('placing the order shows confirmation and clears the cart', async () => {
   const shop = screen();
   await shop.ready();
@@ -67,6 +71,7 @@ test('placing the order shows confirmation and clears the cart', async () => {
   expect(shop.view.getByText('Order confirmed. No payment was taken.')).toBeTruthy();
   expect(shop.view.queryByLabelText('Camp light quantity')).toBeNull();
 });
+
 test('catalog failures are visible instead of leaving a permanent loading screen', async () => {
   const shop = screen(aShopScreen().withUnavailableCatalog());
 
